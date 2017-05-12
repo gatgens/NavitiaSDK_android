@@ -33,14 +33,16 @@ public abstract class BaseNavitiaRequestBuilder<T> {
     }
 
     public String getUrl() {
-        List<String> queryParametersResult = new ArrayList<String>();
+        StringBuilder resultUrlBuilder = new StringBuilder();
+        resultUrlBuilder.append(this.navitiaConfiguration.getBaseUrl());
+        resultUrlBuilder.append(this.resourceUri);
+        resultUrlBuilder.append("?");
+
         for (String key : this.queryParameters.keySet()) {
-            queryParametersResult.add(key + "=" + this.queryParameters.get(key));
+            resultUrlBuilder.append(key + "=" + this.queryParameters.get(key) + "&");
         }
 
-        return this.navitiaConfiguration.getBaseUrl()
-                + this.resourceUri
-                + "?" + queryParametersResult.stream().collect(Collectors.joining("&"));
+        return resultUrlBuilder.toString();
     }
 
     private String getResponse() throws IOException {

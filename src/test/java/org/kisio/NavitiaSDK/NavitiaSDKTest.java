@@ -103,6 +103,6 @@ public class NavitiaSDKTest {
                 .withCount(10)
                 .getUrl();
 
-        assertEquals("https://api.navitia.io/v1/places?count=10&q=gare", url);
+        assertEquals("https://api.navitia.io/v1/places?count=10&q=gare&", url);
     }
 }
