@@ -56,7 +56,7 @@ public abstract class BaseNavitiaRequestBuilder<T> {
 
     public interface ErrorRequestCallback<T> { void callback(ResourceRequestError resourceRequestError); }
 
-    interface BaseRequestCallback { void callback(JSONObject jsonObject); }
+    public interface BaseRequestCallback { void callback(JSONObject jsonObject); }
     public void rawGet(BaseRequestCallback baseRequestCallback, ErrorRequestCallback errorRequestCallback) throws IOException, ParseException {
         try {
             String jsonResponse = this.getResponse();
