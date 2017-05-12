@@ -49,7 +49,7 @@ public class NavitiaSDKTest {
     }
 
     @Test
-    public void shouldLaunchErrorGivenInvalidConfiguration() throws Exception {
+    public void shouldLaunchErrorGivenInvalidConfigurationWithRawGet() throws Exception {
         NavitiaSDK navitiaSDK = new NavitiaSDK(new NavitiaConfiguration(""));
 
         final ResourceRequestError[] resultError = new ResourceRequestError[1];
@@ -59,6 +59,32 @@ public class NavitiaSDKTest {
                         new BaseNavitiaRequestBuilder.BaseRequestCallback() {
                             @Override
                             public void callback(JSONObject jsonObject) {
+                            }
+                        },
+                        new BaseNavitiaRequestBuilder.ErrorRequestCallback() {
+                            @Override
+                            public void callback(ResourceRequestError resourceRequestError) {
+                                resultError[0] = resourceRequestError;
+                            }
+                        });
+
+        assertEquals(401, resultError[0].getHttpStatusCode());
+        assertEquals("Invalid http status code 401", resultError[0].getMessage());
+        assertNotNull(resultError[0].getInnerException());
+        assertEquals(401, ((HTTPException)resultError[0].getInnerException()).getStatusCode());
+    }
+
+    @Test
+    public void shouldLaunchErrorGivenInvalidConfigurationWithGet() throws Exception {
+        NavitiaSDK navitiaSDK = new NavitiaSDK(new NavitiaConfiguration(""));
+
+        final ResourceRequestError[] resultError = new ResourceRequestError[1];
+        navitiaSDK.getEndpoints().getPlaces()
+                .newRequestBuilder().withQ("gare").withCount(10)
+                .get(
+                        new EndpointRequestBuilderPlaces.PlacesRequestCallback() {
+                            @Override
+                            public void callback(EndpointResponsePlaces endpointResponsePlaces) {
                             }
                         },
                         new BaseNavitiaRequestBuilder.ErrorRequestCallback() {

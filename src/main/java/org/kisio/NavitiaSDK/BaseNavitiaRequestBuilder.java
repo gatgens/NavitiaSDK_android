@@ -65,7 +65,7 @@ public abstract class BaseNavitiaRequestBuilder<T> {
     public interface ErrorRequestCallback<T> { void callback(ResourceRequestError resourceRequestError); }
 
     public interface BaseRequestCallback { void callback(JSONObject jsonObject); }
-    public void rawGet(BaseRequestCallback baseRequestCallback, ErrorRequestCallback errorRequestCallback) throws IOException, ParseException {
+    public void rawGet(BaseRequestCallback baseRequestCallback, ErrorRequestCallback errorRequestCallback) {
         try {
             String jsonResponse = this.getResponse();
 
@@ -83,12 +83,20 @@ public abstract class BaseNavitiaRequestBuilder<T> {
     }
 
     public interface ModelRequestCallback<T> { void callback(T endpointResponseModel); }
-    public void get(ModelRequestCallback<T> modelRequestCallback, ErrorRequestCallback errorRequestCallback) throws IOException, ParseException {
-        String jsonResponse = this.getResponse();
+    public void get(ModelRequestCallback<T> modelRequestCallback, ErrorRequestCallback errorRequestCallback) {
+        try {
+            String jsonResponse = this.getResponse();
 
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
 
-        modelRequestCallback.callback(gson.fromJson(jsonResponse, typeParameterClass));
+            modelRequestCallback.callback(gson.fromJson(jsonResponse, typeParameterClass));
+        }
+        catch (HTTPException e) {
+            errorRequestCallback.callback(new ResourceRequestError(e.getStatusCode(), "Invalid http status code " + e.getStatusCode(), e));
+        }
+        catch (Exception e) {
+            errorRequestCallback.callback(new ResourceRequestError(200, "Parsing error", e));
+        }
     }
 }
