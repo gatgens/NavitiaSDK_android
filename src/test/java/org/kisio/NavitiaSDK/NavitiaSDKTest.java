@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.kisio.NavitiaSDK.Places.EndpointResponsePlaces;
 import org.kisio.NavitiaSDK.Places.EndpointRequestBuilderPlaces;
 
+import javax.xml.ws.http.HTTPException;
+
 import static org.junit.Assert.*;
 
 public class NavitiaSDKTest {
@@ -50,7 +52,7 @@ public class NavitiaSDKTest {
     public void shouldLaunchErrorGivenInvalidConfiguration() throws Exception {
         NavitiaSDK navitiaSDK = new NavitiaSDK(new NavitiaConfiguration(""));
 
-        final String[] resultError = new String[1];
+        final ResourceRequestError[] resultError = new ResourceRequestError[1];
         navitiaSDK.getEndpoints().getPlaces()
                 .newRequestBuilder().withQ("gare").withCount(10)
                 .rawGet(
@@ -62,11 +64,14 @@ public class NavitiaSDKTest {
                         new BaseNavitiaRequestBuilder.ErrorRequestCallback() {
                             @Override
                             public void callback(ResourceRequestError resourceRequestError) {
-                                resultError[0] = "TOTO";
+                                resultError[0] = resourceRequestError;
                             }
                         });
 
-        assertEquals("Garein", resultError[0]);
+        assertEquals(401, resultError[0].getHttpStatusCode());
+        assertEquals("Invalid http status code 401", resultError[0].getMessage());
+        assertNotNull(resultError[0].getInnerException());
+        assertEquals(401, ((HTTPException)resultError[0].getInnerException()).getStatusCode());
     }
 
     @Test

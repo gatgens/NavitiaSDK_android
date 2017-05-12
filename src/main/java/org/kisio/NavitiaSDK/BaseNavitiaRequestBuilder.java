@@ -15,6 +15,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import javax.xml.ws.http.HTTPException;
+
 public abstract class BaseNavitiaRequestBuilder<T> {
     private NavitiaConfiguration navitiaConfiguration;
     private String resourceUri;
@@ -52,6 +54,11 @@ public abstract class BaseNavitiaRequestBuilder<T> {
                 .addHeader("Authorization", this.navitiaConfiguration.getToken())
                 .build();
         Response response = client.newCall(request).execute();
+
+        if (response.code() != 200) {
+            throw new HTTPException(response.code());
+        }
+
         return response.body().string();
     }
 
@@ -67,8 +74,11 @@ public abstract class BaseNavitiaRequestBuilder<T> {
 
             baseRequestCallback.callback(jsonObject);
         }
+        catch (HTTPException e) {
+            errorRequestCallback.callback(new ResourceRequestError(e.getStatusCode(), "Invalid http status code " + e.getStatusCode(), e));
+        }
         catch (Exception e) {
-            errorRequestCallback.callback(new ResourceRequestError(666, "toto", e));
+            errorRequestCallback.callback(new ResourceRequestError(200, "Parsing error", e));
         }
     }
 
