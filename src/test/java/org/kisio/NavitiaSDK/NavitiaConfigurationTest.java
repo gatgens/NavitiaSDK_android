@@ -1,4 +1,4 @@
-package org.kisio.labs.NavitiaSDKSandbox;
+package org.kisio.NavitiaSDK;
 
 import org.junit.Assert;
 import org.junit.Test;

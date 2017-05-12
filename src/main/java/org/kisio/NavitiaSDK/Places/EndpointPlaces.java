@@ -1,6 +1,6 @@
-package org.kisio.labs.NavitiaSDKSandbox.Places;
+package org.kisio.NavitiaSDK.Places;
 
-import org.kisio.labs.NavitiaSDKSandbox.NavitiaConfiguration;
+import org.kisio.NavitiaSDK.NavitiaConfiguration;
 
 public class EndpointPlaces {
     private NavitiaConfiguration navitiaConfiguration;

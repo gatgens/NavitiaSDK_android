@@ -1,4 +1,4 @@
-package org.kisio.labs.NavitiaSDKSandbox.Places;
+package org.kisio.NavitiaSDK.Places;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -8,9 +8,9 @@ import okhttp3.Response;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.kisio.labs.NavitiaSDKSandbox.BaseNavitiaRequestBuilder;
-import org.kisio.labs.NavitiaSDKSandbox.NavitiaConfiguration;
-import org.kisio.labs.NavitiaSDKSandbox.ResourceRequestError;
+import org.kisio.NavitiaSDK.NavitiaConfiguration;
+import org.kisio.NavitiaSDK.ResourceRequestError;
+import org.kisio.NavitiaSDK.BaseNavitiaRequestBuilder;
 
 import java.io.IOException;
 

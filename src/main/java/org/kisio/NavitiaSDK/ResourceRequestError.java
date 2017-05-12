@@ -1,4 +1,4 @@
-package org.kisio.labs.NavitiaSDKSandbox;
+package org.kisio.NavitiaSDK;
 
 public class ResourceRequestError {
     private int httpStatusCode;
