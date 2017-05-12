@@ -3,6 +3,7 @@ package org.kisio.labs.NavitiaSDKSandbox;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.junit.Test;
+import org.kisio.labs.NavitiaSDKSandbox.Places.EndpointRequestBuilderPlaces;
 import org.kisio.labs.NavitiaSDKSandbox.Places.EndpointResponsePlaces;
 
 import static org.junit.Assert.*;
@@ -29,10 +30,16 @@ public class NavitiaSDKTest {
         navitiaSDK.getEndpoints().getPlaces()
                 .newRequestBuilder().withQ("gare").withCount(10)
                 .rawGet(
-                        (JSONObject jsonObject) -> {
-                            result[0] = (String) ((JSONObject) ((JSONArray) jsonObject.get("places")).get(0)).get("name");
+                        new BaseNavitiaRequestBuilder.BaseRequestCallback() {
+                            @Override
+                            public void callback(JSONObject jsonObject) {
+                                result[0] = (String) ((JSONObject) ((JSONArray) jsonObject.get("places")).get(0)).get("name");
+                            }
                         },
-                        (ResourceRequestError resourceRequestError) -> {
+                        new BaseNavitiaRequestBuilder.ErrorRequestCallback() {
+                            @Override
+                            public void callback(ResourceRequestError resourceRequestError) {
+                            }
                         }
                 );
 
@@ -47,10 +54,16 @@ public class NavitiaSDKTest {
         navitiaSDK.getEndpoints().getPlaces()
                 .newRequestBuilder().withQ("gare").withCount(10)
                 .rawGet(
-                        (JSONObject jsonObject) -> {
+                        new BaseNavitiaRequestBuilder.BaseRequestCallback() {
+                            @Override
+                            public void callback(JSONObject jsonObject) {
+                            }
                         },
-                        (ResourceRequestError resourceRequestError) -> {
-                            resultError[0] = "TOTO";
+                        new BaseNavitiaRequestBuilder.ErrorRequestCallback() {
+                            @Override
+                            public void callback(ResourceRequestError resourceRequestError) {
+                                resultError[0] = "TOTO";
+                            }
                         });
 
         assertEquals("Garein", resultError[0]);
@@ -64,10 +77,16 @@ public class NavitiaSDKTest {
         navitiaSDK.getEndpoints().getPlaces()
                 .newRequestBuilder().withQ("gare").withCount(10)
                 .get(
-                        (EndpointResponsePlaces endpointResponsePlaces) -> {
-                            result[0] = endpointResponsePlaces.getPlaces().get(0).getName();
+                        new EndpointRequestBuilderPlaces.PlacesRequestCallback() {
+                            @Override
+                            public void callback(EndpointResponsePlaces endpointResponsePlaces) {
+                                result[0] = endpointResponsePlaces.getPlaces().get(0).getName();
+                            }
                         },
-                        (ResourceRequestError resourceRequestError) -> {
+                        new BaseNavitiaRequestBuilder.ErrorRequestCallback() {
+                            @Override
+                            public void callback(ResourceRequestError resourceRequestError) {
+                            }
                         }
                 );
 

@@ -33,10 +33,20 @@ public class EndpointRequestBuilderPlaces extends BaseNavitiaRequestBuilder {
         void callback(EndpointResponsePlaces endpointResponsePlaces);
     }
 
-    public void get(PlacesRequestCallback placesRequestCallback, ErrorRequestCallback errorRequestCallback) throws IOException, ParseException {
+    public void get(final PlacesRequestCallback placesRequestCallback, final ErrorRequestCallback errorRequestCallback) throws IOException, ParseException {
         get(
-                (ModelRequestCallback<EndpointResponsePlaces>) endpointResponsePlaces -> placesRequestCallback.callback(endpointResponsePlaces),
-                resourceRequestError -> errorRequestCallback.callback(resourceRequestError)
+                new ModelRequestCallback<EndpointResponsePlaces>() {
+                    @Override
+                    public void callback(EndpointResponsePlaces endpointResponsePlaces) {
+                        placesRequestCallback.callback(endpointResponsePlaces);
+                    }
+                },
+                new ErrorRequestCallback() {
+                    @Override
+                    public void callback(ResourceRequestError resourceRequestError) {
+                        errorRequestCallback.callback(resourceRequestError);
+                    }
+                }
         );
     }
 }
