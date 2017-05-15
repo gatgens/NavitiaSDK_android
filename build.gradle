@@ -46,3 +46,23 @@ bintray {
         }
     }
 }
+
+apply plugin: 'maven'
+task writeNewPom << {
+    pom {
+        project {
+            groupId 'org.kisio.sdk'
+            artifactId 'navitia-sdk'
+            version '0.1.0'
+
+            inceptionYear '2017'
+            licenses {
+                license {
+                    name 'GNU General Public License, Version 3'
+                    url 'http://www.gnu.org/licenses/gpl-3.0.htm'
+                    distribution 'manual'
+                }
+            }
+        }
+    }.writeTo("pom.xml")
+}
