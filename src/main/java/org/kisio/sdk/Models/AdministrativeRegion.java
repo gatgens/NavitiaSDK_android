@@ -1,5 +1,5 @@
 
-package org.kisio.NavitiaSDK.Models;
+package org.kisio.sdk.Models;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,5 @@
 
-package org.kisio.NavitiaSDK.Models;
+package org.kisio.sdk.Models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

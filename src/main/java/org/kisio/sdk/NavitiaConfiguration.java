@@ -1,4 +1,4 @@
-package org.kisio.NavitiaSDK;
+package org.kisio.sdk;
 
 public class NavitiaConfiguration {
     public String getToken() {

@@ -1,4 +1,4 @@
-package org.kisio.NavitiaSDK;
+package org.kisio.sdk;
 
 import java.io.IOException;
 import java.util.Hashtable;
@@ -10,7 +10,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import javax.xml.ws.http.HTTPException;
 

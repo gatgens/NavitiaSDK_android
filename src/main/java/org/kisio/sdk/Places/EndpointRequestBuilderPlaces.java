@@ -1,16 +1,9 @@
-package org.kisio.NavitiaSDK.Places;
+package org.kisio.sdk.Places;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.kisio.NavitiaSDK.NavitiaConfiguration;
-import org.kisio.NavitiaSDK.ResourceRequestError;
-import org.kisio.NavitiaSDK.BaseNavitiaRequestBuilder;
+import org.kisio.sdk.BaseNavitiaRequestBuilder;
+import org.kisio.sdk.NavitiaConfiguration;
+import org.kisio.sdk.ResourceRequestError;
 
 import java.io.IOException;
 

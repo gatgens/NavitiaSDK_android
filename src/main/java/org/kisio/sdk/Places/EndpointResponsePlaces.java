@@ -1,5 +1,5 @@
 
-package org.kisio.NavitiaSDK.Places;
+package org.kisio.sdk.Places;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +8,8 @@ import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
-import org.kisio.NavitiaSDK.Models.Place;
-import org.kisio.NavitiaSDK.Models.Warning;
+import org.kisio.sdk.Models.Place;
+import org.kisio.sdk.Models.Warning;
 
 public class EndpointResponsePlaces {
 

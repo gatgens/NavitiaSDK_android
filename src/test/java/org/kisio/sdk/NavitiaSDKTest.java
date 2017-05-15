@@ -1,10 +1,10 @@
-package org.kisio.NavitiaSDK;
+package org.kisio.sdk;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.junit.Test;
-import org.kisio.NavitiaSDK.Places.EndpointResponsePlaces;
-import org.kisio.NavitiaSDK.Places.EndpointRequestBuilderPlaces;
+import org.kisio.sdk.Places.EndpointResponsePlaces;
+import org.kisio.sdk.Places.EndpointRequestBuilderPlaces;
 
 import javax.xml.ws.http.HTTPException;
 
