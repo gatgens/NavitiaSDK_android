@@ -31,10 +31,18 @@ apply plugin: 'com.jfrog.bintray'
 bintray {
     user = System.getenv('BINTRAY_USER')
     key = System.getenv('BINTRAY_KEY')
+    configurations = ['archives']
     pkg {
-        repo = 'generic'
+        repo = 'maven'
         name = 'navitia-sdk'
         licenses = ['GPL-3.0']
         vcsUrl = 'https://github.com/CanalTP/NavitiaSDK_android.git'
+        version {
+            name = '0.1.0'
+            desc = 'NavitiaSDK android 0.1.0'
+            released  = new Date()
+            vcsTag = '0.1.0'
+            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
+        }
     }
 }
