@@ -1,4 +1,4 @@
-package org.kisio.sdk;
+package org.kisio.NavitiaSDK;
 
 public class NavitiaSDK {
     private NavitiaConfiguration configuration;

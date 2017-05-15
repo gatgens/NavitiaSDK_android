@@ -1,4 +1,4 @@
-package org.kisio.sdk;
+package org.kisio.NavitiaSDK;
 
 import org.junit.Test;
 

@@ -1,9 +1,9 @@
-package org.kisio.sdk.Places;
+package org.kisio.NavitiaSDK.Places;
 
 import org.json.simple.parser.ParseException;
-import org.kisio.sdk.BaseNavitiaRequestBuilder;
-import org.kisio.sdk.NavitiaConfiguration;
-import org.kisio.sdk.ResourceRequestError;
+import org.kisio.NavitiaSDK.BaseNavitiaRequestBuilder;
+import org.kisio.NavitiaSDK.NavitiaConfiguration;
+import org.kisio.NavitiaSDK.ResourceRequestError;
 
 import java.io.IOException;
 
