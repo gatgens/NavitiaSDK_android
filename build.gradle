@@ -17,3 +17,24 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.6.0'
     compile 'com.googlecode.json-simple:json-simple:1.1.1'
 }
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+    }
+}
+apply plugin: 'com.jfrog.bintray'
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    pkg {
+        repo = 'generic'
+        name = 'navitia-sdk'
+        licenses = ['GPL-3.0']
+        vcsUrl = 'https://github.com/CanalTP/NavitiaSDK_android.git'
+    }
+}
