@@ -78,7 +78,7 @@ public abstract class BaseNavitiaRequestBuilder<T> {
             errorRequestCallback.callback(new ResourceRequestError(e.getStatusCode(), "Invalid http status code " + e.getStatusCode(), e));
         }
         catch (Exception e) {
-            errorRequestCallback.callback(new ResourceRequestError(200, "Parsing error", e));
+            errorRequestCallback.callback(new ResourceRequestError(200, "Parsing error : " + e.getMessage(), e));
         }
     }
 
@@ -96,7 +96,7 @@ public abstract class BaseNavitiaRequestBuilder<T> {
             errorRequestCallback.callback(new ResourceRequestError(e.getStatusCode(), "Invalid http status code " + e.getStatusCode(), e));
         }
         catch (Exception e) {
-            errorRequestCallback.callback(new ResourceRequestError(200, "Parsing error", e));
+            errorRequestCallback.callback(new ResourceRequestError(200, "Parsing error : " + e.getMessage(), e));
         }
     }
 }
