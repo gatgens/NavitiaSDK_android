@@ -2,6 +2,9 @@ group 'org.kisio.sdk'
 version '0.1.0'
 
 apply plugin: 'java'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -26,12 +29,45 @@ buildscript {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
     }
 }
-apply plugin: 'com.jfrog.bintray'
+
+// custom tasks for creating source/javadoc jars
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+// add javadoc/source jar tasks as artifacts
+artifacts {
+    archives sourcesJar, javadocJar
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            if (plugins.hasPlugin('war')) {
+                from components.web
+            } else {
+                from components.java
+            }
+
+            artifact sourcesJar
+            artifact javadocJar
+        }
+    }
+}
 
 bintray {
     user = System.getenv('BINTRAY_USER')
     key = System.getenv('BINTRAY_KEY')
     configurations = ['archives']
+    publications = ['mavenJava']
+    dryRun = false //Whether to run this as dry-run, without deploying
+    publish = true //If version should be auto published after an upload
     pkg {
         repo = 'NavitiaSDK'
         name = 'navitia-sdk'
@@ -47,7 +83,6 @@ bintray {
     }
 }
 
-apply plugin: 'maven'
 task writeNewPom << {
     pom {
         project {
