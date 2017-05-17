@@ -61,6 +61,7 @@ publishing {
     }
 }
 
+// "gradle build bintrayUpload --info" to build and send to jcenter
 bintray {
     user = System.getenv('BINTRAY_USER')
     key = System.getenv('BINTRAY_KEY')
