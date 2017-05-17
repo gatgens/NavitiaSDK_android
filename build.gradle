@@ -85,6 +85,7 @@ bintray {
 
 // "gradle writeNewPom" to generate a new pom.xml
 // "mvn clean install" to sign jars
+// find explanation here : http://blog.sonatype.com/2010/01/how-to-generate-pgp-signatures-with-maven/
 task writeNewPom << {
     pom {
         project {
