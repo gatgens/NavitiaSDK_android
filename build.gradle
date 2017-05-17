@@ -84,6 +84,7 @@ bintray {
 }
 
 // "gradle writeNewPom" to generate a new pom.xml
+// "mvn clean install" to sign jars
 task writeNewPom << {
     pom {
         project {
