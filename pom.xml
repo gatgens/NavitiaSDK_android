@@ -4,6 +4,9 @@
   <groupId>org.kisio.sdk</groupId>
   <artifactId>navitia-sdk</artifactId>
   <version>0.1.0</version>
+  <name>NavitiaSDK android</name>
+  <description>Navitia client for Android</description>
+  <url>https://github.com/CanalTP/NavitiaSDK_android</url>
   <inceptionYear>2017</inceptionYear>
   <licenses>
     <license>
