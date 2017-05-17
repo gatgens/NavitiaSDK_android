@@ -100,5 +100,18 @@ task writeNewPom << {
                 }
             }
         }
+    }.withXml { asNode()
+        .appendNode('build')
+        .appendNode('plugins')
+        .appendNode('plugin')
+            .appendNode('groupId', 'org.apache.maven.plugins')
+            .parent().appendNode('artifactId', 'maven-gpg-plugin')
+            .parent().appendNode('executions')
+            .appendNode('execution')
+                .appendNode('id', 'sign-artifacts')
+                .parent().appendNode('phase', 'verify')
+                .parent().appendNode('goals')
+                    .appendNode('goal', 'sign')
     }.writeTo("pom.xml")
 }
+
