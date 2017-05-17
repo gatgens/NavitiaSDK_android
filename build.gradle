@@ -83,6 +83,7 @@ bintray {
     }
 }
 
+// "gradle writeNewPom" to generate a new pom.xml
 task writeNewPom << {
     pom {
         project {
