@@ -93,6 +93,10 @@ task writeNewPom << {
             artifactId 'navitia-sdk'
             version '0.1.0'
 
+            name 'NavitiaSDK android'
+            description 'Navitia client for Android'
+            url 'https://github.com/CanalTP/NavitiaSDK_android'
+
             inceptionYear '2017'
             licenses {
                 license {
