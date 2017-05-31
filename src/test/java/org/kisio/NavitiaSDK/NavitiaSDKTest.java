@@ -45,7 +45,7 @@ public class NavitiaSDKTest {
                         }
                 );
 
-        assertEquals("Garein", result[0]);
+        assertEquals("Capdenac-Gare", result[0]);
     }
 
     @Test
@@ -121,7 +121,7 @@ public class NavitiaSDKTest {
                         }
                 );
 
-        assertEquals("Garein", result[0]);
+        assertEquals("Capdenac-Gare", result[0]);
     }
 
     @Test
