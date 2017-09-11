@@ -1,127 +1,103 @@
-group 'org.kisio.sdk'
-version '0.1.0'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
 
-apply plugin: 'java'
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'maven'
-apply plugin: 'maven-publish'
-
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
-
-repositories {
-    jcenter()
-}
-
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile 'com.google.code.gson:gson:2.8.0'
-    compile 'commons-lang:commons-lang:2.6'
-    compile 'com.squareup.okhttp3:okhttp:3.6.0'
-    compile 'com.googlecode.json-simple:json-simple:1.1.1'
-}
+group = 'org.kisio.sdk'
+version = '0.2.0'
 
 buildscript {
     repositories {
         jcenter()
     }
     dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.android.tools.build:gradle:2.3.+'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
 }
 
-// custom tasks for creating source/javadoc jars
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
+repositories {
+    jcenter()
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
 
-// add javadoc/source jar tasks as artifacts
-artifacts {
-    archives sourcesJar, javadocJar
-}
+if(hasProperty('target') && target == 'android') {
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            if (plugins.hasPlugin('war')) {
-                from components.web
-            } else {
-                from components.java
-            }
+    apply plugin: 'com.android.library'
+    apply plugin: 'com.github.dcendents.android-maven'
 
-            artifact sourcesJar
-            artifact javadocJar
+    android {
+        compileSdkVersion 25
+        buildToolsVersion '25.0.2'
+        defaultConfig {
+            minSdkVersion 14
+            targetSdkVersion 25
         }
-    }
-}
-
-// "gradle build bintrayUpload --info" to build and send to jcenter
-bintray {
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
-    configurations = ['archives']
-    publications = ['mavenJava']
-    dryRun = false //Whether to run this as dry-run, without deploying
-    publish = true //If version should be auto published after an upload
-    pkg {
-        repo = 'NavitiaSDK'
-        name = 'navitia-sdk'
-        licenses = ['GPL-3.0']
-        vcsUrl = 'https://github.com/CanalTP/NavitiaSDK_android.git'
-        version {
-            name = '0.1.0'
-            desc = 'NavitiaSDK android 0.1.0'
-            released  = new Date()
-            vcsTag = '0.1.0'
-            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
-            gpg {
-                sign = true //Determines whether to GPG sign the files. The default is false
-            }
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_7
+            targetCompatibility JavaVersion.VERSION_1_7
         }
-    }
-}
 
-// "gradle writeNewPom" to generate a new pom.xml
-// "mvn clean install" to sign jars
-// find explanation here : http://blog.sonatype.com/2010/01/how-to-generate-pgp-signatures-with-maven/
-task writeNewPom << {
-    pom {
-        project {
-            groupId 'org.kisio.sdk'
-            artifactId 'navitia-sdk'
-            version '0.1.0'
-
-            name 'NavitiaSDK android'
-            description 'Navitia client for Android'
-            url 'https://github.com/CanalTP/NavitiaSDK_android'
-
-            inceptionYear '2017'
-            licenses {
-                license {
-                    name 'GNU General Public License, Version 3'
-                    url 'http://www.gnu.org/licenses/gpl-3.0.htm'
-                    distribution 'manual'
+        // Rename the aar correctly
+        libraryVariants.all { variant ->
+            variant.outputs.each { output ->
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('.aar')) {
+                    def fileName = "${project.name}-${variant.baseName}-${version}.aar"
+                    output.outputFile = new File(outputFile.parent, fileName)
                 }
             }
         }
-    }.withXml { asNode()
-        .appendNode('build')
-        .appendNode('plugins')
-        .appendNode('plugin')
-            .appendNode('groupId', 'org.apache.maven.plugins')
-            .parent().appendNode('artifactId', 'maven-gpg-plugin')
-            .parent().appendNode('executions')
-            .appendNode('execution')
-                .appendNode('id', 'sign-artifacts')
-                .parent().appendNode('phase', 'verify')
-                .parent().appendNode('goals')
-                    .appendNode('goal', 'sign')
-    }.writeTo("pom.xml").writeTo("$buildDir/pom.xml").writeTo("$buildDir/poms/pom-default.xml")
+
+        dependencies {
+            provided 'javax.annotation:jsr250-api:1.0'
+        }
+    }
+
+    afterEvaluate {
+        android.libraryVariants.all { variant ->
+            def task = project.tasks.create "jar${variant.name.capitalize()}", Jar
+            task.description = "Create jar artifact for ${variant.name}"
+            task.dependsOn variant.javaCompile
+            task.from variant.javaCompile.destinationDir
+            task.destinationDir = project.file("${project.buildDir}/outputs/jar")
+            task.archiveName = "${project.name}-${variant.baseName}-${version}.jar"
+            artifacts.add('archives', task);
+        }
+    }
+
+    task sourcesJar(type: Jar) {
+        from android.sourceSets.main.java.srcDirs
+        classifier = 'sources'
+    }
+
+    artifacts {
+        archives sourcesJar
+    }
+
+} else {
+
+    apply plugin: 'java'
+    apply plugin: 'maven'
+
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+
+    install {
+        repositories.mavenInstaller {
+            pom.artifactId = 'navitia-sdk'
+        }
+    }
+
+    task execute(type:JavaExec) {
+       main = System.getProperty('mainClass')
+       classpath = sourceSets.main.runtimeClasspath
+    }
 }
 
+dependencies {
+    compile 'io.swagger:swagger-annotations:1.5.8'
+    compile 'com.squareup.okhttp:okhttp:2.7.5'
+    compile 'com.squareup.okhttp:logging-interceptor:2.7.5'
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'joda-time:joda-time:2.9.3'
+    testCompile 'junit:junit:4.12'
+}

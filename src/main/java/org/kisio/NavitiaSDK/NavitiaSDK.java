@@ -1,37 +1,83 @@
 package org.kisio.NavitiaSDK;
 
+import org.kisio.NavitiaSDK.apis.CommercialModesApi;
+import org.kisio.NavitiaSDK.apis.CompaniesApi;
+import org.kisio.NavitiaSDK.apis.ContributorsApi;
+import org.kisio.NavitiaSDK.apis.CoverageApi;
+import org.kisio.NavitiaSDK.apis.DatasetsApi;
+import org.kisio.NavitiaSDK.apis.DisruptionsApi;
+import org.kisio.NavitiaSDK.apis.JourneyPatternPointsApi;
+import org.kisio.NavitiaSDK.apis.JourneyPatternsApi;
+import org.kisio.NavitiaSDK.apis.JourneysApi;
+import org.kisio.NavitiaSDK.apis.LineGroupsApi;
+import org.kisio.NavitiaSDK.apis.LinesApi;
+import org.kisio.NavitiaSDK.apis.NetworksApi;
+import org.kisio.NavitiaSDK.apis.NextArrivalsApi;
+import org.kisio.NavitiaSDK.apis.NextDeparturesApi;
+import org.kisio.NavitiaSDK.apis.PhysicalModesApi;
+import org.kisio.NavitiaSDK.apis.PlacesApi;
+import org.kisio.NavitiaSDK.apis.PoiTypesApi;
+import org.kisio.NavitiaSDK.apis.PoisApi;
+import org.kisio.NavitiaSDK.apis.RouteSchedulesApi;
+import org.kisio.NavitiaSDK.apis.RoutesApi;
+import org.kisio.NavitiaSDK.apis.StopAreasApi;
+import org.kisio.NavitiaSDK.apis.StopPointsApi;
+import org.kisio.NavitiaSDK.apis.StopSchedulesApi;
+import org.kisio.NavitiaSDK.apis.TripsApi;
+import org.kisio.NavitiaSDK.apis.VehicleJourneysApi;
+
 public class NavitiaSDK {
-    private NavitiaConfiguration configuration;
-    private NavitiaEndpoints endpoints;
-    private NavitiaFeatures features;
+    public final CommercialModesApi commercialModesApi;
+    public final CompaniesApi companiesApi;
+    public final ContributorsApi contributorsApi;
+    public final CoverageApi coverageApi;
+    public final DatasetsApi datasetsApi;
+    public final DisruptionsApi disruptionsApi;
+    public final JourneyPatternPointsApi journeyPatternPointsApi;
+    public final JourneyPatternsApi journeyPatternsApi;
+    public final JourneysApi journeysApi;
+    public final LineGroupsApi lineGroupsApi;
+    public final LinesApi linesApi;
+    public final NetworksApi networksApi;
+    public final NextArrivalsApi nextArrivalsApi;
+    public final NextDeparturesApi nextDeparturesApi;
+    public final PhysicalModesApi physicalModesApi;
+    public final PlacesApi placesApi;
+    public final PoiTypesApi poiTypesApi;
+    public final PoisApi poisApi;
+    public final RouteSchedulesApi routeSchedulesApi;
+    public final RoutesApi routesApi;
+    public final StopAreasApi stopAreasApi;
+    public final StopPointsApi stopPointsApi;
+    public final StopSchedulesApi stopSchedulesApi;
+    public final TripsApi tripsApi;
+    public final VehicleJourneysApi vehicleJourneysApi;
 
-    public NavitiaConfiguration getConfiguration() {
-        return configuration;
-    }
-
-    public void setConfiguration(NavitiaConfiguration configuration) {
-        this.configuration = configuration;
-    }
-
-    public NavitiaEndpoints getEndpoints() {
-        return endpoints;
-    }
-
-    public void setEndpoints(NavitiaEndpoints endpoints) {
-        this.endpoints = endpoints;
-    }
-
-    public NavitiaFeatures getFeatures() {
-        return features;
-    }
-
-    public void setFeatures(NavitiaFeatures features) {
-        this.features = features;
-    }
-
-    public NavitiaSDK(NavitiaConfiguration configuration) {
-        this.configuration = configuration;
-        this.endpoints = new NavitiaEndpoints(this.configuration);
-        this.features = new NavitiaFeatures(this.configuration);
+    public NavitiaSDK(NavitiaConfiguration configuration) throws Exception {
+        this.commercialModesApi = new CommercialModesApi(configuration.getToken());
+        this.companiesApi = new CompaniesApi(configuration.getToken());
+        this.contributorsApi = new ContributorsApi(configuration.getToken());
+        this.coverageApi = new CoverageApi(configuration.getToken());
+        this.datasetsApi = new DatasetsApi(configuration.getToken());
+        this.disruptionsApi = new DisruptionsApi(configuration.getToken());
+        this.journeyPatternPointsApi = new JourneyPatternPointsApi(configuration.getToken());
+        this.journeyPatternsApi = new JourneyPatternsApi(configuration.getToken());
+        this.journeysApi = new JourneysApi(configuration.getToken());
+        this.lineGroupsApi = new LineGroupsApi(configuration.getToken());
+        this.linesApi = new LinesApi(configuration.getToken());
+        this.networksApi = new NetworksApi(configuration.getToken());
+        this.nextArrivalsApi = new NextArrivalsApi(configuration.getToken());
+        this.nextDeparturesApi = new NextDeparturesApi(configuration.getToken());
+        this.physicalModesApi = new PhysicalModesApi(configuration.getToken());
+        this.placesApi = new PlacesApi(configuration.getToken());
+        this.poiTypesApi = new PoiTypesApi(configuration.getToken());
+        this.poisApi = new PoisApi(configuration.getToken());
+        this.routeSchedulesApi = new RouteSchedulesApi(configuration.getToken());
+        this.routesApi = new RoutesApi(configuration.getToken());
+        this.stopAreasApi = new StopAreasApi(configuration.getToken());
+        this.stopPointsApi = new StopPointsApi(configuration.getToken());
+        this.stopSchedulesApi = new StopSchedulesApi(configuration.getToken());
+        this.tripsApi = new TripsApi(configuration.getToken());
+        this.vehicleJourneysApi = new VehicleJourneysApi(configuration.getToken());
     }
 }
