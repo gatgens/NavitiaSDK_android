@@ -13,6 +13,7 @@ bin/
 gen/
 out/
 target/
+**/target
 
 # Gradle files
 .gradle/
@@ -27,6 +28,9 @@ proguard/
 # Log Files
 *.log
 
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
 # Android Studio Navigation editor temp files
 .navigation/
 
@@ -39,3 +43,14 @@ captures/
 
 # Keystore files
 *.jks
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# exclude jar for gradle wrapper
+!gradle/wrapper/*.jar
