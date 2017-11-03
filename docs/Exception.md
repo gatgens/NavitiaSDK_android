@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **date** | **String** |  |  [optional]
 **type** | **String** |  |  [optional]
-**id** | **String** |  |  [optional]
+**id** | **String** |  | 
 
 
 

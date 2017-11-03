@@ -51,8 +51,8 @@ String headsign = "headsign_example"; // String | filter vehicle journeys on hea
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
-String since = "since_example"; // String | filters objects not valid before this date
-String until = "until_example"; // String | filters objects not valid after this date
+DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
+DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 String filter = "filter_example"; // String | The filter parameter
 try {
@@ -81,8 +81,8 @@ Name | Type | Description  | Notes
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
- **since** | **String**| filters objects not valid before this date | [optional]
- **until** | **String**| filters objects not valid after this date | [optional]
+ **since** | **DateTime**| filters objects not valid before this date | [optional]
+ **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
  **filter** | **String**| The filter parameter | [optional]
 
@@ -136,8 +136,8 @@ String headsign = "headsign_example"; // String | filter vehicle journeys on hea
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
-String since = "since_example"; // String | filters objects not valid before this date
-String until = "until_example"; // String | filters objects not valid after this date
+DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
+DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 try {
     VehicleJourneys result = apiInstance.getCoverageLonLatUriVehicleJourneysId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson);
@@ -166,8 +166,8 @@ Name | Type | Description  | Notes
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
- **since** | **String**| filters objects not valid before this date | [optional]
- **until** | **String**| filters objects not valid after this date | [optional]
+ **since** | **DateTime**| filters objects not valid before this date | [optional]
+ **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
 
 ### Return type
@@ -218,8 +218,8 @@ String headsign = "headsign_example"; // String | filter vehicle journeys on hea
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
-String since = "since_example"; // String | filters objects not valid before this date
-String until = "until_example"; // String | filters objects not valid after this date
+DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
+DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 String filter = "filter_example"; // String | The filter parameter
 try {
@@ -247,8 +247,8 @@ Name | Type | Description  | Notes
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
- **since** | **String**| filters objects not valid before this date | [optional]
- **until** | **String**| filters objects not valid after this date | [optional]
+ **since** | **DateTime**| filters objects not valid before this date | [optional]
+ **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
  **filter** | **String**| The filter parameter | [optional]
 
@@ -301,8 +301,8 @@ String headsign = "headsign_example"; // String | filter vehicle journeys on hea
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
-String since = "since_example"; // String | filters objects not valid before this date
-String until = "until_example"; // String | filters objects not valid after this date
+DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
+DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 try {
     VehicleJourneys result = apiInstance.getCoverageLonLatVehicleJourneysId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson);
@@ -330,8 +330,8 @@ Name | Type | Description  | Notes
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
- **since** | **String**| filters objects not valid before this date | [optional]
- **until** | **String**| filters objects not valid after this date | [optional]
+ **since** | **DateTime**| filters objects not valid before this date | [optional]
+ **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
 
 ### Return type
@@ -382,8 +382,8 @@ String headsign = "headsign_example"; // String | filter vehicle journeys on hea
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
-String since = "since_example"; // String | filters objects not valid before this date
-String until = "until_example"; // String | filters objects not valid after this date
+DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
+DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 String filter = "filter_example"; // String | The filter parameter
 try {
@@ -411,8 +411,8 @@ Name | Type | Description  | Notes
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
- **since** | **String**| filters objects not valid before this date | [optional]
- **until** | **String**| filters objects not valid after this date | [optional]
+ **since** | **DateTime**| filters objects not valid before this date | [optional]
+ **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
  **filter** | **String**| The filter parameter | [optional]
 
@@ -465,8 +465,8 @@ String headsign = "headsign_example"; // String | filter vehicle journeys on hea
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
-String since = "since_example"; // String | filters objects not valid before this date
-String until = "until_example"; // String | filters objects not valid after this date
+DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
+DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 try {
     VehicleJourneys result = apiInstance.getCoverageRegionUriVehicleJourneysId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson);
@@ -494,8 +494,8 @@ Name | Type | Description  | Notes
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
- **since** | **String**| filters objects not valid before this date | [optional]
- **until** | **String**| filters objects not valid after this date | [optional]
+ **since** | **DateTime**| filters objects not valid before this date | [optional]
+ **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
 
 ### Return type
@@ -545,8 +545,8 @@ String headsign = "headsign_example"; // String | filter vehicle journeys on hea
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
-String since = "since_example"; // String | filters objects not valid before this date
-String until = "until_example"; // String | filters objects not valid after this date
+DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
+DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 String filter = "filter_example"; // String | The filter parameter
 try {
@@ -573,8 +573,8 @@ Name | Type | Description  | Notes
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
- **since** | **String**| filters objects not valid before this date | [optional]
- **until** | **String**| filters objects not valid after this date | [optional]
+ **since** | **DateTime**| filters objects not valid before this date | [optional]
+ **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
  **filter** | **String**| The filter parameter | [optional]
 
@@ -626,8 +626,8 @@ String headsign = "headsign_example"; // String | filter vehicle journeys on hea
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
-String since = "since_example"; // String | filters objects not valid before this date
-String until = "until_example"; // String | filters objects not valid after this date
+DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
+DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 try {
     VehicleJourneys result = apiInstance.getCoverageRegionVehicleJourneysId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson);
@@ -654,8 +654,8 @@ Name | Type | Description  | Notes
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
- **since** | **String**| filters objects not valid before this date | [optional]
- **until** | **String**| filters objects not valid after this date | [optional]
+ **since** | **DateTime**| filters objects not valid before this date | [optional]
+ **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
 
 ### Return type
@@ -704,8 +704,8 @@ String headsign = "headsign_example"; // String | filter vehicle journeys on hea
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
-String since = "since_example"; // String | filters objects not valid before this date
-String until = "until_example"; // String | filters objects not valid after this date
+DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
+DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 String filter = "filter_example"; // String | The filter parameter
 try {
@@ -731,8 +731,8 @@ Name | Type | Description  | Notes
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
- **since** | **String**| filters objects not valid before this date | [optional]
- **until** | **String**| filters objects not valid after this date | [optional]
+ **since** | **DateTime**| filters objects not valid before this date | [optional]
+ **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
  **filter** | **String**| The filter parameter | [optional]
 

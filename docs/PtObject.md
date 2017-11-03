@@ -4,16 +4,17 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**embeddedType** | **String** |  |  [optional]
-**network** | [**Network**](Network.md) |  |  [optional]
+**embeddedType** | **String** |  | 
+**stopPoint** | [**StopPoint**](StopPoint.md) |  |  [optional]
+**name** | **String** | Name of the object | 
 **route** | [**Route**](Route.md) |  |  [optional]
 **stopArea** | [**StopArea**](StopArea.md) |  |  [optional]
 **commercialMode** | [**CommercialMode**](CommercialMode.md) |  |  [optional]
-**id** | **String** | Identifier of the object |  [optional]
+**id** | **String** | Identifier of the object | 
 **line** | [**Line**](Line.md) |  |  [optional]
 **quality** | **Integer** |  |  [optional]
 **trip** | [**Trip**](Trip.md) |  |  [optional]
-**name** | **String** | Name of the object |  [optional]
+**network** | [**Network**](Network.md) |  |  [optional]
 
 
 

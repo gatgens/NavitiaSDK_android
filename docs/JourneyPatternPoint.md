@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **stopPoint** | [**StopPoint**](StopPoint.md) |  |  [optional]
-**id** | **String** |  |  [optional]
+**id** | **String** |  | 
 
 
 

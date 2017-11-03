@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
  **q** | **String**| The data to search |
  **lat** | **BigDecimal**|  The latitude of where the coord you want to query |
  **lon** | **BigDecimal**|  The longitude of where the coord you want to query |
- **type** | [**List&lt;String&gt;**](String.md)| The type of data to search | [optional] [default to [u&#39;stop_area&#39;, u&#39;address&#39;, u&#39;poi&#39;, u&#39;administrative_region&#39;]]
+ **type** | [**List&lt;String&gt;**](String.md)| The type of data to search | [optional] [default to [u&#39;stop_area&#39;, u&#39;address&#39;, u&#39;poi&#39;, u&#39;administrative_region&#39;]] [enum: stop_point, poi, administrative_region, stop_area, address]
  **count** | **Integer**| The maximum number of places returned | [optional] [default to 10]
  **adminUri** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given admin uris | [optional]
  **depth** | **Integer**| The depth of objects | [optional] [default to 1]
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **q** | **String**| The data to search |
  **region** | **String**|  The region you want to query |
- **type** | [**List&lt;String&gt;**](String.md)| The type of data to search | [optional] [default to [u&#39;stop_area&#39;, u&#39;address&#39;, u&#39;poi&#39;, u&#39;administrative_region&#39;]]
+ **type** | [**List&lt;String&gt;**](String.md)| The type of data to search | [optional] [default to [u&#39;stop_area&#39;, u&#39;address&#39;, u&#39;poi&#39;, u&#39;administrative_region&#39;]] [enum: stop_point, poi, administrative_region, stop_area, address]
  **count** | **Integer**| The maximum number of places returned | [optional] [default to 10]
  **adminUri** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given admin uris | [optional]
  **depth** | **Integer**| The depth of objects | [optional] [default to 1]
@@ -192,7 +192,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **q** | **String**| The data to search |
- **type** | [**List&lt;String&gt;**](String.md)| The type of data to search | [optional] [default to [u&#39;stop_area&#39;, u&#39;address&#39;, u&#39;poi&#39;, u&#39;administrative_region&#39;]]
+ **type** | [**List&lt;String&gt;**](String.md)| The type of data to search | [optional] [default to [u&#39;stop_area&#39;, u&#39;address&#39;, u&#39;poi&#39;, u&#39;administrative_region&#39;]] [enum: stop_point, poi, administrative_region, stop_area, address]
  **count** | **Integer**| The maximum number of places returned | [optional] [default to 10]
  **adminUri** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given admin uris | [optional]
  **depth** | **Integer**| The depth of objects | [optional] [default to 1]

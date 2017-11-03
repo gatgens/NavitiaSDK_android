@@ -20,7 +20,8 @@ Name | Type | Description | Notes
 **path** | [**List&lt;Path&gt;**](Path.md) |  |  [optional]
 **stopDateTimes** | [**List&lt;StopDateTime&gt;**](StopDateTime.md) |  |  [optional]
 **type** | **String** |  |  [optional]
-**id** | **String** |  |  [optional]
+**id** | **String** |  | 
+**dataFreshness** | **String** |  |  [optional]
 **mode** | **String** |  |  [optional]
 
 

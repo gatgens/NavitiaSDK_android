@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **direction** | [**Place**](Place.md) |  |  [optional]
 **codes** | [**List&lt;Code&gt;**](Code.md) |  |  [optional]
-**name** | **String** | Name of the object |  [optional]
+**name** | **String** | Name of the object | 
 **links** | [**List&lt;LinkSchema&gt;**](LinkSchema.md) |  | 
 **physicalModes** | [**List&lt;PhysicalMode&gt;**](PhysicalMode.md) |  |  [optional]
 **isFrequence** | **String** |  |  [optional]
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **geojson** | [**MultiLineStringSchema**](MultiLineStringSchema.md) |  |  [optional]
 **stopPoints** | [**List&lt;StopPoint&gt;**](StopPoint.md) |  |  [optional]
 **line** | [**Line**](Line.md) |  |  [optional]
-**id** | **String** | Identifier of the object |  [optional]
+**id** | **String** | Identifier of the object | 
 
 
 
