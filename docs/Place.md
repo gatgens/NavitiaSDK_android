@@ -4,14 +4,14 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**embeddedType** | **String** |  |  [optional]
+**embeddedType** | **String** |  | 
 **stopPoint** | [**StopPoint**](StopPoint.md) |  |  [optional]
 **administrativeRegion** | [**Admin**](Admin.md) |  |  [optional]
-**name** | **String** | Name of the object |  [optional]
+**name** | **String** | Name of the object | 
 **address** | [**Address**](Address.md) |  |  [optional]
 **poi** | [**Poi**](Poi.md) |  |  [optional]
-**quality** | **Integer** |  | 
-**id** | **String** | Identifier of the object |  [optional]
+**quality** | **Integer** |  |  [optional]
+**id** | **String** | Identifier of the object | 
 **stopArea** | [**StopArea**](StopArea.md) |  |  [optional]
 
 

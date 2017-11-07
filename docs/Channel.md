@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **contentType** | **String** |  | 
-**id** | **String** |  |  [optional]
+**id** | **String** |  | 
 **types** | [**List&lt;TypesEnum&gt;**](#List&lt;TypesEnum&gt;) |  |  [optional]
-**name** | **String** |  |  [optional]
+**name** | **String** |  | 
 
 
 <a name="List<TypesEnum>"></a>
@@ -22,6 +22,8 @@ NOTIFICATION | &quot;notification&quot;
 TWITTER | &quot;twitter&quot;
 FACEBOOK | &quot;facebook&quot;
 UNKNOWN_TYPE | &quot;unknown_type&quot;
+TITLE | &quot;title&quot;
+BEACON | &quot;beacon&quot;
 
 
 

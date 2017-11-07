@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **endProductionDate** | **String** | End of the production period. We only have data on this production period |  [optional]
 **error** | [**CoverageError**](CoverageError.md) |  |  [optional]
 **lastLoadAt** | **String** | Datetime of the last data loading |  [optional]
-**id** | **String** | Identifier of the coverage |  [optional]
+**id** | **String** | Identifier of the coverage | 
 
 
 

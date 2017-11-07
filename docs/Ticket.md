@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comment** | **String** |  |  [optional]
-**name** | **String** | Name of the object |  [optional]
+**name** | **String** | Name of the object | 
 **links** | [**List&lt;LinkSchema&gt;**](LinkSchema.md) |  |  [optional]
-**cost** | [**Cost**](Cost.md) |  |  [optional]
+**cost** | [**Cost**](Cost.md) |  | 
 **found** | **Boolean** |  |  [optional]
-**id** | **String** | Identifier of the object |  [optional]
+**id** | **String** | Identifier of the object | 
 
 
 

@@ -5,13 +5,13 @@
     <artifactId>navitia-sdk</artifactId>
     <packaging>jar</packaging>
     <name>navitia-sdk</name>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
     <url>https://github.com/swagger-api/swagger-codegen</url>
     <description>Navitia client for Android</description>
     <scm>
-        <connection>scm:git:git@github.com:CanalTP/NavitiaSDK_android.git</connection>
-        <developerConnection>scm:git:git@github.com:CanalTP/NavitiaSDK_android.git</developerConnection>
-        <url>https://github.com/CanalTP/NavitiaSDK_android</url>
+        <connection>scm:git:git://github.com/CanalTP/NavitiaSDK_android.git</connection>
+        <developerConnection>scm:git:ssh://github.com:CanalTP/NavitiaSDK_android.git</developerConnection>
+        <url>https://github.com/CanalTP/NavitiaSDK_android/tree/master</url>
     </scm>
     <prerequisites>
         <maven>2.2.0</maven>
@@ -220,6 +220,12 @@
             <artifactId>junit</artifactId>
             <version>${junit-version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>4.1.1.4</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <properties>

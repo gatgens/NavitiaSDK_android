@@ -19,9 +19,9 @@ Name | Type | Description | Notes
 **closingTime** | **String** |  |  [optional]
 **openingTime** | **String** |  |  [optional]
 **commercialMode** | [**CommercialMode**](CommercialMode.md) |  |  [optional]
-**id** | **String** | Identifier of the object |  [optional]
+**id** | **String** | Identifier of the object | 
 **lineGroups** | [**List&lt;LineGroup&gt;**](LineGroup.md) |  |  [optional]
-**name** | **String** | Name of the object |  [optional]
+**name** | **String** | Name of the object | 
 
 
 

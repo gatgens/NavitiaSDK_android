@@ -4,11 +4,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**disruptions** | [**List&lt;Disruption&gt;**](Disruption.md) |  | 
 **pagination** | [**Pagination**](Pagination.md) |  | 
-**error** | [**Error**](Error.md) |  |  [optional]
-**departures** | [**List&lt;Passage&gt;**](Passage.md) |  | 
+**disruptions** | [**List&lt;Disruption&gt;**](Disruption.md) |  | 
+**notes** | [**List&lt;Note&gt;**](Note.md) |  |  [optional]
 **feedPublishers** | [**List&lt;FeedPublisher&gt;**](FeedPublisher.md) |  | 
+**departures** | [**List&lt;Passage&gt;**](Passage.md) |  | 
+**error** | [**Error**](Error.md) |  |  [optional]
 
 
 

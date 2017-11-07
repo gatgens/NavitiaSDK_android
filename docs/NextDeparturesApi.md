@@ -36,8 +36,8 @@ NextDeparturesApi apiInstance = new NextDeparturesApi();
 BigDecimal lat = new BigDecimal(); // BigDecimal |  The latitude of where the coord you want to query
 BigDecimal lon = new BigDecimal(); // BigDecimal |  The longitude of where the coord you want to query
 String filter = "filter_example"; // String | 
-String fromDatetime = "fromDatetime_example"; // String | The datetime from which you want the schedules
-String untilDatetime = "untilDatetime_example"; // String | The datetime until which you want the schedules
+DateTime fromDatetime = new DateTime(); // DateTime | The datetime from which you want the schedules
+DateTime untilDatetime = new DateTime(); // DateTime | The datetime until which you want the schedules
 Integer duration = 86400; // Integer | Maximum duration between datetime and the retrieved stop time
 Integer depth = 2; // Integer | 
 Integer count = 10; // Integer | Number of schedules per page
@@ -67,8 +67,8 @@ Name | Type | Description  | Notes
  **lat** | **BigDecimal**|  The latitude of where the coord you want to query |
  **lon** | **BigDecimal**|  The longitude of where the coord you want to query |
  **filter** | **String**|  | [optional]
- **fromDatetime** | **String**| The datetime from which you want the schedules | [optional]
- **untilDatetime** | **String**| The datetime until which you want the schedules | [optional]
+ **fromDatetime** | **DateTime**| The datetime from which you want the schedules | [optional]
+ **untilDatetime** | **DateTime**| The datetime until which you want the schedules | [optional]
  **duration** | **Integer**| Maximum duration between datetime and the retrieved stop time | [optional] [default to 86400]
  **depth** | **Integer**|  | [optional] [default to 2]
  **count** | **Integer**| Number of schedules per page | [optional] [default to 10]
@@ -123,8 +123,8 @@ BigDecimal lat = new BigDecimal(); // BigDecimal |  The latitude of where the co
 BigDecimal lon = new BigDecimal(); // BigDecimal |  The longitude of where the coord you want to query
 String uri = "uri_example"; // String | First part of the uri
 String filter = "filter_example"; // String | 
-String fromDatetime = "fromDatetime_example"; // String | The datetime from which you want the schedules
-String untilDatetime = "untilDatetime_example"; // String | The datetime until which you want the schedules
+DateTime fromDatetime = new DateTime(); // DateTime | The datetime from which you want the schedules
+DateTime untilDatetime = new DateTime(); // DateTime | The datetime until which you want the schedules
 Integer duration = 86400; // Integer | Maximum duration between datetime and the retrieved stop time
 Integer depth = 2; // Integer | 
 Integer count = 10; // Integer | Number of schedules per page
@@ -155,8 +155,8 @@ Name | Type | Description  | Notes
  **lon** | **BigDecimal**|  The longitude of where the coord you want to query |
  **uri** | **String**| First part of the uri |
  **filter** | **String**|  | [optional]
- **fromDatetime** | **String**| The datetime from which you want the schedules | [optional]
- **untilDatetime** | **String**| The datetime until which you want the schedules | [optional]
+ **fromDatetime** | **DateTime**| The datetime from which you want the schedules | [optional]
+ **untilDatetime** | **DateTime**| The datetime until which you want the schedules | [optional]
  **duration** | **Integer**| Maximum duration between datetime and the retrieved stop time | [optional] [default to 86400]
  **depth** | **Integer**|  | [optional] [default to 2]
  **count** | **Integer**| Number of schedules per page | [optional] [default to 10]
@@ -209,8 +209,8 @@ basicAuth.setPassword("YOUR PASSWORD");
 NextDeparturesApi apiInstance = new NextDeparturesApi();
 String region = "region_example"; // String |  The region you want to query
 String filter = "filter_example"; // String | 
-String fromDatetime = "fromDatetime_example"; // String | The datetime from which you want the schedules
-String untilDatetime = "untilDatetime_example"; // String | The datetime until which you want the schedules
+DateTime fromDatetime = new DateTime(); // DateTime | The datetime from which you want the schedules
+DateTime untilDatetime = new DateTime(); // DateTime | The datetime until which you want the schedules
 Integer duration = 86400; // Integer | Maximum duration between datetime and the retrieved stop time
 Integer depth = 2; // Integer | 
 Integer count = 10; // Integer | Number of schedules per page
@@ -239,8 +239,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **region** | **String**|  The region you want to query |
  **filter** | **String**|  | [optional]
- **fromDatetime** | **String**| The datetime from which you want the schedules | [optional]
- **untilDatetime** | **String**| The datetime until which you want the schedules | [optional]
+ **fromDatetime** | **DateTime**| The datetime from which you want the schedules | [optional]
+ **untilDatetime** | **DateTime**| The datetime until which you want the schedules | [optional]
  **duration** | **Integer**| Maximum duration between datetime and the retrieved stop time | [optional] [default to 86400]
  **depth** | **Integer**|  | [optional] [default to 2]
  **count** | **Integer**| Number of schedules per page | [optional] [default to 10]
@@ -294,8 +294,8 @@ NextDeparturesApi apiInstance = new NextDeparturesApi();
 String region = "region_example"; // String |  The region you want to query
 String uri = "uri_example"; // String | First part of the uri
 String filter = "filter_example"; // String | 
-String fromDatetime = "fromDatetime_example"; // String | The datetime from which you want the schedules
-String untilDatetime = "untilDatetime_example"; // String | The datetime until which you want the schedules
+DateTime fromDatetime = new DateTime(); // DateTime | The datetime from which you want the schedules
+DateTime untilDatetime = new DateTime(); // DateTime | The datetime until which you want the schedules
 Integer duration = 86400; // Integer | Maximum duration between datetime and the retrieved stop time
 Integer depth = 2; // Integer | 
 Integer count = 10; // Integer | Number of schedules per page
@@ -325,8 +325,8 @@ Name | Type | Description  | Notes
  **region** | **String**|  The region you want to query |
  **uri** | **String**| First part of the uri |
  **filter** | **String**|  | [optional]
- **fromDatetime** | **String**| The datetime from which you want the schedules | [optional]
- **untilDatetime** | **String**| The datetime until which you want the schedules | [optional]
+ **fromDatetime** | **DateTime**| The datetime from which you want the schedules | [optional]
+ **untilDatetime** | **DateTime**| The datetime until which you want the schedules | [optional]
  **duration** | **Integer**| Maximum duration between datetime and the retrieved stop time | [optional] [default to 86400]
  **depth** | **Integer**|  | [optional] [default to 2]
  **count** | **Integer**| Number of schedules per page | [optional] [default to 10]

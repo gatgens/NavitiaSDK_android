@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **validityPattern** | [**ValidityPattern**](ValidityPattern.md) |  |  [optional]
 **exceptions** | [**List&lt;CalendarException&gt;**](CalendarException.md) |  |  [optional]
 **weekPattern** | [**WeekPattern**](WeekPattern.md) |  |  [optional]
-**id** | **String** | Identifier of the object |  [optional]
+**id** | **String** | Identifier of the object | 
 
 
 
