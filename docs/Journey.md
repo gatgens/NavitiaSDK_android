@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **String** | Status from the whole journey taking into account the most disturbing information retrieved on every object used (can be \&quot;NO_SERVICE\&quot;, \&quot;SIGNIFICANT_DELAYS\&quot;, ... | 
-**fare** | [**Fare**](Fare.md) |  | 
+**distances** | [**Distances**](Distances.md) |  |  [optional]
 **from** | [**Place**](Place.md) |  |  [optional]
 **tags** | **List&lt;String&gt;** |  | 
 **nbTransfers** | **Integer** | Number of transfers along the journey | 
@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **departureDateTime** | **String** | Departure date and time of the journey |  [optional]
 **to** | [**Place**](Place.md) |  |  [optional]
 **requestedDateTime** | **String** |  |  [optional]
+**fare** | [**Fare**](Fare.md) |  | 
 **co2Emission** | [**Amount**](Amount.md) |  | 
 **type** | **String** | Used to qualify the journey (can be \&quot;best\&quot;, \&quot;comfort\&quot;, \&quot;non_pt_walk\&quot;, ... | 
 **duration** | **Integer** | Duration of the journey (seconds) | 

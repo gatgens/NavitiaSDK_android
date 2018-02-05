@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **notes** | [**List&lt;Note&gt;**](Note.md) |  |  [optional]
 **companies** | [**List&lt;Companie&gt;**](Companie.md) |  |  [optional]
 **feedPublishers** | [**List&lt;FeedPublisher&gt;**](FeedPublisher.md) |  | 
+**context** | [**Context**](Context.md) |  |  [optional]
 **error** | [**Error**](Error.md) |  |  [optional]
 
 

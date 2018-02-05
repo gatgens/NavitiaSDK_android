@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **disruptions** | [**List&lt;Disruption&gt;**](Disruption.md) |  | 
 **notes** | [**List&lt;Note&gt;**](Note.md) |  |  [optional]
 **feedPublishers** | [**List&lt;FeedPublisher&gt;**](FeedPublisher.md) |  | 
+**context** | [**Context**](Context.md) |  |  [optional]
 **error** | [**Error**](Error.md) |  |  [optional]
 **stopAreas** | [**List&lt;StopArea&gt;**](StopArea.md) |  |  [optional]
 
