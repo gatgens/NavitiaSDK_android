@@ -4,10 +4,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**feedPublishers** | [**List&lt;FeedPublisher&gt;**](FeedPublisher.md) |  | 
+**links** | [**List&lt;LinkSchema&gt;**](LinkSchema.md) |  | 
 **warnings** | [**List&lt;BetaEndpoints&gt;**](BetaEndpoints.md) |  | 
 **heatMaps** | [**List&lt;HeatMap&gt;**](HeatMap.md) |  | 
-**links** | [**List&lt;LinkSchema&gt;**](LinkSchema.md) |  | 
+**feedPublishers** | [**List&lt;FeedPublisher&gt;**](FeedPublisher.md) |  | 
+**context** | [**Context**](Context.md) |  |  [optional]
 **error** | [**Error**](Error.md) |  |  [optional]
 
 

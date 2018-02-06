@@ -4,17 +4,19 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**transferType** | **String** |  |  [optional]
+**displayInformations** | [**VJDisplayInformation**](VJDisplayInformation.md) |  |  [optional]
 **from** | [**Place**](Place.md) |  |  [optional]
 **links** | [**List&lt;LinkSchema&gt;**](LinkSchema.md) |  | 
+**transferType** | **String** |  |  [optional]
 **arrivalDateTime** | **String** | Arrival date and time of the section |  [optional]
 **additionalInformations** | [**List&lt;AdditionalInformationsEnum&gt;**](#List&lt;AdditionalInformationsEnum&gt;) |  |  [optional]
 **departureDateTime** | **String** | Departure date and time of the section |  [optional]
-**displayInformations** | [**VJDisplayInformation**](VJDisplayInformation.md) |  |  [optional]
+**ridesharingInformations** | [**RidesharingInformation**](RidesharingInformation.md) |  |  [optional]
 **to** | [**Place**](Place.md) |  |  [optional]
 **baseArrivalDateTime** | **String** | Base-schedule arrival date and time of the section |  [optional]
 **baseDepartureDateTime** | **String** | Base-schedule departure date and time of the section |  [optional]
 **co2Emission** | [**Amount**](Amount.md) |  | 
+**ridesharingJourneys** | [**List&lt;Journey&gt;**](Journey.md) |  |  [optional]
 **geojson** | [**SectionGeoJsonSchema**](SectionGeoJsonSchema.md) | GeoJSON of the shape of the section |  [optional]
 **duration** | **Integer** | Duration of the section (seconds) | 
 **path** | [**List&lt;Path&gt;**](Path.md) |  |  [optional]

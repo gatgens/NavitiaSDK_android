@@ -1,9 +1,12 @@
 package org.kisio.NavitiaSDK;
 
+import org.kisio.NavitiaSDK.apis.AddressesApi;
 import org.kisio.NavitiaSDK.apis.CalendarsApi;
 import org.kisio.NavitiaSDK.apis.CommercialModesApi;
 import org.kisio.NavitiaSDK.apis.CompaniesApi;
 import org.kisio.NavitiaSDK.apis.ContributorsApi;
+import org.kisio.NavitiaSDK.apis.CoordApi;
+import org.kisio.NavitiaSDK.apis.CoordsApi;
 import org.kisio.NavitiaSDK.apis.CoverageApi;
 import org.kisio.NavitiaSDK.apis.DatasetsApi;
 import org.kisio.NavitiaSDK.apis.DisruptionsApi;
@@ -20,6 +23,7 @@ import org.kisio.NavitiaSDK.apis.NetworksApi;
 import org.kisio.NavitiaSDK.apis.NextArrivalsApi;
 import org.kisio.NavitiaSDK.apis.NextDeparturesApi;
 import org.kisio.NavitiaSDK.apis.PhysicalModesApi;
+import org.kisio.NavitiaSDK.apis.PlaceUriApi;
 import org.kisio.NavitiaSDK.apis.PlacesApi;
 import org.kisio.NavitiaSDK.apis.PlacesNearbyApi;
 import org.kisio.NavitiaSDK.apis.PoiTypesApi;
@@ -27,7 +31,6 @@ import org.kisio.NavitiaSDK.apis.PoisApi;
 import org.kisio.NavitiaSDK.apis.PtobjectsApi;
 import org.kisio.NavitiaSDK.apis.RouteSchedulesApi;
 import org.kisio.NavitiaSDK.apis.RoutesApi;
-import org.kisio.NavitiaSDK.apis.StatusApi;
 import org.kisio.NavitiaSDK.apis.StopAreasApi;
 import org.kisio.NavitiaSDK.apis.StopPointsApi;
 import org.kisio.NavitiaSDK.apis.StopSchedulesApi;
@@ -36,10 +39,13 @@ import org.kisio.NavitiaSDK.apis.TripsApi;
 import org.kisio.NavitiaSDK.apis.VehicleJourneysApi;
 
 public class NavitiaSDK {
+    public final AddressesApi addressesApi;
     public final CalendarsApi calendarsApi;
     public final CommercialModesApi commercialModesApi;
     public final CompaniesApi companiesApi;
     public final ContributorsApi contributorsApi;
+    public final CoordApi coordApi;
+    public final CoordsApi coordsApi;
     public final CoverageApi coverageApi;
     public final DatasetsApi datasetsApi;
     public final DisruptionsApi disruptionsApi;
@@ -56,6 +62,7 @@ public class NavitiaSDK {
     public final NextArrivalsApi nextArrivalsApi;
     public final NextDeparturesApi nextDeparturesApi;
     public final PhysicalModesApi physicalModesApi;
+    public final PlaceUriApi placeUriApi;
     public final PlacesApi placesApi;
     public final PlacesNearbyApi placesNearbyApi;
     public final PoiTypesApi poiTypesApi;
@@ -63,7 +70,6 @@ public class NavitiaSDK {
     public final PtobjectsApi ptobjectsApi;
     public final RouteSchedulesApi routeSchedulesApi;
     public final RoutesApi routesApi;
-    public final StatusApi statusApi;
     public final StopAreasApi stopAreasApi;
     public final StopPointsApi stopPointsApi;
     public final StopSchedulesApi stopSchedulesApi;
@@ -72,10 +78,13 @@ public class NavitiaSDK {
     public final VehicleJourneysApi vehicleJourneysApi;
 
     public NavitiaSDK(NavitiaConfiguration configuration) throws Exception {
+        this.addressesApi = new AddressesApi(configuration.getToken());
         this.calendarsApi = new CalendarsApi(configuration.getToken());
         this.commercialModesApi = new CommercialModesApi(configuration.getToken());
         this.companiesApi = new CompaniesApi(configuration.getToken());
         this.contributorsApi = new ContributorsApi(configuration.getToken());
+        this.coordApi = new CoordApi(configuration.getToken());
+        this.coordsApi = new CoordsApi(configuration.getToken());
         this.coverageApi = new CoverageApi(configuration.getToken());
         this.datasetsApi = new DatasetsApi(configuration.getToken());
         this.disruptionsApi = new DisruptionsApi(configuration.getToken());
@@ -92,6 +101,7 @@ public class NavitiaSDK {
         this.nextArrivalsApi = new NextArrivalsApi(configuration.getToken());
         this.nextDeparturesApi = new NextDeparturesApi(configuration.getToken());
         this.physicalModesApi = new PhysicalModesApi(configuration.getToken());
+        this.placeUriApi = new PlaceUriApi(configuration.getToken());
         this.placesApi = new PlacesApi(configuration.getToken());
         this.placesNearbyApi = new PlacesNearbyApi(configuration.getToken());
         this.poiTypesApi = new PoiTypesApi(configuration.getToken());
@@ -99,7 +109,6 @@ public class NavitiaSDK {
         this.ptobjectsApi = new PtobjectsApi(configuration.getToken());
         this.routeSchedulesApi = new RouteSchedulesApi(configuration.getToken());
         this.routesApi = new RoutesApi(configuration.getToken());
-        this.statusApi = new StatusApi(configuration.getToken());
         this.stopAreasApi = new StopAreasApi(configuration.getToken());
         this.stopPointsApi = new StopPointsApi(configuration.getToken());
         this.stopSchedulesApi = new StopSchedulesApi(configuration.getToken());

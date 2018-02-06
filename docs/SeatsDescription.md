@@ -1,11 +1,11 @@
 
-# Autocomplete
+# SeatsDescription
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**propertyClass** | **String** |  |  [optional]
-**timeout** | **Float** |  |  [optional]
+**available** | **Integer** |  |  [optional]
+**total** | **Integer** |  |  [optional]
 
 
 

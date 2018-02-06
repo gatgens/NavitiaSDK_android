@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **notes** | [**List&lt;Note&gt;**](Note.md) |  |  [optional]
 **feedPublishers** | [**List&lt;FeedPublisher&gt;**](FeedPublisher.md) |  | 
 **departures** | [**List&lt;Passage&gt;**](Passage.md) |  | 
+**context** | [**Context**](Context.md) |  |  [optional]
 **error** | [**Error**](Error.md) |  |  [optional]
 
 
