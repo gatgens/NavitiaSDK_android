@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comment** | **String** |  |  [optional]
-**codes** | [**List&lt;Code&gt;**](Code.md) |  | 
+**codes** | [**List&lt;Code&gt;**](Code.md) |  |  [optional]
 **name** | **String** | Name of the object | 
 **journeyPattern** | [**JourneyPattern**](JourneyPattern.md) |  |  [optional]
 **disruptions** | [**List&lt;LinkSchema&gt;**](LinkSchema.md) |  | 
