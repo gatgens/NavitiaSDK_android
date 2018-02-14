@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="getCoverageLonLatJourneys"></a>
 # **getCoverageLonLatJourneys**
-> Journeys getCoverageLonLatJourneys(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos)
+> Journeys getCoverageLonLatJourneys(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos)
 
 
 
@@ -47,10 +47,12 @@ Integer maxWalkingDurationToPt = 56; // Integer | Maximal duration of walking on
 Integer maxBikeDurationToPt = 56; // Integer | Maximal duration of bike on public transport in second
 Integer maxBssDurationToPt = 56; // Integer | Maximal duration of bss on public transport in second
 Integer maxCarDurationToPt = 56; // Integer | Maximal duration of car on public transport in second
+Integer maxRidesharingDurationToPt = 56; // Integer | Maximal duration of ridesharing on public transport in second
 Float walkingSpeed = 3.4F; // Float | Walking speed for the fallback sections. Speed unit must be in meter/second
 Float bikeSpeed = 3.4F; // Float | Biking speed for the fallback sections. Speed unit must be in meter/second
 Float bssSpeed = 3.4F; // Float | Speed while using a bike from a bike sharing system for the fallback sections. Speed unit must be in meter/second
 Float carSpeed = 3.4F; // Float | Driving speed for the fallback sections. Speed unit must be in meter/second
+Float ridesharingSpeed = 3.4F; // Float | ridesharing speed for the fallback sections. Speed unit must be in meter/second
 List<String> forbiddenUris = Arrays.asList("forbiddenUris_example"); // List<String> | If you want to avoid lines, modes, networks, etc. Note: the forbidden_uris[] concern only the public transport objects. You can’t for example forbid the use of the bike with them, you have to set the fallback modes for this (first_section_mode[] and last_section_mode[])
 List<String> allowedId = Arrays.asList("allowedId_example"); // List<String> | If you want to use only a small subset of the public transport objects in your solution. Note: The constraint intersects with forbidden_uris[]. For example, if you ask for `allowed_id[]=line:A&forbidden_uris[]=physical_mode:Bus`, only vehicles of the line A that are not buses will be used.
 Boolean disruptionActive = true; // Boolean | DEPRECATED, replaced by `data_freshness`. If true the algorithm takes the disruptions into account, and thus avoid disrupted public transport. Nota: `disruption_active=true` <=> `data_freshness=realtime`
@@ -66,7 +68,7 @@ Integer maxNbJourneys = 56; // Integer | Maximum number of different suggested j
 Boolean bssStands = true; // Boolean | Show bss stands availability in the bicycle_rental pois of response
 List<String> addPoiInfos = Arrays.asList("addPoiInfos_example"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of response
 try {
-    Journeys result = apiInstance.getCoverageLonLatJourneys(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos);
+    Journeys result = apiInstance.getCoverageLonLatJourneys(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneysApi#getCoverageLonLatJourneys");
@@ -93,10 +95,12 @@ Name | Type | Description  | Notes
  **maxBikeDurationToPt** | **Integer**| Maximal duration of bike on public transport in second | [optional]
  **maxBssDurationToPt** | **Integer**| Maximal duration of bss on public transport in second | [optional]
  **maxCarDurationToPt** | **Integer**| Maximal duration of car on public transport in second | [optional]
+ **maxRidesharingDurationToPt** | **Integer**| Maximal duration of ridesharing on public transport in second | [optional]
  **walkingSpeed** | **Float**| Walking speed for the fallback sections. Speed unit must be in meter/second | [optional]
  **bikeSpeed** | **Float**| Biking speed for the fallback sections. Speed unit must be in meter/second | [optional]
  **bssSpeed** | **Float**| Speed while using a bike from a bike sharing system for the fallback sections. Speed unit must be in meter/second | [optional]
  **carSpeed** | **Float**| Driving speed for the fallback sections. Speed unit must be in meter/second | [optional]
+ **ridesharingSpeed** | **Float**| ridesharing speed for the fallback sections. Speed unit must be in meter/second | [optional]
  **forbiddenUris** | [**List&lt;String&gt;**](String.md)| If you want to avoid lines, modes, networks, etc. Note: the forbidden_uris[] concern only the public transport objects. You can’t for example forbid the use of the bike with them, you have to set the fallback modes for this (first_section_mode[] and last_section_mode[]) | [optional]
  **allowedId** | [**List&lt;String&gt;**](String.md)| If you want to use only a small subset of the public transport objects in your solution. Note: The constraint intersects with forbidden_uris[]. For example, if you ask for &#x60;allowed_id[]&#x3D;line:A&amp;forbidden_uris[]&#x3D;physical_mode:Bus&#x60;, only vehicles of the line A that are not buses will be used. | [optional]
  **disruptionActive** | **Boolean**| DEPRECATED, replaced by &#x60;data_freshness&#x60;. If true the algorithm takes the disruptions into account, and thus avoid disrupted public transport. Nota: &#x60;disruption_active&#x3D;true&#x60; &lt;&#x3D;&gt; &#x60;data_freshness&#x3D;realtime&#x60; | [optional]
@@ -127,7 +131,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionJourneys"></a>
 # **getCoverageRegionJourneys**
-> Journeys getCoverageRegionJourneys(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos)
+> Journeys getCoverageRegionJourneys(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos)
 
 
 
@@ -162,10 +166,12 @@ Integer maxWalkingDurationToPt = 56; // Integer | Maximal duration of walking on
 Integer maxBikeDurationToPt = 56; // Integer | Maximal duration of bike on public transport in second
 Integer maxBssDurationToPt = 56; // Integer | Maximal duration of bss on public transport in second
 Integer maxCarDurationToPt = 56; // Integer | Maximal duration of car on public transport in second
+Integer maxRidesharingDurationToPt = 56; // Integer | Maximal duration of ridesharing on public transport in second
 Float walkingSpeed = 3.4F; // Float | Walking speed for the fallback sections. Speed unit must be in meter/second
 Float bikeSpeed = 3.4F; // Float | Biking speed for the fallback sections. Speed unit must be in meter/second
 Float bssSpeed = 3.4F; // Float | Speed while using a bike from a bike sharing system for the fallback sections. Speed unit must be in meter/second
 Float carSpeed = 3.4F; // Float | Driving speed for the fallback sections. Speed unit must be in meter/second
+Float ridesharingSpeed = 3.4F; // Float | ridesharing speed for the fallback sections. Speed unit must be in meter/second
 List<String> forbiddenUris = Arrays.asList("forbiddenUris_example"); // List<String> | If you want to avoid lines, modes, networks, etc. Note: the forbidden_uris[] concern only the public transport objects. You can’t for example forbid the use of the bike with them, you have to set the fallback modes for this (first_section_mode[] and last_section_mode[])
 List<String> allowedId = Arrays.asList("allowedId_example"); // List<String> | If you want to use only a small subset of the public transport objects in your solution. Note: The constraint intersects with forbidden_uris[]. For example, if you ask for `allowed_id[]=line:A&forbidden_uris[]=physical_mode:Bus`, only vehicles of the line A that are not buses will be used.
 Boolean disruptionActive = true; // Boolean | DEPRECATED, replaced by `data_freshness`. If true the algorithm takes the disruptions into account, and thus avoid disrupted public transport. Nota: `disruption_active=true` <=> `data_freshness=realtime`
@@ -181,7 +187,7 @@ Integer maxNbJourneys = 56; // Integer | Maximum number of different suggested j
 Boolean bssStands = true; // Boolean | Show bss stands availability in the bicycle_rental pois of response
 List<String> addPoiInfos = Arrays.asList("addPoiInfos_example"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of response
 try {
-    Journeys result = apiInstance.getCoverageRegionJourneys(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos);
+    Journeys result = apiInstance.getCoverageRegionJourneys(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneysApi#getCoverageRegionJourneys");
@@ -207,10 +213,12 @@ Name | Type | Description  | Notes
  **maxBikeDurationToPt** | **Integer**| Maximal duration of bike on public transport in second | [optional]
  **maxBssDurationToPt** | **Integer**| Maximal duration of bss on public transport in second | [optional]
  **maxCarDurationToPt** | **Integer**| Maximal duration of car on public transport in second | [optional]
+ **maxRidesharingDurationToPt** | **Integer**| Maximal duration of ridesharing on public transport in second | [optional]
  **walkingSpeed** | **Float**| Walking speed for the fallback sections. Speed unit must be in meter/second | [optional]
  **bikeSpeed** | **Float**| Biking speed for the fallback sections. Speed unit must be in meter/second | [optional]
  **bssSpeed** | **Float**| Speed while using a bike from a bike sharing system for the fallback sections. Speed unit must be in meter/second | [optional]
  **carSpeed** | **Float**| Driving speed for the fallback sections. Speed unit must be in meter/second | [optional]
+ **ridesharingSpeed** | **Float**| ridesharing speed for the fallback sections. Speed unit must be in meter/second | [optional]
  **forbiddenUris** | [**List&lt;String&gt;**](String.md)| If you want to avoid lines, modes, networks, etc. Note: the forbidden_uris[] concern only the public transport objects. You can’t for example forbid the use of the bike with them, you have to set the fallback modes for this (first_section_mode[] and last_section_mode[]) | [optional]
  **allowedId** | [**List&lt;String&gt;**](String.md)| If you want to use only a small subset of the public transport objects in your solution. Note: The constraint intersects with forbidden_uris[]. For example, if you ask for &#x60;allowed_id[]&#x3D;line:A&amp;forbidden_uris[]&#x3D;physical_mode:Bus&#x60;, only vehicles of the line A that are not buses will be used. | [optional]
  **disruptionActive** | **Boolean**| DEPRECATED, replaced by &#x60;data_freshness&#x60;. If true the algorithm takes the disruptions into account, and thus avoid disrupted public transport. Nota: &#x60;disruption_active&#x3D;true&#x60; &lt;&#x3D;&gt; &#x60;data_freshness&#x3D;realtime&#x60; | [optional]
@@ -241,7 +249,7 @@ Name | Type | Description  | Notes
 
 <a name="getJourneys"></a>
 # **getJourneys**
-> Journeys getJourneys(from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos)
+> Journeys getJourneys(from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos)
 
 
 
@@ -275,10 +283,12 @@ Integer maxWalkingDurationToPt = 56; // Integer | Maximal duration of walking on
 Integer maxBikeDurationToPt = 56; // Integer | Maximal duration of bike on public transport in second
 Integer maxBssDurationToPt = 56; // Integer | Maximal duration of bss on public transport in second
 Integer maxCarDurationToPt = 56; // Integer | Maximal duration of car on public transport in second
+Integer maxRidesharingDurationToPt = 56; // Integer | Maximal duration of ridesharing on public transport in second
 Float walkingSpeed = 3.4F; // Float | Walking speed for the fallback sections. Speed unit must be in meter/second
 Float bikeSpeed = 3.4F; // Float | Biking speed for the fallback sections. Speed unit must be in meter/second
 Float bssSpeed = 3.4F; // Float | Speed while using a bike from a bike sharing system for the fallback sections. Speed unit must be in meter/second
 Float carSpeed = 3.4F; // Float | Driving speed for the fallback sections. Speed unit must be in meter/second
+Float ridesharingSpeed = 3.4F; // Float | ridesharing speed for the fallback sections. Speed unit must be in meter/second
 List<String> forbiddenUris = Arrays.asList("forbiddenUris_example"); // List<String> | If you want to avoid lines, modes, networks, etc. Note: the forbidden_uris[] concern only the public transport objects. You can’t for example forbid the use of the bike with them, you have to set the fallback modes for this (first_section_mode[] and last_section_mode[])
 List<String> allowedId = Arrays.asList("allowedId_example"); // List<String> | If you want to use only a small subset of the public transport objects in your solution. Note: The constraint intersects with forbidden_uris[]. For example, if you ask for `allowed_id[]=line:A&forbidden_uris[]=physical_mode:Bus`, only vehicles of the line A that are not buses will be used.
 Boolean disruptionActive = true; // Boolean | DEPRECATED, replaced by `data_freshness`. If true the algorithm takes the disruptions into account, and thus avoid disrupted public transport. Nota: `disruption_active=true` <=> `data_freshness=realtime`
@@ -294,7 +304,7 @@ Integer maxNbJourneys = 56; // Integer | Maximum number of different suggested j
 Boolean bssStands = true; // Boolean | Show bss stands availability in the bicycle_rental pois of response
 List<String> addPoiInfos = Arrays.asList("addPoiInfos_example"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of response
 try {
-    Journeys result = apiInstance.getJourneys(from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos);
+    Journeys result = apiInstance.getJourneys(from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneysApi#getJourneys");
@@ -319,10 +329,12 @@ Name | Type | Description  | Notes
  **maxBikeDurationToPt** | **Integer**| Maximal duration of bike on public transport in second | [optional]
  **maxBssDurationToPt** | **Integer**| Maximal duration of bss on public transport in second | [optional]
  **maxCarDurationToPt** | **Integer**| Maximal duration of car on public transport in second | [optional]
+ **maxRidesharingDurationToPt** | **Integer**| Maximal duration of ridesharing on public transport in second | [optional]
  **walkingSpeed** | **Float**| Walking speed for the fallback sections. Speed unit must be in meter/second | [optional]
  **bikeSpeed** | **Float**| Biking speed for the fallback sections. Speed unit must be in meter/second | [optional]
  **bssSpeed** | **Float**| Speed while using a bike from a bike sharing system for the fallback sections. Speed unit must be in meter/second | [optional]
  **carSpeed** | **Float**| Driving speed for the fallback sections. Speed unit must be in meter/second | [optional]
+ **ridesharingSpeed** | **Float**| ridesharing speed for the fallback sections. Speed unit must be in meter/second | [optional]
  **forbiddenUris** | [**List&lt;String&gt;**](String.md)| If you want to avoid lines, modes, networks, etc. Note: the forbidden_uris[] concern only the public transport objects. You can’t for example forbid the use of the bike with them, you have to set the fallback modes for this (first_section_mode[] and last_section_mode[]) | [optional]
  **allowedId** | [**List&lt;String&gt;**](String.md)| If you want to use only a small subset of the public transport objects in your solution. Note: The constraint intersects with forbidden_uris[]. For example, if you ask for &#x60;allowed_id[]&#x3D;line:A&amp;forbidden_uris[]&#x3D;physical_mode:Bus&#x60;, only vehicles of the line A that are not buses will be used. | [optional]
  **disruptionActive** | **Boolean**| DEPRECATED, replaced by &#x60;data_freshness&#x60;. If true the algorithm takes the disruptions into account, and thus avoid disrupted public transport. Nota: &#x60;disruption_active&#x3D;true&#x60; &lt;&#x3D;&gt; &#x60;data_freshness&#x3D;realtime&#x60; | [optional]

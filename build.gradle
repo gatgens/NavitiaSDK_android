@@ -4,7 +4,7 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven-publish'
 
 group = 'org.kisio.sdk'
-version = '1.0.0'
+version = '1.0.1'
 
 buildscript {
     repositories {
@@ -139,7 +139,7 @@ if(hasProperty('target') && target == 'android') {
 
                 groupId 'org.kisio.sdk'
                 artifactId 'navitia-sdk'
-                version '1.0.0'
+                version '1.0.1'
                 pom.withXml {
                     def root = asNode()
                     root.appendNode('description', 'Navitia client for Android')
@@ -165,10 +165,10 @@ if(hasProperty('target') && target == 'android') {
             licenses = ['GPL-3.0']
             vcsUrl = 'https://github.com/CanalTP/NavitiaSDK_android.git'
             version {
-                name = '1.0.0'
-                desc = 'NavitiaSDK android 1.0.0'
+                name = '1.0.1'
+                desc = 'NavitiaSDK android 1.0.1'
                 released  = new Date()
-                vcsTag = '1.0.0'
+                vcsTag = '1.0.1'
                 gpg {
                     sign = true
                 }
