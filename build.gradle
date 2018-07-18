@@ -3,8 +3,10 @@ apply plugin: 'eclipse'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven-publish'
 
+def publishVersion = '1.2.0'
+
 group = 'org.kisio.sdk'
-version = '1.2.0'
+version = publishVersion
 
 buildscript {
     repositories {
@@ -139,7 +141,7 @@ if(hasProperty('target') && target == 'android') {
 
                 groupId 'org.kisio.sdk'
                 artifactId 'navitia-sdk'
-                version '1.0.1'
+                version publishVersion
                 pom.withXml {
                     def root = asNode()
                     root.appendNode('description', 'Navitia client for Android')
@@ -165,10 +167,10 @@ if(hasProperty('target') && target == 'android') {
             licenses = ['GPL-3.0']
             vcsUrl = 'https://github.com/CanalTP/NavitiaSDK_android.git'
             version {
-                name = '1.0.1'
-                desc = 'NavitiaSDK android 1.0.1'
+                name = publishVersion
+                desc = 'NavitiaSDK android'
                 released  = new Date()
-                vcsTag = '1.0.1'
+                vcsTag = publishVersion
                 gpg {
                     sign = true
                 }
