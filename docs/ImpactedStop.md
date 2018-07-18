@@ -6,13 +6,23 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **amendedArrivalTime** | **String** |  |  [optional]
 **stopPoint** | [**StopPoint**](StopPoint.md) |  |  [optional]
-**stopTimeEffect** | **String** |  |  [optional]
+**stopTimeEffect** | [**StopTimeEffectEnum**](#StopTimeEffectEnum) |  |  [optional]
 **departureStatus** | **String** |  |  [optional]
 **amendedDepartureTime** | **String** |  |  [optional]
 **baseArrivalTime** | **String** |  |  [optional]
 **cause** | **String** |  | 
 **baseDepartureTime** | **String** |  |  [optional]
 **arrivalStatus** | **String** |  |  [optional]
+
+
+<a name="StopTimeEffectEnum"></a>
+## Enum: StopTimeEffectEnum
+Name | Value
+---- | -----
+DELAYED | &quot;delayed&quot;
+ADDED | &quot;added&quot;
+DELETED | &quot;deleted&quot;
+UNCHANGED | &quot;unchanged&quot;
 
 
 
