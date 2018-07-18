@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="getCoverageLonLatJourneys"></a>
 # **getCoverageLonLatJourneys**
-> Journeys getCoverageLonLatJourneys(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos)
+> Journeys getCoverageLonLatJourneys(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos)
 
 
 
@@ -61,6 +61,8 @@ Integer maxDuration = 56; // Integer | Maximum duration of journeys in secondes.
 Boolean wheelchair = true; // Boolean | If true the traveler is considered to be using a wheelchair, thus only accessible public transport are used. Be warned: many data are currently too faint to provide acceptable answers with this parameter on.
 String travelerType = "travelerType_example"; // String | Define speeds and accessibility values for different kind of people. Each profile also automatically determines appropriate first and last section modes to the covered area. Note: this means that you might get car, bike, etc. fallback routes even if you set `forbidden_uris[]`! You can overload all parameters (especially speeds, distances, first and last modes) by setting all of them specifically. We advise that you don’t rely on the traveler_type’s fallback modes (`first_section_mode[]` and `last_section_mode[]`) and set them yourself.
 String directPath = "indifferent"; // String | Specify if direct path should be suggested
+Integer freeRadiusFrom = 56; // Integer | Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly=0)
+Integer freeRadiusTo = 56; // Integer | Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly=0)
 Integer count = 56; // Integer | Fixed number of different journeys
 Boolean isJourneySchedules = true; // Boolean | True when '/journeys' is called to computethe same journey schedules and it'll override some specific parameters
 Integer minNbJourneys = 56; // Integer | Minimum number of different suggested journeys
@@ -68,7 +70,7 @@ Integer maxNbJourneys = 56; // Integer | Maximum number of different suggested j
 Boolean bssStands = true; // Boolean | Show bss stands availability in the bicycle_rental pois of response
 List<String> addPoiInfos = Arrays.asList("addPoiInfos_example"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of response
 try {
-    Journeys result = apiInstance.getCoverageLonLatJourneys(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos);
+    Journeys result = apiInstance.getCoverageLonLatJourneys(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneysApi#getCoverageLonLatJourneys");
@@ -109,6 +111,8 @@ Name | Type | Description  | Notes
  **wheelchair** | **Boolean**| If true the traveler is considered to be using a wheelchair, thus only accessible public transport are used. Be warned: many data are currently too faint to provide acceptable answers with this parameter on. | [optional]
  **travelerType** | **String**| Define speeds and accessibility values for different kind of people. Each profile also automatically determines appropriate first and last section modes to the covered area. Note: this means that you might get car, bike, etc. fallback routes even if you set &#x60;forbidden_uris[]&#x60;! You can overload all parameters (especially speeds, distances, first and last modes) by setting all of them specifically. We advise that you don’t rely on the traveler_type’s fallback modes (&#x60;first_section_mode[]&#x60; and &#x60;last_section_mode[]&#x60;) and set them yourself. | [optional] [enum: cyclist, luggage, wheelchair, standard, motorist, fast_walker, slow_walker]
  **directPath** | **String**| Specify if direct path should be suggested | [optional] [default to indifferent] [enum: indifferent, only, none]
+ **freeRadiusFrom** | **Integer**| Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
+ **freeRadiusTo** | **Integer**| Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
  **count** | **Integer**| Fixed number of different journeys | [optional]
  **isJourneySchedules** | **Boolean**| True when &#39;/journeys&#39; is called to computethe same journey schedules and it&#39;ll override some specific parameters | [optional]
  **minNbJourneys** | **Integer**| Minimum number of different suggested journeys | [optional]
@@ -131,7 +135,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionJourneys"></a>
 # **getCoverageRegionJourneys**
-> Journeys getCoverageRegionJourneys(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos)
+> Journeys getCoverageRegionJourneys(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos)
 
 
 
@@ -180,6 +184,8 @@ Integer maxDuration = 56; // Integer | Maximum duration of journeys in secondes.
 Boolean wheelchair = true; // Boolean | If true the traveler is considered to be using a wheelchair, thus only accessible public transport are used. Be warned: many data are currently too faint to provide acceptable answers with this parameter on.
 String travelerType = "travelerType_example"; // String | Define speeds and accessibility values for different kind of people. Each profile also automatically determines appropriate first and last section modes to the covered area. Note: this means that you might get car, bike, etc. fallback routes even if you set `forbidden_uris[]`! You can overload all parameters (especially speeds, distances, first and last modes) by setting all of them specifically. We advise that you don’t rely on the traveler_type’s fallback modes (`first_section_mode[]` and `last_section_mode[]`) and set them yourself.
 String directPath = "indifferent"; // String | Specify if direct path should be suggested
+Integer freeRadiusFrom = 56; // Integer | Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly=0)
+Integer freeRadiusTo = 56; // Integer | Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly=0)
 Integer count = 56; // Integer | Fixed number of different journeys
 Boolean isJourneySchedules = true; // Boolean | True when '/journeys' is called to computethe same journey schedules and it'll override some specific parameters
 Integer minNbJourneys = 56; // Integer | Minimum number of different suggested journeys
@@ -187,7 +193,7 @@ Integer maxNbJourneys = 56; // Integer | Maximum number of different suggested j
 Boolean bssStands = true; // Boolean | Show bss stands availability in the bicycle_rental pois of response
 List<String> addPoiInfos = Arrays.asList("addPoiInfos_example"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of response
 try {
-    Journeys result = apiInstance.getCoverageRegionJourneys(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos);
+    Journeys result = apiInstance.getCoverageRegionJourneys(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneysApi#getCoverageRegionJourneys");
@@ -227,6 +233,8 @@ Name | Type | Description  | Notes
  **wheelchair** | **Boolean**| If true the traveler is considered to be using a wheelchair, thus only accessible public transport are used. Be warned: many data are currently too faint to provide acceptable answers with this parameter on. | [optional]
  **travelerType** | **String**| Define speeds and accessibility values for different kind of people. Each profile also automatically determines appropriate first and last section modes to the covered area. Note: this means that you might get car, bike, etc. fallback routes even if you set &#x60;forbidden_uris[]&#x60;! You can overload all parameters (especially speeds, distances, first and last modes) by setting all of them specifically. We advise that you don’t rely on the traveler_type’s fallback modes (&#x60;first_section_mode[]&#x60; and &#x60;last_section_mode[]&#x60;) and set them yourself. | [optional] [enum: cyclist, luggage, wheelchair, standard, motorist, fast_walker, slow_walker]
  **directPath** | **String**| Specify if direct path should be suggested | [optional] [default to indifferent] [enum: indifferent, only, none]
+ **freeRadiusFrom** | **Integer**| Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
+ **freeRadiusTo** | **Integer**| Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
  **count** | **Integer**| Fixed number of different journeys | [optional]
  **isJourneySchedules** | **Boolean**| True when &#39;/journeys&#39; is called to computethe same journey schedules and it&#39;ll override some specific parameters | [optional]
  **minNbJourneys** | **Integer**| Minimum number of different suggested journeys | [optional]
@@ -249,7 +257,7 @@ Name | Type | Description  | Notes
 
 <a name="getJourneys"></a>
 # **getJourneys**
-> Journeys getJourneys(from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos)
+> Journeys getJourneys(from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos)
 
 
 
@@ -297,6 +305,8 @@ Integer maxDuration = 56; // Integer | Maximum duration of journeys in secondes.
 Boolean wheelchair = true; // Boolean | If true the traveler is considered to be using a wheelchair, thus only accessible public transport are used. Be warned: many data are currently too faint to provide acceptable answers with this parameter on.
 String travelerType = "travelerType_example"; // String | Define speeds and accessibility values for different kind of people. Each profile also automatically determines appropriate first and last section modes to the covered area. Note: this means that you might get car, bike, etc. fallback routes even if you set `forbidden_uris[]`! You can overload all parameters (especially speeds, distances, first and last modes) by setting all of them specifically. We advise that you don’t rely on the traveler_type’s fallback modes (`first_section_mode[]` and `last_section_mode[]`) and set them yourself.
 String directPath = "indifferent"; // String | Specify if direct path should be suggested
+Integer freeRadiusFrom = 56; // Integer | Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly=0)
+Integer freeRadiusTo = 56; // Integer | Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly=0)
 Integer count = 56; // Integer | Fixed number of different journeys
 Boolean isJourneySchedules = true; // Boolean | True when '/journeys' is called to computethe same journey schedules and it'll override some specific parameters
 Integer minNbJourneys = 56; // Integer | Minimum number of different suggested journeys
@@ -304,7 +314,7 @@ Integer maxNbJourneys = 56; // Integer | Maximum number of different suggested j
 Boolean bssStands = true; // Boolean | Show bss stands availability in the bicycle_rental pois of response
 List<String> addPoiInfos = Arrays.asList("addPoiInfos_example"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of response
 try {
-    Journeys result = apiInstance.getJourneys(from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos);
+    Journeys result = apiInstance.getJourneys(from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneysApi#getJourneys");
@@ -343,6 +353,8 @@ Name | Type | Description  | Notes
  **wheelchair** | **Boolean**| If true the traveler is considered to be using a wheelchair, thus only accessible public transport are used. Be warned: many data are currently too faint to provide acceptable answers with this parameter on. | [optional]
  **travelerType** | **String**| Define speeds and accessibility values for different kind of people. Each profile also automatically determines appropriate first and last section modes to the covered area. Note: this means that you might get car, bike, etc. fallback routes even if you set &#x60;forbidden_uris[]&#x60;! You can overload all parameters (especially speeds, distances, first and last modes) by setting all of them specifically. We advise that you don’t rely on the traveler_type’s fallback modes (&#x60;first_section_mode[]&#x60; and &#x60;last_section_mode[]&#x60;) and set them yourself. | [optional] [enum: cyclist, luggage, wheelchair, standard, motorist, fast_walker, slow_walker]
  **directPath** | **String**| Specify if direct path should be suggested | [optional] [default to indifferent] [enum: indifferent, only, none]
+ **freeRadiusFrom** | **Integer**| Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
+ **freeRadiusTo** | **Integer**| Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
  **count** | **Integer**| Fixed number of different journeys | [optional]
  **isJourneySchedules** | **Boolean**| True when &#39;/journeys&#39; is called to computethe same journey schedules and it&#39;ll override some specific parameters | [optional]
  **minNbJourneys** | **Integer**| Minimum number of different suggested journeys | [optional]

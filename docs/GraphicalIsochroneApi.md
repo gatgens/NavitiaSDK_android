@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="getCoverageLonLatIsochrones"></a>
 # **getCoverageLonLatIsochrones**
-> GraphicalIsrochone1 getCoverageLonLatIsochrones(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, minDuration, boundaryDuration)
+> GraphicalIsrochone1 getCoverageLonLatIsochrones(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration)
 
 
 
@@ -60,10 +60,12 @@ Integer maxDuration = 56; // Integer | Maximum duration of journeys in secondes.
 Boolean wheelchair = true; // Boolean | If true the traveler is considered to be using a wheelchair, thus only accessible public transport are used. Be warned: many data are currently too faint to provide acceptable answers with this parameter on.
 String travelerType = "travelerType_example"; // String | Define speeds and accessibility values for different kind of people. Each profile also automatically determines appropriate first and last section modes to the covered area. Note: this means that you might get car, bike, etc. fallback routes even if you set `forbidden_uris[]`! You can overload all parameters (especially speeds, distances, first and last modes) by setting all of them specifically. We advise that you don’t rely on the traveler_type’s fallback modes (`first_section_mode[]` and `last_section_mode[]`) and set them yourself.
 String directPath = "indifferent"; // String | Specify if direct path should be suggested
+Integer freeRadiusFrom = 56; // Integer | Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly=0)
+Integer freeRadiusTo = 56; // Integer | Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly=0)
 Integer minDuration = 56; // Integer | 
 List<Integer> boundaryDuration = Arrays.asList(56); // List<Integer> | 
 try {
-    GraphicalIsrochone1 result = apiInstance.getCoverageLonLatIsochrones(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, minDuration, boundaryDuration);
+    GraphicalIsrochone1 result = apiInstance.getCoverageLonLatIsochrones(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GraphicalIsochroneApi#getCoverageLonLatIsochrones");
@@ -104,6 +106,8 @@ Name | Type | Description  | Notes
  **wheelchair** | **Boolean**| If true the traveler is considered to be using a wheelchair, thus only accessible public transport are used. Be warned: many data are currently too faint to provide acceptable answers with this parameter on. | [optional]
  **travelerType** | **String**| Define speeds and accessibility values for different kind of people. Each profile also automatically determines appropriate first and last section modes to the covered area. Note: this means that you might get car, bike, etc. fallback routes even if you set &#x60;forbidden_uris[]&#x60;! You can overload all parameters (especially speeds, distances, first and last modes) by setting all of them specifically. We advise that you don’t rely on the traveler_type’s fallback modes (&#x60;first_section_mode[]&#x60; and &#x60;last_section_mode[]&#x60;) and set them yourself. | [optional] [enum: cyclist, luggage, wheelchair, standard, motorist, fast_walker, slow_walker]
  **directPath** | **String**| Specify if direct path should be suggested | [optional] [default to indifferent] [enum: indifferent, only, none]
+ **freeRadiusFrom** | **Integer**| Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
+ **freeRadiusTo** | **Integer**| Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
  **minDuration** | **Integer**|  | [optional]
  **boundaryDuration** | [**List&lt;Integer&gt;**](Integer.md)|  | [optional]
 
@@ -122,7 +126,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionIsochrones"></a>
 # **getCoverageRegionIsochrones**
-> GraphicalIsrochone1 getCoverageRegionIsochrones(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, minDuration, boundaryDuration)
+> GraphicalIsrochone1 getCoverageRegionIsochrones(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration)
 
 
 
@@ -171,10 +175,12 @@ Integer maxDuration = 56; // Integer | Maximum duration of journeys in secondes.
 Boolean wheelchair = true; // Boolean | If true the traveler is considered to be using a wheelchair, thus only accessible public transport are used. Be warned: many data are currently too faint to provide acceptable answers with this parameter on.
 String travelerType = "travelerType_example"; // String | Define speeds and accessibility values for different kind of people. Each profile also automatically determines appropriate first and last section modes to the covered area. Note: this means that you might get car, bike, etc. fallback routes even if you set `forbidden_uris[]`! You can overload all parameters (especially speeds, distances, first and last modes) by setting all of them specifically. We advise that you don’t rely on the traveler_type’s fallback modes (`first_section_mode[]` and `last_section_mode[]`) and set them yourself.
 String directPath = "indifferent"; // String | Specify if direct path should be suggested
+Integer freeRadiusFrom = 56; // Integer | Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly=0)
+Integer freeRadiusTo = 56; // Integer | Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly=0)
 Integer minDuration = 56; // Integer | 
 List<Integer> boundaryDuration = Arrays.asList(56); // List<Integer> | 
 try {
-    GraphicalIsrochone1 result = apiInstance.getCoverageRegionIsochrones(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, minDuration, boundaryDuration);
+    GraphicalIsrochone1 result = apiInstance.getCoverageRegionIsochrones(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GraphicalIsochroneApi#getCoverageRegionIsochrones");
@@ -214,6 +220,8 @@ Name | Type | Description  | Notes
  **wheelchair** | **Boolean**| If true the traveler is considered to be using a wheelchair, thus only accessible public transport are used. Be warned: many data are currently too faint to provide acceptable answers with this parameter on. | [optional]
  **travelerType** | **String**| Define speeds and accessibility values for different kind of people. Each profile also automatically determines appropriate first and last section modes to the covered area. Note: this means that you might get car, bike, etc. fallback routes even if you set &#x60;forbidden_uris[]&#x60;! You can overload all parameters (especially speeds, distances, first and last modes) by setting all of them specifically. We advise that you don’t rely on the traveler_type’s fallback modes (&#x60;first_section_mode[]&#x60; and &#x60;last_section_mode[]&#x60;) and set them yourself. | [optional] [enum: cyclist, luggage, wheelchair, standard, motorist, fast_walker, slow_walker]
  **directPath** | **String**| Specify if direct path should be suggested | [optional] [default to indifferent] [enum: indifferent, only, none]
+ **freeRadiusFrom** | **Integer**| Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
+ **freeRadiusTo** | **Integer**| Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
  **minDuration** | **Integer**|  | [optional]
  **boundaryDuration** | [**List&lt;Integer&gt;**](Integer.md)|  | [optional]
 
