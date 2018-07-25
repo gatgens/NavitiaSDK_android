@@ -13,6 +13,8 @@
 
 package org.kisio.NavitiaSDK.invokers;
 
+import android.os.Build;
+
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -29,6 +31,8 @@ import com.squareup.okhttp.logging.HttpLoggingInterceptor.Level;
 
 import java.lang.reflect.Type;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
@@ -64,7 +68,6 @@ import java.text.ParseException;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.KeyManager;
-import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
@@ -140,6 +143,35 @@ public class ApiClient {
     public ApiClient() {
         httpClient = new OkHttpClient();
 
+        if (Build.VERSION.SDK_INT < 21) {
+            try {
+                TrustManager[] trustManagers = new TrustManager[] { new X509TrustManager() {
+                    @Override
+                    public void checkClientTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
+
+                    }
+
+                    @Override
+                    public void checkServerTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
+
+                    }
+
+                    @Override
+                    public X509Certificate[] getAcceptedIssuers() {
+                        return new X509Certificate[] {};
+                    }
+                } };
+
+                SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
+                sslContext.init(null, trustManagers, new SecureRandom());
+
+                httpClient.setSslSocketFactory(sslContext.getSocketFactory());
+            } catch (KeyManagementException e) {
+                e.printStackTrace();
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+        }
 
         verifyingSsl = true;
 
