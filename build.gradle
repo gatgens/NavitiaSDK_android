@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven-publish'
 
-def publishVersion = '1.2.0'
+def publishVersion = '1.2.1'
 
 group = 'org.kisio.sdk'
 version = publishVersion
