@@ -13,11 +13,12 @@
 
 package org.kisio.NavitiaSDK.apis;
 
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.kisio.NavitiaSDK.invokers.ApiCallback;
 import org.kisio.NavitiaSDK.invokers.ApiClient;
 import org.kisio.NavitiaSDK.invokers.ApiException;
 import org.kisio.NavitiaSDK.invokers.ApiResponse;
-import org.kisio.NavitiaSDK.invokers.Configuration;
 import org.kisio.NavitiaSDK.invokers.Pair;
 import org.kisio.NavitiaSDK.invokers.ProgressRequestBody;
 import org.kisio.NavitiaSDK.invokers.ProgressResponseBody;
@@ -107,7 +108,10 @@ public class JourneysApi {
         if (to != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "to", to));
         if (datetime != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datetime", datetime));
+        {
+            DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss");
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "datetime", formatter.print(datetime)));
+        }
         if (datetimeRepresents != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datetime_represents", datetimeRepresents));
         if (maxNbTransfers != null)
@@ -723,7 +727,10 @@ public class JourneysApi {
         if (to != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "to", to));
         if (datetime != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datetime", datetime));
+        {
+            DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss");
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "datetime", formatter.print(datetime)));
+        }
         if (datetimeRepresents != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datetime_represents", datetimeRepresents));
         if (maxNbTransfers != null)
@@ -1323,7 +1330,10 @@ public class JourneysApi {
         if (to != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "to", to));
         if (datetime != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datetime", datetime));
+        {
+            DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss");
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "datetime", formatter.print(datetime)));
+        }
         if (datetimeRepresents != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datetime_represents", datetimeRepresents));
         if (maxNbTransfers != null)
