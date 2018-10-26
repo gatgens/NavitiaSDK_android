@@ -17,54 +17,34 @@ import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.math.BigDecimal;
 import android.os.Parcelable;
 import android.os.Parcel;
 
 /**
- * CommercialMode
+ * SectionGeoJsonSchemaProperties
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2018-10-18T16:32:06.285+02:00")
-public class CommercialMode implements Parcelable {
-  @SerializedName("id")
-  private String id = null;
+public class SectionGeoJsonSchemaProperties implements Parcelable {
+  @SerializedName("length")
+  private BigDecimal length = null;
 
-  @SerializedName("name")
-  private String name = null;
-
-  public CommercialMode id(String id) {
-    this.id = id;
+  public SectionGeoJsonSchemaProperties length(BigDecimal length) {
+    this.length = length;
     return this;
   }
 
    /**
-   * Identifier of the object
-   * @return id
+   * Get length
+   * @return length
   **/
-  @ApiModelProperty(required = true, value = "Identifier of the object")
-  public String getId() {
-    return id;
+  @ApiModelProperty(value = "")
+  public BigDecimal getLength() {
+    return length;
   }
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public CommercialMode name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Name of the object
-   * @return name
-  **/
-  @ApiModelProperty(required = true, value = "Name of the object")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
+  public void setLength(BigDecimal length) {
+    this.length = length;
   }
 
 
@@ -76,24 +56,22 @@ public class CommercialMode implements Parcelable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CommercialMode commercialMode = (CommercialMode) o;
-    return Objects.equals(this.id, commercialMode.id) &&
-        Objects.equals(this.name, commercialMode.name);
+    SectionGeoJsonSchemaProperties sectionGeoJsonSchemaProperties = (SectionGeoJsonSchemaProperties) o;
+    return Objects.equals(this.length, sectionGeoJsonSchemaProperties.length);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(length);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CommercialMode {\n");
+    sb.append("class SectionGeoJsonSchemaProperties {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    length: ").append(toIndentedString(length)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -111,31 +89,28 @@ public class CommercialMode implements Parcelable {
   
   public void writeToParcel(Parcel out, int flags) {
      
-    out.writeValue(id);
-
-    out.writeValue(name);
+    out.writeValue(length);
   }
 
-  public CommercialMode() {
+  public SectionGeoJsonSchemaProperties() {
     super();
   }
 
-  CommercialMode(Parcel in) {
+  SectionGeoJsonSchemaProperties(Parcel in) {
     
-    id = (String)in.readValue(null);
-    name = (String)in.readValue(null);
+    length = (BigDecimal)in.readValue(BigDecimal.class.getClassLoader());
   }
   
   public int describeContents() {
     return 0;
   }
 
-  public static final Parcelable.Creator<CommercialMode> CREATOR = new Parcelable.Creator<CommercialMode>() {
-    public CommercialMode createFromParcel(Parcel in) {
-      return new CommercialMode(in);
+  public static final Parcelable.Creator<SectionGeoJsonSchemaProperties> CREATOR = new Parcelable.Creator<SectionGeoJsonSchemaProperties>() {
+    public SectionGeoJsonSchemaProperties createFromParcel(Parcel in) {
+      return new SectionGeoJsonSchemaProperties(in);
     }
-    public CommercialMode[] newArray(int size) {
-      return new CommercialMode[size];
+    public SectionGeoJsonSchemaProperties[] newArray(int size) {
+      return new SectionGeoJsonSchemaProperties[size];
     }
   };
 }

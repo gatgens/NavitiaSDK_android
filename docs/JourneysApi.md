@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="getCoverageLonLatJourneys"></a>
 # **getCoverageLonLatJourneys**
-> Journeys getCoverageLonLatJourneys(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos)
+> Journeys getCoverageLonLatJourneys(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, realTime, addPoiInfos)
 
 
 
@@ -67,10 +67,10 @@ Integer count = 56; // Integer | Fixed number of different journeys
 Boolean isJourneySchedules = true; // Boolean | True when '/journeys' is called to computethe same journey schedules and it'll override some specific parameters
 Integer minNbJourneys = 56; // Integer | Minimum number of different suggested journeys
 Integer maxNbJourneys = 56; // Integer | Maximum number of different suggested journeys
-Boolean bssStands = true; // Boolean | Show bss stands availability in the bicycle_rental pois of response
+Boolean realTime = true; // Boolean | Show bss stands availability in the bicycle_rental pois of response
 List<String> addPoiInfos = Arrays.asList("addPoiInfos_example"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of response
 try {
-    Journeys result = apiInstance.getCoverageLonLatJourneys(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos);
+    Journeys result = apiInstance.getCoverageLonLatJourneys(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, realTime, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneysApi#getCoverageLonLatJourneys");
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
  **isJourneySchedules** | **Boolean**| True when &#39;/journeys&#39; is called to computethe same journey schedules and it&#39;ll override some specific parameters | [optional]
  **minNbJourneys** | **Integer**| Minimum number of different suggested journeys | [optional]
  **maxNbJourneys** | **Integer**| Maximum number of different suggested journeys | [optional]
- **bssStands** | **Boolean**| Show bss stands availability in the bicycle_rental pois of response | [optional]
+ **realTime** | **Boolean**| Show bss stands availability in the bicycle_rental pois of response | [optional]
  **addPoiInfos** | [**List&lt;String&gt;**](String.md)| Show more information about the poi if it&#39;s available, for instance, show BSS/car park availability in the pois(BSS/car park) of response | [optional] [enum: bss_stands, car_park, ]
 
 ### Return type
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionJourneys"></a>
 # **getCoverageRegionJourneys**
-> Journeys getCoverageRegionJourneys(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos)
+> Journeys getCoverageRegionJourneys(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, realTime, addPoiInfos)
 
 
 
@@ -190,10 +190,10 @@ Integer count = 56; // Integer | Fixed number of different journeys
 Boolean isJourneySchedules = true; // Boolean | True when '/journeys' is called to computethe same journey schedules and it'll override some specific parameters
 Integer minNbJourneys = 56; // Integer | Minimum number of different suggested journeys
 Integer maxNbJourneys = 56; // Integer | Maximum number of different suggested journeys
-Boolean bssStands = true; // Boolean | Show bss stands availability in the bicycle_rental pois of response
+Boolean realTime = true; // Boolean | Show bss stands availability in the bicycle_rental pois of response
 List<String> addPoiInfos = Arrays.asList("addPoiInfos_example"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of response
 try {
-    Journeys result = apiInstance.getCoverageRegionJourneys(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos);
+    Journeys result = apiInstance.getCoverageRegionJourneys(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, realTime, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneysApi#getCoverageRegionJourneys");
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
  **isJourneySchedules** | **Boolean**| True when &#39;/journeys&#39; is called to computethe same journey schedules and it&#39;ll override some specific parameters | [optional]
  **minNbJourneys** | **Integer**| Minimum number of different suggested journeys | [optional]
  **maxNbJourneys** | **Integer**| Maximum number of different suggested journeys | [optional]
- **bssStands** | **Boolean**| Show bss stands availability in the bicycle_rental pois of response | [optional]
+ **realTime** | **Boolean**| Show bss stands availability in the bicycle_rental pois of response | [optional]
  **addPoiInfos** | [**List&lt;String&gt;**](String.md)| Show more information about the poi if it&#39;s available, for instance, show BSS/car park availability in the pois(BSS/car park) of response | [optional] [enum: bss_stands, car_park, ]
 
 ### Return type
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 <a name="getJourneys"></a>
 # **getJourneys**
-> Journeys getJourneys(from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos)
+> Journeys getJourneys(from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, realTime, addPoiInfos)
 
 
 
@@ -311,10 +311,10 @@ Integer count = 56; // Integer | Fixed number of different journeys
 Boolean isJourneySchedules = true; // Boolean | True when '/journeys' is called to computethe same journey schedules and it'll override some specific parameters
 Integer minNbJourneys = 56; // Integer | Minimum number of different suggested journeys
 Integer maxNbJourneys = 56; // Integer | Maximum number of different suggested journeys
-Boolean bssStands = true; // Boolean | Show bss stands availability in the bicycle_rental pois of response
+Boolean realTime = true; // Boolean | Show bss stands availability in the bicycle_rental pois of response
 List<String> addPoiInfos = Arrays.asList("addPoiInfos_example"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of response
 try {
-    Journeys result = apiInstance.getJourneys(from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos);
+    Journeys result = apiInstance.getJourneys(from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, realTime, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneysApi#getJourneys");
@@ -359,7 +359,7 @@ Name | Type | Description  | Notes
  **isJourneySchedules** | **Boolean**| True when &#39;/journeys&#39; is called to computethe same journey schedules and it&#39;ll override some specific parameters | [optional]
  **minNbJourneys** | **Integer**| Minimum number of different suggested journeys | [optional]
  **maxNbJourneys** | **Integer**| Maximum number of different suggested journeys | [optional]
- **bssStands** | **Boolean**| Show bss stands availability in the bicycle_rental pois of response | [optional]
+ **realTime** | **Boolean**| Show bss stands availability in the bicycle_rental pois of response | [optional]
  **addPoiInfos** | [**List&lt;String&gt;**](String.md)| Show more information about the poi if it&#39;s available, for instance, show BSS/car park availability in the pois(BSS/car park) of response | [optional] [enum: bss_stands, car_park, ]
 
 ### Return type

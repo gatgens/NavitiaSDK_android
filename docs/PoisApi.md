@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="getCoverageLonLatPois"></a>
 # **getCoverageLonLatPois**
-> Pois getCoverageLonLatPois(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter, originalId, bssStands, addPoiInfos)
+> Pois getCoverageLonLatPois(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter, originalId, realTime, addPoiInfos)
 
 
 
@@ -54,10 +54,10 @@ DateTime until = new DateTime(); // DateTime | filters objects not valid after t
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 String filter = "filter_example"; // String | The filter parameter
 String originalId = "originalId_example"; // String | original uri of the object you want to query
-Boolean bssStands = True; // Boolean | Show bss stands availability
+Boolean realTime = True; // Boolean | Show bss stands availability
 List<String> addPoiInfos = Arrays.asList("[u'bss_stands', u'car_park']"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of response
 try {
-    Pois result = apiInstance.getCoverageLonLatPois(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter, originalId, bssStands, addPoiInfos);
+    Pois result = apiInstance.getCoverageLonLatPois(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter, originalId, realTime, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PoisApi#getCoverageLonLatPois");
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
  **filter** | **String**| The filter parameter | [optional]
  **originalId** | **String**| original uri of the object you want to query | [optional]
- **bssStands** | **Boolean**| Show bss stands availability | [optional] [default to True]
+ **realTime** | **Boolean**| Show bss stands availability | [optional] [default to True]
  **addPoiInfos** | [**List&lt;String&gt;**](String.md)| Show more information about the poi if it&#39;s available, for instance, show BSS/car park availability in the pois(BSS/car park) of response | [optional] [default to [u&#39;bss_stands&#39;, u&#39;car_park&#39;]] [enum: bss_stands, car_park, ]
 
 ### Return type
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageLonLatPoisId"></a>
 # **getCoverageLonLatPoisId**
-> Pois getCoverageLonLatPoisId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, originalId, bssStands, addPoiInfos)
+> Pois getCoverageLonLatPoisId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, originalId, realTime, addPoiInfos)
 
 
 
@@ -142,10 +142,10 @@ DateTime since = new DateTime(); // DateTime | filters objects not valid before 
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 String originalId = "originalId_example"; // String | original uri of the object you want to query
-Boolean bssStands = True; // Boolean | Show bss stands availability
+Boolean realTime = True; // Boolean | Show bss stands availability
 List<String> addPoiInfos = Arrays.asList("[u'bss_stands', u'car_park']"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of response
 try {
-    Pois result = apiInstance.getCoverageLonLatPoisId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, originalId, bssStands, addPoiInfos);
+    Pois result = apiInstance.getCoverageLonLatPoisId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, originalId, realTime, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PoisApi#getCoverageLonLatPoisId");
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
  **originalId** | **String**| original uri of the object you want to query | [optional]
- **bssStands** | **Boolean**| Show bss stands availability | [optional] [default to True]
+ **realTime** | **Boolean**| Show bss stands availability | [optional] [default to True]
  **addPoiInfos** | [**List&lt;String&gt;**](String.md)| Show more information about the poi if it&#39;s available, for instance, show BSS/car park availability in the pois(BSS/car park) of response | [optional] [default to [u&#39;bss_stands&#39;, u&#39;car_park&#39;]] [enum: bss_stands, car_park, ]
 
 ### Return type
@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageLonLatUriPois"></a>
 # **getCoverageLonLatUriPois**
-> Pois getCoverageLonLatUriPois(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter, originalId, bssStands, addPoiInfos)
+> Pois getCoverageLonLatUriPois(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter, originalId, realTime, addPoiInfos)
 
 
 
@@ -231,10 +231,10 @@ DateTime until = new DateTime(); // DateTime | filters objects not valid after t
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 String filter = "filter_example"; // String | The filter parameter
 String originalId = "originalId_example"; // String | original uri of the object you want to query
-Boolean bssStands = True; // Boolean | Show bss stands availability
+Boolean realTime = True; // Boolean | Show bss stands availability
 List<String> addPoiInfos = Arrays.asList("[u'bss_stands', u'car_park']"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of response
 try {
-    Pois result = apiInstance.getCoverageLonLatUriPois(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter, originalId, bssStands, addPoiInfos);
+    Pois result = apiInstance.getCoverageLonLatUriPois(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter, originalId, realTime, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PoisApi#getCoverageLonLatUriPois");
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
  **filter** | **String**| The filter parameter | [optional]
  **originalId** | **String**| original uri of the object you want to query | [optional]
- **bssStands** | **Boolean**| Show bss stands availability | [optional] [default to True]
+ **realTime** | **Boolean**| Show bss stands availability | [optional] [default to True]
  **addPoiInfos** | [**List&lt;String&gt;**](String.md)| Show more information about the poi if it&#39;s available, for instance, show BSS/car park availability in the pois(BSS/car park) of response | [optional] [default to [u&#39;bss_stands&#39;, u&#39;car_park&#39;]] [enum: bss_stands, car_park, ]
 
 ### Return type
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageLonLatUriPoisId"></a>
 # **getCoverageLonLatUriPoisId**
-> Pois getCoverageLonLatUriPoisId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, originalId, bssStands, addPoiInfos)
+> Pois getCoverageLonLatUriPoisId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, originalId, realTime, addPoiInfos)
 
 
 
@@ -321,10 +321,10 @@ DateTime since = new DateTime(); // DateTime | filters objects not valid before 
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 String originalId = "originalId_example"; // String | original uri of the object you want to query
-Boolean bssStands = True; // Boolean | Show bss stands availability
+Boolean realTime = True; // Boolean | Show bss stands availability
 List<String> addPoiInfos = Arrays.asList("[u'bss_stands', u'car_park']"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of response
 try {
-    Pois result = apiInstance.getCoverageLonLatUriPoisId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, originalId, bssStands, addPoiInfos);
+    Pois result = apiInstance.getCoverageLonLatUriPoisId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, originalId, realTime, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PoisApi#getCoverageLonLatUriPoisId");
@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
  **originalId** | **String**| original uri of the object you want to query | [optional]
- **bssStands** | **Boolean**| Show bss stands availability | [optional] [default to True]
+ **realTime** | **Boolean**| Show bss stands availability | [optional] [default to True]
  **addPoiInfos** | [**List&lt;String&gt;**](String.md)| Show more information about the poi if it&#39;s available, for instance, show BSS/car park availability in the pois(BSS/car park) of response | [optional] [default to [u&#39;bss_stands&#39;, u&#39;car_park&#39;]] [enum: bss_stands, car_park, ]
 
 ### Return type
@@ -372,7 +372,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionPois"></a>
 # **getCoverageRegionPois**
-> Pois getCoverageRegionPois(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter, originalId, bssStands, addPoiInfos)
+> Pois getCoverageRegionPois(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter, originalId, realTime, addPoiInfos)
 
 
 
@@ -409,10 +409,10 @@ DateTime until = new DateTime(); // DateTime | filters objects not valid after t
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 String filter = "filter_example"; // String | The filter parameter
 String originalId = "originalId_example"; // String | original uri of the object you want to query
-Boolean bssStands = True; // Boolean | Show bss stands availability
+Boolean realTime = True; // Boolean | Show bss stands availability
 List<String> addPoiInfos = Arrays.asList("[u'bss_stands', u'car_park']"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of response
 try {
-    Pois result = apiInstance.getCoverageRegionPois(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter, originalId, bssStands, addPoiInfos);
+    Pois result = apiInstance.getCoverageRegionPois(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter, originalId, realTime, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PoisApi#getCoverageRegionPois");
@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
  **filter** | **String**| The filter parameter | [optional]
  **originalId** | **String**| original uri of the object you want to query | [optional]
- **bssStands** | **Boolean**| Show bss stands availability | [optional] [default to True]
+ **realTime** | **Boolean**| Show bss stands availability | [optional] [default to True]
  **addPoiInfos** | [**List&lt;String&gt;**](String.md)| Show more information about the poi if it&#39;s available, for instance, show BSS/car park availability in the pois(BSS/car park) of response | [optional] [default to [u&#39;bss_stands&#39;, u&#39;car_park&#39;]] [enum: bss_stands, car_park, ]
 
 ### Return type
@@ -458,7 +458,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionPoisId"></a>
 # **getCoverageRegionPoisId**
-> Pois getCoverageRegionPoisId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, originalId, bssStands, addPoiInfos)
+> Pois getCoverageRegionPoisId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, originalId, realTime, addPoiInfos)
 
 
 
@@ -495,10 +495,10 @@ DateTime since = new DateTime(); // DateTime | filters objects not valid before 
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 String originalId = "originalId_example"; // String | original uri of the object you want to query
-Boolean bssStands = True; // Boolean | Show bss stands availability
+Boolean realTime = True; // Boolean | Show bss stands availability
 List<String> addPoiInfos = Arrays.asList("[u'bss_stands', u'car_park']"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of response
 try {
-    Pois result = apiInstance.getCoverageRegionPoisId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, originalId, bssStands, addPoiInfos);
+    Pois result = apiInstance.getCoverageRegionPoisId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, originalId, realTime, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PoisApi#getCoverageRegionPoisId");
@@ -526,7 +526,7 @@ Name | Type | Description  | Notes
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
  **originalId** | **String**| original uri of the object you want to query | [optional]
- **bssStands** | **Boolean**| Show bss stands availability | [optional] [default to True]
+ **realTime** | **Boolean**| Show bss stands availability | [optional] [default to True]
  **addPoiInfos** | [**List&lt;String&gt;**](String.md)| Show more information about the poi if it&#39;s available, for instance, show BSS/car park availability in the pois(BSS/car park) of response | [optional] [default to [u&#39;bss_stands&#39;, u&#39;car_park&#39;]] [enum: bss_stands, car_park, ]
 
 ### Return type
@@ -544,7 +544,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionUriPois"></a>
 # **getCoverageRegionUriPois**
-> Pois getCoverageRegionUriPois(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter, originalId, bssStands, addPoiInfos)
+> Pois getCoverageRegionUriPois(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter, originalId, realTime, addPoiInfos)
 
 
 
@@ -582,10 +582,10 @@ DateTime until = new DateTime(); // DateTime | filters objects not valid after t
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 String filter = "filter_example"; // String | The filter parameter
 String originalId = "originalId_example"; // String | original uri of the object you want to query
-Boolean bssStands = True; // Boolean | Show bss stands availability
+Boolean realTime = True; // Boolean | Show bss stands availability
 List<String> addPoiInfos = Arrays.asList("[u'bss_stands', u'car_park']"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of response
 try {
-    Pois result = apiInstance.getCoverageRegionUriPois(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter, originalId, bssStands, addPoiInfos);
+    Pois result = apiInstance.getCoverageRegionUriPois(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter, originalId, realTime, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PoisApi#getCoverageRegionUriPois");
@@ -614,7 +614,7 @@ Name | Type | Description  | Notes
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
  **filter** | **String**| The filter parameter | [optional]
  **originalId** | **String**| original uri of the object you want to query | [optional]
- **bssStands** | **Boolean**| Show bss stands availability | [optional] [default to True]
+ **realTime** | **Boolean**| Show bss stands availability | [optional] [default to True]
  **addPoiInfos** | [**List&lt;String&gt;**](String.md)| Show more information about the poi if it&#39;s available, for instance, show BSS/car park availability in the pois(BSS/car park) of response | [optional] [default to [u&#39;bss_stands&#39;, u&#39;car_park&#39;]] [enum: bss_stands, car_park, ]
 
 ### Return type
@@ -632,7 +632,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionUriPoisId"></a>
 # **getCoverageRegionUriPoisId**
-> Pois getCoverageRegionUriPoisId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, originalId, bssStands, addPoiInfos)
+> Pois getCoverageRegionUriPoisId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, originalId, realTime, addPoiInfos)
 
 
 
@@ -670,10 +670,10 @@ DateTime since = new DateTime(); // DateTime | filters objects not valid before 
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 String originalId = "originalId_example"; // String | original uri of the object you want to query
-Boolean bssStands = True; // Boolean | Show bss stands availability
+Boolean realTime = True; // Boolean | Show bss stands availability
 List<String> addPoiInfos = Arrays.asList("[u'bss_stands', u'car_park']"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of response
 try {
-    Pois result = apiInstance.getCoverageRegionUriPoisId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, originalId, bssStands, addPoiInfos);
+    Pois result = apiInstance.getCoverageRegionUriPoisId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, originalId, realTime, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PoisApi#getCoverageRegionUriPoisId");
@@ -702,7 +702,7 @@ Name | Type | Description  | Notes
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
  **originalId** | **String**| original uri of the object you want to query | [optional]
- **bssStands** | **Boolean**| Show bss stands availability | [optional] [default to True]
+ **realTime** | **Boolean**| Show bss stands availability | [optional] [default to True]
  **addPoiInfos** | [**List&lt;String&gt;**](String.md)| Show more information about the poi if it&#39;s available, for instance, show BSS/car park availability in the pois(BSS/car park) of response | [optional] [default to [u&#39;bss_stands&#39;, u&#39;car_park&#39;]] [enum: bss_stands, car_park, ]
 
 ### Return type
