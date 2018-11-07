@@ -21,44 +21,23 @@ import android.os.Parcelable;
 import android.os.Parcel;
 
 /**
- * CommercialMode
+ * FareZone
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2018-10-18T16:32:06.285+02:00")
-public class CommercialMode implements Parcelable {
-  @SerializedName("id")
-  private String id = null;
-
+public class FareZone implements Parcelable {
   @SerializedName("name")
   private String name = null;
 
-  public CommercialMode id(String id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Identifier of the object
-   * @return id
-  **/
-  @ApiModelProperty(required = true, value = "Identifier of the object")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public CommercialMode name(String name) {
+  public FareZone name(String name) {
     this.name = name;
     return this;
   }
 
    /**
-   * Name of the object
+   * Get name
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "Name of the object")
+  @ApiModelProperty(value = "")
   public String getName() {
     return name;
   }
@@ -76,23 +55,21 @@ public class CommercialMode implements Parcelable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CommercialMode commercialMode = (CommercialMode) o;
-    return Objects.equals(this.id, commercialMode.id) &&
-        Objects.equals(this.name, commercialMode.name);
+    FareZone fareZone = (FareZone) o;
+    return Objects.equals(this.name, fareZone.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(name);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CommercialMode {\n");
+    sb.append("class FareZone {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -111,18 +88,15 @@ public class CommercialMode implements Parcelable {
   
   public void writeToParcel(Parcel out, int flags) {
      
-    out.writeValue(id);
-
     out.writeValue(name);
   }
 
-  public CommercialMode() {
+  public FareZone() {
     super();
   }
 
-  CommercialMode(Parcel in) {
+  FareZone(Parcel in) {
     
-    id = (String)in.readValue(null);
     name = (String)in.readValue(null);
   }
   
@@ -130,12 +104,12 @@ public class CommercialMode implements Parcelable {
     return 0;
   }
 
-  public static final Parcelable.Creator<CommercialMode> CREATOR = new Parcelable.Creator<CommercialMode>() {
-    public CommercialMode createFromParcel(Parcel in) {
-      return new CommercialMode(in);
+  public static final Parcelable.Creator<FareZone> CREATOR = new Parcelable.Creator<FareZone>() {
+    public FareZone createFromParcel(Parcel in) {
+      return new FareZone(in);
     }
-    public CommercialMode[] newArray(int size) {
-      return new CommercialMode[size];
+    public FareZone[] newArray(int size) {
+      return new FareZone[size];
     }
   };
 }
