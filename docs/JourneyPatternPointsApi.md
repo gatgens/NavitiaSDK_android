@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="getCoverageLonLatJourneyPatternPoints"></a>
 # **getCoverageLonLatJourneyPatternPoints**
-> JourneyPatternPoints getCoverageLonLatJourneyPatternPoints(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter)
+> JourneyPatternPoints getCoverageLonLatJourneyPatternPoints(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags)
 
 
 
@@ -52,9 +52,11 @@ Integer distance = 200; // Integer | Distance range of the query. Used only if a
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+Boolean disableDisruption = true; // Boolean | remove disruptions from the response
 String filter = "filter_example"; // String | The filter parameter
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    JourneyPatternPoints result = apiInstance.getCoverageLonLatJourneyPatternPoints(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter);
+    JourneyPatternPoints result = apiInstance.getCoverageLonLatJourneyPatternPoints(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneyPatternPointsApi#getCoverageLonLatJourneyPatternPoints");
@@ -81,7 +83,9 @@ Name | Type | Description  | Notes
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **disableDisruption** | **Boolean**| remove disruptions from the response | [optional]
  **filter** | **String**| The filter parameter | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -93,12 +97,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageLonLatJourneyPatternPointsId"></a>
 # **getCoverageLonLatJourneyPatternPointsId**
-> JourneyPatternPoints getCoverageLonLatJourneyPatternPointsId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson)
+> JourneyPatternPoints getCoverageLonLatJourneyPatternPointsId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags)
 
 
 
@@ -135,8 +139,10 @@ Integer distance = 200; // Integer | Distance range of the query. Used only if a
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+Boolean disableDisruption = true; // Boolean | remove disruptions from the response
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    JourneyPatternPoints result = apiInstance.getCoverageLonLatJourneyPatternPointsId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson);
+    JourneyPatternPoints result = apiInstance.getCoverageLonLatJourneyPatternPointsId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneyPatternPointsApi#getCoverageLonLatJourneyPatternPointsId");
@@ -164,6 +170,8 @@ Name | Type | Description  | Notes
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **disableDisruption** | **Boolean**| remove disruptions from the response | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -175,12 +183,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageLonLatUriJourneyPatternPoints"></a>
 # **getCoverageLonLatUriJourneyPatternPoints**
-> JourneyPatternPoints getCoverageLonLatUriJourneyPatternPoints(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter)
+> JourneyPatternPoints getCoverageLonLatUriJourneyPatternPoints(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags)
 
 
 
@@ -217,9 +225,11 @@ Integer distance = 200; // Integer | Distance range of the query. Used only if a
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+Boolean disableDisruption = true; // Boolean | remove disruptions from the response
 String filter = "filter_example"; // String | The filter parameter
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    JourneyPatternPoints result = apiInstance.getCoverageLonLatUriJourneyPatternPoints(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter);
+    JourneyPatternPoints result = apiInstance.getCoverageLonLatUriJourneyPatternPoints(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneyPatternPointsApi#getCoverageLonLatUriJourneyPatternPoints");
@@ -247,7 +257,9 @@ Name | Type | Description  | Notes
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **disableDisruption** | **Boolean**| remove disruptions from the response | [optional]
  **filter** | **String**| The filter parameter | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -259,12 +271,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageLonLatUriJourneyPatternPointsId"></a>
 # **getCoverageLonLatUriJourneyPatternPointsId**
-> JourneyPatternPoints getCoverageLonLatUriJourneyPatternPointsId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson)
+> JourneyPatternPoints getCoverageLonLatUriJourneyPatternPointsId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags)
 
 
 
@@ -302,8 +314,10 @@ Integer distance = 200; // Integer | Distance range of the query. Used only if a
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+Boolean disableDisruption = true; // Boolean | remove disruptions from the response
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    JourneyPatternPoints result = apiInstance.getCoverageLonLatUriJourneyPatternPointsId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson);
+    JourneyPatternPoints result = apiInstance.getCoverageLonLatUriJourneyPatternPointsId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneyPatternPointsApi#getCoverageLonLatUriJourneyPatternPointsId");
@@ -332,6 +346,8 @@ Name | Type | Description  | Notes
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **disableDisruption** | **Boolean**| remove disruptions from the response | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -343,12 +359,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionJourneyPatternPoints"></a>
 # **getCoverageRegionJourneyPatternPoints**
-> JourneyPatternPoints getCoverageRegionJourneyPatternPoints(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter)
+> JourneyPatternPoints getCoverageRegionJourneyPatternPoints(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags)
 
 
 
@@ -383,9 +399,11 @@ Integer distance = 200; // Integer | Distance range of the query. Used only if a
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+Boolean disableDisruption = true; // Boolean | remove disruptions from the response
 String filter = "filter_example"; // String | The filter parameter
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    JourneyPatternPoints result = apiInstance.getCoverageRegionJourneyPatternPoints(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter);
+    JourneyPatternPoints result = apiInstance.getCoverageRegionJourneyPatternPoints(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneyPatternPointsApi#getCoverageRegionJourneyPatternPoints");
@@ -411,7 +429,9 @@ Name | Type | Description  | Notes
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **disableDisruption** | **Boolean**| remove disruptions from the response | [optional]
  **filter** | **String**| The filter parameter | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -423,12 +443,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionJourneyPatternPointsId"></a>
 # **getCoverageRegionJourneyPatternPointsId**
-> JourneyPatternPoints getCoverageRegionJourneyPatternPointsId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson)
+> JourneyPatternPoints getCoverageRegionJourneyPatternPointsId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags)
 
 
 
@@ -464,8 +484,10 @@ Integer distance = 200; // Integer | Distance range of the query. Used only if a
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+Boolean disableDisruption = true; // Boolean | remove disruptions from the response
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    JourneyPatternPoints result = apiInstance.getCoverageRegionJourneyPatternPointsId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson);
+    JourneyPatternPoints result = apiInstance.getCoverageRegionJourneyPatternPointsId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneyPatternPointsApi#getCoverageRegionJourneyPatternPointsId");
@@ -492,6 +514,8 @@ Name | Type | Description  | Notes
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **disableDisruption** | **Boolean**| remove disruptions from the response | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -503,12 +527,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionUriJourneyPatternPoints"></a>
 # **getCoverageRegionUriJourneyPatternPoints**
-> JourneyPatternPoints getCoverageRegionUriJourneyPatternPoints(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter)
+> JourneyPatternPoints getCoverageRegionUriJourneyPatternPoints(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags)
 
 
 
@@ -544,9 +568,11 @@ Integer distance = 200; // Integer | Distance range of the query. Used only if a
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+Boolean disableDisruption = true; // Boolean | remove disruptions from the response
 String filter = "filter_example"; // String | The filter parameter
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    JourneyPatternPoints result = apiInstance.getCoverageRegionUriJourneyPatternPoints(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter);
+    JourneyPatternPoints result = apiInstance.getCoverageRegionUriJourneyPatternPoints(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneyPatternPointsApi#getCoverageRegionUriJourneyPatternPoints");
@@ -573,7 +599,9 @@ Name | Type | Description  | Notes
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **disableDisruption** | **Boolean**| remove disruptions from the response | [optional]
  **filter** | **String**| The filter parameter | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -585,12 +613,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionUriJourneyPatternPointsId"></a>
 # **getCoverageRegionUriJourneyPatternPointsId**
-> JourneyPatternPoints getCoverageRegionUriJourneyPatternPointsId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson)
+> JourneyPatternPoints getCoverageRegionUriJourneyPatternPointsId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags)
 
 
 
@@ -627,8 +655,10 @@ Integer distance = 200; // Integer | Distance range of the query. Used only if a
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+Boolean disableDisruption = true; // Boolean | remove disruptions from the response
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    JourneyPatternPoints result = apiInstance.getCoverageRegionUriJourneyPatternPointsId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson);
+    JourneyPatternPoints result = apiInstance.getCoverageRegionUriJourneyPatternPointsId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneyPatternPointsApi#getCoverageRegionUriJourneyPatternPointsId");
@@ -656,6 +686,8 @@ Name | Type | Description  | Notes
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **disableDisruption** | **Boolean**| remove disruptions from the response | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -667,6 +699,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageLonLatCoordId"></a>
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageLonLatCoords"></a>
@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageLonLatCoordsId"></a>
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageLonLatUriCoord"></a>
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageLonLatUriCoordId"></a>
@@ -353,7 +353,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageLonLatUriCoords"></a>
@@ -409,7 +409,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageLonLatUriCoordsId"></a>
@@ -467,7 +467,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionCoord"></a>
@@ -519,7 +519,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionCoordId"></a>
@@ -573,7 +573,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionCoords"></a>
@@ -625,7 +625,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionCoordsId"></a>
@@ -679,7 +679,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionUriCoord"></a>
@@ -733,7 +733,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionUriCoordId"></a>
@@ -789,7 +789,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionUriCoords"></a>
@@ -843,7 +843,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionUriCoordsId"></a>
@@ -899,6 +899,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

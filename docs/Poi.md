@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **poiType** | [**PoiType**](PoiType.md) |  |  [optional]
 **name** | **String** | Name of the object | 
+**carPark** | [**CarPark**](CarPark.md) |  |  [optional]
 **coord** | [**Coord**](Coord.md) |  |  [optional]
 **label** | **String** |  |  [optional]
 **administrativeRegions** | [**List&lt;Admin&gt;**](Admin.md) |  |  [optional]

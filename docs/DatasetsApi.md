@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="getCoverageLonLatDatasets"></a>
 # **getCoverageLonLatDatasets**
-> Datasets getCoverageLonLatDatasets(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter)
+> Datasets getCoverageLonLatDatasets(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags)
 
 
 
@@ -52,9 +52,11 @@ Integer distance = 200; // Integer | Distance range of the query. Used only if a
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+Boolean disableDisruption = true; // Boolean | remove disruptions from the response
 String filter = "filter_example"; // String | The filter parameter
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    Datasets result = apiInstance.getCoverageLonLatDatasets(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter);
+    Datasets result = apiInstance.getCoverageLonLatDatasets(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DatasetsApi#getCoverageLonLatDatasets");
@@ -81,7 +83,9 @@ Name | Type | Description  | Notes
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **disableDisruption** | **Boolean**| remove disruptions from the response | [optional]
  **filter** | **String**| The filter parameter | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -93,12 +97,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageLonLatDatasetsId"></a>
 # **getCoverageLonLatDatasetsId**
-> Datasets getCoverageLonLatDatasetsId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson)
+> Datasets getCoverageLonLatDatasetsId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags)
 
 
 
@@ -135,8 +139,10 @@ Integer distance = 200; // Integer | Distance range of the query. Used only if a
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+Boolean disableDisruption = true; // Boolean | remove disruptions from the response
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    Datasets result = apiInstance.getCoverageLonLatDatasetsId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson);
+    Datasets result = apiInstance.getCoverageLonLatDatasetsId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DatasetsApi#getCoverageLonLatDatasetsId");
@@ -164,6 +170,8 @@ Name | Type | Description  | Notes
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **disableDisruption** | **Boolean**| remove disruptions from the response | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -175,12 +183,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageLonLatUriDatasets"></a>
 # **getCoverageLonLatUriDatasets**
-> Datasets getCoverageLonLatUriDatasets(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter)
+> Datasets getCoverageLonLatUriDatasets(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags)
 
 
 
@@ -217,9 +225,11 @@ Integer distance = 200; // Integer | Distance range of the query. Used only if a
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+Boolean disableDisruption = true; // Boolean | remove disruptions from the response
 String filter = "filter_example"; // String | The filter parameter
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    Datasets result = apiInstance.getCoverageLonLatUriDatasets(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter);
+    Datasets result = apiInstance.getCoverageLonLatUriDatasets(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DatasetsApi#getCoverageLonLatUriDatasets");
@@ -247,7 +257,9 @@ Name | Type | Description  | Notes
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **disableDisruption** | **Boolean**| remove disruptions from the response | [optional]
  **filter** | **String**| The filter parameter | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -259,12 +271,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageLonLatUriDatasetsId"></a>
 # **getCoverageLonLatUriDatasetsId**
-> Datasets getCoverageLonLatUriDatasetsId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson)
+> Datasets getCoverageLonLatUriDatasetsId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags)
 
 
 
@@ -302,8 +314,10 @@ Integer distance = 200; // Integer | Distance range of the query. Used only if a
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+Boolean disableDisruption = true; // Boolean | remove disruptions from the response
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    Datasets result = apiInstance.getCoverageLonLatUriDatasetsId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson);
+    Datasets result = apiInstance.getCoverageLonLatUriDatasetsId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DatasetsApi#getCoverageLonLatUriDatasetsId");
@@ -332,6 +346,8 @@ Name | Type | Description  | Notes
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **disableDisruption** | **Boolean**| remove disruptions from the response | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -343,12 +359,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionDatasets"></a>
 # **getCoverageRegionDatasets**
-> Datasets getCoverageRegionDatasets(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter)
+> Datasets getCoverageRegionDatasets(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags)
 
 
 
@@ -383,9 +399,11 @@ Integer distance = 200; // Integer | Distance range of the query. Used only if a
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+Boolean disableDisruption = true; // Boolean | remove disruptions from the response
 String filter = "filter_example"; // String | The filter parameter
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    Datasets result = apiInstance.getCoverageRegionDatasets(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter);
+    Datasets result = apiInstance.getCoverageRegionDatasets(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DatasetsApi#getCoverageRegionDatasets");
@@ -411,7 +429,9 @@ Name | Type | Description  | Notes
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **disableDisruption** | **Boolean**| remove disruptions from the response | [optional]
  **filter** | **String**| The filter parameter | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -423,12 +443,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionDatasetsId"></a>
 # **getCoverageRegionDatasetsId**
-> Datasets getCoverageRegionDatasetsId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson)
+> Datasets getCoverageRegionDatasetsId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags)
 
 
 
@@ -464,8 +484,10 @@ Integer distance = 200; // Integer | Distance range of the query. Used only if a
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+Boolean disableDisruption = true; // Boolean | remove disruptions from the response
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    Datasets result = apiInstance.getCoverageRegionDatasetsId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson);
+    Datasets result = apiInstance.getCoverageRegionDatasetsId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DatasetsApi#getCoverageRegionDatasetsId");
@@ -492,6 +514,8 @@ Name | Type | Description  | Notes
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **disableDisruption** | **Boolean**| remove disruptions from the response | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -503,12 +527,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionUriDatasets"></a>
 # **getCoverageRegionUriDatasets**
-> Datasets getCoverageRegionUriDatasets(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter)
+> Datasets getCoverageRegionUriDatasets(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags)
 
 
 
@@ -544,9 +568,11 @@ Integer distance = 200; // Integer | Distance range of the query. Used only if a
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+Boolean disableDisruption = true; // Boolean | remove disruptions from the response
 String filter = "filter_example"; // String | The filter parameter
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    Datasets result = apiInstance.getCoverageRegionUriDatasets(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, filter);
+    Datasets result = apiInstance.getCoverageRegionUriDatasets(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DatasetsApi#getCoverageRegionUriDatasets");
@@ -573,7 +599,9 @@ Name | Type | Description  | Notes
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **disableDisruption** | **Boolean**| remove disruptions from the response | [optional]
  **filter** | **String**| The filter parameter | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -585,12 +613,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionUriDatasetsId"></a>
 # **getCoverageRegionUriDatasetsId**
-> Datasets getCoverageRegionUriDatasetsId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson)
+> Datasets getCoverageRegionUriDatasetsId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags)
 
 
 
@@ -627,8 +655,10 @@ Integer distance = 200; // Integer | Distance range of the query. Used only if a
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+Boolean disableDisruption = true; // Boolean | remove disruptions from the response
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    Datasets result = apiInstance.getCoverageRegionUriDatasetsId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson);
+    Datasets result = apiInstance.getCoverageRegionUriDatasetsId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DatasetsApi#getCoverageRegionUriDatasetsId");
@@ -656,6 +686,8 @@ Name | Type | Description  | Notes
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **disableDisruption** | **Boolean**| remove disruptions from the response | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -667,6 +699,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

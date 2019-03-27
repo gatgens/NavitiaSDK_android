@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **comments** | [**List&lt;Comment&gt;**](Comment.md) |  |  [optional]
 **administrativeRegions** | [**List&lt;Admin&gt;**](Admin.md) |  |  [optional]
 **address** | [**Address**](Address.md) |  |  [optional]
+**fareZone** | [**FareZone**](FareZone.md) |  |  [optional]
 **id** | **String** | Identifier of the object | 
 **stopArea** | [**StopArea**](StopArea.md) |  |  [optional]
 

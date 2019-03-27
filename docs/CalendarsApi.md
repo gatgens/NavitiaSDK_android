@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageLonLatCalendarsId"></a>
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageLonLatUriCalendars"></a>
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionCalendars"></a>
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionCalendarsId"></a>
@@ -361,7 +361,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionUriCalendars"></a>
@@ -431,6 +431,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
