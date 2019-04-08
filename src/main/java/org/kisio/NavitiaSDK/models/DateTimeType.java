@@ -26,7 +26,7 @@ import android.os.Parcel;
 /**
  * DateTimeType
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2019-03-27T16:07:48.813+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2019-04-08T11:54:38.551+02:00")
 public class DateTimeType implements Parcelable {
   @SerializedName("date_time")
   private String dateTime = null;

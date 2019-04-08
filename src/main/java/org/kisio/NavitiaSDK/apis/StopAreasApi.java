@@ -51,6 +51,8 @@ public class StopAreasApi {
 
     /**
      * Build call for getCoverageLonLatStopAreas
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -75,49 +77,54 @@ public class StopAreasApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatStopAreasCall(BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatStopAreasCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/stop_areas"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (externalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
         if (headsign != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (odtLevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
         if (originalId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -152,7 +159,7 @@ public class StopAreasApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatStopAreasValidateBeforeCall(BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatStopAreasValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -165,7 +172,7 @@ public class StopAreasApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatStopAreasCall(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatStopAreasCall(basePath, debugUrl, lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
         return call;
 
     }
@@ -173,6 +180,8 @@ public class StopAreasApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -195,14 +204,16 @@ public class StopAreasApi {
      * @return StopAreas
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected StopAreas getCoverageLonLatStopAreas(BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
-        ApiResponse<StopAreas> resp = getCoverageLonLatStopAreasWithHttpInfo(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
+    protected StopAreas getCoverageLonLatStopAreas(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
+        ApiResponse<StopAreas> resp = getCoverageLonLatStopAreasWithHttpInfo(basePath, debugUrl, lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -225,8 +236,8 @@ public class StopAreasApi {
      * @return ApiResponse&lt;StopAreas&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<StopAreas> getCoverageLonLatStopAreasWithHttpInfo(BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatStopAreasValidateBeforeCall(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, null, null);
+    private ApiResponse<StopAreas> getCoverageLonLatStopAreasWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatStopAreasValidateBeforeCall(basePath, debugUrl, lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, null, null);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -234,6 +245,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -257,7 +270,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatStopAreasAsync(BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatStopAreasAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -278,7 +291,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatStopAreasValidateBeforeCall(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatStopAreasValidateBeforeCall(basePath, debugUrl, lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -287,6 +300,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -310,7 +325,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatStopAreasAsyncRaw(BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatStopAreasAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -331,7 +346,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatStopAreasValidateBeforeCall(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatStopAreasValidateBeforeCall(basePath, debugUrl, lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -342,6 +357,8 @@ public class StopAreasApi {
 
     public class CoverageLonLatStopAreasRequestBuilder {
         private StopAreasApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private Integer startPage;
@@ -364,6 +381,15 @@ public class StopAreasApi {
 
         public CoverageLonLatStopAreasRequestBuilder(StopAreasApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatStopAreasRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatStopAreasRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatStopAreasRequestBuilder withLat(BigDecimal lat) {
@@ -444,15 +470,17 @@ public class StopAreasApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<StopAreas > callback) throws ApiException {
-            return currentApi.getCoverageLonLatStopAreasAsync(this.lat, this.lon, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
+            return currentApi.getCoverageLonLatStopAreasAsync(basePath, debugUrl, this.lat, this.lon, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatStopAreasAsyncRaw(this.lat, this.lon, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
+            return currentApi.getCoverageLonLatStopAreasAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatStopAreasId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -477,48 +505,53 @@ public class StopAreasApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatStopAreasIdCall(BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatStopAreasIdCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/stop_areas/{id}"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()))
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (externalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
         if (headsign != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (odtLevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
         if (originalId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -553,7 +586,7 @@ public class StopAreasApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatStopAreasIdValidateBeforeCall(BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatStopAreasIdValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -571,7 +604,7 @@ public class StopAreasApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatStopAreasIdCall(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatStopAreasIdCall(basePath, debugUrl, lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
         return call;
 
     }
@@ -579,6 +612,8 @@ public class StopAreasApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -601,14 +636,16 @@ public class StopAreasApi {
      * @return StopAreas
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected StopAreas getCoverageLonLatStopAreasId(BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId) throws ApiException {
-        ApiResponse<StopAreas> resp = getCoverageLonLatStopAreasIdWithHttpInfo(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId);
+    protected StopAreas getCoverageLonLatStopAreasId(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId) throws ApiException {
+        ApiResponse<StopAreas> resp = getCoverageLonLatStopAreasIdWithHttpInfo(basePath, debugUrl, lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -631,8 +668,8 @@ public class StopAreasApi {
      * @return ApiResponse&lt;StopAreas&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<StopAreas> getCoverageLonLatStopAreasIdWithHttpInfo(BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatStopAreasIdValidateBeforeCall(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, null, null);
+    private ApiResponse<StopAreas> getCoverageLonLatStopAreasIdWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatStopAreasIdValidateBeforeCall(basePath, debugUrl, lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, null, null);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -640,6 +677,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -663,7 +702,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatStopAreasIdAsync(BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatStopAreasIdAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -684,7 +723,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatStopAreasIdValidateBeforeCall(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatStopAreasIdValidateBeforeCall(basePath, debugUrl, lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -693,6 +732,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -716,7 +757,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatStopAreasIdAsyncRaw(BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatStopAreasIdAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -737,7 +778,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatStopAreasIdValidateBeforeCall(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatStopAreasIdValidateBeforeCall(basePath, debugUrl, lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -748,6 +789,8 @@ public class StopAreasApi {
 
     public class CoverageLonLatStopAreasIdRequestBuilder {
         private StopAreasApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String id;
@@ -770,6 +813,15 @@ public class StopAreasApi {
 
         public CoverageLonLatStopAreasIdRequestBuilder(StopAreasApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatStopAreasIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatStopAreasIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatStopAreasIdRequestBuilder withLat(BigDecimal lat) {
@@ -850,15 +902,17 @@ public class StopAreasApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<StopAreas > callback) throws ApiException {
-            return currentApi.getCoverageLonLatStopAreasIdAsync(this.lat, this.lon, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, this.originalId, callback);
+            return currentApi.getCoverageLonLatStopAreasIdAsync(basePath, debugUrl, this.lat, this.lon, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, this.originalId, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatStopAreasIdAsyncRaw(this.lat, this.lon, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, this.originalId, callback);
+            return currentApi.getCoverageLonLatStopAreasIdAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, this.originalId, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatUriStopAreas
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -884,50 +938,55 @@ public class StopAreasApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatUriStopAreasCall(BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriStopAreasCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/{uri}/stop_areas"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (externalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
         if (headsign != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (odtLevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
         if (originalId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -962,7 +1021,7 @@ public class StopAreasApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatUriStopAreasValidateBeforeCall(BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriStopAreasValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -980,7 +1039,7 @@ public class StopAreasApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriStopAreasCall(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriStopAreasCall(basePath, debugUrl, lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
         return call;
 
     }
@@ -988,6 +1047,8 @@ public class StopAreasApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1011,14 +1072,16 @@ public class StopAreasApi {
      * @return StopAreas
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected StopAreas getCoverageLonLatUriStopAreas(BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
-        ApiResponse<StopAreas> resp = getCoverageLonLatUriStopAreasWithHttpInfo(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
+    protected StopAreas getCoverageLonLatUriStopAreas(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
+        ApiResponse<StopAreas> resp = getCoverageLonLatUriStopAreasWithHttpInfo(basePath, debugUrl, lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1042,8 +1105,8 @@ public class StopAreasApi {
      * @return ApiResponse&lt;StopAreas&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<StopAreas> getCoverageLonLatUriStopAreasWithHttpInfo(BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatUriStopAreasValidateBeforeCall(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, null, null);
+    private ApiResponse<StopAreas> getCoverageLonLatUriStopAreasWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatUriStopAreasValidateBeforeCall(basePath, debugUrl, lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, null, null);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1051,6 +1114,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1075,7 +1140,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriStopAreasAsync(BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriStopAreasAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1096,7 +1161,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriStopAreasValidateBeforeCall(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriStopAreasValidateBeforeCall(basePath, debugUrl, lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1105,6 +1170,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1129,7 +1196,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriStopAreasAsyncRaw(BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriStopAreasAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1150,7 +1217,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriStopAreasValidateBeforeCall(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriStopAreasValidateBeforeCall(basePath, debugUrl, lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1161,6 +1228,8 @@ public class StopAreasApi {
 
     public class CoverageLonLatUriStopAreasRequestBuilder {
         private StopAreasApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String uri;
@@ -1184,6 +1253,15 @@ public class StopAreasApi {
 
         public CoverageLonLatUriStopAreasRequestBuilder(StopAreasApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatUriStopAreasRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatUriStopAreasRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatUriStopAreasRequestBuilder withLat(BigDecimal lat) {
@@ -1268,15 +1346,17 @@ public class StopAreasApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<StopAreas > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriStopAreasAsync(this.lat, this.lon, this.uri, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
+            return currentApi.getCoverageLonLatUriStopAreasAsync(basePath, debugUrl, this.lat, this.lon, this.uri, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriStopAreasAsyncRaw(this.lat, this.lon, this.uri, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
+            return currentApi.getCoverageLonLatUriStopAreasAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.uri, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatUriStopAreasId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1302,10 +1382,10 @@ public class StopAreasApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatUriStopAreasIdCall(BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriStopAreasIdCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/{uri}/stop_areas/{id}"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()))
@@ -1313,38 +1393,43 @@ public class StopAreasApi {
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (externalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
         if (headsign != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (odtLevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
         if (originalId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1379,7 +1464,7 @@ public class StopAreasApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatUriStopAreasIdValidateBeforeCall(BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriStopAreasIdValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -1402,7 +1487,7 @@ public class StopAreasApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriStopAreasIdCall(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriStopAreasIdCall(basePath, debugUrl, lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1410,6 +1495,8 @@ public class StopAreasApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1433,14 +1520,16 @@ public class StopAreasApi {
      * @return StopAreas
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected StopAreas getCoverageLonLatUriStopAreasId(BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId) throws ApiException {
-        ApiResponse<StopAreas> resp = getCoverageLonLatUriStopAreasIdWithHttpInfo(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId);
+    protected StopAreas getCoverageLonLatUriStopAreasId(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId) throws ApiException {
+        ApiResponse<StopAreas> resp = getCoverageLonLatUriStopAreasIdWithHttpInfo(basePath, debugUrl, lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1464,8 +1553,8 @@ public class StopAreasApi {
      * @return ApiResponse&lt;StopAreas&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<StopAreas> getCoverageLonLatUriStopAreasIdWithHttpInfo(BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatUriStopAreasIdValidateBeforeCall(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, null, null);
+    private ApiResponse<StopAreas> getCoverageLonLatUriStopAreasIdWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatUriStopAreasIdValidateBeforeCall(basePath, debugUrl, lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, null, null);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1473,6 +1562,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1497,7 +1588,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriStopAreasIdAsync(BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriStopAreasIdAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1518,7 +1609,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriStopAreasIdValidateBeforeCall(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriStopAreasIdValidateBeforeCall(basePath, debugUrl, lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1527,6 +1618,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1551,7 +1644,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriStopAreasIdAsyncRaw(BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriStopAreasIdAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1572,7 +1665,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriStopAreasIdValidateBeforeCall(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriStopAreasIdValidateBeforeCall(basePath, debugUrl, lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1583,6 +1676,8 @@ public class StopAreasApi {
 
     public class CoverageLonLatUriStopAreasIdRequestBuilder {
         private StopAreasApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String uri;
@@ -1606,6 +1701,15 @@ public class StopAreasApi {
 
         public CoverageLonLatUriStopAreasIdRequestBuilder(StopAreasApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatUriStopAreasIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatUriStopAreasIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatUriStopAreasIdRequestBuilder withLat(BigDecimal lat) {
@@ -1690,15 +1794,17 @@ public class StopAreasApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<StopAreas > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriStopAreasIdAsync(this.lat, this.lon, this.uri, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, this.originalId, callback);
+            return currentApi.getCoverageLonLatUriStopAreasIdAsync(basePath, debugUrl, this.lat, this.lon, this.uri, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, this.originalId, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriStopAreasIdAsyncRaw(this.lat, this.lon, this.uri, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, this.originalId, callback);
+            return currentApi.getCoverageLonLatUriStopAreasIdAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.uri, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, this.originalId, callback);
         }
     }
     /**
      * Build call for getCoverageRegionStopAreas
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param startPage The page where you want to start (optional)
      * @param count Number of objects you want on a page (optional, default to 25)
@@ -1722,48 +1828,53 @@ public class StopAreasApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionStopAreasCall(String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionStopAreasCall(String basePath, String debugUrl, String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/stop_areas"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (externalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
         if (headsign != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (odtLevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
         if (originalId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1798,7 +1909,7 @@ public class StopAreasApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionStopAreasValidateBeforeCall(String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionStopAreasValidateBeforeCall(String basePath, String debugUrl, String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -1806,7 +1917,7 @@ public class StopAreasApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionStopAreasCall(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionStopAreasCall(basePath, debugUrl, region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1814,6 +1925,8 @@ public class StopAreasApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param startPage The page where you want to start (optional)
      * @param count Number of objects you want on a page (optional, default to 25)
@@ -1835,14 +1948,16 @@ public class StopAreasApi {
      * @return StopAreas
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected StopAreas getCoverageRegionStopAreas(String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
-        ApiResponse<StopAreas> resp = getCoverageRegionStopAreasWithHttpInfo(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
+    protected StopAreas getCoverageRegionStopAreas(String basePath, String debugUrl, String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
+        ApiResponse<StopAreas> resp = getCoverageRegionStopAreasWithHttpInfo(basePath, debugUrl, region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param startPage The page where you want to start (optional)
      * @param count Number of objects you want on a page (optional, default to 25)
@@ -1864,8 +1979,8 @@ public class StopAreasApi {
      * @return ApiResponse&lt;StopAreas&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<StopAreas> getCoverageRegionStopAreasWithHttpInfo(String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionStopAreasValidateBeforeCall(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, null, null);
+    private ApiResponse<StopAreas> getCoverageRegionStopAreasWithHttpInfo(String basePath, String debugUrl, String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionStopAreasValidateBeforeCall(basePath, debugUrl, region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, null, null);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1873,6 +1988,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param startPage The page where you want to start (optional)
      * @param count Number of objects you want on a page (optional, default to 25)
@@ -1895,7 +2012,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionStopAreasAsync(String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionStopAreasAsync(String basePath, String debugUrl, String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1916,7 +2033,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionStopAreasValidateBeforeCall(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionStopAreasValidateBeforeCall(basePath, debugUrl, region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1925,6 +2042,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param startPage The page where you want to start (optional)
      * @param count Number of objects you want on a page (optional, default to 25)
@@ -1947,7 +2066,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionStopAreasAsyncRaw(String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionStopAreasAsyncRaw(String basePath, String debugUrl, String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1968,7 +2087,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionStopAreasValidateBeforeCall(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionStopAreasValidateBeforeCall(basePath, debugUrl, region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1979,6 +2098,8 @@ public class StopAreasApi {
 
     public class CoverageRegionStopAreasRequestBuilder {
         private StopAreasApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private Integer startPage;
         private Integer count;
@@ -2000,6 +2121,15 @@ public class StopAreasApi {
 
         public CoverageRegionStopAreasRequestBuilder(StopAreasApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionStopAreasRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionStopAreasRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionStopAreasRequestBuilder withRegion(String region) {
@@ -2076,15 +2206,17 @@ public class StopAreasApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<StopAreas > callback) throws ApiException {
-            return currentApi.getCoverageRegionStopAreasAsync(this.region, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
+            return currentApi.getCoverageRegionStopAreasAsync(basePath, debugUrl, this.region, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionStopAreasAsyncRaw(this.region, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
+            return currentApi.getCoverageRegionStopAreasAsyncRaw(basePath, debugUrl, this.region, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
         }
     }
     /**
      * Build call for getCoverageRegionStopAreasId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -2108,47 +2240,52 @@ public class StopAreasApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionStopAreasIdCall(String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionStopAreasIdCall(String basePath, String debugUrl, String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/stop_areas/{id}"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()))
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (externalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
         if (headsign != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (odtLevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
         if (originalId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2183,7 +2320,7 @@ public class StopAreasApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionStopAreasIdValidateBeforeCall(String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionStopAreasIdValidateBeforeCall(String basePath, String debugUrl, String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -2196,7 +2333,7 @@ public class StopAreasApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionStopAreasIdCall(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionStopAreasIdCall(basePath, debugUrl, region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
         return call;
 
     }
@@ -2204,6 +2341,8 @@ public class StopAreasApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -2225,14 +2364,16 @@ public class StopAreasApi {
      * @return StopAreas
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected StopAreas getCoverageRegionStopAreasId(String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId) throws ApiException {
-        ApiResponse<StopAreas> resp = getCoverageRegionStopAreasIdWithHttpInfo(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId);
+    protected StopAreas getCoverageRegionStopAreasId(String basePath, String debugUrl, String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId) throws ApiException {
+        ApiResponse<StopAreas> resp = getCoverageRegionStopAreasIdWithHttpInfo(basePath, debugUrl, region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -2254,8 +2395,8 @@ public class StopAreasApi {
      * @return ApiResponse&lt;StopAreas&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<StopAreas> getCoverageRegionStopAreasIdWithHttpInfo(String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionStopAreasIdValidateBeforeCall(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, null, null);
+    private ApiResponse<StopAreas> getCoverageRegionStopAreasIdWithHttpInfo(String basePath, String debugUrl, String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionStopAreasIdValidateBeforeCall(basePath, debugUrl, region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, null, null);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2263,6 +2404,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -2285,7 +2428,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionStopAreasIdAsync(String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionStopAreasIdAsync(String basePath, String debugUrl, String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2306,7 +2449,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionStopAreasIdValidateBeforeCall(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionStopAreasIdValidateBeforeCall(basePath, debugUrl, region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -2315,6 +2458,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -2337,7 +2482,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionStopAreasIdAsyncRaw(String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionStopAreasIdAsyncRaw(String basePath, String debugUrl, String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2358,7 +2503,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionStopAreasIdValidateBeforeCall(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionStopAreasIdValidateBeforeCall(basePath, debugUrl, region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -2369,6 +2514,8 @@ public class StopAreasApi {
 
     public class CoverageRegionStopAreasIdRequestBuilder {
         private StopAreasApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String id;
         private Integer startPage;
@@ -2390,6 +2537,15 @@ public class StopAreasApi {
 
         public CoverageRegionStopAreasIdRequestBuilder(StopAreasApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionStopAreasIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionStopAreasIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionStopAreasIdRequestBuilder withRegion(String region) {
@@ -2466,15 +2622,17 @@ public class StopAreasApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<StopAreas > callback) throws ApiException {
-            return currentApi.getCoverageRegionStopAreasIdAsync(this.region, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, this.originalId, callback);
+            return currentApi.getCoverageRegionStopAreasIdAsync(basePath, debugUrl, this.region, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, this.originalId, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionStopAreasIdAsyncRaw(this.region, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, this.originalId, callback);
+            return currentApi.getCoverageRegionStopAreasIdAsyncRaw(basePath, debugUrl, this.region, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, this.originalId, callback);
         }
     }
     /**
      * Build call for getCoverageRegionUriStopAreas
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param startPage The page where you want to start (optional)
@@ -2499,49 +2657,54 @@ public class StopAreasApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionUriStopAreasCall(String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriStopAreasCall(String basePath, String debugUrl, String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/{uri}/stop_areas"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (externalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
         if (headsign != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (odtLevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
         if (originalId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2576,7 +2739,7 @@ public class StopAreasApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionUriStopAreasValidateBeforeCall(String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriStopAreasValidateBeforeCall(String basePath, String debugUrl, String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -2589,7 +2752,7 @@ public class StopAreasApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriStopAreasCall(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriStopAreasCall(basePath, debugUrl, region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
         return call;
 
     }
@@ -2597,6 +2760,8 @@ public class StopAreasApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param startPage The page where you want to start (optional)
@@ -2619,14 +2784,16 @@ public class StopAreasApi {
      * @return StopAreas
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected StopAreas getCoverageRegionUriStopAreas(String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
-        ApiResponse<StopAreas> resp = getCoverageRegionUriStopAreasWithHttpInfo(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
+    protected StopAreas getCoverageRegionUriStopAreas(String basePath, String debugUrl, String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
+        ApiResponse<StopAreas> resp = getCoverageRegionUriStopAreasWithHttpInfo(basePath, debugUrl, region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param startPage The page where you want to start (optional)
@@ -2649,8 +2816,8 @@ public class StopAreasApi {
      * @return ApiResponse&lt;StopAreas&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<StopAreas> getCoverageRegionUriStopAreasWithHttpInfo(String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionUriStopAreasValidateBeforeCall(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, null, null);
+    private ApiResponse<StopAreas> getCoverageRegionUriStopAreasWithHttpInfo(String basePath, String debugUrl, String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionUriStopAreasValidateBeforeCall(basePath, debugUrl, region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, null, null);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2658,6 +2825,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param startPage The page where you want to start (optional)
@@ -2681,7 +2850,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriStopAreasAsync(String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriStopAreasAsync(String basePath, String debugUrl, String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2702,7 +2871,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriStopAreasValidateBeforeCall(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriStopAreasValidateBeforeCall(basePath, debugUrl, region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -2711,6 +2880,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param startPage The page where you want to start (optional)
@@ -2734,7 +2905,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriStopAreasAsyncRaw(String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriStopAreasAsyncRaw(String basePath, String debugUrl, String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2755,7 +2926,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriStopAreasValidateBeforeCall(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriStopAreasValidateBeforeCall(basePath, debugUrl, region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -2766,6 +2937,8 @@ public class StopAreasApi {
 
     public class CoverageRegionUriStopAreasRequestBuilder {
         private StopAreasApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String uri;
         private Integer startPage;
@@ -2788,6 +2961,15 @@ public class StopAreasApi {
 
         public CoverageRegionUriStopAreasRequestBuilder(StopAreasApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionUriStopAreasRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionUriStopAreasRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionUriStopAreasRequestBuilder withRegion(String region) {
@@ -2868,15 +3050,17 @@ public class StopAreasApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<StopAreas > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriStopAreasAsync(this.region, this.uri, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
+            return currentApi.getCoverageRegionUriStopAreasAsync(basePath, debugUrl, this.region, this.uri, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriStopAreasAsyncRaw(this.region, this.uri, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
+            return currentApi.getCoverageRegionUriStopAreasAsyncRaw(basePath, debugUrl, this.region, this.uri, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
         }
     }
     /**
      * Build call for getCoverageRegionUriStopAreasId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
@@ -2901,48 +3085,53 @@ public class StopAreasApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionUriStopAreasIdCall(String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriStopAreasIdCall(String basePath, String debugUrl, String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/{uri}/stop_areas/{id}"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()))
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (externalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
         if (headsign != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (odtLevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
         if (originalId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2977,7 +3166,7 @@ public class StopAreasApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionUriStopAreasIdValidateBeforeCall(String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriStopAreasIdValidateBeforeCall(String basePath, String debugUrl, String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -2995,7 +3184,7 @@ public class StopAreasApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriStopAreasIdCall(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriStopAreasIdCall(basePath, debugUrl, region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
         return call;
 
     }
@@ -3003,6 +3192,8 @@ public class StopAreasApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
@@ -3025,14 +3216,16 @@ public class StopAreasApi {
      * @return StopAreas
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected StopAreas getCoverageRegionUriStopAreasId(String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId) throws ApiException {
-        ApiResponse<StopAreas> resp = getCoverageRegionUriStopAreasIdWithHttpInfo(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId);
+    protected StopAreas getCoverageRegionUriStopAreasId(String basePath, String debugUrl, String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId) throws ApiException {
+        ApiResponse<StopAreas> resp = getCoverageRegionUriStopAreasIdWithHttpInfo(basePath, debugUrl, region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
@@ -3055,8 +3248,8 @@ public class StopAreasApi {
      * @return ApiResponse&lt;StopAreas&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<StopAreas> getCoverageRegionUriStopAreasIdWithHttpInfo(String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionUriStopAreasIdValidateBeforeCall(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, null, null);
+    private ApiResponse<StopAreas> getCoverageRegionUriStopAreasIdWithHttpInfo(String basePath, String debugUrl, String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionUriStopAreasIdValidateBeforeCall(basePath, debugUrl, region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, null, null);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -3064,6 +3257,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
@@ -3087,7 +3282,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriStopAreasIdAsync(String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriStopAreasIdAsync(String basePath, String debugUrl, String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3108,7 +3303,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriStopAreasIdValidateBeforeCall(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriStopAreasIdValidateBeforeCall(basePath, debugUrl, region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -3117,6 +3312,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
@@ -3140,7 +3337,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriStopAreasIdAsyncRaw(String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriStopAreasIdAsyncRaw(String basePath, String debugUrl, String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3161,7 +3358,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriStopAreasIdValidateBeforeCall(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriStopAreasIdValidateBeforeCall(basePath, debugUrl, region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -3172,6 +3369,8 @@ public class StopAreasApi {
 
     public class CoverageRegionUriStopAreasIdRequestBuilder {
         private StopAreasApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String uri;
         private String id;
@@ -3194,6 +3393,15 @@ public class StopAreasApi {
 
         public CoverageRegionUriStopAreasIdRequestBuilder(StopAreasApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionUriStopAreasIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionUriStopAreasIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionUriStopAreasIdRequestBuilder withRegion(String region) {
@@ -3274,15 +3482,17 @@ public class StopAreasApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<StopAreas > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriStopAreasIdAsync(this.region, this.uri, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, this.originalId, callback);
+            return currentApi.getCoverageRegionUriStopAreasIdAsync(basePath, debugUrl, this.region, this.uri, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, this.originalId, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriStopAreasIdAsyncRaw(this.region, this.uri, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, this.originalId, callback);
+            return currentApi.getCoverageRegionUriStopAreasIdAsyncRaw(basePath, debugUrl, this.region, this.uri, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, this.originalId, callback);
         }
     }
     /**
      * Build call for getStopAreas
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param externalCode An external code to query (required)
      * @param startPage The page where you want to start (optional)
      * @param count Number of objects you want on a page (optional, default to 25)
@@ -3305,47 +3515,52 @@ public class StopAreasApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getStopAreasCall(String externalCode, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getStopAreasCall(String basePath, String debugUrl, String externalCode, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/stop_areas";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (externalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
         if (headsign != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (odtLevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
         if (originalId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "original_id", originalId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -3380,7 +3595,7 @@ public class StopAreasApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getStopAreasValidateBeforeCall(String externalCode, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getStopAreasValidateBeforeCall(String basePath, String debugUrl, String externalCode, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'externalCode' is set
         if (externalCode == null) {
@@ -3388,7 +3603,7 @@ public class StopAreasApi {
         }
         
 
-        com.squareup.okhttp.Call call = getStopAreasCall(externalCode, startPage, count, depth, forbiddenId, forbiddenUris, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStopAreasCall(basePath, debugUrl, externalCode, startPage, count, depth, forbiddenId, forbiddenUris, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
         return call;
 
     }
@@ -3396,6 +3611,8 @@ public class StopAreasApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param externalCode An external code to query (required)
      * @param startPage The page where you want to start (optional)
      * @param count Number of objects you want on a page (optional, default to 25)
@@ -3416,14 +3633,16 @@ public class StopAreasApi {
      * @return StopAreas
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected StopAreas getStopAreas(String externalCode, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
-        ApiResponse<StopAreas> resp = getStopAreasWithHttpInfo(externalCode, startPage, count, depth, forbiddenId, forbiddenUris, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
+    protected StopAreas getStopAreas(String basePath, String debugUrl, String externalCode, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
+        ApiResponse<StopAreas> resp = getStopAreasWithHttpInfo(basePath, debugUrl, externalCode, startPage, count, depth, forbiddenId, forbiddenUris, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param externalCode An external code to query (required)
      * @param startPage The page where you want to start (optional)
      * @param count Number of objects you want on a page (optional, default to 25)
@@ -3444,8 +3663,8 @@ public class StopAreasApi {
      * @return ApiResponse&lt;StopAreas&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<StopAreas> getStopAreasWithHttpInfo(String externalCode, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
-        com.squareup.okhttp.Call call = getStopAreasValidateBeforeCall(externalCode, startPage, count, depth, forbiddenId, forbiddenUris, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, null, null);
+    private ApiResponse<StopAreas> getStopAreasWithHttpInfo(String basePath, String debugUrl, String externalCode, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId) throws ApiException {
+        com.squareup.okhttp.Call call = getStopAreasValidateBeforeCall(basePath, debugUrl, externalCode, startPage, count, depth, forbiddenId, forbiddenUris, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, null, null);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -3453,6 +3672,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param externalCode An external code to query (required)
      * @param startPage The page where you want to start (optional)
      * @param count Number of objects you want on a page (optional, default to 25)
@@ -3474,7 +3695,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getStopAreasAsync(String externalCode, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getStopAreasAsync(String basePath, String debugUrl, String externalCode, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<StopAreas> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3495,7 +3716,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getStopAreasValidateBeforeCall(externalCode, startPage, count, depth, forbiddenId, forbiddenUris, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStopAreasValidateBeforeCall(basePath, debugUrl, externalCode, startPage, count, depth, forbiddenId, forbiddenUris, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<StopAreas>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -3504,6 +3725,8 @@ public class StopAreasApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param externalCode An external code to query (required)
      * @param startPage The page where you want to start (optional)
      * @param count Number of objects you want on a page (optional, default to 25)
@@ -3525,7 +3748,7 @@ public class StopAreasApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getStopAreasAsyncRaw(String externalCode, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getStopAreasAsyncRaw(String basePath, String debugUrl, String externalCode, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, String originalId, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3546,7 +3769,7 @@ public class StopAreasApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getStopAreasValidateBeforeCall(externalCode, startPage, count, depth, forbiddenId, forbiddenUris, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStopAreasValidateBeforeCall(basePath, debugUrl, externalCode, startPage, count, depth, forbiddenId, forbiddenUris, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -3557,6 +3780,8 @@ public class StopAreasApi {
 
     public class StopAreasRequestBuilder {
         private StopAreasApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String externalCode;
         private Integer startPage;
         private Integer count;
@@ -3577,6 +3802,15 @@ public class StopAreasApi {
 
         public StopAreasRequestBuilder(StopAreasApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public StopAreasRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public StopAreasRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public StopAreasRequestBuilder withExternalCode(String externalCode) {
@@ -3649,11 +3883,11 @@ public class StopAreasApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<StopAreas > callback) throws ApiException {
-            return currentApi.getStopAreasAsync(this.externalCode, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
+            return currentApi.getStopAreasAsync(basePath, debugUrl, this.externalCode, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getStopAreasAsyncRaw(this.externalCode, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
+            return currentApi.getStopAreasAsyncRaw(basePath, debugUrl, this.externalCode, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, this.originalId, callback);
         }
     }
 }

@@ -36,8 +36,8 @@ if(hasProperty("target") && target == "android") {
             targetSdkVersion 28
         }
         compileOptions {
-            sourceCompatibility JavaVersion.VERSION_1_8
-            targetCompatibility JavaVersion.VERSION_1_8
+            sourceCompatibility JavaVersion.VERSION_1_7
+            targetCompatibility JavaVersion.VERSION_1_7
         }
 
         // Rename the aar correctly
@@ -82,8 +82,8 @@ if(hasProperty("target") && target == "android") {
     apply plugin: "java"
     apply plugin: "maven"
 
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
 
     install {
         repositories.mavenInstaller {
@@ -187,7 +187,7 @@ dependencies {
     implementation "io.swagger:swagger-annotations:1.5.8"
     implementation "com.squareup.okhttp:okhttp:2.7.5"
     implementation "com.squareup.okhttp:logging-interceptor:2.7.5"
-    implementation "com.google.code.gson:gson:2.8.5"
-    implementation "joda-time:joda-time:2.10.1"
+    implementation "com.google.code.gson:gson:2.6.2"
+    implementation "joda-time:joda-time:2.9.3"
     testImplementation "junit:junit:4.12"
 }

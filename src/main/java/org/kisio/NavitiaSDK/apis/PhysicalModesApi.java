@@ -51,6 +51,8 @@ public class PhysicalModesApi {
 
     /**
      * Build call for getCoverageLonLatPhysicalModes
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -74,47 +76,52 @@ public class PhysicalModesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatPhysicalModesCall(BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatPhysicalModesCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/physical_modes"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (externalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
         if (headsign != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (odtLevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -149,7 +156,7 @@ public class PhysicalModesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatPhysicalModesValidateBeforeCall(BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatPhysicalModesValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -162,7 +169,7 @@ public class PhysicalModesApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatPhysicalModesCall(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatPhysicalModesCall(basePath, debugUrl, lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
         return call;
 
     }
@@ -170,6 +177,8 @@ public class PhysicalModesApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -191,14 +200,16 @@ public class PhysicalModesApi {
      * @return PhysicalModes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected PhysicalModes getCoverageLonLatPhysicalModes(BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags) throws ApiException {
-        ApiResponse<PhysicalModes> resp = getCoverageLonLatPhysicalModesWithHttpInfo(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
+    protected PhysicalModes getCoverageLonLatPhysicalModes(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags) throws ApiException {
+        ApiResponse<PhysicalModes> resp = getCoverageLonLatPhysicalModesWithHttpInfo(basePath, debugUrl, lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -220,8 +231,8 @@ public class PhysicalModesApi {
      * @return ApiResponse&lt;PhysicalModes&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<PhysicalModes> getCoverageLonLatPhysicalModesWithHttpInfo(BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatPhysicalModesValidateBeforeCall(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, null, null);
+    private ApiResponse<PhysicalModes> getCoverageLonLatPhysicalModesWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatPhysicalModesValidateBeforeCall(basePath, debugUrl, lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, null, null);
         Type localVarReturnType = new TypeToken<PhysicalModes>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -229,6 +240,8 @@ public class PhysicalModesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -251,7 +264,7 @@ public class PhysicalModesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatPhysicalModesAsync(BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ApiCallback<PhysicalModes> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatPhysicalModesAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ApiCallback<PhysicalModes> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -272,7 +285,7 @@ public class PhysicalModesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatPhysicalModesValidateBeforeCall(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatPhysicalModesValidateBeforeCall(basePath, debugUrl, lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PhysicalModes>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -281,6 +294,8 @@ public class PhysicalModesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -303,7 +318,7 @@ public class PhysicalModesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatPhysicalModesAsyncRaw(BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatPhysicalModesAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -324,7 +339,7 @@ public class PhysicalModesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatPhysicalModesValidateBeforeCall(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatPhysicalModesValidateBeforeCall(basePath, debugUrl, lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -335,6 +350,8 @@ public class PhysicalModesApi {
 
     public class CoverageLonLatPhysicalModesRequestBuilder {
         private PhysicalModesApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private Integer startPage;
@@ -356,6 +373,15 @@ public class PhysicalModesApi {
 
         public CoverageLonLatPhysicalModesRequestBuilder(PhysicalModesApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatPhysicalModesRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatPhysicalModesRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatPhysicalModesRequestBuilder withLat(BigDecimal lat) {
@@ -432,15 +458,17 @@ public class PhysicalModesApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<PhysicalModes > callback) throws ApiException {
-            return currentApi.getCoverageLonLatPhysicalModesAsync(this.lat, this.lon, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, callback);
+            return currentApi.getCoverageLonLatPhysicalModesAsync(basePath, debugUrl, this.lat, this.lon, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatPhysicalModesAsyncRaw(this.lat, this.lon, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, callback);
+            return currentApi.getCoverageLonLatPhysicalModesAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatPhysicalModesId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -464,46 +492,51 @@ public class PhysicalModesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatPhysicalModesIdCall(BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatPhysicalModesIdCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/physical_modes/{id}"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()))
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (externalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
         if (headsign != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (odtLevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -538,7 +571,7 @@ public class PhysicalModesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatPhysicalModesIdValidateBeforeCall(BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatPhysicalModesIdValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -556,7 +589,7 @@ public class PhysicalModesApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatPhysicalModesIdCall(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatPhysicalModesIdCall(basePath, debugUrl, lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
         return call;
 
     }
@@ -564,6 +597,8 @@ public class PhysicalModesApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -585,14 +620,16 @@ public class PhysicalModesApi {
      * @return PhysicalModes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected PhysicalModes getCoverageLonLatPhysicalModesId(BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags) throws ApiException {
-        ApiResponse<PhysicalModes> resp = getCoverageLonLatPhysicalModesIdWithHttpInfo(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
+    protected PhysicalModes getCoverageLonLatPhysicalModesId(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags) throws ApiException {
+        ApiResponse<PhysicalModes> resp = getCoverageLonLatPhysicalModesIdWithHttpInfo(basePath, debugUrl, lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -614,8 +651,8 @@ public class PhysicalModesApi {
      * @return ApiResponse&lt;PhysicalModes&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<PhysicalModes> getCoverageLonLatPhysicalModesIdWithHttpInfo(BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatPhysicalModesIdValidateBeforeCall(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, null, null);
+    private ApiResponse<PhysicalModes> getCoverageLonLatPhysicalModesIdWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatPhysicalModesIdValidateBeforeCall(basePath, debugUrl, lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, null, null);
         Type localVarReturnType = new TypeToken<PhysicalModes>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -623,6 +660,8 @@ public class PhysicalModesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -645,7 +684,7 @@ public class PhysicalModesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatPhysicalModesIdAsync(BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ApiCallback<PhysicalModes> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatPhysicalModesIdAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ApiCallback<PhysicalModes> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -666,7 +705,7 @@ public class PhysicalModesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatPhysicalModesIdValidateBeforeCall(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatPhysicalModesIdValidateBeforeCall(basePath, debugUrl, lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PhysicalModes>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -675,6 +714,8 @@ public class PhysicalModesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -697,7 +738,7 @@ public class PhysicalModesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatPhysicalModesIdAsyncRaw(BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatPhysicalModesIdAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -718,7 +759,7 @@ public class PhysicalModesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatPhysicalModesIdValidateBeforeCall(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatPhysicalModesIdValidateBeforeCall(basePath, debugUrl, lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -729,6 +770,8 @@ public class PhysicalModesApi {
 
     public class CoverageLonLatPhysicalModesIdRequestBuilder {
         private PhysicalModesApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String id;
@@ -750,6 +793,15 @@ public class PhysicalModesApi {
 
         public CoverageLonLatPhysicalModesIdRequestBuilder(PhysicalModesApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatPhysicalModesIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatPhysicalModesIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatPhysicalModesIdRequestBuilder withLat(BigDecimal lat) {
@@ -826,15 +878,17 @@ public class PhysicalModesApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<PhysicalModes > callback) throws ApiException {
-            return currentApi.getCoverageLonLatPhysicalModesIdAsync(this.lat, this.lon, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, callback);
+            return currentApi.getCoverageLonLatPhysicalModesIdAsync(basePath, debugUrl, this.lat, this.lon, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatPhysicalModesIdAsyncRaw(this.lat, this.lon, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, callback);
+            return currentApi.getCoverageLonLatPhysicalModesIdAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatUriPhysicalModes
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -859,48 +913,53 @@ public class PhysicalModesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatUriPhysicalModesCall(BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriPhysicalModesCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/{uri}/physical_modes"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (externalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
         if (headsign != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (odtLevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -935,7 +994,7 @@ public class PhysicalModesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatUriPhysicalModesValidateBeforeCall(BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriPhysicalModesValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -953,7 +1012,7 @@ public class PhysicalModesApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriPhysicalModesCall(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriPhysicalModesCall(basePath, debugUrl, lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
         return call;
 
     }
@@ -961,6 +1020,8 @@ public class PhysicalModesApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -983,14 +1044,16 @@ public class PhysicalModesApi {
      * @return PhysicalModes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected PhysicalModes getCoverageLonLatUriPhysicalModes(BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags) throws ApiException {
-        ApiResponse<PhysicalModes> resp = getCoverageLonLatUriPhysicalModesWithHttpInfo(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
+    protected PhysicalModes getCoverageLonLatUriPhysicalModes(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags) throws ApiException {
+        ApiResponse<PhysicalModes> resp = getCoverageLonLatUriPhysicalModesWithHttpInfo(basePath, debugUrl, lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1013,8 +1076,8 @@ public class PhysicalModesApi {
      * @return ApiResponse&lt;PhysicalModes&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<PhysicalModes> getCoverageLonLatUriPhysicalModesWithHttpInfo(BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatUriPhysicalModesValidateBeforeCall(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, null, null);
+    private ApiResponse<PhysicalModes> getCoverageLonLatUriPhysicalModesWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatUriPhysicalModesValidateBeforeCall(basePath, debugUrl, lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, null, null);
         Type localVarReturnType = new TypeToken<PhysicalModes>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1022,6 +1085,8 @@ public class PhysicalModesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1045,7 +1110,7 @@ public class PhysicalModesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriPhysicalModesAsync(BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ApiCallback<PhysicalModes> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriPhysicalModesAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ApiCallback<PhysicalModes> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1066,7 +1131,7 @@ public class PhysicalModesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriPhysicalModesValidateBeforeCall(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriPhysicalModesValidateBeforeCall(basePath, debugUrl, lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PhysicalModes>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1075,6 +1140,8 @@ public class PhysicalModesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1098,7 +1165,7 @@ public class PhysicalModesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriPhysicalModesAsyncRaw(BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriPhysicalModesAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1119,7 +1186,7 @@ public class PhysicalModesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriPhysicalModesValidateBeforeCall(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriPhysicalModesValidateBeforeCall(basePath, debugUrl, lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1130,6 +1197,8 @@ public class PhysicalModesApi {
 
     public class CoverageLonLatUriPhysicalModesRequestBuilder {
         private PhysicalModesApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String uri;
@@ -1152,6 +1221,15 @@ public class PhysicalModesApi {
 
         public CoverageLonLatUriPhysicalModesRequestBuilder(PhysicalModesApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatUriPhysicalModesRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatUriPhysicalModesRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatUriPhysicalModesRequestBuilder withLat(BigDecimal lat) {
@@ -1232,15 +1310,17 @@ public class PhysicalModesApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<PhysicalModes > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriPhysicalModesAsync(this.lat, this.lon, this.uri, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, callback);
+            return currentApi.getCoverageLonLatUriPhysicalModesAsync(basePath, debugUrl, this.lat, this.lon, this.uri, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriPhysicalModesAsyncRaw(this.lat, this.lon, this.uri, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, callback);
+            return currentApi.getCoverageLonLatUriPhysicalModesAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.uri, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatUriPhysicalModesId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1265,10 +1345,10 @@ public class PhysicalModesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatUriPhysicalModesIdCall(BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriPhysicalModesIdCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/{uri}/physical_modes/{id}"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()))
@@ -1276,36 +1356,41 @@ public class PhysicalModesApi {
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (externalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
         if (headsign != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (odtLevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1340,7 +1425,7 @@ public class PhysicalModesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatUriPhysicalModesIdValidateBeforeCall(BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriPhysicalModesIdValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -1363,7 +1448,7 @@ public class PhysicalModesApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriPhysicalModesIdCall(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriPhysicalModesIdCall(basePath, debugUrl, lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1371,6 +1456,8 @@ public class PhysicalModesApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1393,14 +1480,16 @@ public class PhysicalModesApi {
      * @return PhysicalModes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected PhysicalModes getCoverageLonLatUriPhysicalModesId(BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags) throws ApiException {
-        ApiResponse<PhysicalModes> resp = getCoverageLonLatUriPhysicalModesIdWithHttpInfo(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
+    protected PhysicalModes getCoverageLonLatUriPhysicalModesId(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags) throws ApiException {
+        ApiResponse<PhysicalModes> resp = getCoverageLonLatUriPhysicalModesIdWithHttpInfo(basePath, debugUrl, lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1423,8 +1512,8 @@ public class PhysicalModesApi {
      * @return ApiResponse&lt;PhysicalModes&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<PhysicalModes> getCoverageLonLatUriPhysicalModesIdWithHttpInfo(BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatUriPhysicalModesIdValidateBeforeCall(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, null, null);
+    private ApiResponse<PhysicalModes> getCoverageLonLatUriPhysicalModesIdWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatUriPhysicalModesIdValidateBeforeCall(basePath, debugUrl, lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, null, null);
         Type localVarReturnType = new TypeToken<PhysicalModes>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1432,6 +1521,8 @@ public class PhysicalModesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1455,7 +1546,7 @@ public class PhysicalModesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriPhysicalModesIdAsync(BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ApiCallback<PhysicalModes> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriPhysicalModesIdAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ApiCallback<PhysicalModes> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1476,7 +1567,7 @@ public class PhysicalModesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriPhysicalModesIdValidateBeforeCall(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriPhysicalModesIdValidateBeforeCall(basePath, debugUrl, lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PhysicalModes>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1485,6 +1576,8 @@ public class PhysicalModesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1508,7 +1601,7 @@ public class PhysicalModesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriPhysicalModesIdAsyncRaw(BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriPhysicalModesIdAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1529,7 +1622,7 @@ public class PhysicalModesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriPhysicalModesIdValidateBeforeCall(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriPhysicalModesIdValidateBeforeCall(basePath, debugUrl, lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1540,6 +1633,8 @@ public class PhysicalModesApi {
 
     public class CoverageLonLatUriPhysicalModesIdRequestBuilder {
         private PhysicalModesApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String uri;
@@ -1562,6 +1657,15 @@ public class PhysicalModesApi {
 
         public CoverageLonLatUriPhysicalModesIdRequestBuilder(PhysicalModesApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatUriPhysicalModesIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatUriPhysicalModesIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatUriPhysicalModesIdRequestBuilder withLat(BigDecimal lat) {
@@ -1642,15 +1746,17 @@ public class PhysicalModesApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<PhysicalModes > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriPhysicalModesIdAsync(this.lat, this.lon, this.uri, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, callback);
+            return currentApi.getCoverageLonLatUriPhysicalModesIdAsync(basePath, debugUrl, this.lat, this.lon, this.uri, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriPhysicalModesIdAsyncRaw(this.lat, this.lon, this.uri, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, callback);
+            return currentApi.getCoverageLonLatUriPhysicalModesIdAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.uri, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, callback);
         }
     }
     /**
      * Build call for getCoverageRegionPhysicalModes
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param startPage The page where you want to start (optional)
      * @param count Number of objects you want on a page (optional, default to 25)
@@ -1673,46 +1779,51 @@ public class PhysicalModesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionPhysicalModesCall(String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionPhysicalModesCall(String basePath, String debugUrl, String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/physical_modes"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (externalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
         if (headsign != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (odtLevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1747,7 +1858,7 @@ public class PhysicalModesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionPhysicalModesValidateBeforeCall(String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionPhysicalModesValidateBeforeCall(String basePath, String debugUrl, String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -1755,7 +1866,7 @@ public class PhysicalModesApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionPhysicalModesCall(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionPhysicalModesCall(basePath, debugUrl, region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1763,6 +1874,8 @@ public class PhysicalModesApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param startPage The page where you want to start (optional)
      * @param count Number of objects you want on a page (optional, default to 25)
@@ -1783,14 +1896,16 @@ public class PhysicalModesApi {
      * @return PhysicalModes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected PhysicalModes getCoverageRegionPhysicalModes(String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags) throws ApiException {
-        ApiResponse<PhysicalModes> resp = getCoverageRegionPhysicalModesWithHttpInfo(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
+    protected PhysicalModes getCoverageRegionPhysicalModes(String basePath, String debugUrl, String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags) throws ApiException {
+        ApiResponse<PhysicalModes> resp = getCoverageRegionPhysicalModesWithHttpInfo(basePath, debugUrl, region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param startPage The page where you want to start (optional)
      * @param count Number of objects you want on a page (optional, default to 25)
@@ -1811,8 +1926,8 @@ public class PhysicalModesApi {
      * @return ApiResponse&lt;PhysicalModes&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<PhysicalModes> getCoverageRegionPhysicalModesWithHttpInfo(String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionPhysicalModesValidateBeforeCall(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, null, null);
+    private ApiResponse<PhysicalModes> getCoverageRegionPhysicalModesWithHttpInfo(String basePath, String debugUrl, String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionPhysicalModesValidateBeforeCall(basePath, debugUrl, region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, null, null);
         Type localVarReturnType = new TypeToken<PhysicalModes>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1820,6 +1935,8 @@ public class PhysicalModesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param startPage The page where you want to start (optional)
      * @param count Number of objects you want on a page (optional, default to 25)
@@ -1841,7 +1958,7 @@ public class PhysicalModesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionPhysicalModesAsync(String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ApiCallback<PhysicalModes> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionPhysicalModesAsync(String basePath, String debugUrl, String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ApiCallback<PhysicalModes> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1862,7 +1979,7 @@ public class PhysicalModesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionPhysicalModesValidateBeforeCall(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionPhysicalModesValidateBeforeCall(basePath, debugUrl, region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PhysicalModes>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1871,6 +1988,8 @@ public class PhysicalModesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param startPage The page where you want to start (optional)
      * @param count Number of objects you want on a page (optional, default to 25)
@@ -1892,7 +2011,7 @@ public class PhysicalModesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionPhysicalModesAsyncRaw(String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionPhysicalModesAsyncRaw(String basePath, String debugUrl, String region, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1913,7 +2032,7 @@ public class PhysicalModesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionPhysicalModesValidateBeforeCall(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionPhysicalModesValidateBeforeCall(basePath, debugUrl, region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1924,6 +2043,8 @@ public class PhysicalModesApi {
 
     public class CoverageRegionPhysicalModesRequestBuilder {
         private PhysicalModesApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private Integer startPage;
         private Integer count;
@@ -1944,6 +2065,15 @@ public class PhysicalModesApi {
 
         public CoverageRegionPhysicalModesRequestBuilder(PhysicalModesApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionPhysicalModesRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionPhysicalModesRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionPhysicalModesRequestBuilder withRegion(String region) {
@@ -2016,15 +2146,17 @@ public class PhysicalModesApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<PhysicalModes > callback) throws ApiException {
-            return currentApi.getCoverageRegionPhysicalModesAsync(this.region, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, callback);
+            return currentApi.getCoverageRegionPhysicalModesAsync(basePath, debugUrl, this.region, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionPhysicalModesAsyncRaw(this.region, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, callback);
+            return currentApi.getCoverageRegionPhysicalModesAsyncRaw(basePath, debugUrl, this.region, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, callback);
         }
     }
     /**
      * Build call for getCoverageRegionPhysicalModesId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -2047,45 +2179,50 @@ public class PhysicalModesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionPhysicalModesIdCall(String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionPhysicalModesIdCall(String basePath, String debugUrl, String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/physical_modes/{id}"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()))
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (externalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
         if (headsign != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (odtLevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2120,7 +2257,7 @@ public class PhysicalModesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionPhysicalModesIdValidateBeforeCall(String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionPhysicalModesIdValidateBeforeCall(String basePath, String debugUrl, String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -2133,7 +2270,7 @@ public class PhysicalModesApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionPhysicalModesIdCall(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionPhysicalModesIdCall(basePath, debugUrl, region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
         return call;
 
     }
@@ -2141,6 +2278,8 @@ public class PhysicalModesApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -2161,14 +2300,16 @@ public class PhysicalModesApi {
      * @return PhysicalModes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected PhysicalModes getCoverageRegionPhysicalModesId(String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags) throws ApiException {
-        ApiResponse<PhysicalModes> resp = getCoverageRegionPhysicalModesIdWithHttpInfo(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
+    protected PhysicalModes getCoverageRegionPhysicalModesId(String basePath, String debugUrl, String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags) throws ApiException {
+        ApiResponse<PhysicalModes> resp = getCoverageRegionPhysicalModesIdWithHttpInfo(basePath, debugUrl, region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -2189,8 +2330,8 @@ public class PhysicalModesApi {
      * @return ApiResponse&lt;PhysicalModes&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<PhysicalModes> getCoverageRegionPhysicalModesIdWithHttpInfo(String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionPhysicalModesIdValidateBeforeCall(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, null, null);
+    private ApiResponse<PhysicalModes> getCoverageRegionPhysicalModesIdWithHttpInfo(String basePath, String debugUrl, String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionPhysicalModesIdValidateBeforeCall(basePath, debugUrl, region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, null, null);
         Type localVarReturnType = new TypeToken<PhysicalModes>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2198,6 +2339,8 @@ public class PhysicalModesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -2219,7 +2362,7 @@ public class PhysicalModesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionPhysicalModesIdAsync(String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ApiCallback<PhysicalModes> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionPhysicalModesIdAsync(String basePath, String debugUrl, String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ApiCallback<PhysicalModes> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2240,7 +2383,7 @@ public class PhysicalModesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionPhysicalModesIdValidateBeforeCall(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionPhysicalModesIdValidateBeforeCall(basePath, debugUrl, region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PhysicalModes>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -2249,6 +2392,8 @@ public class PhysicalModesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param startPage The page where you want to start (optional)
@@ -2270,7 +2415,7 @@ public class PhysicalModesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionPhysicalModesIdAsyncRaw(String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionPhysicalModesIdAsyncRaw(String basePath, String debugUrl, String region, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2291,7 +2436,7 @@ public class PhysicalModesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionPhysicalModesIdValidateBeforeCall(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionPhysicalModesIdValidateBeforeCall(basePath, debugUrl, region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -2302,6 +2447,8 @@ public class PhysicalModesApi {
 
     public class CoverageRegionPhysicalModesIdRequestBuilder {
         private PhysicalModesApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String id;
         private Integer startPage;
@@ -2322,6 +2469,15 @@ public class PhysicalModesApi {
 
         public CoverageRegionPhysicalModesIdRequestBuilder(PhysicalModesApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionPhysicalModesIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionPhysicalModesIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionPhysicalModesIdRequestBuilder withRegion(String region) {
@@ -2394,15 +2550,17 @@ public class PhysicalModesApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<PhysicalModes > callback) throws ApiException {
-            return currentApi.getCoverageRegionPhysicalModesIdAsync(this.region, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, callback);
+            return currentApi.getCoverageRegionPhysicalModesIdAsync(basePath, debugUrl, this.region, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionPhysicalModesIdAsyncRaw(this.region, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, callback);
+            return currentApi.getCoverageRegionPhysicalModesIdAsyncRaw(basePath, debugUrl, this.region, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, callback);
         }
     }
     /**
      * Build call for getCoverageRegionUriPhysicalModes
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param startPage The page where you want to start (optional)
@@ -2426,47 +2584,52 @@ public class PhysicalModesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionUriPhysicalModesCall(String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriPhysicalModesCall(String basePath, String debugUrl, String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/{uri}/physical_modes"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (externalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
         if (headsign != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (odtLevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2501,7 +2664,7 @@ public class PhysicalModesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionUriPhysicalModesValidateBeforeCall(String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriPhysicalModesValidateBeforeCall(String basePath, String debugUrl, String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -2514,7 +2677,7 @@ public class PhysicalModesApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriPhysicalModesCall(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriPhysicalModesCall(basePath, debugUrl, region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
         return call;
 
     }
@@ -2522,6 +2685,8 @@ public class PhysicalModesApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param startPage The page where you want to start (optional)
@@ -2543,14 +2708,16 @@ public class PhysicalModesApi {
      * @return PhysicalModes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected PhysicalModes getCoverageRegionUriPhysicalModes(String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags) throws ApiException {
-        ApiResponse<PhysicalModes> resp = getCoverageRegionUriPhysicalModesWithHttpInfo(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
+    protected PhysicalModes getCoverageRegionUriPhysicalModes(String basePath, String debugUrl, String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags) throws ApiException {
+        ApiResponse<PhysicalModes> resp = getCoverageRegionUriPhysicalModesWithHttpInfo(basePath, debugUrl, region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param startPage The page where you want to start (optional)
@@ -2572,8 +2739,8 @@ public class PhysicalModesApi {
      * @return ApiResponse&lt;PhysicalModes&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<PhysicalModes> getCoverageRegionUriPhysicalModesWithHttpInfo(String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionUriPhysicalModesValidateBeforeCall(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, null, null);
+    private ApiResponse<PhysicalModes> getCoverageRegionUriPhysicalModesWithHttpInfo(String basePath, String debugUrl, String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionUriPhysicalModesValidateBeforeCall(basePath, debugUrl, region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, null, null);
         Type localVarReturnType = new TypeToken<PhysicalModes>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2581,6 +2748,8 @@ public class PhysicalModesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param startPage The page where you want to start (optional)
@@ -2603,7 +2772,7 @@ public class PhysicalModesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriPhysicalModesAsync(String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ApiCallback<PhysicalModes> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriPhysicalModesAsync(String basePath, String debugUrl, String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ApiCallback<PhysicalModes> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2624,7 +2793,7 @@ public class PhysicalModesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriPhysicalModesValidateBeforeCall(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriPhysicalModesValidateBeforeCall(basePath, debugUrl, region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PhysicalModes>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -2633,6 +2802,8 @@ public class PhysicalModesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param startPage The page where you want to start (optional)
@@ -2655,7 +2826,7 @@ public class PhysicalModesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriPhysicalModesAsyncRaw(String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriPhysicalModesAsyncRaw(String basePath, String debugUrl, String region, String uri, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, String filter, List<String> tags, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2676,7 +2847,7 @@ public class PhysicalModesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriPhysicalModesValidateBeforeCall(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriPhysicalModesValidateBeforeCall(basePath, debugUrl, region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -2687,6 +2858,8 @@ public class PhysicalModesApi {
 
     public class CoverageRegionUriPhysicalModesRequestBuilder {
         private PhysicalModesApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String uri;
         private Integer startPage;
@@ -2708,6 +2881,15 @@ public class PhysicalModesApi {
 
         public CoverageRegionUriPhysicalModesRequestBuilder(PhysicalModesApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionUriPhysicalModesRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionUriPhysicalModesRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionUriPhysicalModesRequestBuilder withRegion(String region) {
@@ -2784,15 +2966,17 @@ public class PhysicalModesApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<PhysicalModes > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriPhysicalModesAsync(this.region, this.uri, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, callback);
+            return currentApi.getCoverageRegionUriPhysicalModesAsync(basePath, debugUrl, this.region, this.uri, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriPhysicalModesAsyncRaw(this.region, this.uri, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, callback);
+            return currentApi.getCoverageRegionUriPhysicalModesAsyncRaw(basePath, debugUrl, this.region, this.uri, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.filter, this.tags, callback);
         }
     }
     /**
      * Build call for getCoverageRegionUriPhysicalModesId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
@@ -2816,46 +3000,51 @@ public class PhysicalModesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionUriPhysicalModesIdCall(String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriPhysicalModesIdCall(String basePath, String debugUrl, String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/{uri}/physical_modes/{id}"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()))
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (externalCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "external_code", externalCode));
         if (headsign != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "headsign", headsign));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (odtLevel != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "odt_level", odtLevel));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2890,7 +3079,7 @@ public class PhysicalModesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionUriPhysicalModesIdValidateBeforeCall(String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriPhysicalModesIdValidateBeforeCall(String basePath, String debugUrl, String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -2908,7 +3097,7 @@ public class PhysicalModesApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriPhysicalModesIdCall(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriPhysicalModesIdCall(basePath, debugUrl, region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
         return call;
 
     }
@@ -2916,6 +3105,8 @@ public class PhysicalModesApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
@@ -2937,14 +3128,16 @@ public class PhysicalModesApi {
      * @return PhysicalModes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected PhysicalModes getCoverageRegionUriPhysicalModesId(String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags) throws ApiException {
-        ApiResponse<PhysicalModes> resp = getCoverageRegionUriPhysicalModesIdWithHttpInfo(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
+    protected PhysicalModes getCoverageRegionUriPhysicalModesId(String basePath, String debugUrl, String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags) throws ApiException {
+        ApiResponse<PhysicalModes> resp = getCoverageRegionUriPhysicalModesIdWithHttpInfo(basePath, debugUrl, region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
@@ -2966,8 +3159,8 @@ public class PhysicalModesApi {
      * @return ApiResponse&lt;PhysicalModes&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<PhysicalModes> getCoverageRegionUriPhysicalModesIdWithHttpInfo(String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionUriPhysicalModesIdValidateBeforeCall(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, null, null);
+    private ApiResponse<PhysicalModes> getCoverageRegionUriPhysicalModesIdWithHttpInfo(String basePath, String debugUrl, String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionUriPhysicalModesIdValidateBeforeCall(basePath, debugUrl, region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, null, null);
         Type localVarReturnType = new TypeToken<PhysicalModes>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2975,6 +3168,8 @@ public class PhysicalModesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
@@ -2997,7 +3192,7 @@ public class PhysicalModesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriPhysicalModesIdAsync(String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ApiCallback<PhysicalModes> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriPhysicalModesIdAsync(String basePath, String debugUrl, String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ApiCallback<PhysicalModes> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3018,7 +3213,7 @@ public class PhysicalModesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriPhysicalModesIdValidateBeforeCall(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriPhysicalModesIdValidateBeforeCall(basePath, debugUrl, region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PhysicalModes>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -3027,6 +3222,8 @@ public class PhysicalModesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
@@ -3049,7 +3246,7 @@ public class PhysicalModesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriPhysicalModesIdAsyncRaw(String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriPhysicalModesIdAsyncRaw(String basePath, String debugUrl, String region, String uri, String id, Integer startPage, Integer count, Integer depth, List<String> forbiddenId, List<String> forbiddenUris, String externalCode, String headsign, Boolean showCodes, String odtLevel, Integer distance, DateTime since, DateTime until, Boolean disableGeojson, Boolean disableDisruption, List<String> tags, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3070,7 +3267,7 @@ public class PhysicalModesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriPhysicalModesIdValidateBeforeCall(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriPhysicalModesIdValidateBeforeCall(basePath, debugUrl, region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -3081,6 +3278,8 @@ public class PhysicalModesApi {
 
     public class CoverageRegionUriPhysicalModesIdRequestBuilder {
         private PhysicalModesApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String uri;
         private String id;
@@ -3102,6 +3301,15 @@ public class PhysicalModesApi {
 
         public CoverageRegionUriPhysicalModesIdRequestBuilder(PhysicalModesApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionUriPhysicalModesIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionUriPhysicalModesIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionUriPhysicalModesIdRequestBuilder withRegion(String region) {
@@ -3178,11 +3386,11 @@ public class PhysicalModesApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<PhysicalModes > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriPhysicalModesIdAsync(this.region, this.uri, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, callback);
+            return currentApi.getCoverageRegionUriPhysicalModesIdAsync(basePath, debugUrl, this.region, this.uri, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriPhysicalModesIdAsyncRaw(this.region, this.uri, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, callback);
+            return currentApi.getCoverageRegionUriPhysicalModesIdAsyncRaw(basePath, debugUrl, this.region, this.uri, this.id, this.startPage, this.count, this.depth, this.forbiddenId, this.forbiddenUris, this.externalCode, this.headsign, this.showCodes, this.odtLevel, this.distance, this.since, this.until, this.disableGeojson, this.disableDisruption, this.tags, callback);
         }
     }
 }

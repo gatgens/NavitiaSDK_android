@@ -50,6 +50,8 @@ public class CoordsApi {
 
     /**
      * Build call for getCoverageLonLatCoord
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param progressListener Progress listener
@@ -57,15 +59,20 @@ public class CoordsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatCoordCall(BigDecimal lat, BigDecimal lon, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatCoordCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/coord"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -100,7 +107,7 @@ public class CoordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatCoordValidateBeforeCall(BigDecimal lat, BigDecimal lon, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatCoordValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -113,7 +120,7 @@ public class CoordsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCoordCall(lat, lon, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCoordCall(basePath, debugUrl, lat, lon, progressListener, progressRequestListener);
         return call;
 
     }
@@ -121,26 +128,30 @@ public class CoordsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @return DictAddresses
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected DictAddresses getCoverageLonLatCoord(BigDecimal lat, BigDecimal lon) throws ApiException {
-        ApiResponse<DictAddresses> resp = getCoverageLonLatCoordWithHttpInfo(lat, lon);
+    protected DictAddresses getCoverageLonLatCoord(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon) throws ApiException {
+        ApiResponse<DictAddresses> resp = getCoverageLonLatCoordWithHttpInfo(basePath, debugUrl, lat, lon);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @return ApiResponse&lt;DictAddresses&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<DictAddresses> getCoverageLonLatCoordWithHttpInfo(BigDecimal lat, BigDecimal lon) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatCoordValidateBeforeCall(lat, lon, null, null);
+    private ApiResponse<DictAddresses> getCoverageLonLatCoordWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatCoordValidateBeforeCall(basePath, debugUrl, lat, lon, null, null);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -148,13 +159,15 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatCoordAsync(BigDecimal lat, BigDecimal lon, final ApiCallback<DictAddresses> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatCoordAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, final ApiCallback<DictAddresses> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -175,7 +188,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCoordValidateBeforeCall(lat, lon, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCoordValidateBeforeCall(basePath, debugUrl, lat, lon, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -184,13 +197,15 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatCoordAsyncRaw(BigDecimal lat, BigDecimal lon, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatCoordAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -211,7 +226,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCoordValidateBeforeCall(lat, lon, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCoordValidateBeforeCall(basePath, debugUrl, lat, lon, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -222,11 +237,22 @@ public class CoordsApi {
 
     public class CoverageLonLatCoordRequestBuilder {
         private CoordsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
 
         public CoverageLonLatCoordRequestBuilder(CoordsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatCoordRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatCoordRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatCoordRequestBuilder withLat(BigDecimal lat) {
@@ -239,15 +265,17 @@ public class CoordsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<DictAddresses > callback) throws ApiException {
-            return currentApi.getCoverageLonLatCoordAsync(this.lat, this.lon, callback);
+            return currentApi.getCoverageLonLatCoordAsync(basePath, debugUrl, this.lat, this.lon, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatCoordAsyncRaw(this.lat, this.lon, callback);
+            return currentApi.getCoverageLonLatCoordAsyncRaw(basePath, debugUrl, this.lat, this.lon, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatCoordId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -256,16 +284,21 @@ public class CoordsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatCoordIdCall(BigDecimal lat, BigDecimal lon, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatCoordIdCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/coord/{id}"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()))
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -300,7 +333,7 @@ public class CoordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatCoordIdValidateBeforeCall(BigDecimal lat, BigDecimal lon, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatCoordIdValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -318,7 +351,7 @@ public class CoordsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCoordIdCall(lat, lon, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCoordIdCall(basePath, debugUrl, lat, lon, id, progressListener, progressRequestListener);
         return call;
 
     }
@@ -326,28 +359,32 @@ public class CoordsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
      * @return DictAddresses
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected DictAddresses getCoverageLonLatCoordId(BigDecimal lat, BigDecimal lon, String id) throws ApiException {
-        ApiResponse<DictAddresses> resp = getCoverageLonLatCoordIdWithHttpInfo(lat, lon, id);
+    protected DictAddresses getCoverageLonLatCoordId(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id) throws ApiException {
+        ApiResponse<DictAddresses> resp = getCoverageLonLatCoordIdWithHttpInfo(basePath, debugUrl, lat, lon, id);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
      * @return ApiResponse&lt;DictAddresses&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<DictAddresses> getCoverageLonLatCoordIdWithHttpInfo(BigDecimal lat, BigDecimal lon, String id) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatCoordIdValidateBeforeCall(lat, lon, id, null, null);
+    private ApiResponse<DictAddresses> getCoverageLonLatCoordIdWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatCoordIdValidateBeforeCall(basePath, debugUrl, lat, lon, id, null, null);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -355,6 +392,8 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -362,7 +401,7 @@ public class CoordsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatCoordIdAsync(BigDecimal lat, BigDecimal lon, String id, final ApiCallback<DictAddresses> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatCoordIdAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, final ApiCallback<DictAddresses> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -383,7 +422,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCoordIdValidateBeforeCall(lat, lon, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCoordIdValidateBeforeCall(basePath, debugUrl, lat, lon, id, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -392,6 +431,8 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -399,7 +440,7 @@ public class CoordsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatCoordIdAsyncRaw(BigDecimal lat, BigDecimal lon, String id, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatCoordIdAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -420,7 +461,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCoordIdValidateBeforeCall(lat, lon, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCoordIdValidateBeforeCall(basePath, debugUrl, lat, lon, id, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -431,12 +472,23 @@ public class CoordsApi {
 
     public class CoverageLonLatCoordIdRequestBuilder {
         private CoordsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String id;
 
         public CoverageLonLatCoordIdRequestBuilder(CoordsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatCoordIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatCoordIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatCoordIdRequestBuilder withLat(BigDecimal lat) {
@@ -453,15 +505,17 @@ public class CoordsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<DictAddresses > callback) throws ApiException {
-            return currentApi.getCoverageLonLatCoordIdAsync(this.lat, this.lon, this.id, callback);
+            return currentApi.getCoverageLonLatCoordIdAsync(basePath, debugUrl, this.lat, this.lon, this.id, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatCoordIdAsyncRaw(this.lat, this.lon, this.id, callback);
+            return currentApi.getCoverageLonLatCoordIdAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.id, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatCoords
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param progressListener Progress listener
@@ -469,15 +523,20 @@ public class CoordsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatCoordsCall(BigDecimal lat, BigDecimal lon, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatCoordsCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/coords"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -512,7 +571,7 @@ public class CoordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatCoordsValidateBeforeCall(BigDecimal lat, BigDecimal lon, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatCoordsValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -525,7 +584,7 @@ public class CoordsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCoordsCall(lat, lon, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCoordsCall(basePath, debugUrl, lat, lon, progressListener, progressRequestListener);
         return call;
 
     }
@@ -533,26 +592,30 @@ public class CoordsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @return DictAddresses
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected DictAddresses getCoverageLonLatCoords(BigDecimal lat, BigDecimal lon) throws ApiException {
-        ApiResponse<DictAddresses> resp = getCoverageLonLatCoordsWithHttpInfo(lat, lon);
+    protected DictAddresses getCoverageLonLatCoords(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon) throws ApiException {
+        ApiResponse<DictAddresses> resp = getCoverageLonLatCoordsWithHttpInfo(basePath, debugUrl, lat, lon);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @return ApiResponse&lt;DictAddresses&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<DictAddresses> getCoverageLonLatCoordsWithHttpInfo(BigDecimal lat, BigDecimal lon) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatCoordsValidateBeforeCall(lat, lon, null, null);
+    private ApiResponse<DictAddresses> getCoverageLonLatCoordsWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatCoordsValidateBeforeCall(basePath, debugUrl, lat, lon, null, null);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -560,13 +623,15 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatCoordsAsync(BigDecimal lat, BigDecimal lon, final ApiCallback<DictAddresses> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatCoordsAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, final ApiCallback<DictAddresses> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -587,7 +652,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCoordsValidateBeforeCall(lat, lon, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCoordsValidateBeforeCall(basePath, debugUrl, lat, lon, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -596,13 +661,15 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatCoordsAsyncRaw(BigDecimal lat, BigDecimal lon, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatCoordsAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -623,7 +690,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCoordsValidateBeforeCall(lat, lon, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCoordsValidateBeforeCall(basePath, debugUrl, lat, lon, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -634,11 +701,22 @@ public class CoordsApi {
 
     public class CoverageLonLatCoordsRequestBuilder {
         private CoordsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
 
         public CoverageLonLatCoordsRequestBuilder(CoordsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatCoordsRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatCoordsRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatCoordsRequestBuilder withLat(BigDecimal lat) {
@@ -651,15 +729,17 @@ public class CoordsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<DictAddresses > callback) throws ApiException {
-            return currentApi.getCoverageLonLatCoordsAsync(this.lat, this.lon, callback);
+            return currentApi.getCoverageLonLatCoordsAsync(basePath, debugUrl, this.lat, this.lon, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatCoordsAsyncRaw(this.lat, this.lon, callback);
+            return currentApi.getCoverageLonLatCoordsAsyncRaw(basePath, debugUrl, this.lat, this.lon, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatCoordsId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -668,16 +748,21 @@ public class CoordsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatCoordsIdCall(BigDecimal lat, BigDecimal lon, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatCoordsIdCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/coords/{id}"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()))
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -712,7 +797,7 @@ public class CoordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatCoordsIdValidateBeforeCall(BigDecimal lat, BigDecimal lon, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatCoordsIdValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -730,7 +815,7 @@ public class CoordsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCoordsIdCall(lat, lon, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCoordsIdCall(basePath, debugUrl, lat, lon, id, progressListener, progressRequestListener);
         return call;
 
     }
@@ -738,28 +823,32 @@ public class CoordsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
      * @return DictAddresses
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected DictAddresses getCoverageLonLatCoordsId(BigDecimal lat, BigDecimal lon, String id) throws ApiException {
-        ApiResponse<DictAddresses> resp = getCoverageLonLatCoordsIdWithHttpInfo(lat, lon, id);
+    protected DictAddresses getCoverageLonLatCoordsId(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id) throws ApiException {
+        ApiResponse<DictAddresses> resp = getCoverageLonLatCoordsIdWithHttpInfo(basePath, debugUrl, lat, lon, id);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
      * @return ApiResponse&lt;DictAddresses&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<DictAddresses> getCoverageLonLatCoordsIdWithHttpInfo(BigDecimal lat, BigDecimal lon, String id) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatCoordsIdValidateBeforeCall(lat, lon, id, null, null);
+    private ApiResponse<DictAddresses> getCoverageLonLatCoordsIdWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatCoordsIdValidateBeforeCall(basePath, debugUrl, lat, lon, id, null, null);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -767,6 +856,8 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -774,7 +865,7 @@ public class CoordsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatCoordsIdAsync(BigDecimal lat, BigDecimal lon, String id, final ApiCallback<DictAddresses> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatCoordsIdAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, final ApiCallback<DictAddresses> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -795,7 +886,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCoordsIdValidateBeforeCall(lat, lon, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCoordsIdValidateBeforeCall(basePath, debugUrl, lat, lon, id, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -804,6 +895,8 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -811,7 +904,7 @@ public class CoordsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatCoordsIdAsyncRaw(BigDecimal lat, BigDecimal lon, String id, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatCoordsIdAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -832,7 +925,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCoordsIdValidateBeforeCall(lat, lon, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCoordsIdValidateBeforeCall(basePath, debugUrl, lat, lon, id, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -843,12 +936,23 @@ public class CoordsApi {
 
     public class CoverageLonLatCoordsIdRequestBuilder {
         private CoordsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String id;
 
         public CoverageLonLatCoordsIdRequestBuilder(CoordsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatCoordsIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatCoordsIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatCoordsIdRequestBuilder withLat(BigDecimal lat) {
@@ -865,15 +969,17 @@ public class CoordsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<DictAddresses > callback) throws ApiException {
-            return currentApi.getCoverageLonLatCoordsIdAsync(this.lat, this.lon, this.id, callback);
+            return currentApi.getCoverageLonLatCoordsIdAsync(basePath, debugUrl, this.lat, this.lon, this.id, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatCoordsIdAsyncRaw(this.lat, this.lon, this.id, callback);
+            return currentApi.getCoverageLonLatCoordsIdAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.id, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatUriCoord
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -882,16 +988,21 @@ public class CoordsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatUriCoordCall(BigDecimal lat, BigDecimal lon, String uri, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriCoordCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/{uri}/coord"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -926,7 +1037,7 @@ public class CoordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatUriCoordValidateBeforeCall(BigDecimal lat, BigDecimal lon, String uri, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriCoordValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -944,7 +1055,7 @@ public class CoordsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordCall(lat, lon, uri, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordCall(basePath, debugUrl, lat, lon, uri, progressListener, progressRequestListener);
         return call;
 
     }
@@ -952,28 +1063,32 @@ public class CoordsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
      * @return DictAddresses
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected DictAddresses getCoverageLonLatUriCoord(BigDecimal lat, BigDecimal lon, String uri) throws ApiException {
-        ApiResponse<DictAddresses> resp = getCoverageLonLatUriCoordWithHttpInfo(lat, lon, uri);
+    protected DictAddresses getCoverageLonLatUriCoord(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri) throws ApiException {
+        ApiResponse<DictAddresses> resp = getCoverageLonLatUriCoordWithHttpInfo(basePath, debugUrl, lat, lon, uri);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
      * @return ApiResponse&lt;DictAddresses&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<DictAddresses> getCoverageLonLatUriCoordWithHttpInfo(BigDecimal lat, BigDecimal lon, String uri) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordValidateBeforeCall(lat, lon, uri, null, null);
+    private ApiResponse<DictAddresses> getCoverageLonLatUriCoordWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordValidateBeforeCall(basePath, debugUrl, lat, lon, uri, null, null);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -981,6 +1096,8 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -988,7 +1105,7 @@ public class CoordsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriCoordAsync(BigDecimal lat, BigDecimal lon, String uri, final ApiCallback<DictAddresses> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriCoordAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, final ApiCallback<DictAddresses> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1009,7 +1126,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordValidateBeforeCall(lat, lon, uri, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordValidateBeforeCall(basePath, debugUrl, lat, lon, uri, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1018,6 +1135,8 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1025,7 +1144,7 @@ public class CoordsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriCoordAsyncRaw(BigDecimal lat, BigDecimal lon, String uri, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriCoordAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1046,7 +1165,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordValidateBeforeCall(lat, lon, uri, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordValidateBeforeCall(basePath, debugUrl, lat, lon, uri, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1057,12 +1176,23 @@ public class CoordsApi {
 
     public class CoverageLonLatUriCoordRequestBuilder {
         private CoordsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String uri;
 
         public CoverageLonLatUriCoordRequestBuilder(CoordsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatUriCoordRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatUriCoordRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatUriCoordRequestBuilder withLat(BigDecimal lat) {
@@ -1079,15 +1209,17 @@ public class CoordsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<DictAddresses > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriCoordAsync(this.lat, this.lon, this.uri, callback);
+            return currentApi.getCoverageLonLatUriCoordAsync(basePath, debugUrl, this.lat, this.lon, this.uri, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriCoordAsyncRaw(this.lat, this.lon, this.uri, callback);
+            return currentApi.getCoverageLonLatUriCoordAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.uri, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatUriCoordId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1097,10 +1229,10 @@ public class CoordsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatUriCoordIdCall(BigDecimal lat, BigDecimal lon, String uri, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriCoordIdCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/{uri}/coord/{id}"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()))
@@ -1108,6 +1240,11 @@ public class CoordsApi {
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1142,7 +1279,7 @@ public class CoordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatUriCoordIdValidateBeforeCall(BigDecimal lat, BigDecimal lon, String uri, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriCoordIdValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -1165,7 +1302,7 @@ public class CoordsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordIdCall(lat, lon, uri, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordIdCall(basePath, debugUrl, lat, lon, uri, id, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1173,6 +1310,8 @@ public class CoordsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1180,14 +1319,16 @@ public class CoordsApi {
      * @return DictAddresses
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected DictAddresses getCoverageLonLatUriCoordId(BigDecimal lat, BigDecimal lon, String uri, String id) throws ApiException {
-        ApiResponse<DictAddresses> resp = getCoverageLonLatUriCoordIdWithHttpInfo(lat, lon, uri, id);
+    protected DictAddresses getCoverageLonLatUriCoordId(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id) throws ApiException {
+        ApiResponse<DictAddresses> resp = getCoverageLonLatUriCoordIdWithHttpInfo(basePath, debugUrl, lat, lon, uri, id);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1195,8 +1336,8 @@ public class CoordsApi {
      * @return ApiResponse&lt;DictAddresses&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<DictAddresses> getCoverageLonLatUriCoordIdWithHttpInfo(BigDecimal lat, BigDecimal lon, String uri, String id) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordIdValidateBeforeCall(lat, lon, uri, id, null, null);
+    private ApiResponse<DictAddresses> getCoverageLonLatUriCoordIdWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordIdValidateBeforeCall(basePath, debugUrl, lat, lon, uri, id, null, null);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1204,6 +1345,8 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1212,7 +1355,7 @@ public class CoordsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriCoordIdAsync(BigDecimal lat, BigDecimal lon, String uri, String id, final ApiCallback<DictAddresses> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriCoordIdAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, final ApiCallback<DictAddresses> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1233,7 +1376,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordIdValidateBeforeCall(lat, lon, uri, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordIdValidateBeforeCall(basePath, debugUrl, lat, lon, uri, id, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1242,6 +1385,8 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1250,7 +1395,7 @@ public class CoordsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriCoordIdAsyncRaw(BigDecimal lat, BigDecimal lon, String uri, String id, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriCoordIdAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1271,7 +1416,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordIdValidateBeforeCall(lat, lon, uri, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordIdValidateBeforeCall(basePath, debugUrl, lat, lon, uri, id, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1282,6 +1427,8 @@ public class CoordsApi {
 
     public class CoverageLonLatUriCoordIdRequestBuilder {
         private CoordsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String uri;
@@ -1289,6 +1436,15 @@ public class CoordsApi {
 
         public CoverageLonLatUriCoordIdRequestBuilder(CoordsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatUriCoordIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatUriCoordIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatUriCoordIdRequestBuilder withLat(BigDecimal lat) {
@@ -1309,15 +1465,17 @@ public class CoordsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<DictAddresses > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriCoordIdAsync(this.lat, this.lon, this.uri, this.id, callback);
+            return currentApi.getCoverageLonLatUriCoordIdAsync(basePath, debugUrl, this.lat, this.lon, this.uri, this.id, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriCoordIdAsyncRaw(this.lat, this.lon, this.uri, this.id, callback);
+            return currentApi.getCoverageLonLatUriCoordIdAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.uri, this.id, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatUriCoords
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1326,16 +1484,21 @@ public class CoordsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatUriCoordsCall(BigDecimal lat, BigDecimal lon, String uri, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriCoordsCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/{uri}/coords"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1370,7 +1533,7 @@ public class CoordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatUriCoordsValidateBeforeCall(BigDecimal lat, BigDecimal lon, String uri, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriCoordsValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -1388,7 +1551,7 @@ public class CoordsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordsCall(lat, lon, uri, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordsCall(basePath, debugUrl, lat, lon, uri, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1396,28 +1559,32 @@ public class CoordsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
      * @return DictAddresses
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected DictAddresses getCoverageLonLatUriCoords(BigDecimal lat, BigDecimal lon, String uri) throws ApiException {
-        ApiResponse<DictAddresses> resp = getCoverageLonLatUriCoordsWithHttpInfo(lat, lon, uri);
+    protected DictAddresses getCoverageLonLatUriCoords(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri) throws ApiException {
+        ApiResponse<DictAddresses> resp = getCoverageLonLatUriCoordsWithHttpInfo(basePath, debugUrl, lat, lon, uri);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
      * @return ApiResponse&lt;DictAddresses&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<DictAddresses> getCoverageLonLatUriCoordsWithHttpInfo(BigDecimal lat, BigDecimal lon, String uri) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordsValidateBeforeCall(lat, lon, uri, null, null);
+    private ApiResponse<DictAddresses> getCoverageLonLatUriCoordsWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordsValidateBeforeCall(basePath, debugUrl, lat, lon, uri, null, null);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1425,6 +1592,8 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1432,7 +1601,7 @@ public class CoordsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriCoordsAsync(BigDecimal lat, BigDecimal lon, String uri, final ApiCallback<DictAddresses> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriCoordsAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, final ApiCallback<DictAddresses> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1453,7 +1622,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordsValidateBeforeCall(lat, lon, uri, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordsValidateBeforeCall(basePath, debugUrl, lat, lon, uri, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1462,6 +1631,8 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1469,7 +1640,7 @@ public class CoordsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriCoordsAsyncRaw(BigDecimal lat, BigDecimal lon, String uri, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriCoordsAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1490,7 +1661,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordsValidateBeforeCall(lat, lon, uri, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordsValidateBeforeCall(basePath, debugUrl, lat, lon, uri, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1501,12 +1672,23 @@ public class CoordsApi {
 
     public class CoverageLonLatUriCoordsRequestBuilder {
         private CoordsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String uri;
 
         public CoverageLonLatUriCoordsRequestBuilder(CoordsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatUriCoordsRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatUriCoordsRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatUriCoordsRequestBuilder withLat(BigDecimal lat) {
@@ -1523,15 +1705,17 @@ public class CoordsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<DictAddresses > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriCoordsAsync(this.lat, this.lon, this.uri, callback);
+            return currentApi.getCoverageLonLatUriCoordsAsync(basePath, debugUrl, this.lat, this.lon, this.uri, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriCoordsAsyncRaw(this.lat, this.lon, this.uri, callback);
+            return currentApi.getCoverageLonLatUriCoordsAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.uri, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatUriCoordsId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1541,10 +1725,10 @@ public class CoordsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatUriCoordsIdCall(BigDecimal lat, BigDecimal lon, String uri, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriCoordsIdCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/{uri}/coords/{id}"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()))
@@ -1552,6 +1736,11 @@ public class CoordsApi {
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1586,7 +1775,7 @@ public class CoordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatUriCoordsIdValidateBeforeCall(BigDecimal lat, BigDecimal lon, String uri, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriCoordsIdValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -1609,7 +1798,7 @@ public class CoordsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordsIdCall(lat, lon, uri, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordsIdCall(basePath, debugUrl, lat, lon, uri, id, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1617,6 +1806,8 @@ public class CoordsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1624,14 +1815,16 @@ public class CoordsApi {
      * @return DictAddresses
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected DictAddresses getCoverageLonLatUriCoordsId(BigDecimal lat, BigDecimal lon, String uri, String id) throws ApiException {
-        ApiResponse<DictAddresses> resp = getCoverageLonLatUriCoordsIdWithHttpInfo(lat, lon, uri, id);
+    protected DictAddresses getCoverageLonLatUriCoordsId(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id) throws ApiException {
+        ApiResponse<DictAddresses> resp = getCoverageLonLatUriCoordsIdWithHttpInfo(basePath, debugUrl, lat, lon, uri, id);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1639,8 +1832,8 @@ public class CoordsApi {
      * @return ApiResponse&lt;DictAddresses&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<DictAddresses> getCoverageLonLatUriCoordsIdWithHttpInfo(BigDecimal lat, BigDecimal lon, String uri, String id) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordsIdValidateBeforeCall(lat, lon, uri, id, null, null);
+    private ApiResponse<DictAddresses> getCoverageLonLatUriCoordsIdWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordsIdValidateBeforeCall(basePath, debugUrl, lat, lon, uri, id, null, null);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1648,6 +1841,8 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1656,7 +1851,7 @@ public class CoordsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriCoordsIdAsync(BigDecimal lat, BigDecimal lon, String uri, String id, final ApiCallback<DictAddresses> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriCoordsIdAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, final ApiCallback<DictAddresses> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1677,7 +1872,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordsIdValidateBeforeCall(lat, lon, uri, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordsIdValidateBeforeCall(basePath, debugUrl, lat, lon, uri, id, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1686,6 +1881,8 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1694,7 +1891,7 @@ public class CoordsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriCoordsIdAsyncRaw(BigDecimal lat, BigDecimal lon, String uri, String id, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriCoordsIdAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String id, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1715,7 +1912,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordsIdValidateBeforeCall(lat, lon, uri, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCoordsIdValidateBeforeCall(basePath, debugUrl, lat, lon, uri, id, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1726,6 +1923,8 @@ public class CoordsApi {
 
     public class CoverageLonLatUriCoordsIdRequestBuilder {
         private CoordsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String uri;
@@ -1733,6 +1932,15 @@ public class CoordsApi {
 
         public CoverageLonLatUriCoordsIdRequestBuilder(CoordsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatUriCoordsIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatUriCoordsIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatUriCoordsIdRequestBuilder withLat(BigDecimal lat) {
@@ -1753,29 +1961,36 @@ public class CoordsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<DictAddresses > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriCoordsIdAsync(this.lat, this.lon, this.uri, this.id, callback);
+            return currentApi.getCoverageLonLatUriCoordsIdAsync(basePath, debugUrl, this.lat, this.lon, this.uri, this.id, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriCoordsIdAsyncRaw(this.lat, this.lon, this.uri, this.id, callback);
+            return currentApi.getCoverageLonLatUriCoordsIdAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.uri, this.id, callback);
         }
     }
     /**
      * Build call for getCoverageRegionCoord
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionCoordCall(String region, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionCoordCall(String basePath, String debugUrl, String region, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/coord"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1810,7 +2025,7 @@ public class CoordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionCoordValidateBeforeCall(String region, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionCoordValidateBeforeCall(String basePath, String debugUrl, String region, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -1818,7 +2033,7 @@ public class CoordsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionCoordCall(region, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCoordCall(basePath, debugUrl, region, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1826,24 +2041,28 @@ public class CoordsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @return DictAddresses
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected DictAddresses getCoverageRegionCoord(String region) throws ApiException {
-        ApiResponse<DictAddresses> resp = getCoverageRegionCoordWithHttpInfo(region);
+    protected DictAddresses getCoverageRegionCoord(String basePath, String debugUrl, String region) throws ApiException {
+        ApiResponse<DictAddresses> resp = getCoverageRegionCoordWithHttpInfo(basePath, debugUrl, region);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @return ApiResponse&lt;DictAddresses&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<DictAddresses> getCoverageRegionCoordWithHttpInfo(String region) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionCoordValidateBeforeCall(region, null, null);
+    private ApiResponse<DictAddresses> getCoverageRegionCoordWithHttpInfo(String basePath, String debugUrl, String region) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionCoordValidateBeforeCall(basePath, debugUrl, region, null, null);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1851,12 +2070,14 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionCoordAsync(String region, final ApiCallback<DictAddresses> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionCoordAsync(String basePath, String debugUrl, String region, final ApiCallback<DictAddresses> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1877,7 +2098,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionCoordValidateBeforeCall(region, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCoordValidateBeforeCall(basePath, debugUrl, region, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1886,12 +2107,14 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionCoordAsyncRaw(String region, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionCoordAsyncRaw(String basePath, String debugUrl, String region, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1912,7 +2135,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionCoordValidateBeforeCall(region, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCoordValidateBeforeCall(basePath, debugUrl, region, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1923,10 +2146,21 @@ public class CoordsApi {
 
     public class CoverageRegionCoordRequestBuilder {
         private CoordsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
 
         public CoverageRegionCoordRequestBuilder(CoordsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionCoordRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionCoordRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionCoordRequestBuilder withRegion(String region) {
@@ -1935,15 +2169,17 @@ public class CoordsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<DictAddresses > callback) throws ApiException {
-            return currentApi.getCoverageRegionCoordAsync(this.region, callback);
+            return currentApi.getCoverageRegionCoordAsync(basePath, debugUrl, this.region, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionCoordAsyncRaw(this.region, callback);
+            return currentApi.getCoverageRegionCoordAsyncRaw(basePath, debugUrl, this.region, callback);
         }
     }
     /**
      * Build call for getCoverageRegionCoordId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param progressListener Progress listener
@@ -1951,15 +2187,20 @@ public class CoordsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionCoordIdCall(String region, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionCoordIdCall(String basePath, String debugUrl, String region, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/coord/{id}"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()))
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1994,7 +2235,7 @@ public class CoordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionCoordIdValidateBeforeCall(String region, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionCoordIdValidateBeforeCall(String basePath, String debugUrl, String region, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -2007,7 +2248,7 @@ public class CoordsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionCoordIdCall(region, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCoordIdCall(basePath, debugUrl, region, id, progressListener, progressRequestListener);
         return call;
 
     }
@@ -2015,26 +2256,30 @@ public class CoordsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @return DictAddresses
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected DictAddresses getCoverageRegionCoordId(String region, String id) throws ApiException {
-        ApiResponse<DictAddresses> resp = getCoverageRegionCoordIdWithHttpInfo(region, id);
+    protected DictAddresses getCoverageRegionCoordId(String basePath, String debugUrl, String region, String id) throws ApiException {
+        ApiResponse<DictAddresses> resp = getCoverageRegionCoordIdWithHttpInfo(basePath, debugUrl, region, id);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @return ApiResponse&lt;DictAddresses&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<DictAddresses> getCoverageRegionCoordIdWithHttpInfo(String region, String id) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionCoordIdValidateBeforeCall(region, id, null, null);
+    private ApiResponse<DictAddresses> getCoverageRegionCoordIdWithHttpInfo(String basePath, String debugUrl, String region, String id) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionCoordIdValidateBeforeCall(basePath, debugUrl, region, id, null, null);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2042,13 +2287,15 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionCoordIdAsync(String region, String id, final ApiCallback<DictAddresses> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionCoordIdAsync(String basePath, String debugUrl, String region, String id, final ApiCallback<DictAddresses> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2069,7 +2316,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionCoordIdValidateBeforeCall(region, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCoordIdValidateBeforeCall(basePath, debugUrl, region, id, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -2078,13 +2325,15 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionCoordIdAsyncRaw(String region, String id, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionCoordIdAsyncRaw(String basePath, String debugUrl, String region, String id, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2105,7 +2354,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionCoordIdValidateBeforeCall(region, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCoordIdValidateBeforeCall(basePath, debugUrl, region, id, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -2116,11 +2365,22 @@ public class CoordsApi {
 
     public class CoverageRegionCoordIdRequestBuilder {
         private CoordsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String id;
 
         public CoverageRegionCoordIdRequestBuilder(CoordsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionCoordIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionCoordIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionCoordIdRequestBuilder withRegion(String region) {
@@ -2133,29 +2393,36 @@ public class CoordsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<DictAddresses > callback) throws ApiException {
-            return currentApi.getCoverageRegionCoordIdAsync(this.region, this.id, callback);
+            return currentApi.getCoverageRegionCoordIdAsync(basePath, debugUrl, this.region, this.id, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionCoordIdAsyncRaw(this.region, this.id, callback);
+            return currentApi.getCoverageRegionCoordIdAsyncRaw(basePath, debugUrl, this.region, this.id, callback);
         }
     }
     /**
      * Build call for getCoverageRegionCoords
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionCoordsCall(String region, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionCoordsCall(String basePath, String debugUrl, String region, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/coords"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2190,7 +2457,7 @@ public class CoordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionCoordsValidateBeforeCall(String region, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionCoordsValidateBeforeCall(String basePath, String debugUrl, String region, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -2198,7 +2465,7 @@ public class CoordsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionCoordsCall(region, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCoordsCall(basePath, debugUrl, region, progressListener, progressRequestListener);
         return call;
 
     }
@@ -2206,24 +2473,28 @@ public class CoordsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @return DictAddresses
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected DictAddresses getCoverageRegionCoords(String region) throws ApiException {
-        ApiResponse<DictAddresses> resp = getCoverageRegionCoordsWithHttpInfo(region);
+    protected DictAddresses getCoverageRegionCoords(String basePath, String debugUrl, String region) throws ApiException {
+        ApiResponse<DictAddresses> resp = getCoverageRegionCoordsWithHttpInfo(basePath, debugUrl, region);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @return ApiResponse&lt;DictAddresses&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<DictAddresses> getCoverageRegionCoordsWithHttpInfo(String region) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionCoordsValidateBeforeCall(region, null, null);
+    private ApiResponse<DictAddresses> getCoverageRegionCoordsWithHttpInfo(String basePath, String debugUrl, String region) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionCoordsValidateBeforeCall(basePath, debugUrl, region, null, null);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2231,12 +2502,14 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionCoordsAsync(String region, final ApiCallback<DictAddresses> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionCoordsAsync(String basePath, String debugUrl, String region, final ApiCallback<DictAddresses> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2257,7 +2530,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionCoordsValidateBeforeCall(region, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCoordsValidateBeforeCall(basePath, debugUrl, region, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -2266,12 +2539,14 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionCoordsAsyncRaw(String region, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionCoordsAsyncRaw(String basePath, String debugUrl, String region, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2292,7 +2567,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionCoordsValidateBeforeCall(region, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCoordsValidateBeforeCall(basePath, debugUrl, region, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -2303,10 +2578,21 @@ public class CoordsApi {
 
     public class CoverageRegionCoordsRequestBuilder {
         private CoordsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
 
         public CoverageRegionCoordsRequestBuilder(CoordsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionCoordsRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionCoordsRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionCoordsRequestBuilder withRegion(String region) {
@@ -2315,15 +2601,17 @@ public class CoordsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<DictAddresses > callback) throws ApiException {
-            return currentApi.getCoverageRegionCoordsAsync(this.region, callback);
+            return currentApi.getCoverageRegionCoordsAsync(basePath, debugUrl, this.region, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionCoordsAsyncRaw(this.region, callback);
+            return currentApi.getCoverageRegionCoordsAsyncRaw(basePath, debugUrl, this.region, callback);
         }
     }
     /**
      * Build call for getCoverageRegionCoordsId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param progressListener Progress listener
@@ -2331,15 +2619,20 @@ public class CoordsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionCoordsIdCall(String region, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionCoordsIdCall(String basePath, String debugUrl, String region, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/coords/{id}"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()))
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2374,7 +2667,7 @@ public class CoordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionCoordsIdValidateBeforeCall(String region, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionCoordsIdValidateBeforeCall(String basePath, String debugUrl, String region, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -2387,7 +2680,7 @@ public class CoordsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionCoordsIdCall(region, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCoordsIdCall(basePath, debugUrl, region, id, progressListener, progressRequestListener);
         return call;
 
     }
@@ -2395,26 +2688,30 @@ public class CoordsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @return DictAddresses
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected DictAddresses getCoverageRegionCoordsId(String region, String id) throws ApiException {
-        ApiResponse<DictAddresses> resp = getCoverageRegionCoordsIdWithHttpInfo(region, id);
+    protected DictAddresses getCoverageRegionCoordsId(String basePath, String debugUrl, String region, String id) throws ApiException {
+        ApiResponse<DictAddresses> resp = getCoverageRegionCoordsIdWithHttpInfo(basePath, debugUrl, region, id);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @return ApiResponse&lt;DictAddresses&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<DictAddresses> getCoverageRegionCoordsIdWithHttpInfo(String region, String id) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionCoordsIdValidateBeforeCall(region, id, null, null);
+    private ApiResponse<DictAddresses> getCoverageRegionCoordsIdWithHttpInfo(String basePath, String debugUrl, String region, String id) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionCoordsIdValidateBeforeCall(basePath, debugUrl, region, id, null, null);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2422,13 +2719,15 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionCoordsIdAsync(String region, String id, final ApiCallback<DictAddresses> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionCoordsIdAsync(String basePath, String debugUrl, String region, String id, final ApiCallback<DictAddresses> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2449,7 +2748,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionCoordsIdValidateBeforeCall(region, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCoordsIdValidateBeforeCall(basePath, debugUrl, region, id, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -2458,13 +2757,15 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionCoordsIdAsyncRaw(String region, String id, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionCoordsIdAsyncRaw(String basePath, String debugUrl, String region, String id, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2485,7 +2786,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionCoordsIdValidateBeforeCall(region, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCoordsIdValidateBeforeCall(basePath, debugUrl, region, id, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -2496,11 +2797,22 @@ public class CoordsApi {
 
     public class CoverageRegionCoordsIdRequestBuilder {
         private CoordsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String id;
 
         public CoverageRegionCoordsIdRequestBuilder(CoordsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionCoordsIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionCoordsIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionCoordsIdRequestBuilder withRegion(String region) {
@@ -2513,15 +2825,17 @@ public class CoordsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<DictAddresses > callback) throws ApiException {
-            return currentApi.getCoverageRegionCoordsIdAsync(this.region, this.id, callback);
+            return currentApi.getCoverageRegionCoordsIdAsync(basePath, debugUrl, this.region, this.id, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionCoordsIdAsyncRaw(this.region, this.id, callback);
+            return currentApi.getCoverageRegionCoordsIdAsyncRaw(basePath, debugUrl, this.region, this.id, callback);
         }
     }
     /**
      * Build call for getCoverageRegionUriCoord
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param progressListener Progress listener
@@ -2529,15 +2843,20 @@ public class CoordsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionUriCoordCall(String region, String uri, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriCoordCall(String basePath, String debugUrl, String region, String uri, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/{uri}/coord"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2572,7 +2891,7 @@ public class CoordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionUriCoordValidateBeforeCall(String region, String uri, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriCoordValidateBeforeCall(String basePath, String debugUrl, String region, String uri, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -2585,7 +2904,7 @@ public class CoordsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriCoordCall(region, uri, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriCoordCall(basePath, debugUrl, region, uri, progressListener, progressRequestListener);
         return call;
 
     }
@@ -2593,26 +2912,30 @@ public class CoordsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @return DictAddresses
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected DictAddresses getCoverageRegionUriCoord(String region, String uri) throws ApiException {
-        ApiResponse<DictAddresses> resp = getCoverageRegionUriCoordWithHttpInfo(region, uri);
+    protected DictAddresses getCoverageRegionUriCoord(String basePath, String debugUrl, String region, String uri) throws ApiException {
+        ApiResponse<DictAddresses> resp = getCoverageRegionUriCoordWithHttpInfo(basePath, debugUrl, region, uri);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @return ApiResponse&lt;DictAddresses&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<DictAddresses> getCoverageRegionUriCoordWithHttpInfo(String region, String uri) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionUriCoordValidateBeforeCall(region, uri, null, null);
+    private ApiResponse<DictAddresses> getCoverageRegionUriCoordWithHttpInfo(String basePath, String debugUrl, String region, String uri) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionUriCoordValidateBeforeCall(basePath, debugUrl, region, uri, null, null);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2620,13 +2943,15 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriCoordAsync(String region, String uri, final ApiCallback<DictAddresses> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriCoordAsync(String basePath, String debugUrl, String region, String uri, final ApiCallback<DictAddresses> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2647,7 +2972,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriCoordValidateBeforeCall(region, uri, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriCoordValidateBeforeCall(basePath, debugUrl, region, uri, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -2656,13 +2981,15 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriCoordAsyncRaw(String region, String uri, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriCoordAsyncRaw(String basePath, String debugUrl, String region, String uri, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2683,7 +3010,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriCoordValidateBeforeCall(region, uri, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriCoordValidateBeforeCall(basePath, debugUrl, region, uri, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -2694,11 +3021,22 @@ public class CoordsApi {
 
     public class CoverageRegionUriCoordRequestBuilder {
         private CoordsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String uri;
 
         public CoverageRegionUriCoordRequestBuilder(CoordsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionUriCoordRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionUriCoordRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionUriCoordRequestBuilder withRegion(String region) {
@@ -2711,15 +3049,17 @@ public class CoordsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<DictAddresses > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriCoordAsync(this.region, this.uri, callback);
+            return currentApi.getCoverageRegionUriCoordAsync(basePath, debugUrl, this.region, this.uri, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriCoordAsyncRaw(this.region, this.uri, callback);
+            return currentApi.getCoverageRegionUriCoordAsyncRaw(basePath, debugUrl, this.region, this.uri, callback);
         }
     }
     /**
      * Build call for getCoverageRegionUriCoordId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
@@ -2728,16 +3068,21 @@ public class CoordsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionUriCoordIdCall(String region, String uri, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriCoordIdCall(String basePath, String debugUrl, String region, String uri, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/{uri}/coord/{id}"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()))
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2772,7 +3117,7 @@ public class CoordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionUriCoordIdValidateBeforeCall(String region, String uri, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriCoordIdValidateBeforeCall(String basePath, String debugUrl, String region, String uri, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -2790,7 +3135,7 @@ public class CoordsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriCoordIdCall(region, uri, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriCoordIdCall(basePath, debugUrl, region, uri, id, progressListener, progressRequestListener);
         return call;
 
     }
@@ -2798,28 +3143,32 @@ public class CoordsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
      * @return DictAddresses
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected DictAddresses getCoverageRegionUriCoordId(String region, String uri, String id) throws ApiException {
-        ApiResponse<DictAddresses> resp = getCoverageRegionUriCoordIdWithHttpInfo(region, uri, id);
+    protected DictAddresses getCoverageRegionUriCoordId(String basePath, String debugUrl, String region, String uri, String id) throws ApiException {
+        ApiResponse<DictAddresses> resp = getCoverageRegionUriCoordIdWithHttpInfo(basePath, debugUrl, region, uri, id);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
      * @return ApiResponse&lt;DictAddresses&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<DictAddresses> getCoverageRegionUriCoordIdWithHttpInfo(String region, String uri, String id) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionUriCoordIdValidateBeforeCall(region, uri, id, null, null);
+    private ApiResponse<DictAddresses> getCoverageRegionUriCoordIdWithHttpInfo(String basePath, String debugUrl, String region, String uri, String id) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionUriCoordIdValidateBeforeCall(basePath, debugUrl, region, uri, id, null, null);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2827,6 +3176,8 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
@@ -2834,7 +3185,7 @@ public class CoordsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriCoordIdAsync(String region, String uri, String id, final ApiCallback<DictAddresses> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriCoordIdAsync(String basePath, String debugUrl, String region, String uri, String id, final ApiCallback<DictAddresses> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2855,7 +3206,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriCoordIdValidateBeforeCall(region, uri, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriCoordIdValidateBeforeCall(basePath, debugUrl, region, uri, id, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -2864,6 +3215,8 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
@@ -2871,7 +3224,7 @@ public class CoordsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriCoordIdAsyncRaw(String region, String uri, String id, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriCoordIdAsyncRaw(String basePath, String debugUrl, String region, String uri, String id, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2892,7 +3245,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriCoordIdValidateBeforeCall(region, uri, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriCoordIdValidateBeforeCall(basePath, debugUrl, region, uri, id, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -2903,12 +3256,23 @@ public class CoordsApi {
 
     public class CoverageRegionUriCoordIdRequestBuilder {
         private CoordsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String uri;
         private String id;
 
         public CoverageRegionUriCoordIdRequestBuilder(CoordsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionUriCoordIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionUriCoordIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionUriCoordIdRequestBuilder withRegion(String region) {
@@ -2925,15 +3289,17 @@ public class CoordsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<DictAddresses > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriCoordIdAsync(this.region, this.uri, this.id, callback);
+            return currentApi.getCoverageRegionUriCoordIdAsync(basePath, debugUrl, this.region, this.uri, this.id, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriCoordIdAsyncRaw(this.region, this.uri, this.id, callback);
+            return currentApi.getCoverageRegionUriCoordIdAsyncRaw(basePath, debugUrl, this.region, this.uri, this.id, callback);
         }
     }
     /**
      * Build call for getCoverageRegionUriCoords
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param progressListener Progress listener
@@ -2941,15 +3307,20 @@ public class CoordsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionUriCoordsCall(String region, String uri, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriCoordsCall(String basePath, String debugUrl, String region, String uri, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/{uri}/coords"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2984,7 +3355,7 @@ public class CoordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionUriCoordsValidateBeforeCall(String region, String uri, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriCoordsValidateBeforeCall(String basePath, String debugUrl, String region, String uri, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -2997,7 +3368,7 @@ public class CoordsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriCoordsCall(region, uri, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriCoordsCall(basePath, debugUrl, region, uri, progressListener, progressRequestListener);
         return call;
 
     }
@@ -3005,26 +3376,30 @@ public class CoordsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @return DictAddresses
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected DictAddresses getCoverageRegionUriCoords(String region, String uri) throws ApiException {
-        ApiResponse<DictAddresses> resp = getCoverageRegionUriCoordsWithHttpInfo(region, uri);
+    protected DictAddresses getCoverageRegionUriCoords(String basePath, String debugUrl, String region, String uri) throws ApiException {
+        ApiResponse<DictAddresses> resp = getCoverageRegionUriCoordsWithHttpInfo(basePath, debugUrl, region, uri);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @return ApiResponse&lt;DictAddresses&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<DictAddresses> getCoverageRegionUriCoordsWithHttpInfo(String region, String uri) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionUriCoordsValidateBeforeCall(region, uri, null, null);
+    private ApiResponse<DictAddresses> getCoverageRegionUriCoordsWithHttpInfo(String basePath, String debugUrl, String region, String uri) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionUriCoordsValidateBeforeCall(basePath, debugUrl, region, uri, null, null);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -3032,13 +3407,15 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriCoordsAsync(String region, String uri, final ApiCallback<DictAddresses> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriCoordsAsync(String basePath, String debugUrl, String region, String uri, final ApiCallback<DictAddresses> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3059,7 +3436,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriCoordsValidateBeforeCall(region, uri, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriCoordsValidateBeforeCall(basePath, debugUrl, region, uri, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -3068,13 +3445,15 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriCoordsAsyncRaw(String region, String uri, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriCoordsAsyncRaw(String basePath, String debugUrl, String region, String uri, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3095,7 +3474,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriCoordsValidateBeforeCall(region, uri, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriCoordsValidateBeforeCall(basePath, debugUrl, region, uri, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -3106,11 +3485,22 @@ public class CoordsApi {
 
     public class CoverageRegionUriCoordsRequestBuilder {
         private CoordsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String uri;
 
         public CoverageRegionUriCoordsRequestBuilder(CoordsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionUriCoordsRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionUriCoordsRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionUriCoordsRequestBuilder withRegion(String region) {
@@ -3123,15 +3513,17 @@ public class CoordsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<DictAddresses > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriCoordsAsync(this.region, this.uri, callback);
+            return currentApi.getCoverageRegionUriCoordsAsync(basePath, debugUrl, this.region, this.uri, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriCoordsAsyncRaw(this.region, this.uri, callback);
+            return currentApi.getCoverageRegionUriCoordsAsyncRaw(basePath, debugUrl, this.region, this.uri, callback);
         }
     }
     /**
      * Build call for getCoverageRegionUriCoordsId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
@@ -3140,16 +3532,21 @@ public class CoordsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionUriCoordsIdCall(String region, String uri, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriCoordsIdCall(String basePath, String debugUrl, String region, String uri, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/{uri}/coords/{id}"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()))
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -3184,7 +3581,7 @@ public class CoordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionUriCoordsIdValidateBeforeCall(String region, String uri, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriCoordsIdValidateBeforeCall(String basePath, String debugUrl, String region, String uri, String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -3202,7 +3599,7 @@ public class CoordsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriCoordsIdCall(region, uri, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriCoordsIdCall(basePath, debugUrl, region, uri, id, progressListener, progressRequestListener);
         return call;
 
     }
@@ -3210,28 +3607,32 @@ public class CoordsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
      * @return DictAddresses
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected DictAddresses getCoverageRegionUriCoordsId(String region, String uri, String id) throws ApiException {
-        ApiResponse<DictAddresses> resp = getCoverageRegionUriCoordsIdWithHttpInfo(region, uri, id);
+    protected DictAddresses getCoverageRegionUriCoordsId(String basePath, String debugUrl, String region, String uri, String id) throws ApiException {
+        ApiResponse<DictAddresses> resp = getCoverageRegionUriCoordsIdWithHttpInfo(basePath, debugUrl, region, uri, id);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
      * @return ApiResponse&lt;DictAddresses&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<DictAddresses> getCoverageRegionUriCoordsIdWithHttpInfo(String region, String uri, String id) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionUriCoordsIdValidateBeforeCall(region, uri, id, null, null);
+    private ApiResponse<DictAddresses> getCoverageRegionUriCoordsIdWithHttpInfo(String basePath, String debugUrl, String region, String uri, String id) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionUriCoordsIdValidateBeforeCall(basePath, debugUrl, region, uri, id, null, null);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -3239,6 +3640,8 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
@@ -3246,7 +3649,7 @@ public class CoordsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriCoordsIdAsync(String region, String uri, String id, final ApiCallback<DictAddresses> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriCoordsIdAsync(String basePath, String debugUrl, String region, String uri, String id, final ApiCallback<DictAddresses> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3267,7 +3670,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriCoordsIdValidateBeforeCall(region, uri, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriCoordsIdValidateBeforeCall(basePath, debugUrl, region, uri, id, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<DictAddresses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -3276,6 +3679,8 @@ public class CoordsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param id Id of the object you want to query (required)
@@ -3283,7 +3688,7 @@ public class CoordsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriCoordsIdAsyncRaw(String region, String uri, String id, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriCoordsIdAsyncRaw(String basePath, String debugUrl, String region, String uri, String id, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3304,7 +3709,7 @@ public class CoordsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriCoordsIdValidateBeforeCall(region, uri, id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriCoordsIdValidateBeforeCall(basePath, debugUrl, region, uri, id, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -3315,12 +3720,23 @@ public class CoordsApi {
 
     public class CoverageRegionUriCoordsIdRequestBuilder {
         private CoordsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String uri;
         private String id;
 
         public CoverageRegionUriCoordsIdRequestBuilder(CoordsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionUriCoordsIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionUriCoordsIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionUriCoordsIdRequestBuilder withRegion(String region) {
@@ -3337,11 +3753,11 @@ public class CoordsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<DictAddresses > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriCoordsIdAsync(this.region, this.uri, this.id, callback);
+            return currentApi.getCoverageRegionUriCoordsIdAsync(basePath, debugUrl, this.region, this.uri, this.id, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriCoordsIdAsyncRaw(this.region, this.uri, this.id, callback);
+            return currentApi.getCoverageRegionUriCoordsIdAsyncRaw(basePath, debugUrl, this.region, this.uri, this.id, callback);
         }
     }
 }

@@ -50,6 +50,8 @@ public class PtobjectsApi {
 
     /**
      * Build call for getCoverageLonLatPtObjects
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param q The data to search (required)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
@@ -64,29 +66,34 @@ public class PtobjectsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatPtObjectsCall(String q, BigDecimal lat, BigDecimal lon, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatPtObjectsCall(String basePath, String debugUrl, String q, BigDecimal lat, BigDecimal lon, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/pt_objects"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (q != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "q", q));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "q", q));
         if (type != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "type[]", type));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "type[]", type));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (adminUri != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "admin_uri[]", adminUri));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "admin_uri[]", adminUri));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -121,7 +128,7 @@ public class PtobjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatPtObjectsValidateBeforeCall(String q, BigDecimal lat, BigDecimal lon, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatPtObjectsValidateBeforeCall(String basePath, String debugUrl, String q, BigDecimal lat, BigDecimal lon, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'q' is set
         if (q == null) {
@@ -139,7 +146,7 @@ public class PtobjectsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatPtObjectsCall(q, lat, lon, type, count, adminUri, depth, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatPtObjectsCall(basePath, debugUrl, q, lat, lon, type, count, adminUri, depth, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         return call;
 
     }
@@ -147,6 +154,8 @@ public class PtobjectsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param q The data to search (required)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
@@ -159,14 +168,16 @@ public class PtobjectsApi {
      * @return PtObjects
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected PtObjects getCoverageLonLatPtObjects(String q, BigDecimal lat, BigDecimal lon, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
-        ApiResponse<PtObjects> resp = getCoverageLonLatPtObjectsWithHttpInfo(q, lat, lon, type, count, adminUri, depth, disableGeojson, disableDisruption);
+    protected PtObjects getCoverageLonLatPtObjects(String basePath, String debugUrl, String q, BigDecimal lat, BigDecimal lon, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
+        ApiResponse<PtObjects> resp = getCoverageLonLatPtObjectsWithHttpInfo(basePath, debugUrl, q, lat, lon, type, count, adminUri, depth, disableGeojson, disableDisruption);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param q The data to search (required)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
@@ -179,8 +190,8 @@ public class PtobjectsApi {
      * @return ApiResponse&lt;PtObjects&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<PtObjects> getCoverageLonLatPtObjectsWithHttpInfo(String q, BigDecimal lat, BigDecimal lon, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatPtObjectsValidateBeforeCall(q, lat, lon, type, count, adminUri, depth, disableGeojson, disableDisruption, null, null);
+    private ApiResponse<PtObjects> getCoverageLonLatPtObjectsWithHttpInfo(String basePath, String debugUrl, String q, BigDecimal lat, BigDecimal lon, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatPtObjectsValidateBeforeCall(basePath, debugUrl, q, lat, lon, type, count, adminUri, depth, disableGeojson, disableDisruption, null, null);
         Type localVarReturnType = new TypeToken<PtObjects>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -188,6 +199,8 @@ public class PtobjectsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param q The data to search (required)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
@@ -201,7 +214,7 @@ public class PtobjectsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatPtObjectsAsync(String q, BigDecimal lat, BigDecimal lon, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<PtObjects> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatPtObjectsAsync(String basePath, String debugUrl, String q, BigDecimal lat, BigDecimal lon, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<PtObjects> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -222,7 +235,7 @@ public class PtobjectsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatPtObjectsValidateBeforeCall(q, lat, lon, type, count, adminUri, depth, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatPtObjectsValidateBeforeCall(basePath, debugUrl, q, lat, lon, type, count, adminUri, depth, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PtObjects>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -231,6 +244,8 @@ public class PtobjectsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param q The data to search (required)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
@@ -244,7 +259,7 @@ public class PtobjectsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatPtObjectsAsyncRaw(String q, BigDecimal lat, BigDecimal lon, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatPtObjectsAsyncRaw(String basePath, String debugUrl, String q, BigDecimal lat, BigDecimal lon, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -265,7 +280,7 @@ public class PtobjectsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatPtObjectsValidateBeforeCall(q, lat, lon, type, count, adminUri, depth, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatPtObjectsValidateBeforeCall(basePath, debugUrl, q, lat, lon, type, count, adminUri, depth, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -276,6 +291,8 @@ public class PtobjectsApi {
 
     public class CoverageLonLatPtObjectsRequestBuilder {
         private PtobjectsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String q;
         private BigDecimal lat;
         private BigDecimal lon;
@@ -288,6 +305,15 @@ public class PtobjectsApi {
 
         public CoverageLonLatPtObjectsRequestBuilder(PtobjectsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatPtObjectsRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatPtObjectsRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatPtObjectsRequestBuilder withQ(String q) {
@@ -328,15 +354,17 @@ public class PtobjectsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<PtObjects > callback) throws ApiException {
-            return currentApi.getCoverageLonLatPtObjectsAsync(this.q, this.lat, this.lon, this.type, this.count, this.adminUri, this.depth, this.disableGeojson, this.disableDisruption, callback);
+            return currentApi.getCoverageLonLatPtObjectsAsync(basePath, debugUrl, this.q, this.lat, this.lon, this.type, this.count, this.adminUri, this.depth, this.disableGeojson, this.disableDisruption, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatPtObjectsAsyncRaw(this.q, this.lat, this.lon, this.type, this.count, this.adminUri, this.depth, this.disableGeojson, this.disableDisruption, callback);
+            return currentApi.getCoverageLonLatPtObjectsAsyncRaw(basePath, debugUrl, this.q, this.lat, this.lon, this.type, this.count, this.adminUri, this.depth, this.disableGeojson, this.disableDisruption, callback);
         }
     }
     /**
      * Build call for getCoverageRegionPtObjects
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param q The data to search (required)
      * @param region  The region you want to query (required)
      * @param type The type of data to search (optional, default to [u'network', u'commercial_mode', u'line', u'line_group', u'route', u'stop_area'])
@@ -350,28 +378,33 @@ public class PtobjectsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionPtObjectsCall(String q, String region, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionPtObjectsCall(String basePath, String debugUrl, String q, String region, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/pt_objects"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (q != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "q", q));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "q", q));
         if (type != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "type[]", type));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "type[]", type));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (adminUri != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "admin_uri[]", adminUri));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "admin_uri[]", adminUri));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -406,7 +439,7 @@ public class PtobjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionPtObjectsValidateBeforeCall(String q, String region, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionPtObjectsValidateBeforeCall(String basePath, String debugUrl, String q, String region, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'q' is set
         if (q == null) {
@@ -419,7 +452,7 @@ public class PtobjectsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionPtObjectsCall(q, region, type, count, adminUri, depth, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionPtObjectsCall(basePath, debugUrl, q, region, type, count, adminUri, depth, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         return call;
 
     }
@@ -427,6 +460,8 @@ public class PtobjectsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param q The data to search (required)
      * @param region  The region you want to query (required)
      * @param type The type of data to search (optional, default to [u'network', u'commercial_mode', u'line', u'line_group', u'route', u'stop_area'])
@@ -438,14 +473,16 @@ public class PtobjectsApi {
      * @return PtObjects
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected PtObjects getCoverageRegionPtObjects(String q, String region, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
-        ApiResponse<PtObjects> resp = getCoverageRegionPtObjectsWithHttpInfo(q, region, type, count, adminUri, depth, disableGeojson, disableDisruption);
+    protected PtObjects getCoverageRegionPtObjects(String basePath, String debugUrl, String q, String region, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
+        ApiResponse<PtObjects> resp = getCoverageRegionPtObjectsWithHttpInfo(basePath, debugUrl, q, region, type, count, adminUri, depth, disableGeojson, disableDisruption);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param q The data to search (required)
      * @param region  The region you want to query (required)
      * @param type The type of data to search (optional, default to [u'network', u'commercial_mode', u'line', u'line_group', u'route', u'stop_area'])
@@ -457,8 +494,8 @@ public class PtobjectsApi {
      * @return ApiResponse&lt;PtObjects&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<PtObjects> getCoverageRegionPtObjectsWithHttpInfo(String q, String region, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionPtObjectsValidateBeforeCall(q, region, type, count, adminUri, depth, disableGeojson, disableDisruption, null, null);
+    private ApiResponse<PtObjects> getCoverageRegionPtObjectsWithHttpInfo(String basePath, String debugUrl, String q, String region, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionPtObjectsValidateBeforeCall(basePath, debugUrl, q, region, type, count, adminUri, depth, disableGeojson, disableDisruption, null, null);
         Type localVarReturnType = new TypeToken<PtObjects>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -466,6 +503,8 @@ public class PtobjectsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param q The data to search (required)
      * @param region  The region you want to query (required)
      * @param type The type of data to search (optional, default to [u'network', u'commercial_mode', u'line', u'line_group', u'route', u'stop_area'])
@@ -478,7 +517,7 @@ public class PtobjectsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionPtObjectsAsync(String q, String region, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<PtObjects> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionPtObjectsAsync(String basePath, String debugUrl, String q, String region, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<PtObjects> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -499,7 +538,7 @@ public class PtobjectsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionPtObjectsValidateBeforeCall(q, region, type, count, adminUri, depth, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionPtObjectsValidateBeforeCall(basePath, debugUrl, q, region, type, count, adminUri, depth, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PtObjects>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -508,6 +547,8 @@ public class PtobjectsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param q The data to search (required)
      * @param region  The region you want to query (required)
      * @param type The type of data to search (optional, default to [u'network', u'commercial_mode', u'line', u'line_group', u'route', u'stop_area'])
@@ -520,7 +561,7 @@ public class PtobjectsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionPtObjectsAsyncRaw(String q, String region, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionPtObjectsAsyncRaw(String basePath, String debugUrl, String q, String region, List<String> type, Integer count, List<String> adminUri, Integer depth, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -541,7 +582,7 @@ public class PtobjectsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionPtObjectsValidateBeforeCall(q, region, type, count, adminUri, depth, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionPtObjectsValidateBeforeCall(basePath, debugUrl, q, region, type, count, adminUri, depth, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -552,6 +593,8 @@ public class PtobjectsApi {
 
     public class CoverageRegionPtObjectsRequestBuilder {
         private PtobjectsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String q;
         private String region;
         private List<String> type;
@@ -563,6 +606,15 @@ public class PtobjectsApi {
 
         public CoverageRegionPtObjectsRequestBuilder(PtobjectsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionPtObjectsRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionPtObjectsRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionPtObjectsRequestBuilder withQ(String q) {
@@ -599,11 +651,11 @@ public class PtobjectsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<PtObjects > callback) throws ApiException {
-            return currentApi.getCoverageRegionPtObjectsAsync(this.q, this.region, this.type, this.count, this.adminUri, this.depth, this.disableGeojson, this.disableDisruption, callback);
+            return currentApi.getCoverageRegionPtObjectsAsync(basePath, debugUrl, this.q, this.region, this.type, this.count, this.adminUri, this.depth, this.disableGeojson, this.disableDisruption, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionPtObjectsAsyncRaw(this.q, this.region, this.type, this.count, this.adminUri, this.depth, this.disableGeojson, this.disableDisruption, callback);
+            return currentApi.getCoverageRegionPtObjectsAsyncRaw(basePath, debugUrl, this.q, this.region, this.type, this.count, this.adminUri, this.depth, this.disableGeojson, this.disableDisruption, callback);
         }
     }
 }

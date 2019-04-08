@@ -51,6 +51,8 @@ public class GraphicalIsochroneApi {
 
     /**
      * Build call for getCoverageLonLatIsochrones
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param from The id of the departure of your journey. If not provided an isochrone is computed. (optional)
@@ -89,77 +91,82 @@ public class GraphicalIsochroneApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatIsochronesCall(BigDecimal lat, BigDecimal lon, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatIsochronesCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/isochrones"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (from != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "from", from));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "from", from));
         if (to != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "to", to));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "to", to));
         if (datetime != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datetime", datetime));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "datetime", datetime));
         if (datetimeRepresents != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datetime_represents", datetimeRepresents));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "datetime_represents", datetimeRepresents));
         if (maxNbTransfers != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_nb_transfers", maxNbTransfers));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_nb_transfers", maxNbTransfers));
         if (minNbTransfers != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "min_nb_transfers", minNbTransfers));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "min_nb_transfers", minNbTransfers));
         if (firstSectionMode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "first_section_mode[]", firstSectionMode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "first_section_mode[]", firstSectionMode));
         if (lastSectionMode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "last_section_mode[]", lastSectionMode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "last_section_mode[]", lastSectionMode));
         if (maxDurationToPt != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_duration_to_pt", maxDurationToPt));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_duration_to_pt", maxDurationToPt));
         if (maxWalkingDurationToPt != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_walking_duration_to_pt", maxWalkingDurationToPt));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_walking_duration_to_pt", maxWalkingDurationToPt));
         if (maxBikeDurationToPt != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_bike_duration_to_pt", maxBikeDurationToPt));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_bike_duration_to_pt", maxBikeDurationToPt));
         if (maxBssDurationToPt != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_bss_duration_to_pt", maxBssDurationToPt));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_bss_duration_to_pt", maxBssDurationToPt));
         if (maxCarDurationToPt != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_car_duration_to_pt", maxCarDurationToPt));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_car_duration_to_pt", maxCarDurationToPt));
         if (maxRidesharingDurationToPt != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_ridesharing_duration_to_pt", maxRidesharingDurationToPt));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_ridesharing_duration_to_pt", maxRidesharingDurationToPt));
         if (walkingSpeed != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "walking_speed", walkingSpeed));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "walking_speed", walkingSpeed));
         if (bikeSpeed != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "bike_speed", bikeSpeed));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "bike_speed", bikeSpeed));
         if (bssSpeed != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "bss_speed", bssSpeed));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "bss_speed", bssSpeed));
         if (carSpeed != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "car_speed", carSpeed));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "car_speed", carSpeed));
         if (ridesharingSpeed != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "ridesharing_speed", ridesharingSpeed));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "ridesharing_speed", ridesharingSpeed));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (allowedId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "allowed_id[]", allowedId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "allowed_id[]", allowedId));
         if (disruptionActive != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disruption_active", disruptionActive));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disruption_active", disruptionActive));
         if (dataFreshness != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "data_freshness", dataFreshness));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "data_freshness", dataFreshness));
         if (maxDuration != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_duration", maxDuration));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_duration", maxDuration));
         if (wheelchair != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "wheelchair", wheelchair));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "wheelchair", wheelchair));
         if (travelerType != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "traveler_type", travelerType));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "traveler_type", travelerType));
         if (directPath != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "direct_path", directPath));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "direct_path", directPath));
         if (freeRadiusFrom != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "free_radius_from", freeRadiusFrom));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "free_radius_from", freeRadiusFrom));
         if (freeRadiusTo != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "free_radius_to", freeRadiusTo));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "free_radius_to", freeRadiusTo));
         if (minDuration != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "min_duration", minDuration));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "min_duration", minDuration));
         if (boundaryDuration != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "boundary_duration[]", boundaryDuration));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "boundary_duration[]", boundaryDuration));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -194,7 +201,7 @@ public class GraphicalIsochroneApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatIsochronesValidateBeforeCall(BigDecimal lat, BigDecimal lon, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatIsochronesValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -207,7 +214,7 @@ public class GraphicalIsochroneApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatIsochronesCall(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatIsochronesCall(basePath, debugUrl, lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration, progressListener, progressRequestListener);
         return call;
 
     }
@@ -215,6 +222,8 @@ public class GraphicalIsochroneApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param from The id of the departure of your journey. If not provided an isochrone is computed. (optional)
@@ -251,14 +260,16 @@ public class GraphicalIsochroneApi {
      * @return GraphicalIsrochone1
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected GraphicalIsrochone1 getCoverageLonLatIsochrones(BigDecimal lat, BigDecimal lon, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration) throws ApiException {
-        ApiResponse<GraphicalIsrochone1> resp = getCoverageLonLatIsochronesWithHttpInfo(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration);
+    protected GraphicalIsrochone1 getCoverageLonLatIsochrones(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration) throws ApiException {
+        ApiResponse<GraphicalIsrochone1> resp = getCoverageLonLatIsochronesWithHttpInfo(basePath, debugUrl, lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param from The id of the departure of your journey. If not provided an isochrone is computed. (optional)
@@ -295,8 +306,8 @@ public class GraphicalIsochroneApi {
      * @return ApiResponse&lt;GraphicalIsrochone1&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<GraphicalIsrochone1> getCoverageLonLatIsochronesWithHttpInfo(BigDecimal lat, BigDecimal lon, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatIsochronesValidateBeforeCall(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration, null, null);
+    private ApiResponse<GraphicalIsrochone1> getCoverageLonLatIsochronesWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatIsochronesValidateBeforeCall(basePath, debugUrl, lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration, null, null);
         Type localVarReturnType = new TypeToken<GraphicalIsrochone1>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -304,6 +315,8 @@ public class GraphicalIsochroneApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param from The id of the departure of your journey. If not provided an isochrone is computed. (optional)
@@ -341,7 +354,7 @@ public class GraphicalIsochroneApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatIsochronesAsync(BigDecimal lat, BigDecimal lon, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration, final ApiCallback<GraphicalIsrochone1> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatIsochronesAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration, final ApiCallback<GraphicalIsrochone1> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -362,7 +375,7 @@ public class GraphicalIsochroneApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatIsochronesValidateBeforeCall(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatIsochronesValidateBeforeCall(basePath, debugUrl, lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<GraphicalIsrochone1>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -371,6 +384,8 @@ public class GraphicalIsochroneApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param from The id of the departure of your journey. If not provided an isochrone is computed. (optional)
@@ -408,7 +423,7 @@ public class GraphicalIsochroneApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatIsochronesAsyncRaw(BigDecimal lat, BigDecimal lon, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatIsochronesAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -429,7 +444,7 @@ public class GraphicalIsochroneApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatIsochronesValidateBeforeCall(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatIsochronesValidateBeforeCall(basePath, debugUrl, lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -440,6 +455,8 @@ public class GraphicalIsochroneApi {
 
     public class CoverageLonLatIsochronesRequestBuilder {
         private GraphicalIsochroneApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String from;
@@ -476,6 +493,15 @@ public class GraphicalIsochroneApi {
 
         public CoverageLonLatIsochronesRequestBuilder(GraphicalIsochroneApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatIsochronesRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatIsochronesRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatIsochronesRequestBuilder withLat(BigDecimal lat) {
@@ -612,15 +638,17 @@ public class GraphicalIsochroneApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<GraphicalIsrochone1 > callback) throws ApiException {
-            return currentApi.getCoverageLonLatIsochronesAsync(this.lat, this.lon, this.from, this.to, this.datetime, this.datetimeRepresents, this.maxNbTransfers, this.minNbTransfers, this.firstSectionMode, this.lastSectionMode, this.maxDurationToPt, this.maxWalkingDurationToPt, this.maxBikeDurationToPt, this.maxBssDurationToPt, this.maxCarDurationToPt, this.maxRidesharingDurationToPt, this.walkingSpeed, this.bikeSpeed, this.bssSpeed, this.carSpeed, this.ridesharingSpeed, this.forbiddenUris, this.allowedId, this.disruptionActive, this.dataFreshness, this.maxDuration, this.wheelchair, this.travelerType, this.directPath, this.freeRadiusFrom, this.freeRadiusTo, this.minDuration, this.boundaryDuration, callback);
+            return currentApi.getCoverageLonLatIsochronesAsync(basePath, debugUrl, this.lat, this.lon, this.from, this.to, this.datetime, this.datetimeRepresents, this.maxNbTransfers, this.minNbTransfers, this.firstSectionMode, this.lastSectionMode, this.maxDurationToPt, this.maxWalkingDurationToPt, this.maxBikeDurationToPt, this.maxBssDurationToPt, this.maxCarDurationToPt, this.maxRidesharingDurationToPt, this.walkingSpeed, this.bikeSpeed, this.bssSpeed, this.carSpeed, this.ridesharingSpeed, this.forbiddenUris, this.allowedId, this.disruptionActive, this.dataFreshness, this.maxDuration, this.wheelchair, this.travelerType, this.directPath, this.freeRadiusFrom, this.freeRadiusTo, this.minDuration, this.boundaryDuration, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatIsochronesAsyncRaw(this.lat, this.lon, this.from, this.to, this.datetime, this.datetimeRepresents, this.maxNbTransfers, this.minNbTransfers, this.firstSectionMode, this.lastSectionMode, this.maxDurationToPt, this.maxWalkingDurationToPt, this.maxBikeDurationToPt, this.maxBssDurationToPt, this.maxCarDurationToPt, this.maxRidesharingDurationToPt, this.walkingSpeed, this.bikeSpeed, this.bssSpeed, this.carSpeed, this.ridesharingSpeed, this.forbiddenUris, this.allowedId, this.disruptionActive, this.dataFreshness, this.maxDuration, this.wheelchair, this.travelerType, this.directPath, this.freeRadiusFrom, this.freeRadiusTo, this.minDuration, this.boundaryDuration, callback);
+            return currentApi.getCoverageLonLatIsochronesAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.from, this.to, this.datetime, this.datetimeRepresents, this.maxNbTransfers, this.minNbTransfers, this.firstSectionMode, this.lastSectionMode, this.maxDurationToPt, this.maxWalkingDurationToPt, this.maxBikeDurationToPt, this.maxBssDurationToPt, this.maxCarDurationToPt, this.maxRidesharingDurationToPt, this.walkingSpeed, this.bikeSpeed, this.bssSpeed, this.carSpeed, this.ridesharingSpeed, this.forbiddenUris, this.allowedId, this.disruptionActive, this.dataFreshness, this.maxDuration, this.wheelchair, this.travelerType, this.directPath, this.freeRadiusFrom, this.freeRadiusTo, this.minDuration, this.boundaryDuration, callback);
         }
     }
     /**
      * Build call for getCoverageRegionIsochrones
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param from The id of the departure of your journey. If not provided an isochrone is computed. (optional)
      * @param to The id of the arrival of your journey. If not provided an isochrone is computed. (optional)
@@ -658,76 +686,81 @@ public class GraphicalIsochroneApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionIsochronesCall(String region, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionIsochronesCall(String basePath, String debugUrl, String region, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/isochrones"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (from != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "from", from));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "from", from));
         if (to != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "to", to));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "to", to));
         if (datetime != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datetime", datetime));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "datetime", datetime));
         if (datetimeRepresents != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datetime_represents", datetimeRepresents));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "datetime_represents", datetimeRepresents));
         if (maxNbTransfers != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_nb_transfers", maxNbTransfers));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_nb_transfers", maxNbTransfers));
         if (minNbTransfers != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "min_nb_transfers", minNbTransfers));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "min_nb_transfers", minNbTransfers));
         if (firstSectionMode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "first_section_mode[]", firstSectionMode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "first_section_mode[]", firstSectionMode));
         if (lastSectionMode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "last_section_mode[]", lastSectionMode));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "last_section_mode[]", lastSectionMode));
         if (maxDurationToPt != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_duration_to_pt", maxDurationToPt));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_duration_to_pt", maxDurationToPt));
         if (maxWalkingDurationToPt != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_walking_duration_to_pt", maxWalkingDurationToPt));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_walking_duration_to_pt", maxWalkingDurationToPt));
         if (maxBikeDurationToPt != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_bike_duration_to_pt", maxBikeDurationToPt));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_bike_duration_to_pt", maxBikeDurationToPt));
         if (maxBssDurationToPt != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_bss_duration_to_pt", maxBssDurationToPt));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_bss_duration_to_pt", maxBssDurationToPt));
         if (maxCarDurationToPt != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_car_duration_to_pt", maxCarDurationToPt));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_car_duration_to_pt", maxCarDurationToPt));
         if (maxRidesharingDurationToPt != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_ridesharing_duration_to_pt", maxRidesharingDurationToPt));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_ridesharing_duration_to_pt", maxRidesharingDurationToPt));
         if (walkingSpeed != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "walking_speed", walkingSpeed));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "walking_speed", walkingSpeed));
         if (bikeSpeed != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "bike_speed", bikeSpeed));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "bike_speed", bikeSpeed));
         if (bssSpeed != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "bss_speed", bssSpeed));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "bss_speed", bssSpeed));
         if (carSpeed != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "car_speed", carSpeed));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "car_speed", carSpeed));
         if (ridesharingSpeed != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "ridesharing_speed", ridesharingSpeed));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "ridesharing_speed", ridesharingSpeed));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (allowedId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "allowed_id[]", allowedId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "allowed_id[]", allowedId));
         if (disruptionActive != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disruption_active", disruptionActive));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disruption_active", disruptionActive));
         if (dataFreshness != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "data_freshness", dataFreshness));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "data_freshness", dataFreshness));
         if (maxDuration != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_duration", maxDuration));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_duration", maxDuration));
         if (wheelchair != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "wheelchair", wheelchair));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "wheelchair", wheelchair));
         if (travelerType != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "traveler_type", travelerType));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "traveler_type", travelerType));
         if (directPath != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "direct_path", directPath));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "direct_path", directPath));
         if (freeRadiusFrom != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "free_radius_from", freeRadiusFrom));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "free_radius_from", freeRadiusFrom));
         if (freeRadiusTo != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "free_radius_to", freeRadiusTo));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "free_radius_to", freeRadiusTo));
         if (minDuration != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "min_duration", minDuration));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "min_duration", minDuration));
         if (boundaryDuration != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "boundary_duration[]", boundaryDuration));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "boundary_duration[]", boundaryDuration));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -762,7 +795,7 @@ public class GraphicalIsochroneApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionIsochronesValidateBeforeCall(String region, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionIsochronesValidateBeforeCall(String basePath, String debugUrl, String region, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -770,7 +803,7 @@ public class GraphicalIsochroneApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionIsochronesCall(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionIsochronesCall(basePath, debugUrl, region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration, progressListener, progressRequestListener);
         return call;
 
     }
@@ -778,6 +811,8 @@ public class GraphicalIsochroneApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param from The id of the departure of your journey. If not provided an isochrone is computed. (optional)
      * @param to The id of the arrival of your journey. If not provided an isochrone is computed. (optional)
@@ -813,14 +848,16 @@ public class GraphicalIsochroneApi {
      * @return GraphicalIsrochone1
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected GraphicalIsrochone1 getCoverageRegionIsochrones(String region, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration) throws ApiException {
-        ApiResponse<GraphicalIsrochone1> resp = getCoverageRegionIsochronesWithHttpInfo(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration);
+    protected GraphicalIsrochone1 getCoverageRegionIsochrones(String basePath, String debugUrl, String region, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration) throws ApiException {
+        ApiResponse<GraphicalIsrochone1> resp = getCoverageRegionIsochronesWithHttpInfo(basePath, debugUrl, region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param from The id of the departure of your journey. If not provided an isochrone is computed. (optional)
      * @param to The id of the arrival of your journey. If not provided an isochrone is computed. (optional)
@@ -856,8 +893,8 @@ public class GraphicalIsochroneApi {
      * @return ApiResponse&lt;GraphicalIsrochone1&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<GraphicalIsrochone1> getCoverageRegionIsochronesWithHttpInfo(String region, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionIsochronesValidateBeforeCall(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration, null, null);
+    private ApiResponse<GraphicalIsrochone1> getCoverageRegionIsochronesWithHttpInfo(String basePath, String debugUrl, String region, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionIsochronesValidateBeforeCall(basePath, debugUrl, region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration, null, null);
         Type localVarReturnType = new TypeToken<GraphicalIsrochone1>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -865,6 +902,8 @@ public class GraphicalIsochroneApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param from The id of the departure of your journey. If not provided an isochrone is computed. (optional)
      * @param to The id of the arrival of your journey. If not provided an isochrone is computed. (optional)
@@ -901,7 +940,7 @@ public class GraphicalIsochroneApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionIsochronesAsync(String region, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration, final ApiCallback<GraphicalIsrochone1> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionIsochronesAsync(String basePath, String debugUrl, String region, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration, final ApiCallback<GraphicalIsrochone1> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -922,7 +961,7 @@ public class GraphicalIsochroneApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionIsochronesValidateBeforeCall(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionIsochronesValidateBeforeCall(basePath, debugUrl, region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<GraphicalIsrochone1>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -931,6 +970,8 @@ public class GraphicalIsochroneApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param from The id of the departure of your journey. If not provided an isochrone is computed. (optional)
      * @param to The id of the arrival of your journey. If not provided an isochrone is computed. (optional)
@@ -967,7 +1008,7 @@ public class GraphicalIsochroneApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionIsochronesAsyncRaw(String region, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionIsochronesAsyncRaw(String basePath, String debugUrl, String region, String from, String to, DateTime datetime, String datetimeRepresents, Integer maxNbTransfers, Integer minNbTransfers, List<String> firstSectionMode, List<String> lastSectionMode, Integer maxDurationToPt, Integer maxWalkingDurationToPt, Integer maxBikeDurationToPt, Integer maxBssDurationToPt, Integer maxCarDurationToPt, Integer maxRidesharingDurationToPt, Float walkingSpeed, Float bikeSpeed, Float bssSpeed, Float carSpeed, Float ridesharingSpeed, List<String> forbiddenUris, List<String> allowedId, Boolean disruptionActive, String dataFreshness, Integer maxDuration, Boolean wheelchair, String travelerType, String directPath, Integer freeRadiusFrom, Integer freeRadiusTo, Integer minDuration, List<Integer> boundaryDuration, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -988,7 +1029,7 @@ public class GraphicalIsochroneApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionIsochronesValidateBeforeCall(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionIsochronesValidateBeforeCall(basePath, debugUrl, region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -999,6 +1040,8 @@ public class GraphicalIsochroneApi {
 
     public class CoverageRegionIsochronesRequestBuilder {
         private GraphicalIsochroneApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String from;
         private String to;
@@ -1034,6 +1077,15 @@ public class GraphicalIsochroneApi {
 
         public CoverageRegionIsochronesRequestBuilder(GraphicalIsochroneApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionIsochronesRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionIsochronesRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionIsochronesRequestBuilder withRegion(String region) {
@@ -1166,11 +1218,11 @@ public class GraphicalIsochroneApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<GraphicalIsrochone1 > callback) throws ApiException {
-            return currentApi.getCoverageRegionIsochronesAsync(this.region, this.from, this.to, this.datetime, this.datetimeRepresents, this.maxNbTransfers, this.minNbTransfers, this.firstSectionMode, this.lastSectionMode, this.maxDurationToPt, this.maxWalkingDurationToPt, this.maxBikeDurationToPt, this.maxBssDurationToPt, this.maxCarDurationToPt, this.maxRidesharingDurationToPt, this.walkingSpeed, this.bikeSpeed, this.bssSpeed, this.carSpeed, this.ridesharingSpeed, this.forbiddenUris, this.allowedId, this.disruptionActive, this.dataFreshness, this.maxDuration, this.wheelchair, this.travelerType, this.directPath, this.freeRadiusFrom, this.freeRadiusTo, this.minDuration, this.boundaryDuration, callback);
+            return currentApi.getCoverageRegionIsochronesAsync(basePath, debugUrl, this.region, this.from, this.to, this.datetime, this.datetimeRepresents, this.maxNbTransfers, this.minNbTransfers, this.firstSectionMode, this.lastSectionMode, this.maxDurationToPt, this.maxWalkingDurationToPt, this.maxBikeDurationToPt, this.maxBssDurationToPt, this.maxCarDurationToPt, this.maxRidesharingDurationToPt, this.walkingSpeed, this.bikeSpeed, this.bssSpeed, this.carSpeed, this.ridesharingSpeed, this.forbiddenUris, this.allowedId, this.disruptionActive, this.dataFreshness, this.maxDuration, this.wheelchair, this.travelerType, this.directPath, this.freeRadiusFrom, this.freeRadiusTo, this.minDuration, this.boundaryDuration, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionIsochronesAsyncRaw(this.region, this.from, this.to, this.datetime, this.datetimeRepresents, this.maxNbTransfers, this.minNbTransfers, this.firstSectionMode, this.lastSectionMode, this.maxDurationToPt, this.maxWalkingDurationToPt, this.maxBikeDurationToPt, this.maxBssDurationToPt, this.maxCarDurationToPt, this.maxRidesharingDurationToPt, this.walkingSpeed, this.bikeSpeed, this.bssSpeed, this.carSpeed, this.ridesharingSpeed, this.forbiddenUris, this.allowedId, this.disruptionActive, this.dataFreshness, this.maxDuration, this.wheelchair, this.travelerType, this.directPath, this.freeRadiusFrom, this.freeRadiusTo, this.minDuration, this.boundaryDuration, callback);
+            return currentApi.getCoverageRegionIsochronesAsyncRaw(basePath, debugUrl, this.region, this.from, this.to, this.datetime, this.datetimeRepresents, this.maxNbTransfers, this.minNbTransfers, this.firstSectionMode, this.lastSectionMode, this.maxDurationToPt, this.maxWalkingDurationToPt, this.maxBikeDurationToPt, this.maxBssDurationToPt, this.maxCarDurationToPt, this.maxRidesharingDurationToPt, this.walkingSpeed, this.bikeSpeed, this.bssSpeed, this.carSpeed, this.ridesharingSpeed, this.forbiddenUris, this.allowedId, this.disruptionActive, this.dataFreshness, this.maxDuration, this.wheelchair, this.travelerType, this.directPath, this.freeRadiusFrom, this.freeRadiusTo, this.minDuration, this.boundaryDuration, callback);
         }
     }
 }

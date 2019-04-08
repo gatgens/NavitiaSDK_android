@@ -34,7 +34,7 @@ import android.os.Parcel;
 /**
  * Journey
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2019-03-27T16:07:48.813+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2019-04-08T11:54:38.551+02:00")
 public class Journey implements Parcelable {
   @SerializedName("status")
   private String status = null;

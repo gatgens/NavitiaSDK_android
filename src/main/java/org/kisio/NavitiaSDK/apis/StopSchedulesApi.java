@@ -51,6 +51,8 @@ public class StopSchedulesApi {
 
     /**
      * Build call for getCoverageLonLatUriStopSchedules
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -75,48 +77,53 @@ public class StopSchedulesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatUriStopSchedulesCall(BigDecimal lat, BigDecimal lon, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriStopSchedulesCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/{uri}/stop_schedules"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (fromDatetime != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "from_datetime", fromDatetime));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "from_datetime", fromDatetime));
         if (untilDatetime != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until_datetime", untilDatetime));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until_datetime", untilDatetime));
         if (duration != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "duration", duration));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "duration", duration));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (maxDateTimes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_date_times", maxDateTimes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_date_times", maxDateTimes));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (calendar != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "calendar", calendar));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "calendar", calendar));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (dataFreshness != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "data_freshness", dataFreshness));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "data_freshness", dataFreshness));
         if (itemsPerSchedule != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "items_per_schedule", itemsPerSchedule));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "items_per_schedule", itemsPerSchedule));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -151,7 +158,7 @@ public class StopSchedulesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatUriStopSchedulesValidateBeforeCall(BigDecimal lat, BigDecimal lon, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriStopSchedulesValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -169,7 +176,7 @@ public class StopSchedulesApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriStopSchedulesCall(lat, lon, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriStopSchedulesCall(basePath, debugUrl, lat, lon, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
         return call;
 
     }
@@ -177,6 +184,8 @@ public class StopSchedulesApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -199,14 +208,16 @@ public class StopSchedulesApi {
      * @return StopSchedules
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected StopSchedules getCoverageLonLatUriStopSchedules(BigDecimal lat, BigDecimal lon, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson) throws ApiException {
-        ApiResponse<StopSchedules> resp = getCoverageLonLatUriStopSchedulesWithHttpInfo(lat, lon, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson);
+    protected StopSchedules getCoverageLonLatUriStopSchedules(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson) throws ApiException {
+        ApiResponse<StopSchedules> resp = getCoverageLonLatUriStopSchedulesWithHttpInfo(basePath, debugUrl, lat, lon, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -229,8 +240,8 @@ public class StopSchedulesApi {
      * @return ApiResponse&lt;StopSchedules&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<StopSchedules> getCoverageLonLatUriStopSchedulesWithHttpInfo(BigDecimal lat, BigDecimal lon, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatUriStopSchedulesValidateBeforeCall(lat, lon, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, null, null);
+    private ApiResponse<StopSchedules> getCoverageLonLatUriStopSchedulesWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatUriStopSchedulesValidateBeforeCall(basePath, debugUrl, lat, lon, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, null, null);
         Type localVarReturnType = new TypeToken<StopSchedules>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -238,6 +249,8 @@ public class StopSchedulesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -261,7 +274,7 @@ public class StopSchedulesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriStopSchedulesAsync(BigDecimal lat, BigDecimal lon, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ApiCallback<StopSchedules> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriStopSchedulesAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ApiCallback<StopSchedules> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -282,7 +295,7 @@ public class StopSchedulesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriStopSchedulesValidateBeforeCall(lat, lon, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriStopSchedulesValidateBeforeCall(basePath, debugUrl, lat, lon, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<StopSchedules>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -291,6 +304,8 @@ public class StopSchedulesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -314,7 +329,7 @@ public class StopSchedulesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriStopSchedulesAsyncRaw(BigDecimal lat, BigDecimal lon, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriStopSchedulesAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -335,7 +350,7 @@ public class StopSchedulesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriStopSchedulesValidateBeforeCall(lat, lon, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriStopSchedulesValidateBeforeCall(basePath, debugUrl, lat, lon, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -346,6 +361,8 @@ public class StopSchedulesApi {
 
     public class CoverageLonLatUriStopSchedulesRequestBuilder {
         private StopSchedulesApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String uri;
@@ -368,6 +385,15 @@ public class StopSchedulesApi {
 
         public CoverageLonLatUriStopSchedulesRequestBuilder(StopSchedulesApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatUriStopSchedulesRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatUriStopSchedulesRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatUriStopSchedulesRequestBuilder withLat(BigDecimal lat) {
@@ -448,15 +474,17 @@ public class StopSchedulesApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<StopSchedules > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriStopSchedulesAsync(this.lat, this.lon, this.uri, this.filter, this.fromDatetime, this.untilDatetime, this.duration, this.depth, this.count, this.startPage, this.maxDateTimes, this.forbiddenId, this.forbiddenUris, this.calendar, this.distance, this.showCodes, this.dataFreshness, this.itemsPerSchedule, this.disableGeojson, callback);
+            return currentApi.getCoverageLonLatUriStopSchedulesAsync(basePath, debugUrl, this.lat, this.lon, this.uri, this.filter, this.fromDatetime, this.untilDatetime, this.duration, this.depth, this.count, this.startPage, this.maxDateTimes, this.forbiddenId, this.forbiddenUris, this.calendar, this.distance, this.showCodes, this.dataFreshness, this.itemsPerSchedule, this.disableGeojson, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriStopSchedulesAsyncRaw(this.lat, this.lon, this.uri, this.filter, this.fromDatetime, this.untilDatetime, this.duration, this.depth, this.count, this.startPage, this.maxDateTimes, this.forbiddenId, this.forbiddenUris, this.calendar, this.distance, this.showCodes, this.dataFreshness, this.itemsPerSchedule, this.disableGeojson, callback);
+            return currentApi.getCoverageLonLatUriStopSchedulesAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.uri, this.filter, this.fromDatetime, this.untilDatetime, this.duration, this.depth, this.count, this.startPage, this.maxDateTimes, this.forbiddenId, this.forbiddenUris, this.calendar, this.distance, this.showCodes, this.dataFreshness, this.itemsPerSchedule, this.disableGeojson, callback);
         }
     }
     /**
      * Build call for getCoverageRegionUriStopSchedules
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param filter use to filter PT objects (optional)
@@ -480,47 +508,52 @@ public class StopSchedulesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionUriStopSchedulesCall(String region, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriStopSchedulesCall(String basePath, String debugUrl, String region, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/{uri}/stop_schedules"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (fromDatetime != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "from_datetime", fromDatetime));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "from_datetime", fromDatetime));
         if (untilDatetime != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until_datetime", untilDatetime));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until_datetime", untilDatetime));
         if (duration != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "duration", duration));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "duration", duration));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (maxDateTimes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_date_times", maxDateTimes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_date_times", maxDateTimes));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (calendar != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "calendar", calendar));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "calendar", calendar));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (dataFreshness != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "data_freshness", dataFreshness));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "data_freshness", dataFreshness));
         if (itemsPerSchedule != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "items_per_schedule", itemsPerSchedule));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "items_per_schedule", itemsPerSchedule));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -555,7 +588,7 @@ public class StopSchedulesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionUriStopSchedulesValidateBeforeCall(String region, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriStopSchedulesValidateBeforeCall(String basePath, String debugUrl, String region, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -568,7 +601,7 @@ public class StopSchedulesApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriStopSchedulesCall(region, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriStopSchedulesCall(basePath, debugUrl, region, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
         return call;
 
     }
@@ -576,6 +609,8 @@ public class StopSchedulesApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param filter use to filter PT objects (optional)
@@ -597,14 +632,16 @@ public class StopSchedulesApi {
      * @return StopSchedules
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected StopSchedules getCoverageRegionUriStopSchedules(String region, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson) throws ApiException {
-        ApiResponse<StopSchedules> resp = getCoverageRegionUriStopSchedulesWithHttpInfo(region, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson);
+    protected StopSchedules getCoverageRegionUriStopSchedules(String basePath, String debugUrl, String region, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson) throws ApiException {
+        ApiResponse<StopSchedules> resp = getCoverageRegionUriStopSchedulesWithHttpInfo(basePath, debugUrl, region, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param filter use to filter PT objects (optional)
@@ -626,8 +663,8 @@ public class StopSchedulesApi {
      * @return ApiResponse&lt;StopSchedules&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<StopSchedules> getCoverageRegionUriStopSchedulesWithHttpInfo(String region, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionUriStopSchedulesValidateBeforeCall(region, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, null, null);
+    private ApiResponse<StopSchedules> getCoverageRegionUriStopSchedulesWithHttpInfo(String basePath, String debugUrl, String region, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionUriStopSchedulesValidateBeforeCall(basePath, debugUrl, region, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, null, null);
         Type localVarReturnType = new TypeToken<StopSchedules>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -635,6 +672,8 @@ public class StopSchedulesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param filter use to filter PT objects (optional)
@@ -657,7 +696,7 @@ public class StopSchedulesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriStopSchedulesAsync(String region, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ApiCallback<StopSchedules> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriStopSchedulesAsync(String basePath, String debugUrl, String region, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ApiCallback<StopSchedules> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -678,7 +717,7 @@ public class StopSchedulesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriStopSchedulesValidateBeforeCall(region, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriStopSchedulesValidateBeforeCall(basePath, debugUrl, region, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<StopSchedules>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -687,6 +726,8 @@ public class StopSchedulesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param filter use to filter PT objects (optional)
@@ -709,7 +750,7 @@ public class StopSchedulesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriStopSchedulesAsyncRaw(String region, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriStopSchedulesAsyncRaw(String basePath, String debugUrl, String region, String uri, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -730,7 +771,7 @@ public class StopSchedulesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriStopSchedulesValidateBeforeCall(region, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriStopSchedulesValidateBeforeCall(basePath, debugUrl, region, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -741,6 +782,8 @@ public class StopSchedulesApi {
 
     public class CoverageRegionUriStopSchedulesRequestBuilder {
         private StopSchedulesApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String uri;
         private String filter;
@@ -762,6 +805,15 @@ public class StopSchedulesApi {
 
         public CoverageRegionUriStopSchedulesRequestBuilder(StopSchedulesApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionUriStopSchedulesRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionUriStopSchedulesRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionUriStopSchedulesRequestBuilder withRegion(String region) {
@@ -838,15 +890,17 @@ public class StopSchedulesApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<StopSchedules > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriStopSchedulesAsync(this.region, this.uri, this.filter, this.fromDatetime, this.untilDatetime, this.duration, this.depth, this.count, this.startPage, this.maxDateTimes, this.forbiddenId, this.forbiddenUris, this.calendar, this.distance, this.showCodes, this.dataFreshness, this.itemsPerSchedule, this.disableGeojson, callback);
+            return currentApi.getCoverageRegionUriStopSchedulesAsync(basePath, debugUrl, this.region, this.uri, this.filter, this.fromDatetime, this.untilDatetime, this.duration, this.depth, this.count, this.startPage, this.maxDateTimes, this.forbiddenId, this.forbiddenUris, this.calendar, this.distance, this.showCodes, this.dataFreshness, this.itemsPerSchedule, this.disableGeojson, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriStopSchedulesAsyncRaw(this.region, this.uri, this.filter, this.fromDatetime, this.untilDatetime, this.duration, this.depth, this.count, this.startPage, this.maxDateTimes, this.forbiddenId, this.forbiddenUris, this.calendar, this.distance, this.showCodes, this.dataFreshness, this.itemsPerSchedule, this.disableGeojson, callback);
+            return currentApi.getCoverageRegionUriStopSchedulesAsyncRaw(basePath, debugUrl, this.region, this.uri, this.filter, this.fromDatetime, this.untilDatetime, this.duration, this.depth, this.count, this.startPage, this.maxDateTimes, this.forbiddenId, this.forbiddenUris, this.calendar, this.distance, this.showCodes, this.dataFreshness, this.itemsPerSchedule, this.disableGeojson, callback);
         }
     }
     /**
      * Build call for getStopSchedules
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param filter use to filter PT objects (optional)
      * @param fromDatetime The datetime from which you want the schedules (optional)
      * @param untilDatetime The datetime until which you want the schedules (optional)
@@ -868,45 +922,50 @@ public class StopSchedulesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getStopSchedulesCall(String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getStopSchedulesCall(String basePath, String debugUrl, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/stop_schedules";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (fromDatetime != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "from_datetime", fromDatetime));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "from_datetime", fromDatetime));
         if (untilDatetime != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until_datetime", untilDatetime));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until_datetime", untilDatetime));
         if (duration != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "duration", duration));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "duration", duration));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (maxDateTimes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_date_times", maxDateTimes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_date_times", maxDateTimes));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (calendar != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "calendar", calendar));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "calendar", calendar));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (showCodes != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "show_codes", showCodes));
         if (dataFreshness != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "data_freshness", dataFreshness));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "data_freshness", dataFreshness));
         if (itemsPerSchedule != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "items_per_schedule", itemsPerSchedule));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "items_per_schedule", itemsPerSchedule));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -941,10 +1000,10 @@ public class StopSchedulesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getStopSchedulesValidateBeforeCall(String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getStopSchedulesValidateBeforeCall(String basePath, String debugUrl, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getStopSchedulesCall(filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStopSchedulesCall(basePath, debugUrl, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
         return call;
 
     }
@@ -952,6 +1011,8 @@ public class StopSchedulesApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param filter use to filter PT objects (optional)
      * @param fromDatetime The datetime from which you want the schedules (optional)
      * @param untilDatetime The datetime until which you want the schedules (optional)
@@ -971,14 +1032,16 @@ public class StopSchedulesApi {
      * @return StopSchedules
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected StopSchedules getStopSchedules(String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson) throws ApiException {
-        ApiResponse<StopSchedules> resp = getStopSchedulesWithHttpInfo(filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson);
+    protected StopSchedules getStopSchedules(String basePath, String debugUrl, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson) throws ApiException {
+        ApiResponse<StopSchedules> resp = getStopSchedulesWithHttpInfo(basePath, debugUrl, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param filter use to filter PT objects (optional)
      * @param fromDatetime The datetime from which you want the schedules (optional)
      * @param untilDatetime The datetime until which you want the schedules (optional)
@@ -998,8 +1061,8 @@ public class StopSchedulesApi {
      * @return ApiResponse&lt;StopSchedules&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<StopSchedules> getStopSchedulesWithHttpInfo(String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson) throws ApiException {
-        com.squareup.okhttp.Call call = getStopSchedulesValidateBeforeCall(filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, null, null);
+    private ApiResponse<StopSchedules> getStopSchedulesWithHttpInfo(String basePath, String debugUrl, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson) throws ApiException {
+        com.squareup.okhttp.Call call = getStopSchedulesValidateBeforeCall(basePath, debugUrl, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, null, null);
         Type localVarReturnType = new TypeToken<StopSchedules>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1007,6 +1070,8 @@ public class StopSchedulesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param filter use to filter PT objects (optional)
      * @param fromDatetime The datetime from which you want the schedules (optional)
      * @param untilDatetime The datetime until which you want the schedules (optional)
@@ -1027,7 +1092,7 @@ public class StopSchedulesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getStopSchedulesAsync(String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ApiCallback<StopSchedules> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getStopSchedulesAsync(String basePath, String debugUrl, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ApiCallback<StopSchedules> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1048,7 +1113,7 @@ public class StopSchedulesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getStopSchedulesValidateBeforeCall(filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStopSchedulesValidateBeforeCall(basePath, debugUrl, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<StopSchedules>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1057,6 +1122,8 @@ public class StopSchedulesApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param filter use to filter PT objects (optional)
      * @param fromDatetime The datetime from which you want the schedules (optional)
      * @param untilDatetime The datetime until which you want the schedules (optional)
@@ -1077,7 +1144,7 @@ public class StopSchedulesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getStopSchedulesAsyncRaw(String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getStopSchedulesAsyncRaw(String basePath, String debugUrl, String filter, DateTime fromDatetime, DateTime untilDatetime, Integer duration, Integer depth, Integer count, Integer startPage, Integer maxDateTimes, List<String> forbiddenId, List<String> forbiddenUris, String calendar, Integer distance, Boolean showCodes, String dataFreshness, Integer itemsPerSchedule, Boolean disableGeojson, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1098,7 +1165,7 @@ public class StopSchedulesApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getStopSchedulesValidateBeforeCall(filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStopSchedulesValidateBeforeCall(basePath, debugUrl, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1109,6 +1176,8 @@ public class StopSchedulesApi {
 
     public class StopSchedulesRequestBuilder {
         private StopSchedulesApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String filter;
         private DateTime fromDatetime;
         private DateTime untilDatetime;
@@ -1128,6 +1197,15 @@ public class StopSchedulesApi {
 
         public StopSchedulesRequestBuilder(StopSchedulesApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public StopSchedulesRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public StopSchedulesRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public StopSchedulesRequestBuilder withFilter(String filter) {
@@ -1196,11 +1274,11 @@ public class StopSchedulesApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<StopSchedules > callback) throws ApiException {
-            return currentApi.getStopSchedulesAsync(this.filter, this.fromDatetime, this.untilDatetime, this.duration, this.depth, this.count, this.startPage, this.maxDateTimes, this.forbiddenId, this.forbiddenUris, this.calendar, this.distance, this.showCodes, this.dataFreshness, this.itemsPerSchedule, this.disableGeojson, callback);
+            return currentApi.getStopSchedulesAsync(basePath, debugUrl, this.filter, this.fromDatetime, this.untilDatetime, this.duration, this.depth, this.count, this.startPage, this.maxDateTimes, this.forbiddenId, this.forbiddenUris, this.calendar, this.distance, this.showCodes, this.dataFreshness, this.itemsPerSchedule, this.disableGeojson, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getStopSchedulesAsyncRaw(this.filter, this.fromDatetime, this.untilDatetime, this.duration, this.depth, this.count, this.startPage, this.maxDateTimes, this.forbiddenId, this.forbiddenUris, this.calendar, this.distance, this.showCodes, this.dataFreshness, this.itemsPerSchedule, this.disableGeojson, callback);
+            return currentApi.getStopSchedulesAsyncRaw(basePath, debugUrl, this.filter, this.fromDatetime, this.untilDatetime, this.duration, this.depth, this.count, this.startPage, this.maxDateTimes, this.forbiddenId, this.forbiddenUris, this.calendar, this.distance, this.showCodes, this.dataFreshness, this.itemsPerSchedule, this.disableGeojson, callback);
         }
     }
 }

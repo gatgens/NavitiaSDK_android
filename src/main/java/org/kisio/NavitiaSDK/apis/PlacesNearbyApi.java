@@ -50,6 +50,8 @@ public class PlacesNearbyApi {
 
     /**
      * Build call for getCoordLonLatPlacesNearby
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -67,35 +69,40 @@ public class PlacesNearbyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoordLonLatPlacesNearbyCall(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoordLonLatPlacesNearbyCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coord/{lon};{lat}/places_nearby"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (type != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "type[]", type));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "type[]", type));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (bssStands != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "bss_stands", bssStands));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "bss_stands", bssStands));
         if (addPoiInfos != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "add_poi_infos[]", addPoiInfos));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "add_poi_infos[]", addPoiInfos));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -130,7 +137,7 @@ public class PlacesNearbyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoordLonLatPlacesNearbyValidateBeforeCall(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoordLonLatPlacesNearbyValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -143,7 +150,7 @@ public class PlacesNearbyApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoordLonLatPlacesNearbyCall(lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoordLonLatPlacesNearbyCall(basePath, debugUrl, lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         return call;
 
     }
@@ -151,6 +158,8 @@ public class PlacesNearbyApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -166,14 +175,16 @@ public class PlacesNearbyApi {
      * @return PlacesNearby
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected PlacesNearby getCoordLonLatPlacesNearby(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
-        ApiResponse<PlacesNearby> resp = getCoordLonLatPlacesNearbyWithHttpInfo(lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption);
+    protected PlacesNearby getCoordLonLatPlacesNearby(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
+        ApiResponse<PlacesNearby> resp = getCoordLonLatPlacesNearbyWithHttpInfo(basePath, debugUrl, lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -189,8 +200,8 @@ public class PlacesNearbyApi {
      * @return ApiResponse&lt;PlacesNearby&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<PlacesNearby> getCoordLonLatPlacesNearbyWithHttpInfo(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
-        com.squareup.okhttp.Call call = getCoordLonLatPlacesNearbyValidateBeforeCall(lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, null, null);
+    private ApiResponse<PlacesNearby> getCoordLonLatPlacesNearbyWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
+        com.squareup.okhttp.Call call = getCoordLonLatPlacesNearbyValidateBeforeCall(basePath, debugUrl, lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, null, null);
         Type localVarReturnType = new TypeToken<PlacesNearby>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -198,6 +209,8 @@ public class PlacesNearbyApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -214,7 +227,7 @@ public class PlacesNearbyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoordLonLatPlacesNearbyAsync(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<PlacesNearby> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoordLonLatPlacesNearbyAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<PlacesNearby> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -235,7 +248,7 @@ public class PlacesNearbyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoordLonLatPlacesNearbyValidateBeforeCall(lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoordLonLatPlacesNearbyValidateBeforeCall(basePath, debugUrl, lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PlacesNearby>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -244,6 +257,8 @@ public class PlacesNearbyApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -260,7 +275,7 @@ public class PlacesNearbyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoordLonLatPlacesNearbyAsyncRaw(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoordLonLatPlacesNearbyAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -281,7 +296,7 @@ public class PlacesNearbyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoordLonLatPlacesNearbyValidateBeforeCall(lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoordLonLatPlacesNearbyValidateBeforeCall(basePath, debugUrl, lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -292,6 +307,8 @@ public class PlacesNearbyApi {
 
     public class CoordLonLatPlacesNearbyRequestBuilder {
         private PlacesNearbyApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private List<String> type;
@@ -307,6 +324,15 @@ public class PlacesNearbyApi {
 
         public CoordLonLatPlacesNearbyRequestBuilder(PlacesNearbyApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoordLonLatPlacesNearbyRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoordLonLatPlacesNearbyRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoordLonLatPlacesNearbyRequestBuilder withLat(BigDecimal lat) {
@@ -359,15 +385,17 @@ public class PlacesNearbyApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<PlacesNearby > callback) throws ApiException {
-            return currentApi.getCoordLonLatPlacesNearbyAsync(this.lat, this.lon, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
+            return currentApi.getCoordLonLatPlacesNearbyAsync(basePath, debugUrl, this.lat, this.lon, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoordLonLatPlacesNearbyAsyncRaw(this.lat, this.lon, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
+            return currentApi.getCoordLonLatPlacesNearbyAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
         }
     }
     /**
      * Build call for getCoordsLonLatPlacesNearby
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -385,35 +413,40 @@ public class PlacesNearbyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoordsLonLatPlacesNearbyCall(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoordsLonLatPlacesNearbyCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coords/{lon};{lat}/places_nearby"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (type != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "type[]", type));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "type[]", type));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (bssStands != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "bss_stands", bssStands));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "bss_stands", bssStands));
         if (addPoiInfos != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "add_poi_infos[]", addPoiInfos));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "add_poi_infos[]", addPoiInfos));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -448,7 +481,7 @@ public class PlacesNearbyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoordsLonLatPlacesNearbyValidateBeforeCall(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoordsLonLatPlacesNearbyValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -461,7 +494,7 @@ public class PlacesNearbyApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoordsLonLatPlacesNearbyCall(lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoordsLonLatPlacesNearbyCall(basePath, debugUrl, lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         return call;
 
     }
@@ -469,6 +502,8 @@ public class PlacesNearbyApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -484,14 +519,16 @@ public class PlacesNearbyApi {
      * @return PlacesNearby
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected PlacesNearby getCoordsLonLatPlacesNearby(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
-        ApiResponse<PlacesNearby> resp = getCoordsLonLatPlacesNearbyWithHttpInfo(lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption);
+    protected PlacesNearby getCoordsLonLatPlacesNearby(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
+        ApiResponse<PlacesNearby> resp = getCoordsLonLatPlacesNearbyWithHttpInfo(basePath, debugUrl, lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -507,8 +544,8 @@ public class PlacesNearbyApi {
      * @return ApiResponse&lt;PlacesNearby&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<PlacesNearby> getCoordsLonLatPlacesNearbyWithHttpInfo(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
-        com.squareup.okhttp.Call call = getCoordsLonLatPlacesNearbyValidateBeforeCall(lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, null, null);
+    private ApiResponse<PlacesNearby> getCoordsLonLatPlacesNearbyWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
+        com.squareup.okhttp.Call call = getCoordsLonLatPlacesNearbyValidateBeforeCall(basePath, debugUrl, lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, null, null);
         Type localVarReturnType = new TypeToken<PlacesNearby>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -516,6 +553,8 @@ public class PlacesNearbyApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -532,7 +571,7 @@ public class PlacesNearbyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoordsLonLatPlacesNearbyAsync(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<PlacesNearby> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoordsLonLatPlacesNearbyAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<PlacesNearby> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -553,7 +592,7 @@ public class PlacesNearbyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoordsLonLatPlacesNearbyValidateBeforeCall(lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoordsLonLatPlacesNearbyValidateBeforeCall(basePath, debugUrl, lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PlacesNearby>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -562,6 +601,8 @@ public class PlacesNearbyApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -578,7 +619,7 @@ public class PlacesNearbyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoordsLonLatPlacesNearbyAsyncRaw(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoordsLonLatPlacesNearbyAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -599,7 +640,7 @@ public class PlacesNearbyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoordsLonLatPlacesNearbyValidateBeforeCall(lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoordsLonLatPlacesNearbyValidateBeforeCall(basePath, debugUrl, lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -610,6 +651,8 @@ public class PlacesNearbyApi {
 
     public class CoordsLonLatPlacesNearbyRequestBuilder {
         private PlacesNearbyApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private List<String> type;
@@ -625,6 +668,15 @@ public class PlacesNearbyApi {
 
         public CoordsLonLatPlacesNearbyRequestBuilder(PlacesNearbyApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoordsLonLatPlacesNearbyRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoordsLonLatPlacesNearbyRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoordsLonLatPlacesNearbyRequestBuilder withLat(BigDecimal lat) {
@@ -677,15 +729,17 @@ public class PlacesNearbyApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<PlacesNearby > callback) throws ApiException {
-            return currentApi.getCoordsLonLatPlacesNearbyAsync(this.lat, this.lon, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
+            return currentApi.getCoordsLonLatPlacesNearbyAsync(basePath, debugUrl, this.lat, this.lon, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoordsLonLatPlacesNearbyAsyncRaw(this.lat, this.lon, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
+            return currentApi.getCoordsLonLatPlacesNearbyAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatPlacesNearby
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -703,35 +757,40 @@ public class PlacesNearbyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatPlacesNearbyCall(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatPlacesNearbyCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/places_nearby"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (type != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "type[]", type));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "type[]", type));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (bssStands != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "bss_stands", bssStands));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "bss_stands", bssStands));
         if (addPoiInfos != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "add_poi_infos[]", addPoiInfos));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "add_poi_infos[]", addPoiInfos));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -766,7 +825,7 @@ public class PlacesNearbyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatPlacesNearbyValidateBeforeCall(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatPlacesNearbyValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -779,7 +838,7 @@ public class PlacesNearbyApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatPlacesNearbyCall(lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatPlacesNearbyCall(basePath, debugUrl, lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         return call;
 
     }
@@ -787,6 +846,8 @@ public class PlacesNearbyApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -802,14 +863,16 @@ public class PlacesNearbyApi {
      * @return PlacesNearby
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected PlacesNearby getCoverageLonLatPlacesNearby(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
-        ApiResponse<PlacesNearby> resp = getCoverageLonLatPlacesNearbyWithHttpInfo(lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption);
+    protected PlacesNearby getCoverageLonLatPlacesNearby(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
+        ApiResponse<PlacesNearby> resp = getCoverageLonLatPlacesNearbyWithHttpInfo(basePath, debugUrl, lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -825,8 +888,8 @@ public class PlacesNearbyApi {
      * @return ApiResponse&lt;PlacesNearby&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<PlacesNearby> getCoverageLonLatPlacesNearbyWithHttpInfo(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatPlacesNearbyValidateBeforeCall(lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, null, null);
+    private ApiResponse<PlacesNearby> getCoverageLonLatPlacesNearbyWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatPlacesNearbyValidateBeforeCall(basePath, debugUrl, lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, null, null);
         Type localVarReturnType = new TypeToken<PlacesNearby>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -834,6 +897,8 @@ public class PlacesNearbyApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -850,7 +915,7 @@ public class PlacesNearbyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatPlacesNearbyAsync(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<PlacesNearby> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatPlacesNearbyAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<PlacesNearby> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -871,7 +936,7 @@ public class PlacesNearbyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatPlacesNearbyValidateBeforeCall(lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatPlacesNearbyValidateBeforeCall(basePath, debugUrl, lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PlacesNearby>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -880,6 +945,8 @@ public class PlacesNearbyApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -896,7 +963,7 @@ public class PlacesNearbyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatPlacesNearbyAsyncRaw(BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatPlacesNearbyAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -917,7 +984,7 @@ public class PlacesNearbyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatPlacesNearbyValidateBeforeCall(lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatPlacesNearbyValidateBeforeCall(basePath, debugUrl, lat, lon, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -928,6 +995,8 @@ public class PlacesNearbyApi {
 
     public class CoverageLonLatPlacesNearbyRequestBuilder {
         private PlacesNearbyApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private List<String> type;
@@ -943,6 +1012,15 @@ public class PlacesNearbyApi {
 
         public CoverageLonLatPlacesNearbyRequestBuilder(PlacesNearbyApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatPlacesNearbyRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatPlacesNearbyRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatPlacesNearbyRequestBuilder withLat(BigDecimal lat) {
@@ -995,15 +1073,17 @@ public class PlacesNearbyApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<PlacesNearby > callback) throws ApiException {
-            return currentApi.getCoverageLonLatPlacesNearbyAsync(this.lat, this.lon, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
+            return currentApi.getCoverageLonLatPlacesNearbyAsync(basePath, debugUrl, this.lat, this.lon, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatPlacesNearbyAsyncRaw(this.lat, this.lon, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
+            return currentApi.getCoverageLonLatPlacesNearbyAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatUriPlacesNearby
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1022,36 +1102,41 @@ public class PlacesNearbyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatUriPlacesNearbyCall(BigDecimal lat, BigDecimal lon, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriPlacesNearbyCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/{uri}/places_nearby"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (type != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "type[]", type));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "type[]", type));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (bssStands != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "bss_stands", bssStands));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "bss_stands", bssStands));
         if (addPoiInfos != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "add_poi_infos[]", addPoiInfos));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "add_poi_infos[]", addPoiInfos));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1086,7 +1171,7 @@ public class PlacesNearbyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatUriPlacesNearbyValidateBeforeCall(BigDecimal lat, BigDecimal lon, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriPlacesNearbyValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -1104,7 +1189,7 @@ public class PlacesNearbyApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriPlacesNearbyCall(lat, lon, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriPlacesNearbyCall(basePath, debugUrl, lat, lon, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1112,6 +1197,8 @@ public class PlacesNearbyApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1128,14 +1215,16 @@ public class PlacesNearbyApi {
      * @return PlacesNearby
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected PlacesNearby getCoverageLonLatUriPlacesNearby(BigDecimal lat, BigDecimal lon, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
-        ApiResponse<PlacesNearby> resp = getCoverageLonLatUriPlacesNearbyWithHttpInfo(lat, lon, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption);
+    protected PlacesNearby getCoverageLonLatUriPlacesNearby(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
+        ApiResponse<PlacesNearby> resp = getCoverageLonLatUriPlacesNearbyWithHttpInfo(basePath, debugUrl, lat, lon, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1152,8 +1241,8 @@ public class PlacesNearbyApi {
      * @return ApiResponse&lt;PlacesNearby&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<PlacesNearby> getCoverageLonLatUriPlacesNearbyWithHttpInfo(BigDecimal lat, BigDecimal lon, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatUriPlacesNearbyValidateBeforeCall(lat, lon, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, null, null);
+    private ApiResponse<PlacesNearby> getCoverageLonLatUriPlacesNearbyWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatUriPlacesNearbyValidateBeforeCall(basePath, debugUrl, lat, lon, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, null, null);
         Type localVarReturnType = new TypeToken<PlacesNearby>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1161,6 +1250,8 @@ public class PlacesNearbyApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1178,7 +1269,7 @@ public class PlacesNearbyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriPlacesNearbyAsync(BigDecimal lat, BigDecimal lon, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<PlacesNearby> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriPlacesNearbyAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<PlacesNearby> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1199,7 +1290,7 @@ public class PlacesNearbyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriPlacesNearbyValidateBeforeCall(lat, lon, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriPlacesNearbyValidateBeforeCall(basePath, debugUrl, lat, lon, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PlacesNearby>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1208,6 +1299,8 @@ public class PlacesNearbyApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -1225,7 +1318,7 @@ public class PlacesNearbyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriPlacesNearbyAsyncRaw(BigDecimal lat, BigDecimal lon, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriPlacesNearbyAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1246,7 +1339,7 @@ public class PlacesNearbyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriPlacesNearbyValidateBeforeCall(lat, lon, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriPlacesNearbyValidateBeforeCall(basePath, debugUrl, lat, lon, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1257,6 +1350,8 @@ public class PlacesNearbyApi {
 
     public class CoverageLonLatUriPlacesNearbyRequestBuilder {
         private PlacesNearbyApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String uri;
@@ -1273,6 +1368,15 @@ public class PlacesNearbyApi {
 
         public CoverageLonLatUriPlacesNearbyRequestBuilder(PlacesNearbyApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatUriPlacesNearbyRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatUriPlacesNearbyRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatUriPlacesNearbyRequestBuilder withLat(BigDecimal lat) {
@@ -1329,15 +1433,17 @@ public class PlacesNearbyApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<PlacesNearby > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriPlacesNearbyAsync(this.lat, this.lon, this.uri, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
+            return currentApi.getCoverageLonLatUriPlacesNearbyAsync(basePath, debugUrl, this.lat, this.lon, this.uri, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriPlacesNearbyAsyncRaw(this.lat, this.lon, this.uri, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
+            return currentApi.getCoverageLonLatUriPlacesNearbyAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.uri, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
         }
     }
     /**
      * Build call for getCoverageRegionPlacesNearby
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
      * @param filter Filter your objects (optional)
@@ -1354,34 +1460,39 @@ public class PlacesNearbyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionPlacesNearbyCall(String region, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionPlacesNearbyCall(String basePath, String debugUrl, String region, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/places_nearby"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (type != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "type[]", type));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "type[]", type));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (bssStands != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "bss_stands", bssStands));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "bss_stands", bssStands));
         if (addPoiInfos != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "add_poi_infos[]", addPoiInfos));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "add_poi_infos[]", addPoiInfos));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1416,7 +1527,7 @@ public class PlacesNearbyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionPlacesNearbyValidateBeforeCall(String region, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionPlacesNearbyValidateBeforeCall(String basePath, String debugUrl, String region, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -1424,7 +1535,7 @@ public class PlacesNearbyApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionPlacesNearbyCall(region, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionPlacesNearbyCall(basePath, debugUrl, region, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1432,6 +1543,8 @@ public class PlacesNearbyApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
      * @param filter Filter your objects (optional)
@@ -1446,14 +1559,16 @@ public class PlacesNearbyApi {
      * @return PlacesNearby
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected PlacesNearby getCoverageRegionPlacesNearby(String region, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
-        ApiResponse<PlacesNearby> resp = getCoverageRegionPlacesNearbyWithHttpInfo(region, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption);
+    protected PlacesNearby getCoverageRegionPlacesNearby(String basePath, String debugUrl, String region, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
+        ApiResponse<PlacesNearby> resp = getCoverageRegionPlacesNearbyWithHttpInfo(basePath, debugUrl, region, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
      * @param filter Filter your objects (optional)
@@ -1468,8 +1583,8 @@ public class PlacesNearbyApi {
      * @return ApiResponse&lt;PlacesNearby&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<PlacesNearby> getCoverageRegionPlacesNearbyWithHttpInfo(String region, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionPlacesNearbyValidateBeforeCall(region, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, null, null);
+    private ApiResponse<PlacesNearby> getCoverageRegionPlacesNearbyWithHttpInfo(String basePath, String debugUrl, String region, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionPlacesNearbyValidateBeforeCall(basePath, debugUrl, region, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, null, null);
         Type localVarReturnType = new TypeToken<PlacesNearby>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1477,6 +1592,8 @@ public class PlacesNearbyApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
      * @param filter Filter your objects (optional)
@@ -1492,7 +1609,7 @@ public class PlacesNearbyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionPlacesNearbyAsync(String region, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<PlacesNearby> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionPlacesNearbyAsync(String basePath, String debugUrl, String region, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<PlacesNearby> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1513,7 +1630,7 @@ public class PlacesNearbyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionPlacesNearbyValidateBeforeCall(region, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionPlacesNearbyValidateBeforeCall(basePath, debugUrl, region, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PlacesNearby>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1522,6 +1639,8 @@ public class PlacesNearbyApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
      * @param filter Filter your objects (optional)
@@ -1537,7 +1656,7 @@ public class PlacesNearbyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionPlacesNearbyAsyncRaw(String region, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionPlacesNearbyAsyncRaw(String basePath, String debugUrl, String region, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1558,7 +1677,7 @@ public class PlacesNearbyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionPlacesNearbyValidateBeforeCall(region, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionPlacesNearbyValidateBeforeCall(basePath, debugUrl, region, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1569,6 +1688,8 @@ public class PlacesNearbyApi {
 
     public class CoverageRegionPlacesNearbyRequestBuilder {
         private PlacesNearbyApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private List<String> type;
         private String filter;
@@ -1583,6 +1704,15 @@ public class PlacesNearbyApi {
 
         public CoverageRegionPlacesNearbyRequestBuilder(PlacesNearbyApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionPlacesNearbyRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionPlacesNearbyRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionPlacesNearbyRequestBuilder withRegion(String region) {
@@ -1631,15 +1761,17 @@ public class PlacesNearbyApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<PlacesNearby > callback) throws ApiException {
-            return currentApi.getCoverageRegionPlacesNearbyAsync(this.region, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
+            return currentApi.getCoverageRegionPlacesNearbyAsync(basePath, debugUrl, this.region, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionPlacesNearbyAsyncRaw(this.region, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
+            return currentApi.getCoverageRegionPlacesNearbyAsyncRaw(basePath, debugUrl, this.region, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
         }
     }
     /**
      * Build call for getCoverageRegionUriPlacesNearby
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -1657,35 +1789,40 @@ public class PlacesNearbyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionUriPlacesNearbyCall(String region, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriPlacesNearbyCall(String basePath, String debugUrl, String region, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/{uri}/places_nearby"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (type != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "type[]", type));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "type[]", type));
         if (filter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (bssStands != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "bss_stands", bssStands));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "bss_stands", bssStands));
         if (addPoiInfos != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "add_poi_infos[]", addPoiInfos));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "add_poi_infos[]", addPoiInfos));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (disableDisruption != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_disruption", disableDisruption));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1720,7 +1857,7 @@ public class PlacesNearbyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionUriPlacesNearbyValidateBeforeCall(String region, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriPlacesNearbyValidateBeforeCall(String basePath, String debugUrl, String region, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -1733,7 +1870,7 @@ public class PlacesNearbyApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriPlacesNearbyCall(region, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriPlacesNearbyCall(basePath, debugUrl, region, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1741,6 +1878,8 @@ public class PlacesNearbyApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -1756,14 +1895,16 @@ public class PlacesNearbyApi {
      * @return PlacesNearby
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected PlacesNearby getCoverageRegionUriPlacesNearby(String region, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
-        ApiResponse<PlacesNearby> resp = getCoverageRegionUriPlacesNearbyWithHttpInfo(region, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption);
+    protected PlacesNearby getCoverageRegionUriPlacesNearby(String basePath, String debugUrl, String region, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
+        ApiResponse<PlacesNearby> resp = getCoverageRegionUriPlacesNearbyWithHttpInfo(basePath, debugUrl, region, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -1779,8 +1920,8 @@ public class PlacesNearbyApi {
      * @return ApiResponse&lt;PlacesNearby&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<PlacesNearby> getCoverageRegionUriPlacesNearbyWithHttpInfo(String region, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionUriPlacesNearbyValidateBeforeCall(region, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, null, null);
+    private ApiResponse<PlacesNearby> getCoverageRegionUriPlacesNearbyWithHttpInfo(String basePath, String debugUrl, String region, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionUriPlacesNearbyValidateBeforeCall(basePath, debugUrl, region, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, null, null);
         Type localVarReturnType = new TypeToken<PlacesNearby>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1788,6 +1929,8 @@ public class PlacesNearbyApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -1804,7 +1947,7 @@ public class PlacesNearbyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriPlacesNearbyAsync(String region, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<PlacesNearby> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriPlacesNearbyAsync(String basePath, String debugUrl, String region, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<PlacesNearby> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1825,7 +1968,7 @@ public class PlacesNearbyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriPlacesNearbyValidateBeforeCall(region, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriPlacesNearbyValidateBeforeCall(basePath, debugUrl, region, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PlacesNearby>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1834,6 +1977,8 @@ public class PlacesNearbyApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param type Type of the objects to return (optional, default to [u'stop_area', u'stop_point', u'poi'])
@@ -1850,7 +1995,7 @@ public class PlacesNearbyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriPlacesNearbyAsyncRaw(String region, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriPlacesNearbyAsyncRaw(String basePath, String debugUrl, String region, String uri, List<String> type, String filter, Integer distance, Integer count, Integer depth, Integer startPage, Boolean bssStands, List<String> addPoiInfos, Boolean disableGeojson, Boolean disableDisruption, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1871,7 +2016,7 @@ public class PlacesNearbyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriPlacesNearbyValidateBeforeCall(region, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriPlacesNearbyValidateBeforeCall(basePath, debugUrl, region, uri, type, filter, distance, count, depth, startPage, bssStands, addPoiInfos, disableGeojson, disableDisruption, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1882,6 +2027,8 @@ public class PlacesNearbyApi {
 
     public class CoverageRegionUriPlacesNearbyRequestBuilder {
         private PlacesNearbyApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String uri;
         private List<String> type;
@@ -1897,6 +2044,15 @@ public class PlacesNearbyApi {
 
         public CoverageRegionUriPlacesNearbyRequestBuilder(PlacesNearbyApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionUriPlacesNearbyRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionUriPlacesNearbyRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionUriPlacesNearbyRequestBuilder withRegion(String region) {
@@ -1949,11 +2105,11 @@ public class PlacesNearbyApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<PlacesNearby > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriPlacesNearbyAsync(this.region, this.uri, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
+            return currentApi.getCoverageRegionUriPlacesNearbyAsync(basePath, debugUrl, this.region, this.uri, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriPlacesNearbyAsyncRaw(this.region, this.uri, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
+            return currentApi.getCoverageRegionUriPlacesNearbyAsyncRaw(basePath, debugUrl, this.region, this.uri, this.type, this.filter, this.distance, this.count, this.depth, this.startPage, this.bssStands, this.addPoiInfos, this.disableGeojson, this.disableDisruption, callback);
         }
     }
 }

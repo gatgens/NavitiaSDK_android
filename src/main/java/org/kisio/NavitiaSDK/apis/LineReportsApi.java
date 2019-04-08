@@ -51,6 +51,8 @@ public class LineReportsApi {
 
     /**
      * Build call for getCoverageLonLatLineReports
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -66,31 +68,36 @@ public class LineReportsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatLineReportsCall(BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatLineReportsCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/line_reports"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -125,7 +132,7 @@ public class LineReportsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatLineReportsValidateBeforeCall(BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatLineReportsValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -138,7 +145,7 @@ public class LineReportsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatLineReportsCall(lat, lon, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatLineReportsCall(basePath, debugUrl, lat, lon, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
         return call;
 
     }
@@ -146,6 +153,8 @@ public class LineReportsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -159,14 +168,16 @@ public class LineReportsApi {
      * @return LineReports
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected LineReports getCoverageLonLatLineReports(BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags) throws ApiException {
-        ApiResponse<LineReports> resp = getCoverageLonLatLineReportsWithHttpInfo(lat, lon, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags);
+    protected LineReports getCoverageLonLatLineReports(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags) throws ApiException {
+        ApiResponse<LineReports> resp = getCoverageLonLatLineReportsWithHttpInfo(basePath, debugUrl, lat, lon, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -180,8 +191,8 @@ public class LineReportsApi {
      * @return ApiResponse&lt;LineReports&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<LineReports> getCoverageLonLatLineReportsWithHttpInfo(BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatLineReportsValidateBeforeCall(lat, lon, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, null, null);
+    private ApiResponse<LineReports> getCoverageLonLatLineReportsWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatLineReportsValidateBeforeCall(basePath, debugUrl, lat, lon, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, null, null);
         Type localVarReturnType = new TypeToken<LineReports>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -189,6 +200,8 @@ public class LineReportsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -203,7 +216,7 @@ public class LineReportsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatLineReportsAsync(BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ApiCallback<LineReports> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatLineReportsAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ApiCallback<LineReports> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -224,7 +237,7 @@ public class LineReportsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatLineReportsValidateBeforeCall(lat, lon, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatLineReportsValidateBeforeCall(basePath, debugUrl, lat, lon, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<LineReports>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -233,6 +246,8 @@ public class LineReportsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -247,7 +262,7 @@ public class LineReportsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatLineReportsAsyncRaw(BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatLineReportsAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -268,7 +283,7 @@ public class LineReportsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatLineReportsValidateBeforeCall(lat, lon, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatLineReportsValidateBeforeCall(basePath, debugUrl, lat, lon, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -279,6 +294,8 @@ public class LineReportsApi {
 
     public class CoverageLonLatLineReportsRequestBuilder {
         private LineReportsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private Integer depth;
@@ -292,6 +309,15 @@ public class LineReportsApi {
 
         public CoverageLonLatLineReportsRequestBuilder(LineReportsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatLineReportsRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatLineReportsRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatLineReportsRequestBuilder withLat(BigDecimal lat) {
@@ -336,15 +362,17 @@ public class LineReportsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<LineReports > callback) throws ApiException {
-            return currentApi.getCoverageLonLatLineReportsAsync(this.lat, this.lon, this.depth, this.count, this.startPage, this.forbiddenUris, this.disableGeojson, this.since, this.until, this.tags, callback);
+            return currentApi.getCoverageLonLatLineReportsAsync(basePath, debugUrl, this.lat, this.lon, this.depth, this.count, this.startPage, this.forbiddenUris, this.disableGeojson, this.since, this.until, this.tags, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatLineReportsAsyncRaw(this.lat, this.lon, this.depth, this.count, this.startPage, this.forbiddenUris, this.disableGeojson, this.since, this.until, this.tags, callback);
+            return currentApi.getCoverageLonLatLineReportsAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.depth, this.count, this.startPage, this.forbiddenUris, this.disableGeojson, this.since, this.until, this.tags, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatUriLineReports
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -361,32 +389,37 @@ public class LineReportsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatUriLineReportsCall(BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriLineReportsCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/{uri}/line_reports"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -421,7 +454,7 @@ public class LineReportsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatUriLineReportsValidateBeforeCall(BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriLineReportsValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -439,7 +472,7 @@ public class LineReportsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriLineReportsCall(lat, lon, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriLineReportsCall(basePath, debugUrl, lat, lon, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
         return call;
 
     }
@@ -447,6 +480,8 @@ public class LineReportsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -461,14 +496,16 @@ public class LineReportsApi {
      * @return LineReports
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected LineReports getCoverageLonLatUriLineReports(BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags) throws ApiException {
-        ApiResponse<LineReports> resp = getCoverageLonLatUriLineReportsWithHttpInfo(lat, lon, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags);
+    protected LineReports getCoverageLonLatUriLineReports(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags) throws ApiException {
+        ApiResponse<LineReports> resp = getCoverageLonLatUriLineReportsWithHttpInfo(basePath, debugUrl, lat, lon, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -483,8 +520,8 @@ public class LineReportsApi {
      * @return ApiResponse&lt;LineReports&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<LineReports> getCoverageLonLatUriLineReportsWithHttpInfo(BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatUriLineReportsValidateBeforeCall(lat, lon, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, null, null);
+    private ApiResponse<LineReports> getCoverageLonLatUriLineReportsWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatUriLineReportsValidateBeforeCall(basePath, debugUrl, lat, lon, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, null, null);
         Type localVarReturnType = new TypeToken<LineReports>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -492,6 +529,8 @@ public class LineReportsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -507,7 +546,7 @@ public class LineReportsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriLineReportsAsync(BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ApiCallback<LineReports> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriLineReportsAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ApiCallback<LineReports> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -528,7 +567,7 @@ public class LineReportsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriLineReportsValidateBeforeCall(lat, lon, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriLineReportsValidateBeforeCall(basePath, debugUrl, lat, lon, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<LineReports>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -537,6 +576,8 @@ public class LineReportsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -552,7 +593,7 @@ public class LineReportsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriLineReportsAsyncRaw(BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriLineReportsAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -573,7 +614,7 @@ public class LineReportsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriLineReportsValidateBeforeCall(lat, lon, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriLineReportsValidateBeforeCall(basePath, debugUrl, lat, lon, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -584,6 +625,8 @@ public class LineReportsApi {
 
     public class CoverageLonLatUriLineReportsRequestBuilder {
         private LineReportsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String uri;
@@ -598,6 +641,15 @@ public class LineReportsApi {
 
         public CoverageLonLatUriLineReportsRequestBuilder(LineReportsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatUriLineReportsRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatUriLineReportsRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatUriLineReportsRequestBuilder withLat(BigDecimal lat) {
@@ -646,15 +698,17 @@ public class LineReportsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<LineReports > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriLineReportsAsync(this.lat, this.lon, this.uri, this.depth, this.count, this.startPage, this.forbiddenUris, this.disableGeojson, this.since, this.until, this.tags, callback);
+            return currentApi.getCoverageLonLatUriLineReportsAsync(basePath, debugUrl, this.lat, this.lon, this.uri, this.depth, this.count, this.startPage, this.forbiddenUris, this.disableGeojson, this.since, this.until, this.tags, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriLineReportsAsyncRaw(this.lat, this.lon, this.uri, this.depth, this.count, this.startPage, this.forbiddenUris, this.disableGeojson, this.since, this.until, this.tags, callback);
+            return currentApi.getCoverageLonLatUriLineReportsAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.uri, this.depth, this.count, this.startPage, this.forbiddenUris, this.disableGeojson, this.since, this.until, this.tags, callback);
         }
     }
     /**
      * Build call for getCoverageRegionLineReports
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
      * @param count Number of objects per page (optional, default to 25)
@@ -669,30 +723,35 @@ public class LineReportsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionLineReportsCall(String region, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionLineReportsCall(String basePath, String debugUrl, String region, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/line_reports"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -727,7 +786,7 @@ public class LineReportsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionLineReportsValidateBeforeCall(String region, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionLineReportsValidateBeforeCall(String basePath, String debugUrl, String region, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -735,7 +794,7 @@ public class LineReportsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionLineReportsCall(region, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionLineReportsCall(basePath, debugUrl, region, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
         return call;
 
     }
@@ -743,6 +802,8 @@ public class LineReportsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
      * @param count Number of objects per page (optional, default to 25)
@@ -755,14 +816,16 @@ public class LineReportsApi {
      * @return LineReports
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected LineReports getCoverageRegionLineReports(String region, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags) throws ApiException {
-        ApiResponse<LineReports> resp = getCoverageRegionLineReportsWithHttpInfo(region, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags);
+    protected LineReports getCoverageRegionLineReports(String basePath, String debugUrl, String region, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags) throws ApiException {
+        ApiResponse<LineReports> resp = getCoverageRegionLineReportsWithHttpInfo(basePath, debugUrl, region, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
      * @param count Number of objects per page (optional, default to 25)
@@ -775,8 +838,8 @@ public class LineReportsApi {
      * @return ApiResponse&lt;LineReports&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<LineReports> getCoverageRegionLineReportsWithHttpInfo(String region, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionLineReportsValidateBeforeCall(region, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, null, null);
+    private ApiResponse<LineReports> getCoverageRegionLineReportsWithHttpInfo(String basePath, String debugUrl, String region, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionLineReportsValidateBeforeCall(basePath, debugUrl, region, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, null, null);
         Type localVarReturnType = new TypeToken<LineReports>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -784,6 +847,8 @@ public class LineReportsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
      * @param count Number of objects per page (optional, default to 25)
@@ -797,7 +862,7 @@ public class LineReportsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionLineReportsAsync(String region, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ApiCallback<LineReports> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionLineReportsAsync(String basePath, String debugUrl, String region, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ApiCallback<LineReports> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -818,7 +883,7 @@ public class LineReportsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionLineReportsValidateBeforeCall(region, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionLineReportsValidateBeforeCall(basePath, debugUrl, region, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<LineReports>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -827,6 +892,8 @@ public class LineReportsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
      * @param count Number of objects per page (optional, default to 25)
@@ -840,7 +907,7 @@ public class LineReportsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionLineReportsAsyncRaw(String region, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionLineReportsAsyncRaw(String basePath, String debugUrl, String region, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -861,7 +928,7 @@ public class LineReportsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionLineReportsValidateBeforeCall(region, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionLineReportsValidateBeforeCall(basePath, debugUrl, region, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -872,6 +939,8 @@ public class LineReportsApi {
 
     public class CoverageRegionLineReportsRequestBuilder {
         private LineReportsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private Integer depth;
         private Integer count;
@@ -884,6 +953,15 @@ public class LineReportsApi {
 
         public CoverageRegionLineReportsRequestBuilder(LineReportsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionLineReportsRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionLineReportsRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionLineReportsRequestBuilder withRegion(String region) {
@@ -924,15 +1002,17 @@ public class LineReportsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<LineReports > callback) throws ApiException {
-            return currentApi.getCoverageRegionLineReportsAsync(this.region, this.depth, this.count, this.startPage, this.forbiddenUris, this.disableGeojson, this.since, this.until, this.tags, callback);
+            return currentApi.getCoverageRegionLineReportsAsync(basePath, debugUrl, this.region, this.depth, this.count, this.startPage, this.forbiddenUris, this.disableGeojson, this.since, this.until, this.tags, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionLineReportsAsyncRaw(this.region, this.depth, this.count, this.startPage, this.forbiddenUris, this.disableGeojson, this.since, this.until, this.tags, callback);
+            return currentApi.getCoverageRegionLineReportsAsyncRaw(basePath, debugUrl, this.region, this.depth, this.count, this.startPage, this.forbiddenUris, this.disableGeojson, this.since, this.until, this.tags, callback);
         }
     }
     /**
      * Build call for getCoverageRegionUriLineReports
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -948,31 +1028,36 @@ public class LineReportsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionUriLineReportsCall(String region, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriLineReportsCall(String basePath, String debugUrl, String region, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/{uri}/line_reports"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (disableGeojson != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "disable_geojson", disableGeojson));
         if (since != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "since", since));
         if (until != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "until", until));
         if (tags != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags[]", tags));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1007,7 +1092,7 @@ public class LineReportsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionUriLineReportsValidateBeforeCall(String region, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriLineReportsValidateBeforeCall(String basePath, String debugUrl, String region, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -1020,7 +1105,7 @@ public class LineReportsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriLineReportsCall(region, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriLineReportsCall(basePath, debugUrl, region, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1028,6 +1113,8 @@ public class LineReportsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -1041,14 +1128,16 @@ public class LineReportsApi {
      * @return LineReports
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected LineReports getCoverageRegionUriLineReports(String region, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags) throws ApiException {
-        ApiResponse<LineReports> resp = getCoverageRegionUriLineReportsWithHttpInfo(region, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags);
+    protected LineReports getCoverageRegionUriLineReports(String basePath, String debugUrl, String region, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags) throws ApiException {
+        ApiResponse<LineReports> resp = getCoverageRegionUriLineReportsWithHttpInfo(basePath, debugUrl, region, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -1062,8 +1151,8 @@ public class LineReportsApi {
      * @return ApiResponse&lt;LineReports&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<LineReports> getCoverageRegionUriLineReportsWithHttpInfo(String region, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionUriLineReportsValidateBeforeCall(region, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, null, null);
+    private ApiResponse<LineReports> getCoverageRegionUriLineReportsWithHttpInfo(String basePath, String debugUrl, String region, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionUriLineReportsValidateBeforeCall(basePath, debugUrl, region, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, null, null);
         Type localVarReturnType = new TypeToken<LineReports>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1071,6 +1160,8 @@ public class LineReportsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -1085,7 +1176,7 @@ public class LineReportsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriLineReportsAsync(String region, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ApiCallback<LineReports> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriLineReportsAsync(String basePath, String debugUrl, String region, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ApiCallback<LineReports> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1106,7 +1197,7 @@ public class LineReportsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriLineReportsValidateBeforeCall(region, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriLineReportsValidateBeforeCall(basePath, debugUrl, region, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<LineReports>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1115,6 +1206,8 @@ public class LineReportsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -1129,7 +1222,7 @@ public class LineReportsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriLineReportsAsyncRaw(String region, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriLineReportsAsyncRaw(String basePath, String debugUrl, String region, String uri, Integer depth, Integer count, Integer startPage, List<String> forbiddenUris, Boolean disableGeojson, DateTime since, DateTime until, List<String> tags, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1150,7 +1243,7 @@ public class LineReportsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriLineReportsValidateBeforeCall(region, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriLineReportsValidateBeforeCall(basePath, debugUrl, region, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1161,6 +1254,8 @@ public class LineReportsApi {
 
     public class CoverageRegionUriLineReportsRequestBuilder {
         private LineReportsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String uri;
         private Integer depth;
@@ -1174,6 +1269,15 @@ public class LineReportsApi {
 
         public CoverageRegionUriLineReportsRequestBuilder(LineReportsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionUriLineReportsRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionUriLineReportsRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionUriLineReportsRequestBuilder withRegion(String region) {
@@ -1218,11 +1322,11 @@ public class LineReportsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<LineReports > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriLineReportsAsync(this.region, this.uri, this.depth, this.count, this.startPage, this.forbiddenUris, this.disableGeojson, this.since, this.until, this.tags, callback);
+            return currentApi.getCoverageRegionUriLineReportsAsync(basePath, debugUrl, this.region, this.uri, this.depth, this.count, this.startPage, this.forbiddenUris, this.disableGeojson, this.since, this.until, this.tags, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriLineReportsAsyncRaw(this.region, this.uri, this.depth, this.count, this.startPage, this.forbiddenUris, this.disableGeojson, this.since, this.until, this.tags, callback);
+            return currentApi.getCoverageRegionUriLineReportsAsyncRaw(basePath, debugUrl, this.region, this.uri, this.depth, this.count, this.startPage, this.forbiddenUris, this.disableGeojson, this.since, this.until, this.tags, callback);
         }
     }
 }

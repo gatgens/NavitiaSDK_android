@@ -50,6 +50,8 @@ public class CalendarsApi {
 
     /**
      * Build call for getCoverageLonLatCalendars
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -65,31 +67,36 @@ public class CalendarsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatCalendarsCall(BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatCalendarsCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/calendars"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (startDate != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_date", startDate));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_date", startDate));
         if (endDate != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_date", endDate));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_date", endDate));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -124,7 +131,7 @@ public class CalendarsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatCalendarsValidateBeforeCall(BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatCalendarsValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -137,7 +144,7 @@ public class CalendarsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCalendarsCall(lat, lon, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCalendarsCall(basePath, debugUrl, lat, lon, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         return call;
 
     }
@@ -145,6 +152,8 @@ public class CalendarsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -158,14 +167,16 @@ public class CalendarsApi {
      * @return Calendars
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected Calendars getCoverageLonLatCalendars(BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
-        ApiResponse<Calendars> resp = getCoverageLonLatCalendarsWithHttpInfo(lat, lon, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance);
+    protected Calendars getCoverageLonLatCalendars(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
+        ApiResponse<Calendars> resp = getCoverageLonLatCalendarsWithHttpInfo(basePath, debugUrl, lat, lon, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -179,8 +190,8 @@ public class CalendarsApi {
      * @return ApiResponse&lt;Calendars&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<Calendars> getCoverageLonLatCalendarsWithHttpInfo(BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatCalendarsValidateBeforeCall(lat, lon, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, null, null);
+    private ApiResponse<Calendars> getCoverageLonLatCalendarsWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatCalendarsValidateBeforeCall(basePath, debugUrl, lat, lon, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, null, null);
         Type localVarReturnType = new TypeToken<Calendars>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -188,6 +199,8 @@ public class CalendarsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -202,7 +215,7 @@ public class CalendarsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatCalendarsAsync(BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<Calendars> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatCalendarsAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<Calendars> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -223,7 +236,7 @@ public class CalendarsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCalendarsValidateBeforeCall(lat, lon, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCalendarsValidateBeforeCall(basePath, debugUrl, lat, lon, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Calendars>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -232,6 +245,8 @@ public class CalendarsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -246,7 +261,7 @@ public class CalendarsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatCalendarsAsyncRaw(BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatCalendarsAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -267,7 +282,7 @@ public class CalendarsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCalendarsValidateBeforeCall(lat, lon, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCalendarsValidateBeforeCall(basePath, debugUrl, lat, lon, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -278,6 +293,8 @@ public class CalendarsApi {
 
     public class CoverageLonLatCalendarsRequestBuilder {
         private CalendarsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private Integer depth;
@@ -291,6 +308,15 @@ public class CalendarsApi {
 
         public CoverageLonLatCalendarsRequestBuilder(CalendarsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatCalendarsRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatCalendarsRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatCalendarsRequestBuilder withLat(BigDecimal lat) {
@@ -335,15 +361,17 @@ public class CalendarsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<Calendars > callback) throws ApiException {
-            return currentApi.getCoverageLonLatCalendarsAsync(this.lat, this.lon, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
+            return currentApi.getCoverageLonLatCalendarsAsync(basePath, debugUrl, this.lat, this.lon, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatCalendarsAsyncRaw(this.lat, this.lon, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
+            return currentApi.getCoverageLonLatCalendarsAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatCalendarsId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -360,32 +388,37 @@ public class CalendarsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatCalendarsIdCall(BigDecimal lat, BigDecimal lon, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatCalendarsIdCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/calendars/{id}"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()))
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (startDate != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_date", startDate));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_date", startDate));
         if (endDate != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_date", endDate));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_date", endDate));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -420,7 +453,7 @@ public class CalendarsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatCalendarsIdValidateBeforeCall(BigDecimal lat, BigDecimal lon, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatCalendarsIdValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -438,7 +471,7 @@ public class CalendarsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCalendarsIdCall(lat, lon, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCalendarsIdCall(basePath, debugUrl, lat, lon, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         return call;
 
     }
@@ -446,6 +479,8 @@ public class CalendarsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -460,14 +495,16 @@ public class CalendarsApi {
      * @return Calendars
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected Calendars getCoverageLonLatCalendarsId(BigDecimal lat, BigDecimal lon, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
-        ApiResponse<Calendars> resp = getCoverageLonLatCalendarsIdWithHttpInfo(lat, lon, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance);
+    protected Calendars getCoverageLonLatCalendarsId(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
+        ApiResponse<Calendars> resp = getCoverageLonLatCalendarsIdWithHttpInfo(basePath, debugUrl, lat, lon, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -482,8 +519,8 @@ public class CalendarsApi {
      * @return ApiResponse&lt;Calendars&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<Calendars> getCoverageLonLatCalendarsIdWithHttpInfo(BigDecimal lat, BigDecimal lon, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatCalendarsIdValidateBeforeCall(lat, lon, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, null, null);
+    private ApiResponse<Calendars> getCoverageLonLatCalendarsIdWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatCalendarsIdValidateBeforeCall(basePath, debugUrl, lat, lon, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, null, null);
         Type localVarReturnType = new TypeToken<Calendars>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -491,6 +528,8 @@ public class CalendarsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -506,7 +545,7 @@ public class CalendarsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatCalendarsIdAsync(BigDecimal lat, BigDecimal lon, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<Calendars> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatCalendarsIdAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<Calendars> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -527,7 +566,7 @@ public class CalendarsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCalendarsIdValidateBeforeCall(lat, lon, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCalendarsIdValidateBeforeCall(basePath, debugUrl, lat, lon, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Calendars>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -536,6 +575,8 @@ public class CalendarsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param id Id of the object you want to query (required)
@@ -551,7 +592,7 @@ public class CalendarsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatCalendarsIdAsyncRaw(BigDecimal lat, BigDecimal lon, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatCalendarsIdAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -572,7 +613,7 @@ public class CalendarsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatCalendarsIdValidateBeforeCall(lat, lon, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatCalendarsIdValidateBeforeCall(basePath, debugUrl, lat, lon, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -583,6 +624,8 @@ public class CalendarsApi {
 
     public class CoverageLonLatCalendarsIdRequestBuilder {
         private CalendarsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String id;
@@ -597,6 +640,15 @@ public class CalendarsApi {
 
         public CoverageLonLatCalendarsIdRequestBuilder(CalendarsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatCalendarsIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatCalendarsIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatCalendarsIdRequestBuilder withLat(BigDecimal lat) {
@@ -645,15 +697,17 @@ public class CalendarsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<Calendars > callback) throws ApiException {
-            return currentApi.getCoverageLonLatCalendarsIdAsync(this.lat, this.lon, this.id, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
+            return currentApi.getCoverageLonLatCalendarsIdAsync(basePath, debugUrl, this.lat, this.lon, this.id, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatCalendarsIdAsyncRaw(this.lat, this.lon, this.id, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
+            return currentApi.getCoverageLonLatCalendarsIdAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.id, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
         }
     }
     /**
      * Build call for getCoverageLonLatUriCalendars
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -670,32 +724,37 @@ public class CalendarsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageLonLatUriCalendarsCall(BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriCalendarsCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{lon};{lat}/{uri}/calendars"
             .replaceAll("\\{" + "lat" + "\\}", apiClient.escapePathParam(lat.toString()))
             .replaceAll("\\{" + "lon" + "\\}", apiClient.escapePathParam(lon.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (startDate != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_date", startDate));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_date", startDate));
         if (endDate != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_date", endDate));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_date", endDate));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -730,7 +789,7 @@ public class CalendarsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageLonLatUriCalendarsValidateBeforeCall(BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageLonLatUriCalendarsValidateBeforeCall(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -748,7 +807,7 @@ public class CalendarsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCalendarsCall(lat, lon, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCalendarsCall(basePath, debugUrl, lat, lon, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         return call;
 
     }
@@ -756,6 +815,8 @@ public class CalendarsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -770,14 +831,16 @@ public class CalendarsApi {
      * @return Calendars
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected Calendars getCoverageLonLatUriCalendars(BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
-        ApiResponse<Calendars> resp = getCoverageLonLatUriCalendarsWithHttpInfo(lat, lon, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance);
+    protected Calendars getCoverageLonLatUriCalendars(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
+        ApiResponse<Calendars> resp = getCoverageLonLatUriCalendarsWithHttpInfo(basePath, debugUrl, lat, lon, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -792,8 +855,8 @@ public class CalendarsApi {
      * @return ApiResponse&lt;Calendars&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<Calendars> getCoverageLonLatUriCalendarsWithHttpInfo(BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCalendarsValidateBeforeCall(lat, lon, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, null, null);
+    private ApiResponse<Calendars> getCoverageLonLatUriCalendarsWithHttpInfo(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCalendarsValidateBeforeCall(basePath, debugUrl, lat, lon, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, null, null);
         Type localVarReturnType = new TypeToken<Calendars>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -801,6 +864,8 @@ public class CalendarsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -816,7 +881,7 @@ public class CalendarsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriCalendarsAsync(BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<Calendars> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriCalendarsAsync(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<Calendars> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -837,7 +902,7 @@ public class CalendarsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCalendarsValidateBeforeCall(lat, lon, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCalendarsValidateBeforeCall(basePath, debugUrl, lat, lon, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Calendars>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -846,6 +911,8 @@ public class CalendarsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param lat  The latitude of where the coord you want to query (required)
      * @param lon  The longitude of where the coord you want to query (required)
      * @param uri First part of the uri (required)
@@ -861,7 +928,7 @@ public class CalendarsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageLonLatUriCalendarsAsyncRaw(BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageLonLatUriCalendarsAsyncRaw(String basePath, String debugUrl, BigDecimal lat, BigDecimal lon, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -882,7 +949,7 @@ public class CalendarsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageLonLatUriCalendarsValidateBeforeCall(lat, lon, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageLonLatUriCalendarsValidateBeforeCall(basePath, debugUrl, lat, lon, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -893,6 +960,8 @@ public class CalendarsApi {
 
     public class CoverageLonLatUriCalendarsRequestBuilder {
         private CalendarsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private BigDecimal lat;
         private BigDecimal lon;
         private String uri;
@@ -907,6 +976,15 @@ public class CalendarsApi {
 
         public CoverageLonLatUriCalendarsRequestBuilder(CalendarsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageLonLatUriCalendarsRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageLonLatUriCalendarsRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageLonLatUriCalendarsRequestBuilder withLat(BigDecimal lat) {
@@ -955,15 +1033,17 @@ public class CalendarsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<Calendars > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriCalendarsAsync(this.lat, this.lon, this.uri, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
+            return currentApi.getCoverageLonLatUriCalendarsAsync(basePath, debugUrl, this.lat, this.lon, this.uri, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageLonLatUriCalendarsAsyncRaw(this.lat, this.lon, this.uri, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
+            return currentApi.getCoverageLonLatUriCalendarsAsyncRaw(basePath, debugUrl, this.lat, this.lon, this.uri, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
         }
     }
     /**
      * Build call for getCoverageRegionCalendars
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
      * @param count Number of calendars per page (optional, default to 10)
@@ -978,30 +1058,35 @@ public class CalendarsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionCalendarsCall(String region, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionCalendarsCall(String basePath, String debugUrl, String region, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/calendars"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (startDate != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_date", startDate));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_date", startDate));
         if (endDate != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_date", endDate));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_date", endDate));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1036,7 +1121,7 @@ public class CalendarsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionCalendarsValidateBeforeCall(String region, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionCalendarsValidateBeforeCall(String basePath, String debugUrl, String region, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -1044,7 +1129,7 @@ public class CalendarsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionCalendarsCall(region, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCalendarsCall(basePath, debugUrl, region, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1052,6 +1137,8 @@ public class CalendarsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
      * @param count Number of calendars per page (optional, default to 10)
@@ -1064,14 +1151,16 @@ public class CalendarsApi {
      * @return Calendars
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected Calendars getCoverageRegionCalendars(String region, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
-        ApiResponse<Calendars> resp = getCoverageRegionCalendarsWithHttpInfo(region, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance);
+    protected Calendars getCoverageRegionCalendars(String basePath, String debugUrl, String region, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
+        ApiResponse<Calendars> resp = getCoverageRegionCalendarsWithHttpInfo(basePath, debugUrl, region, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
      * @param count Number of calendars per page (optional, default to 10)
@@ -1084,8 +1173,8 @@ public class CalendarsApi {
      * @return ApiResponse&lt;Calendars&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<Calendars> getCoverageRegionCalendarsWithHttpInfo(String region, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionCalendarsValidateBeforeCall(region, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, null, null);
+    private ApiResponse<Calendars> getCoverageRegionCalendarsWithHttpInfo(String basePath, String debugUrl, String region, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionCalendarsValidateBeforeCall(basePath, debugUrl, region, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, null, null);
         Type localVarReturnType = new TypeToken<Calendars>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1093,6 +1182,8 @@ public class CalendarsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
      * @param count Number of calendars per page (optional, default to 10)
@@ -1106,7 +1197,7 @@ public class CalendarsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionCalendarsAsync(String region, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<Calendars> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionCalendarsAsync(String basePath, String debugUrl, String region, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<Calendars> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1127,7 +1218,7 @@ public class CalendarsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionCalendarsValidateBeforeCall(region, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCalendarsValidateBeforeCall(basePath, debugUrl, region, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Calendars>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1136,6 +1227,8 @@ public class CalendarsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
      * @param count Number of calendars per page (optional, default to 10)
@@ -1149,7 +1242,7 @@ public class CalendarsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionCalendarsAsyncRaw(String region, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionCalendarsAsyncRaw(String basePath, String debugUrl, String region, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1170,7 +1263,7 @@ public class CalendarsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionCalendarsValidateBeforeCall(region, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCalendarsValidateBeforeCall(basePath, debugUrl, region, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1181,6 +1274,8 @@ public class CalendarsApi {
 
     public class CoverageRegionCalendarsRequestBuilder {
         private CalendarsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private Integer depth;
         private Integer count;
@@ -1193,6 +1288,15 @@ public class CalendarsApi {
 
         public CoverageRegionCalendarsRequestBuilder(CalendarsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionCalendarsRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionCalendarsRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionCalendarsRequestBuilder withRegion(String region) {
@@ -1233,15 +1337,17 @@ public class CalendarsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<Calendars > callback) throws ApiException {
-            return currentApi.getCoverageRegionCalendarsAsync(this.region, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
+            return currentApi.getCoverageRegionCalendarsAsync(basePath, debugUrl, this.region, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionCalendarsAsyncRaw(this.region, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
+            return currentApi.getCoverageRegionCalendarsAsyncRaw(basePath, debugUrl, this.region, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
         }
     }
     /**
      * Build call for getCoverageRegionCalendarsId
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -1257,31 +1363,36 @@ public class CalendarsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionCalendarsIdCall(String region, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionCalendarsIdCall(String basePath, String debugUrl, String region, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/calendars/{id}"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()))
             .replaceAll("\\{" + "id" + "\\}", apiClient.escapePathParam(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (startDate != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_date", startDate));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_date", startDate));
         if (endDate != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_date", endDate));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_date", endDate));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1316,7 +1427,7 @@ public class CalendarsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionCalendarsIdValidateBeforeCall(String region, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionCalendarsIdValidateBeforeCall(String basePath, String debugUrl, String region, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -1329,7 +1440,7 @@ public class CalendarsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionCalendarsIdCall(region, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCalendarsIdCall(basePath, debugUrl, region, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1337,6 +1448,8 @@ public class CalendarsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -1350,14 +1463,16 @@ public class CalendarsApi {
      * @return Calendars
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected Calendars getCoverageRegionCalendarsId(String region, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
-        ApiResponse<Calendars> resp = getCoverageRegionCalendarsIdWithHttpInfo(region, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance);
+    protected Calendars getCoverageRegionCalendarsId(String basePath, String debugUrl, String region, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
+        ApiResponse<Calendars> resp = getCoverageRegionCalendarsIdWithHttpInfo(basePath, debugUrl, region, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -1371,8 +1486,8 @@ public class CalendarsApi {
      * @return ApiResponse&lt;Calendars&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<Calendars> getCoverageRegionCalendarsIdWithHttpInfo(String region, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionCalendarsIdValidateBeforeCall(region, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, null, null);
+    private ApiResponse<Calendars> getCoverageRegionCalendarsIdWithHttpInfo(String basePath, String debugUrl, String region, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionCalendarsIdValidateBeforeCall(basePath, debugUrl, region, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, null, null);
         Type localVarReturnType = new TypeToken<Calendars>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1380,6 +1495,8 @@ public class CalendarsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -1394,7 +1511,7 @@ public class CalendarsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionCalendarsIdAsync(String region, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<Calendars> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionCalendarsIdAsync(String basePath, String debugUrl, String region, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<Calendars> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1415,7 +1532,7 @@ public class CalendarsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionCalendarsIdValidateBeforeCall(region, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCalendarsIdValidateBeforeCall(basePath, debugUrl, region, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Calendars>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1424,6 +1541,8 @@ public class CalendarsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param id Id of the object you want to query (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -1438,7 +1557,7 @@ public class CalendarsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionCalendarsIdAsyncRaw(String region, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionCalendarsIdAsyncRaw(String basePath, String debugUrl, String region, String id, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1459,7 +1578,7 @@ public class CalendarsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionCalendarsIdValidateBeforeCall(region, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionCalendarsIdValidateBeforeCall(basePath, debugUrl, region, id, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1470,6 +1589,8 @@ public class CalendarsApi {
 
     public class CoverageRegionCalendarsIdRequestBuilder {
         private CalendarsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String id;
         private Integer depth;
@@ -1483,6 +1604,15 @@ public class CalendarsApi {
 
         public CoverageRegionCalendarsIdRequestBuilder(CalendarsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionCalendarsIdRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionCalendarsIdRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionCalendarsIdRequestBuilder withRegion(String region) {
@@ -1527,15 +1657,17 @@ public class CalendarsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<Calendars > callback) throws ApiException {
-            return currentApi.getCoverageRegionCalendarsIdAsync(this.region, this.id, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
+            return currentApi.getCoverageRegionCalendarsIdAsync(basePath, debugUrl, this.region, this.id, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionCalendarsIdAsyncRaw(this.region, this.id, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
+            return currentApi.getCoverageRegionCalendarsIdAsyncRaw(basePath, debugUrl, this.region, this.id, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
         }
     }
     /**
      * Build call for getCoverageRegionUriCalendars
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -1551,31 +1683,36 @@ public class CalendarsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    private com.squareup.okhttp.Call getCoverageRegionUriCalendarsCall(String region, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriCalendarsCall(String basePath, String debugUrl, String region, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
-        // create path and map variables
+        // create path and map variables CC
         String localVarPath = "/coverage/{region}/{uri}/calendars"
             .replaceAll("\\{" + "region" + "\\}", apiClient.escapePathParam(region.toString()))
             .replaceAll("\\{" + "uri" + "\\}", apiClient.escapePathParam(uri.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        if (basePath != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "basePath", basePath));
+        if (debugUrl != null)
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "debugUrl", debugUrl));
         if (depth != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "depth", depth));
         if (count != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "count", count));
         if (startPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_page", startPage));
         if (startDate != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_date", startDate));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "start_date", startDate));
         if (endDate != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_date", endDate));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "end_date", endDate));
         if (forbiddenId != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_id[]", forbiddenId));
         if (forbiddenUris != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "forbidden_uris[]", forbiddenUris));
         if (distance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
+            localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance", distance));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1610,7 +1747,7 @@ public class CalendarsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCoverageRegionUriCalendarsValidateBeforeCall(String region, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCoverageRegionUriCalendarsValidateBeforeCall(String basePath, String debugUrl, String region, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'region' is set
         if (region == null) {
@@ -1623,7 +1760,7 @@ public class CalendarsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriCalendarsCall(region, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriCalendarsCall(basePath, debugUrl, region, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1631,6 +1768,8 @@ public class CalendarsApi {
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -1644,14 +1783,16 @@ public class CalendarsApi {
      * @return Calendars
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    protected Calendars getCoverageRegionUriCalendars(String region, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
-        ApiResponse<Calendars> resp = getCoverageRegionUriCalendarsWithHttpInfo(region, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance);
+    protected Calendars getCoverageRegionUriCalendars(String basePath, String debugUrl, String region, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
+        ApiResponse<Calendars> resp = getCoverageRegionUriCalendarsWithHttpInfo(basePath, debugUrl, region, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance);
         return resp.getData();
     }
 
     /**
      * 
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -1665,8 +1806,8 @@ public class CalendarsApi {
      * @return ApiResponse&lt;Calendars&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    private ApiResponse<Calendars> getCoverageRegionUriCalendarsWithHttpInfo(String region, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
-        com.squareup.okhttp.Call call = getCoverageRegionUriCalendarsValidateBeforeCall(region, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, null, null);
+    private ApiResponse<Calendars> getCoverageRegionUriCalendarsWithHttpInfo(String basePath, String debugUrl, String region, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance) throws ApiException {
+        com.squareup.okhttp.Call call = getCoverageRegionUriCalendarsValidateBeforeCall(basePath, debugUrl, region, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, null, null);
         Type localVarReturnType = new TypeToken<Calendars>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1674,6 +1815,8 @@ public class CalendarsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -1688,7 +1831,7 @@ public class CalendarsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriCalendarsAsync(String region, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<Calendars> callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriCalendarsAsync(String basePath, String debugUrl, String region, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<Calendars> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1709,7 +1852,7 @@ public class CalendarsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriCalendarsValidateBeforeCall(region, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriCalendarsValidateBeforeCall(basePath, debugUrl, region, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Calendars>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1718,6 +1861,8 @@ public class CalendarsApi {
     /**
      *  (asynchronously)
      * 
+     * @param basePath The API base path (optional)
+     * @param debugUrl The API Debug url (optional)
      * @param region  The region you want to query (required)
      * @param uri First part of the uri (required)
      * @param depth The depth of your object (optional, default to 1)
@@ -1732,7 +1877,7 @@ public class CalendarsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    protected com.squareup.okhttp.Call getCoverageRegionUriCalendarsAsyncRaw(String region, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<String > callback) throws ApiException {
+    protected com.squareup.okhttp.Call getCoverageRegionUriCalendarsAsyncRaw(String basePath, String debugUrl, String region, String uri, Integer depth, Integer count, Integer startPage, String startDate, String endDate, List<String> forbiddenId, List<String> forbiddenUris, Integer distance, final ApiCallback<String > callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1753,7 +1898,7 @@ public class CalendarsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCoverageRegionUriCalendarsValidateBeforeCall(region, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCoverageRegionUriCalendarsValidateBeforeCall(basePath, debugUrl, region, uri, depth, count, startPage, startDate, endDate, forbiddenId, forbiddenUris, distance, progressListener, progressRequestListener);
         apiClient.executeAsync(call, String.class, callback);
         return call;
     }
@@ -1764,6 +1909,8 @@ public class CalendarsApi {
 
     public class CoverageRegionUriCalendarsRequestBuilder {
         private CalendarsApi currentApi;
+        private String basePath;
+        private String debugUrl;
         private String region;
         private String uri;
         private Integer depth;
@@ -1777,6 +1924,15 @@ public class CalendarsApi {
 
         public CoverageRegionUriCalendarsRequestBuilder(CalendarsApi currentApi) {
             this.currentApi = currentApi;
+        }
+
+        public CoverageRegionUriCalendarsRequestBuilder withBasePath(String basePath) {
+            this.basePath = basePath;
+            return this;
+        }
+        public CoverageRegionUriCalendarsRequestBuilder withDebugUrl(String debugUrl) {
+            this.debugUrl = debugUrl;
+            return this;
         }
 
         public CoverageRegionUriCalendarsRequestBuilder withRegion(String region) {
@@ -1821,11 +1977,11 @@ public class CalendarsApi {
         }
 
         public com.squareup.okhttp.Call get(final ApiCallback<Calendars > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriCalendarsAsync(this.region, this.uri, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
+            return currentApi.getCoverageRegionUriCalendarsAsync(basePath, debugUrl, this.region, this.uri, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
         }
 
         public com.squareup.okhttp.Call rawGet(final ApiCallback<String > callback) throws ApiException {
-            return currentApi.getCoverageRegionUriCalendarsAsyncRaw(this.region, this.uri, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
+            return currentApi.getCoverageRegionUriCalendarsAsyncRaw(basePath, debugUrl, this.region, this.uri, this.depth, this.count, this.startPage, this.startDate, this.endDate, this.forbiddenId, this.forbiddenUris, this.distance, callback);
         }
     }
 }
