@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **stopPoint** | [**StopPoint**](StopPoint.md) |  |  [optional]
 **administrativeRegion** | [**Admin**](Admin.md) |  |  [optional]
 **name** | **String** | Name of the object | 
+**distance** | **String** | Distance to the object in meters |  [optional]
 **address** | [**Address**](Address.md) |  |  [optional]
 **poi** | [**Poi**](Poi.md) |  |  [optional]
 **quality** | **Integer** |  |  [optional]

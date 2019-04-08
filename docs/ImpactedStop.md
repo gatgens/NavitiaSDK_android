@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **stopPoint** | [**StopPoint**](StopPoint.md) |  |  [optional]
 **stopTimeEffect** | [**StopTimeEffectEnum**](#StopTimeEffectEnum) |  |  [optional]
 **departureStatus** | **String** |  |  [optional]
+**isDetour** | **Boolean** |  | 
 **amendedDepartureTime** | **String** |  |  [optional]
 **baseArrivalTime** | **String** |  |  [optional]
 **cause** | **String** |  | 

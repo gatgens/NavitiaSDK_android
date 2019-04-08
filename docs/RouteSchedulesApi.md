@@ -35,11 +35,11 @@ RouteSchedulesApi apiInstance = new RouteSchedulesApi();
 BigDecimal lat = new BigDecimal(); // BigDecimal |  The latitude of where the coord you want to query
 BigDecimal lon = new BigDecimal(); // BigDecimal |  The longitude of where the coord you want to query
 String uri = "uri_example"; // String | First part of the uri
-String filter = "filter_example"; // String | 
+String filter = "filter_example"; // String | use to filter PT objects
 DateTime fromDatetime = new DateTime(); // DateTime | The datetime from which you want the schedules
 DateTime untilDatetime = new DateTime(); // DateTime | The datetime until which you want the schedules
 Integer duration = 86400; // Integer | Maximum duration between datetime and the retrieved stop time
-Integer depth = 2; // Integer | 
+Integer depth = 2; // Integer | The depth of your object
 Integer count = 10; // Integer | Number of schedules per page
 Integer startPage = 56; // Integer | The current page
 Integer maxDateTimes = 56; // Integer | DEPRECATED, replaced by `items_per_schedule`
@@ -67,11 +67,11 @@ Name | Type | Description  | Notes
  **lat** | **BigDecimal**|  The latitude of where the coord you want to query |
  **lon** | **BigDecimal**|  The longitude of where the coord you want to query |
  **uri** | **String**| First part of the uri |
- **filter** | **String**|  | [optional]
+ **filter** | **String**| use to filter PT objects | [optional]
  **fromDatetime** | **DateTime**| The datetime from which you want the schedules | [optional]
  **untilDatetime** | **DateTime**| The datetime until which you want the schedules | [optional]
  **duration** | **Integer**| Maximum duration between datetime and the retrieved stop time | [optional] [default to 86400]
- **depth** | **Integer**|  | [optional] [default to 2]
+ **depth** | **Integer**| The depth of your object | [optional] [default to 2]
  **count** | **Integer**| Number of schedules per page | [optional] [default to 10]
  **startPage** | **Integer**| The current page | [optional]
  **maxDateTimes** | **Integer**| DEPRECATED, replaced by &#x60;items_per_schedule&#x60; | [optional]
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionUriRouteSchedules"></a>
@@ -122,11 +122,11 @@ basicAuth.setPassword("YOUR PASSWORD");
 RouteSchedulesApi apiInstance = new RouteSchedulesApi();
 String region = "region_example"; // String |  The region you want to query
 String uri = "uri_example"; // String | First part of the uri
-String filter = "filter_example"; // String | 
+String filter = "filter_example"; // String | use to filter PT objects
 DateTime fromDatetime = new DateTime(); // DateTime | The datetime from which you want the schedules
 DateTime untilDatetime = new DateTime(); // DateTime | The datetime until which you want the schedules
 Integer duration = 86400; // Integer | Maximum duration between datetime and the retrieved stop time
-Integer depth = 2; // Integer | 
+Integer depth = 2; // Integer | The depth of your object
 Integer count = 10; // Integer | Number of schedules per page
 Integer startPage = 56; // Integer | The current page
 Integer maxDateTimes = 56; // Integer | DEPRECATED, replaced by `items_per_schedule`
@@ -153,11 +153,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **region** | **String**|  The region you want to query |
  **uri** | **String**| First part of the uri |
- **filter** | **String**|  | [optional]
+ **filter** | **String**| use to filter PT objects | [optional]
  **fromDatetime** | **DateTime**| The datetime from which you want the schedules | [optional]
  **untilDatetime** | **DateTime**| The datetime until which you want the schedules | [optional]
  **duration** | **Integer**| Maximum duration between datetime and the retrieved stop time | [optional] [default to 86400]
- **depth** | **Integer**|  | [optional] [default to 2]
+ **depth** | **Integer**| The depth of your object | [optional] [default to 2]
  **count** | **Integer**| Number of schedules per page | [optional] [default to 10]
  **startPage** | **Integer**| The current page | [optional]
  **maxDateTimes** | **Integer**| DEPRECATED, replaced by &#x60;items_per_schedule&#x60; | [optional]
@@ -180,7 +180,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getRouteSchedules"></a>
@@ -206,11 +206,11 @@ basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
 RouteSchedulesApi apiInstance = new RouteSchedulesApi();
-String filter = "filter_example"; // String | 
+String filter = "filter_example"; // String | use to filter PT objects
 DateTime fromDatetime = new DateTime(); // DateTime | The datetime from which you want the schedules
 DateTime untilDatetime = new DateTime(); // DateTime | The datetime until which you want the schedules
 Integer duration = 86400; // Integer | Maximum duration between datetime and the retrieved stop time
-Integer depth = 2; // Integer | 
+Integer depth = 2; // Integer | The depth of your object
 Integer count = 10; // Integer | Number of schedules per page
 Integer startPage = 56; // Integer | The current page
 Integer maxDateTimes = 56; // Integer | DEPRECATED, replaced by `items_per_schedule`
@@ -235,11 +235,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **String**|  | [optional]
+ **filter** | **String**| use to filter PT objects | [optional]
  **fromDatetime** | **DateTime**| The datetime from which you want the schedules | [optional]
  **untilDatetime** | **DateTime**| The datetime until which you want the schedules | [optional]
  **duration** | **Integer**| Maximum duration between datetime and the retrieved stop time | [optional] [default to 86400]
- **depth** | **Integer**|  | [optional] [default to 2]
+ **depth** | **Integer**| The depth of your object | [optional] [default to 2]
  **count** | **Integer**| Number of schedules per page | [optional] [default to 10]
  **startPage** | **Integer**| The current page | [optional]
  **maxDateTimes** | **Integer**| DEPRECATED, replaced by &#x60;items_per_schedule&#x60; | [optional]
@@ -262,6 +262,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
