@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="getCoverageLonLatTrafficReports"></a>
 # **getCoverageLonLatTrafficReports**
-> TrafficReports getCoverageLonLatTrafficReports(lat, lon, depth, count, startPage, forbiddenId, forbiddenUris, distance, disableGeojson)
+> TrafficReports getCoverageLonLatTrafficReports(lat, lon, depth, count, startPage, forbiddenId, forbiddenUris, distance, disableGeojson, tags)
 
 
 
@@ -42,8 +42,9 @@ List<String> forbiddenId = Arrays.asList("forbiddenId_example"); // List<String>
 List<String> forbiddenUris = Arrays.asList("forbiddenUris_example"); // List<String> | forbidden uris
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    TrafficReports result = apiInstance.getCoverageLonLatTrafficReports(lat, lon, depth, count, startPage, forbiddenId, forbiddenUris, distance, disableGeojson);
+    TrafficReports result = apiInstance.getCoverageLonLatTrafficReports(lat, lon, depth, count, startPage, forbiddenId, forbiddenUris, distance, disableGeojson, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TrafficReportApi#getCoverageLonLatTrafficReports");
@@ -64,6 +65,7 @@ Name | Type | Description  | Notes
  **forbiddenUris** | [**List&lt;String&gt;**](String.md)| forbidden uris | [optional]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -75,12 +77,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageLonLatUriTrafficReports"></a>
 # **getCoverageLonLatUriTrafficReports**
-> TrafficReports getCoverageLonLatUriTrafficReports(lat, lon, uri, depth, count, startPage, forbiddenId, forbiddenUris, distance, disableGeojson)
+> TrafficReports getCoverageLonLatUriTrafficReports(lat, lon, uri, depth, count, startPage, forbiddenId, forbiddenUris, distance, disableGeojson, tags)
 
 
 
@@ -111,8 +113,9 @@ List<String> forbiddenId = Arrays.asList("forbiddenId_example"); // List<String>
 List<String> forbiddenUris = Arrays.asList("forbiddenUris_example"); // List<String> | forbidden uris
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    TrafficReports result = apiInstance.getCoverageLonLatUriTrafficReports(lat, lon, uri, depth, count, startPage, forbiddenId, forbiddenUris, distance, disableGeojson);
+    TrafficReports result = apiInstance.getCoverageLonLatUriTrafficReports(lat, lon, uri, depth, count, startPage, forbiddenId, forbiddenUris, distance, disableGeojson, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TrafficReportApi#getCoverageLonLatUriTrafficReports");
@@ -134,6 +137,7 @@ Name | Type | Description  | Notes
  **forbiddenUris** | [**List&lt;String&gt;**](String.md)| forbidden uris | [optional]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -145,12 +149,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionTrafficReports"></a>
 # **getCoverageRegionTrafficReports**
-> TrafficReports getCoverageRegionTrafficReports(region, depth, count, startPage, forbiddenId, forbiddenUris, distance, disableGeojson)
+> TrafficReports getCoverageRegionTrafficReports(region, depth, count, startPage, forbiddenId, forbiddenUris, distance, disableGeojson, tags)
 
 
 
@@ -179,8 +183,9 @@ List<String> forbiddenId = Arrays.asList("forbiddenId_example"); // List<String>
 List<String> forbiddenUris = Arrays.asList("forbiddenUris_example"); // List<String> | forbidden uris
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    TrafficReports result = apiInstance.getCoverageRegionTrafficReports(region, depth, count, startPage, forbiddenId, forbiddenUris, distance, disableGeojson);
+    TrafficReports result = apiInstance.getCoverageRegionTrafficReports(region, depth, count, startPage, forbiddenId, forbiddenUris, distance, disableGeojson, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TrafficReportApi#getCoverageRegionTrafficReports");
@@ -200,6 +205,7 @@ Name | Type | Description  | Notes
  **forbiddenUris** | [**List&lt;String&gt;**](String.md)| forbidden uris | [optional]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -211,12 +217,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionUriTrafficReports"></a>
 # **getCoverageRegionUriTrafficReports**
-> TrafficReports getCoverageRegionUriTrafficReports(region, uri, depth, count, startPage, forbiddenId, forbiddenUris, distance, disableGeojson)
+> TrafficReports getCoverageRegionUriTrafficReports(region, uri, depth, count, startPage, forbiddenId, forbiddenUris, distance, disableGeojson, tags)
 
 
 
@@ -246,8 +252,9 @@ List<String> forbiddenId = Arrays.asList("forbiddenId_example"); // List<String>
 List<String> forbiddenUris = Arrays.asList("forbiddenUris_example"); // List<String> | forbidden uris
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    TrafficReports result = apiInstance.getCoverageRegionUriTrafficReports(region, uri, depth, count, startPage, forbiddenId, forbiddenUris, distance, disableGeojson);
+    TrafficReports result = apiInstance.getCoverageRegionUriTrafficReports(region, uri, depth, count, startPage, forbiddenId, forbiddenUris, distance, disableGeojson, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TrafficReportApi#getCoverageRegionUriTrafficReports");
@@ -268,6 +275,7 @@ Name | Type | Description  | Notes
  **forbiddenUris** | [**List&lt;String&gt;**](String.md)| forbidden uris | [optional]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -279,6 +287,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

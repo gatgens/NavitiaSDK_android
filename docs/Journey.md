@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **status** | **String** | Status from the whole journey taking into account the most disturbing information retrieved on every object used (can be \&quot;NO_SERVICE\&quot;, \&quot;SIGNIFICANT_DELAYS\&quot;, ... | 
 **distances** | [**Distances**](Distances.md) |  |  [optional]
 **from** | [**Place**](Place.md) |  |  [optional]
+**links** | [**List&lt;LinkSchema&gt;**](LinkSchema.md) |  |  [optional]
 **tags** | **List&lt;String&gt;** |  | 
 **nbTransfers** | **Integer** | Number of transfers along the journey | 
 **durations** | [**Durations**](Durations.md) |  |  [optional]

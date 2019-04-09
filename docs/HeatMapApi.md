@@ -41,7 +41,7 @@ Integer maxNbTransfers = 56; // Integer | Maximum number of transfers in each jo
 Integer minNbTransfers = 56; // Integer | Minimum number of transfers in each journey
 List<String> firstSectionMode = Arrays.asList("firstSectionMode_example"); // List<String> | Force the first section mode if the first section is not a public transport one. `bss` stands for bike sharing system. Note 1: It’s an array, you can give multiple modes. Note 2: Choosing `bss` implicitly allows the walking mode since you might have to walk to the bss station. Note 3: The parameter is inclusive, not exclusive, so if you want to forbid a mode, you need to add all the other modes. Eg: If you never want to use a car, you need: `first_section_mode[]=walking&first_section_mode[]=bss&first_section_mode[]=bike&last_section_mode[]=walking&last_section_mode[]=bss&last_section_mode[]=bike`
 List<String> lastSectionMode = Arrays.asList("lastSectionMode_example"); // List<String> | Same as first_section_mode but for the last section.
-Integer maxDurationToPt = 56; // Integer | Maximal duration of non public transport in second
+Integer maxDurationToPt = 56; // Integer | Maximum allowed duration to reach the public transport (same limit used before and after public transport). Use this to limit the walking/biking part. Unit is seconds
 Integer maxWalkingDurationToPt = 56; // Integer | Maximal duration of walking on public transport in second
 Integer maxBikeDurationToPt = 56; // Integer | Maximal duration of bike on public transport in second
 Integer maxBssDurationToPt = 56; // Integer | Maximal duration of bss on public transport in second
@@ -56,13 +56,13 @@ List<String> forbiddenUris = Arrays.asList("forbiddenUris_example"); // List<Str
 List<String> allowedId = Arrays.asList("allowedId_example"); // List<String> | If you want to use only a small subset of the public transport objects in your solution. Note: The constraint intersects with forbidden_uris[]. For example, if you ask for `allowed_id[]=line:A&forbidden_uris[]=physical_mode:Bus`, only vehicles of the line A that are not buses will be used.
 Boolean disruptionActive = true; // Boolean | DEPRECATED, replaced by `data_freshness`. If true the algorithm takes the disruptions into account, and thus avoid disrupted public transport. Nota: `disruption_active=true` <=> `data_freshness=realtime`
 String dataFreshness = "dataFreshness_example"; // String | Define the freshness of data to use to compute journeys. When using the following parameter `&data_freshness=base_schedule` you can get disrupted journeys in the response. You can then display the disruption message to the traveler and make a `realtime` request to get a new undisrupted solution.  Possible values:  * 'base_schedule' - Use theoric schedule information  * 'adapted_schedule' - Use of adapted schedule information (like strike adjusting, etc.). Prefer `realtime` for traveler information as it will also contain adapted information schedule.  * 'realtime' - Use all realtime information
-Integer maxDuration = 56; // Integer | Maximum duration of journeys in secondes. Really useful when computing an isochrone.
+Integer maxDuration = 56; // Integer | Maximum duration of journeys in seconds (from `datetime` parameter). More usefull when computing an isochrone (only `from` or `to` is provided). On a classic journey (from-to), it will mostly speedup Navitia: You may have journeys a bit longer than that value (you would have to filter them).
 Boolean wheelchair = true; // Boolean | If true the traveler is considered to be using a wheelchair, thus only accessible public transport are used. Be warned: many data are currently too faint to provide acceptable answers with this parameter on.
 String travelerType = "travelerType_example"; // String | Define speeds and accessibility values for different kind of people. Each profile also automatically determines appropriate first and last section modes to the covered area. Note: this means that you might get car, bike, etc. fallback routes even if you set `forbidden_uris[]`! You can overload all parameters (especially speeds, distances, first and last modes) by setting all of them specifically. We advise that you don’t rely on the traveler_type’s fallback modes (`first_section_mode[]` and `last_section_mode[]`) and set them yourself.
 String directPath = "indifferent"; // String | Specify if direct path should be suggested
 Integer freeRadiusFrom = 56; // Integer | Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly=0)
 Integer freeRadiusTo = 56; // Integer | Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly=0)
-Integer resolution = 500; // Integer | 
+Integer resolution = 500; // Integer | Sampling resolution
 try {
     HeatMap1 result = apiInstance.getCoverageLonLatHeatMaps(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, resolution);
     System.out.println(result);
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
  **minNbTransfers** | **Integer**| Minimum number of transfers in each journey | [optional]
  **firstSectionMode** | [**List&lt;String&gt;**](String.md)| Force the first section mode if the first section is not a public transport one. &#x60;bss&#x60; stands for bike sharing system. Note 1: It’s an array, you can give multiple modes. Note 2: Choosing &#x60;bss&#x60; implicitly allows the walking mode since you might have to walk to the bss station. Note 3: The parameter is inclusive, not exclusive, so if you want to forbid a mode, you need to add all the other modes. Eg: If you never want to use a car, you need: &#x60;first_section_mode[]&#x3D;walking&amp;first_section_mode[]&#x3D;bss&amp;first_section_mode[]&#x3D;bike&amp;last_section_mode[]&#x3D;walking&amp;last_section_mode[]&#x3D;bss&amp;last_section_mode[]&#x3D;bike&#x60; | [optional] [enum: walking, car, bike, bss, ridesharing]
  **lastSectionMode** | [**List&lt;String&gt;**](String.md)| Same as first_section_mode but for the last section. | [optional] [enum: walking, car, bike, bss, ridesharing]
- **maxDurationToPt** | **Integer**| Maximal duration of non public transport in second | [optional]
+ **maxDurationToPt** | **Integer**| Maximum allowed duration to reach the public transport (same limit used before and after public transport). Use this to limit the walking/biking part. Unit is seconds | [optional]
  **maxWalkingDurationToPt** | **Integer**| Maximal duration of walking on public transport in second | [optional]
  **maxBikeDurationToPt** | **Integer**| Maximal duration of bike on public transport in second | [optional]
  **maxBssDurationToPt** | **Integer**| Maximal duration of bss on public transport in second | [optional]
@@ -101,13 +101,13 @@ Name | Type | Description  | Notes
  **allowedId** | [**List&lt;String&gt;**](String.md)| If you want to use only a small subset of the public transport objects in your solution. Note: The constraint intersects with forbidden_uris[]. For example, if you ask for &#x60;allowed_id[]&#x3D;line:A&amp;forbidden_uris[]&#x3D;physical_mode:Bus&#x60;, only vehicles of the line A that are not buses will be used. | [optional]
  **disruptionActive** | **Boolean**| DEPRECATED, replaced by &#x60;data_freshness&#x60;. If true the algorithm takes the disruptions into account, and thus avoid disrupted public transport. Nota: &#x60;disruption_active&#x3D;true&#x60; &lt;&#x3D;&gt; &#x60;data_freshness&#x3D;realtime&#x60; | [optional]
  **dataFreshness** | **String**| Define the freshness of data to use to compute journeys. When using the following parameter &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; you can get disrupted journeys in the response. You can then display the disruption message to the traveler and make a &#x60;realtime&#x60; request to get a new undisrupted solution.  Possible values:  * &#39;base_schedule&#39; - Use theoric schedule information  * &#39;adapted_schedule&#39; - Use of adapted schedule information (like strike adjusting, etc.). Prefer &#x60;realtime&#x60; for traveler information as it will also contain adapted information schedule.  * &#39;realtime&#39; - Use all realtime information | [optional] [enum: base_schedule, adapted_schedule, realtime]
- **maxDuration** | **Integer**| Maximum duration of journeys in secondes. Really useful when computing an isochrone. | [optional]
+ **maxDuration** | **Integer**| Maximum duration of journeys in seconds (from &#x60;datetime&#x60; parameter). More usefull when computing an isochrone (only &#x60;from&#x60; or &#x60;to&#x60; is provided). On a classic journey (from-to), it will mostly speedup Navitia: You may have journeys a bit longer than that value (you would have to filter them). | [optional]
  **wheelchair** | **Boolean**| If true the traveler is considered to be using a wheelchair, thus only accessible public transport are used. Be warned: many data are currently too faint to provide acceptable answers with this parameter on. | [optional]
  **travelerType** | **String**| Define speeds and accessibility values for different kind of people. Each profile also automatically determines appropriate first and last section modes to the covered area. Note: this means that you might get car, bike, etc. fallback routes even if you set &#x60;forbidden_uris[]&#x60;! You can overload all parameters (especially speeds, distances, first and last modes) by setting all of them specifically. We advise that you don’t rely on the traveler_type’s fallback modes (&#x60;first_section_mode[]&#x60; and &#x60;last_section_mode[]&#x60;) and set them yourself. | [optional] [enum: cyclist, luggage, wheelchair, standard, motorist, fast_walker, slow_walker]
  **directPath** | **String**| Specify if direct path should be suggested | [optional] [default to indifferent] [enum: indifferent, only, none]
  **freeRadiusFrom** | **Integer**| Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
  **freeRadiusTo** | **Integer**| Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
- **resolution** | **Integer**|  | [optional] [default to 500]
+ **resolution** | **Integer**| Sampling resolution | [optional] [default to 500]
 
 ### Return type
 
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getCoverageRegionHeatMaps"></a>
@@ -154,7 +154,7 @@ Integer maxNbTransfers = 56; // Integer | Maximum number of transfers in each jo
 Integer minNbTransfers = 56; // Integer | Minimum number of transfers in each journey
 List<String> firstSectionMode = Arrays.asList("firstSectionMode_example"); // List<String> | Force the first section mode if the first section is not a public transport one. `bss` stands for bike sharing system. Note 1: It’s an array, you can give multiple modes. Note 2: Choosing `bss` implicitly allows the walking mode since you might have to walk to the bss station. Note 3: The parameter is inclusive, not exclusive, so if you want to forbid a mode, you need to add all the other modes. Eg: If you never want to use a car, you need: `first_section_mode[]=walking&first_section_mode[]=bss&first_section_mode[]=bike&last_section_mode[]=walking&last_section_mode[]=bss&last_section_mode[]=bike`
 List<String> lastSectionMode = Arrays.asList("lastSectionMode_example"); // List<String> | Same as first_section_mode but for the last section.
-Integer maxDurationToPt = 56; // Integer | Maximal duration of non public transport in second
+Integer maxDurationToPt = 56; // Integer | Maximum allowed duration to reach the public transport (same limit used before and after public transport). Use this to limit the walking/biking part. Unit is seconds
 Integer maxWalkingDurationToPt = 56; // Integer | Maximal duration of walking on public transport in second
 Integer maxBikeDurationToPt = 56; // Integer | Maximal duration of bike on public transport in second
 Integer maxBssDurationToPt = 56; // Integer | Maximal duration of bss on public transport in second
@@ -169,13 +169,13 @@ List<String> forbiddenUris = Arrays.asList("forbiddenUris_example"); // List<Str
 List<String> allowedId = Arrays.asList("allowedId_example"); // List<String> | If you want to use only a small subset of the public transport objects in your solution. Note: The constraint intersects with forbidden_uris[]. For example, if you ask for `allowed_id[]=line:A&forbidden_uris[]=physical_mode:Bus`, only vehicles of the line A that are not buses will be used.
 Boolean disruptionActive = true; // Boolean | DEPRECATED, replaced by `data_freshness`. If true the algorithm takes the disruptions into account, and thus avoid disrupted public transport. Nota: `disruption_active=true` <=> `data_freshness=realtime`
 String dataFreshness = "dataFreshness_example"; // String | Define the freshness of data to use to compute journeys. When using the following parameter `&data_freshness=base_schedule` you can get disrupted journeys in the response. You can then display the disruption message to the traveler and make a `realtime` request to get a new undisrupted solution.  Possible values:  * 'base_schedule' - Use theoric schedule information  * 'adapted_schedule' - Use of adapted schedule information (like strike adjusting, etc.). Prefer `realtime` for traveler information as it will also contain adapted information schedule.  * 'realtime' - Use all realtime information
-Integer maxDuration = 56; // Integer | Maximum duration of journeys in secondes. Really useful when computing an isochrone.
+Integer maxDuration = 56; // Integer | Maximum duration of journeys in seconds (from `datetime` parameter). More usefull when computing an isochrone (only `from` or `to` is provided). On a classic journey (from-to), it will mostly speedup Navitia: You may have journeys a bit longer than that value (you would have to filter them).
 Boolean wheelchair = true; // Boolean | If true the traveler is considered to be using a wheelchair, thus only accessible public transport are used. Be warned: many data are currently too faint to provide acceptable answers with this parameter on.
 String travelerType = "travelerType_example"; // String | Define speeds and accessibility values for different kind of people. Each profile also automatically determines appropriate first and last section modes to the covered area. Note: this means that you might get car, bike, etc. fallback routes even if you set `forbidden_uris[]`! You can overload all parameters (especially speeds, distances, first and last modes) by setting all of them specifically. We advise that you don’t rely on the traveler_type’s fallback modes (`first_section_mode[]` and `last_section_mode[]`) and set them yourself.
 String directPath = "indifferent"; // String | Specify if direct path should be suggested
 Integer freeRadiusFrom = 56; // Integer | Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly=0)
 Integer freeRadiusTo = 56; // Integer | Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly=0)
-Integer resolution = 500; // Integer | 
+Integer resolution = 500; // Integer | Sampling resolution
 try {
     HeatMap1 result = apiInstance.getCoverageRegionHeatMaps(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, resolution);
     System.out.println(result);
@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
  **minNbTransfers** | **Integer**| Minimum number of transfers in each journey | [optional]
  **firstSectionMode** | [**List&lt;String&gt;**](String.md)| Force the first section mode if the first section is not a public transport one. &#x60;bss&#x60; stands for bike sharing system. Note 1: It’s an array, you can give multiple modes. Note 2: Choosing &#x60;bss&#x60; implicitly allows the walking mode since you might have to walk to the bss station. Note 3: The parameter is inclusive, not exclusive, so if you want to forbid a mode, you need to add all the other modes. Eg: If you never want to use a car, you need: &#x60;first_section_mode[]&#x3D;walking&amp;first_section_mode[]&#x3D;bss&amp;first_section_mode[]&#x3D;bike&amp;last_section_mode[]&#x3D;walking&amp;last_section_mode[]&#x3D;bss&amp;last_section_mode[]&#x3D;bike&#x60; | [optional] [enum: walking, car, bike, bss, ridesharing]
  **lastSectionMode** | [**List&lt;String&gt;**](String.md)| Same as first_section_mode but for the last section. | [optional] [enum: walking, car, bike, bss, ridesharing]
- **maxDurationToPt** | **Integer**| Maximal duration of non public transport in second | [optional]
+ **maxDurationToPt** | **Integer**| Maximum allowed duration to reach the public transport (same limit used before and after public transport). Use this to limit the walking/biking part. Unit is seconds | [optional]
  **maxWalkingDurationToPt** | **Integer**| Maximal duration of walking on public transport in second | [optional]
  **maxBikeDurationToPt** | **Integer**| Maximal duration of bike on public transport in second | [optional]
  **maxBssDurationToPt** | **Integer**| Maximal duration of bss on public transport in second | [optional]
@@ -213,13 +213,13 @@ Name | Type | Description  | Notes
  **allowedId** | [**List&lt;String&gt;**](String.md)| If you want to use only a small subset of the public transport objects in your solution. Note: The constraint intersects with forbidden_uris[]. For example, if you ask for &#x60;allowed_id[]&#x3D;line:A&amp;forbidden_uris[]&#x3D;physical_mode:Bus&#x60;, only vehicles of the line A that are not buses will be used. | [optional]
  **disruptionActive** | **Boolean**| DEPRECATED, replaced by &#x60;data_freshness&#x60;. If true the algorithm takes the disruptions into account, and thus avoid disrupted public transport. Nota: &#x60;disruption_active&#x3D;true&#x60; &lt;&#x3D;&gt; &#x60;data_freshness&#x3D;realtime&#x60; | [optional]
  **dataFreshness** | **String**| Define the freshness of data to use to compute journeys. When using the following parameter &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; you can get disrupted journeys in the response. You can then display the disruption message to the traveler and make a &#x60;realtime&#x60; request to get a new undisrupted solution.  Possible values:  * &#39;base_schedule&#39; - Use theoric schedule information  * &#39;adapted_schedule&#39; - Use of adapted schedule information (like strike adjusting, etc.). Prefer &#x60;realtime&#x60; for traveler information as it will also contain adapted information schedule.  * &#39;realtime&#39; - Use all realtime information | [optional] [enum: base_schedule, adapted_schedule, realtime]
- **maxDuration** | **Integer**| Maximum duration of journeys in secondes. Really useful when computing an isochrone. | [optional]
+ **maxDuration** | **Integer**| Maximum duration of journeys in seconds (from &#x60;datetime&#x60; parameter). More usefull when computing an isochrone (only &#x60;from&#x60; or &#x60;to&#x60; is provided). On a classic journey (from-to), it will mostly speedup Navitia: You may have journeys a bit longer than that value (you would have to filter them). | [optional]
  **wheelchair** | **Boolean**| If true the traveler is considered to be using a wheelchair, thus only accessible public transport are used. Be warned: many data are currently too faint to provide acceptable answers with this parameter on. | [optional]
  **travelerType** | **String**| Define speeds and accessibility values for different kind of people. Each profile also automatically determines appropriate first and last section modes to the covered area. Note: this means that you might get car, bike, etc. fallback routes even if you set &#x60;forbidden_uris[]&#x60;! You can overload all parameters (especially speeds, distances, first and last modes) by setting all of them specifically. We advise that you don’t rely on the traveler_type’s fallback modes (&#x60;first_section_mode[]&#x60; and &#x60;last_section_mode[]&#x60;) and set them yourself. | [optional] [enum: cyclist, luggage, wheelchair, standard, motorist, fast_walker, slow_walker]
  **directPath** | **String**| Specify if direct path should be suggested | [optional] [default to indifferent] [enum: indifferent, only, none]
  **freeRadiusFrom** | **Integer**| Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
  **freeRadiusTo** | **Integer**| Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
- **resolution** | **Integer**|  | [optional] [default to 500]
+ **resolution** | **Integer**| Sampling resolution | [optional] [default to 500]
 
 ### Return type
 
@@ -231,6 +231,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: 
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

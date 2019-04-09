@@ -5,7 +5,7 @@
     <artifactId>navitia-sdk</artifactId>
     <packaging>jar</packaging>
     <name>navitia-sdk</name>
-    <version>1.0.1</version>
+    <version>1.3.2</version>
     <url>https://github.com/swagger-api/swagger-codegen</url>
     <description>Navitia client for Android</description>
     <scm>
@@ -153,7 +153,7 @@
                         </goals>
                         <phase>package</phase>
                         <configuration>
-                            <finalName>navitia-sdk-1.0.1</finalName>
+                            <finalName>navitia-sdk-1.3.2</finalName>
                             <descriptorRefs>
                                 <descriptorRef>jar-with-dependencies</descriptorRef>
                             </descriptorRefs>

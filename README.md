@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>org.kisio.sdk</groupId>
     <artifactId>navitia-sdk</artifactId>
-    <version>1.0.1</version>
+    <version>1.3.2</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "org.kisio.sdk:navitia-sdk:1.0.1"
+compile "org.kisio.sdk:navitia-sdk:1.3.2"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/navitia-sdk-1.0.1.jar
+* target/navitia-sdk-1.3.2.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -351,6 +351,7 @@ Class | Method | HTTP request | Description
  - [CalendarException](docs/CalendarException.md)
  - [CalendarPeriod](docs/CalendarPeriod.md)
  - [Calendars](docs/Calendars.md)
+ - [CarPark](docs/CarPark.md)
  - [CellLatSchema](docs/CellLatSchema.md)
  - [CellLonSchema](docs/CellLonSchema.md)
  - [Channel](docs/Channel.md)
@@ -381,6 +382,7 @@ Class | Method | HTTP request | Description
  - [Error](docs/Error.md)
  - [Exception](docs/Exception.md)
  - [Fare](docs/Fare.md)
+ - [FareZone](docs/FareZone.md)
  - [FeedPublisher](docs/FeedPublisher.md)
  - [GeoStatus](docs/GeoStatus.md)
  - [GeoStatus1](docs/GeoStatus1.md)
@@ -444,6 +446,7 @@ Class | Method | HTTP request | Description
  - [SeatsDescription](docs/SeatsDescription.md)
  - [Section](docs/Section.md)
  - [SectionGeoJsonSchema](docs/SectionGeoJsonSchema.md)
+ - [SectionGeoJsonSchemaProperties](docs/SectionGeoJsonSchemaProperties.md)
  - [Severity](docs/Severity.md)
  - [Stands](docs/Stands.md)
  - [StopArea](docs/StopArea.md)

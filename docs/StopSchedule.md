@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **route** | [**Route**](Route.md) |  |  [optional]
 **additionalInformations** | **String** |  | 
 **displayInformations** | [**RouteDisplayInformation**](RouteDisplayInformation.md) |  |  [optional]
+**lastDatetime** | [**DateTimeType**](DateTimeType.md) |  |  [optional]
+**firstDatetime** | [**DateTimeType**](DateTimeType.md) |  |  [optional]
 
 
 
