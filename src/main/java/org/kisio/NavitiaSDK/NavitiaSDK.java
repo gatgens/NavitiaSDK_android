@@ -10,6 +10,7 @@ import org.kisio.NavitiaSDK.apis.CoordsApi;
 import org.kisio.NavitiaSDK.apis.CoverageApi;
 import org.kisio.NavitiaSDK.apis.DatasetsApi;
 import org.kisio.NavitiaSDK.apis.DisruptionsApi;
+import org.kisio.NavitiaSDK.apis.EquipmentReportsApi;
 import org.kisio.NavitiaSDK.apis.GeoStatusApi;
 import org.kisio.NavitiaSDK.apis.GraphicalIsochroneApi;
 import org.kisio.NavitiaSDK.apis.HeatMapApi;
@@ -49,6 +50,7 @@ public class NavitiaSDK {
     public final CoverageApi coverageApi;
     public final DatasetsApi datasetsApi;
     public final DisruptionsApi disruptionsApi;
+    public final EquipmentReportsApi equipmentReportsApi;
     public final GeoStatusApi geoStatusApi;
     public final GraphicalIsochroneApi graphicalIsochroneApi;
     public final HeatMapApi heatMapApi;
@@ -88,6 +90,7 @@ public class NavitiaSDK {
         this.coverageApi = new CoverageApi(configuration.getToken());
         this.datasetsApi = new DatasetsApi(configuration.getToken());
         this.disruptionsApi = new DisruptionsApi(configuration.getToken());
+        this.equipmentReportsApi = new EquipmentReportsApi(configuration.getToken());
         this.geoStatusApi = new GeoStatusApi(configuration.getToken());
         this.graphicalIsochroneApi = new GraphicalIsochroneApi(configuration.getToken());
         this.heatMapApi = new HeatMapApi(configuration.getToken());

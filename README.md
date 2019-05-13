@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>org.kisio.sdk</groupId>
     <artifactId>navitia-sdk</artifactId>
-    <version>1.3.2</version>
+    <version>1.3.3</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "org.kisio.sdk:navitia-sdk:1.3.2"
+compile "org.kisio.sdk:navitia-sdk:1.3.3"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/navitia-sdk-1.3.2.jar
+* target/navitia-sdk-1.3.3.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -181,6 +181,12 @@ Class | Method | HTTP request | Description
 *DisruptionsApi* | [**getCoverageRegionDisruptionsId**](docs/DisruptionsApi.md#getCoverageRegionDisruptionsId) | **GET** /coverage/{region}/disruptions/{id} | 
 *DisruptionsApi* | [**getCoverageRegionUriDisruptions**](docs/DisruptionsApi.md#getCoverageRegionUriDisruptions) | **GET** /coverage/{region}/{uri}/disruptions | 
 *DisruptionsApi* | [**getCoverageRegionUriDisruptionsId**](docs/DisruptionsApi.md#getCoverageRegionUriDisruptionsId) | **GET** /coverage/{region}/{uri}/disruptions/{id} | 
+*EquipmentReportsApi* | [**getCoordLonLatEquipmentReports**](docs/EquipmentReportsApi.md#getCoordLonLatEquipmentReports) | **GET** /coord/{lon};{lat}/equipment_reports | 
+*EquipmentReportsApi* | [**getCoordsLonLatEquipmentReports**](docs/EquipmentReportsApi.md#getCoordsLonLatEquipmentReports) | **GET** /coords/{lon};{lat}/equipment_reports | 
+*EquipmentReportsApi* | [**getCoverageLonLatEquipmentReports**](docs/EquipmentReportsApi.md#getCoverageLonLatEquipmentReports) | **GET** /coverage/{lon};{lat}/equipment_reports | 
+*EquipmentReportsApi* | [**getCoverageLonLatUriEquipmentReports**](docs/EquipmentReportsApi.md#getCoverageLonLatUriEquipmentReports) | **GET** /coverage/{lon};{lat}/{uri}/equipment_reports | 
+*EquipmentReportsApi* | [**getCoverageRegionEquipmentReports**](docs/EquipmentReportsApi.md#getCoverageRegionEquipmentReports) | **GET** /coverage/{region}/equipment_reports | 
+*EquipmentReportsApi* | [**getCoverageRegionUriEquipmentReports**](docs/EquipmentReportsApi.md#getCoverageRegionUriEquipmentReports) | **GET** /coverage/{region}/{uri}/equipment_reports | 
 *GeoStatusApi* | [**getCoverageLonLatGeoStatus**](docs/GeoStatusApi.md#getCoverageLonLatGeoStatus) | **GET** /coverage/{lon};{lat}/_geo_status | 
 *GeoStatusApi* | [**getCoverageRegionGeoStatus**](docs/GeoStatusApi.md#getCoverageRegionGeoStatus) | **GET** /coverage/{region}/_geo_status | 
 *GraphicalIsochroneApi* | [**getCoverageLonLatIsochrones**](docs/GraphicalIsochroneApi.md#getCoverageLonLatIsochrones) | **GET** /coverage/{lon};{lat}/isochrones | 
@@ -352,6 +358,7 @@ Class | Method | HTTP request | Description
  - [CalendarPeriod](docs/CalendarPeriod.md)
  - [Calendars](docs/Calendars.md)
  - [CarPark](docs/CarPark.md)
+ - [Cause](docs/Cause.md)
  - [CellLatSchema](docs/CellLatSchema.md)
  - [CellLonSchema](docs/CellLonSchema.md)
  - [Channel](docs/Channel.md)
@@ -369,6 +376,7 @@ Class | Method | HTTP request | Description
  - [Coverage](docs/Coverage.md)
  - [CoverageError](docs/CoverageError.md)
  - [Coverages](docs/Coverages.md)
+ - [CurrentAvailability](docs/CurrentAvailability.md)
  - [Dataset](docs/Dataset.md)
  - [Datasets](docs/Datasets.md)
  - [DateTimeType](docs/DateTimeType.md)
@@ -379,6 +387,10 @@ Class | Method | HTTP request | Description
  - [Disruptions](docs/Disruptions.md)
  - [Distances](docs/Distances.md)
  - [Durations](docs/Durations.md)
+ - [Effect](docs/Effect.md)
+ - [EquipmentDetails](docs/EquipmentDetails.md)
+ - [EquipmentReport](docs/EquipmentReport.md)
+ - [EquipmentReports](docs/EquipmentReports.md)
  - [Error](docs/Error.md)
  - [Exception](docs/Exception.md)
  - [Fare](docs/Fare.md)
@@ -450,6 +462,7 @@ Class | Method | HTTP request | Description
  - [Severity](docs/Severity.md)
  - [Stands](docs/Stands.md)
  - [StopArea](docs/StopArea.md)
+ - [StopAreaEquipments](docs/StopAreaEquipments.md)
  - [StopAreas](docs/StopAreas.md)
  - [StopDateTime](docs/StopDateTime.md)
  - [StopPoint](docs/StopPoint.md)

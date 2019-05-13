@@ -5,20 +5,21 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comment** | **String** |  |  [optional]
-**codes** | [**List&lt;Code&gt;**](Code.md) |  |  [optional]
-**name** | **String** | Name of the object | 
+**commercialModes** | [**List&lt;CommercialMode&gt;**](CommercialMode.md) |  |  [optional]
+**stopArea** | [**StopArea**](StopArea.md) |  |  [optional]
 **links** | [**List&lt;LinkSchema&gt;**](LinkSchema.md) |  | 
+**administrativeRegions** | [**List&lt;Admin&gt;**](Admin.md) |  |  [optional]
 **physicalModes** | [**List&lt;PhysicalMode&gt;**](PhysicalMode.md) |  |  [optional]
-**coord** | [**Coord**](Coord.md) |  |  [optional]
+**comments** | [**List&lt;Comment&gt;**](Comment.md) |  |  [optional]
 **label** | **String** |  |  [optional]
 **equipments** | [**List&lt;EquipmentsEnum&gt;**](#List&lt;EquipmentsEnum&gt;) |  | 
-**commercialModes** | [**List&lt;CommercialMode&gt;**](CommercialMode.md) |  |  [optional]
-**comments** | [**List&lt;Comment&gt;**](Comment.md) |  |  [optional]
-**administrativeRegions** | [**List&lt;Admin&gt;**](Admin.md) |  |  [optional]
+**codes** | [**List&lt;Code&gt;**](Code.md) |  |  [optional]
+**coord** | [**Coord**](Coord.md) |  |  [optional]
+**equipmentDetails** | [**List&lt;EquipmentDetails&gt;**](EquipmentDetails.md) |  |  [optional]
 **address** | [**Address**](Address.md) |  |  [optional]
 **fareZone** | [**FareZone**](FareZone.md) |  |  [optional]
 **id** | **String** | Identifier of the object | 
-**stopArea** | [**StopArea**](StopArea.md) |  |  [optional]
+**name** | **String** | Name of the object | 
 
 
 <a name="List<EquipmentsEnum>"></a>
