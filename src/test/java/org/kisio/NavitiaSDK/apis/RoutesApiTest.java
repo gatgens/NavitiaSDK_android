@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 public class RoutesApiTest {
-    private final String testToken = "47e2c935-7635-42ec-934c-cc582eaa04b6";
+    private final String testToken = "fc4b8d9e-ca2e-487f-9c04-c81fc9d2a781";
 
     // RoutesApi constructor
     @Test
@@ -88,7 +88,7 @@ public void CoverageLonLatRoutesRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getRoutes().size() > 0);
-    assertTrue(asyncResult[0].getRoutes().get(0) != null);
+    assertNotNull(asyncResult[0].getRoutes().get(0));
 }
     
         @Test
@@ -129,7 +129,7 @@ public void CoverageLonLatRoutesIdRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getRoutes().size() > 0);
-    assertTrue(asyncResult[0].getRoutes().get(0) != null);
+    assertNotNull(asyncResult[0].getRoutes().get(0));
 }
     
         @Test
@@ -170,7 +170,7 @@ public void CoverageLonLatUriRoutesRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getRoutes().size() > 0);
-    assertTrue(asyncResult[0].getRoutes().get(0) != null);
+    assertNotNull(asyncResult[0].getRoutes().get(0));
 }
     
         @Test
@@ -212,7 +212,7 @@ public void CoverageLonLatUriRoutesIdRequestBuilder_get_Test() throws Exception 
     }
 
     assertTrue(asyncResult[0].getRoutes().size() > 0);
-    assertTrue(asyncResult[0].getRoutes().get(0) != null);
+    assertNotNull(asyncResult[0].getRoutes().get(0));
 }
     
         @Test
@@ -251,7 +251,7 @@ public void CoverageRegionRoutesRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getRoutes().size() > 0);
-    assertTrue(asyncResult[0].getRoutes().get(0) != null);
+    assertNotNull(asyncResult[0].getRoutes().get(0));
 }
     
         @Test
@@ -291,7 +291,7 @@ public void CoverageRegionRoutesIdRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getRoutes().size() > 0);
-    assertTrue(asyncResult[0].getRoutes().get(0) != null);
+    assertNotNull(asyncResult[0].getRoutes().get(0));
 }
     
         @Test
@@ -331,7 +331,7 @@ public void CoverageRegionUriRoutesRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getRoutes().size() > 0);
-    assertTrue(asyncResult[0].getRoutes().get(0) != null);
+    assertNotNull(asyncResult[0].getRoutes().get(0));
 }
     
         @Test
@@ -372,7 +372,7 @@ public void CoverageRegionUriRoutesIdRequestBuilder_get_Test() throws Exception 
     }
 
     assertTrue(asyncResult[0].getRoutes().size() > 0);
-    assertTrue(asyncResult[0].getRoutes().get(0) != null);
+    assertNotNull(asyncResult[0].getRoutes().get(0));
 }
     
         @Test

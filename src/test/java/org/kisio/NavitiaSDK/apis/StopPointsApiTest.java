@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 public class StopPointsApiTest {
-    private final String testToken = "47e2c935-7635-42ec-934c-cc582eaa04b6";
+    private final String testToken = "fc4b8d9e-ca2e-487f-9c04-c81fc9d2a781";
 
     // StopPointsApi constructor
     @Test
@@ -88,7 +88,7 @@ public void CoverageLonLatStopPointsRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getStopPoints().size() > 0);
-    assertTrue(asyncResult[0].getStopPoints().get(0) != null);
+    assertNotNull(asyncResult[0].getStopPoints().get(0));
 }
     
         @Test
@@ -129,7 +129,7 @@ public void CoverageLonLatStopPointsIdRequestBuilder_get_Test() throws Exception
     }
 
     assertTrue(asyncResult[0].getStopPoints().size() > 0);
-    assertTrue(asyncResult[0].getStopPoints().get(0) != null);
+    assertNotNull(asyncResult[0].getStopPoints().get(0));
 }
     
         @Test
@@ -170,7 +170,7 @@ public void CoverageLonLatUriStopPointsRequestBuilder_get_Test() throws Exceptio
     }
 
     assertTrue(asyncResult[0].getStopPoints().size() > 0);
-    assertTrue(asyncResult[0].getStopPoints().get(0) != null);
+    assertNotNull(asyncResult[0].getStopPoints().get(0));
 }
     
         @Test
@@ -212,7 +212,7 @@ public void CoverageLonLatUriStopPointsIdRequestBuilder_get_Test() throws Except
     }
 
     assertTrue(asyncResult[0].getStopPoints().size() > 0);
-    assertTrue(asyncResult[0].getStopPoints().get(0) != null);
+    assertNotNull(asyncResult[0].getStopPoints().get(0));
 }
     
         @Test
@@ -251,7 +251,7 @@ public void CoverageRegionStopPointsRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getStopPoints().size() > 0);
-    assertTrue(asyncResult[0].getStopPoints().get(0) != null);
+    assertNotNull(asyncResult[0].getStopPoints().get(0));
 }
     
         @Test
@@ -291,7 +291,7 @@ public void CoverageRegionStopPointsIdRequestBuilder_get_Test() throws Exception
     }
 
     assertTrue(asyncResult[0].getStopPoints().size() > 0);
-    assertTrue(asyncResult[0].getStopPoints().get(0) != null);
+    assertNotNull(asyncResult[0].getStopPoints().get(0));
 }
     
         @Test
@@ -331,7 +331,7 @@ public void CoverageRegionUriStopPointsRequestBuilder_get_Test() throws Exceptio
     }
 
     assertTrue(asyncResult[0].getStopPoints().size() > 0);
-    assertTrue(asyncResult[0].getStopPoints().get(0) != null);
+    assertNotNull(asyncResult[0].getStopPoints().get(0));
 }
     
         @Test
@@ -372,7 +372,7 @@ public void CoverageRegionUriStopPointsIdRequestBuilder_get_Test() throws Except
     }
 
     assertTrue(asyncResult[0].getStopPoints().size() > 0);
-    assertTrue(asyncResult[0].getStopPoints().get(0) != null);
+    assertNotNull(asyncResult[0].getStopPoints().get(0));
 }
     
         @Test
@@ -411,7 +411,7 @@ public void StopPointsRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getStopPoints().size() > 0);
-    assertTrue(asyncResult[0].getStopPoints().get(0) != null);
+    assertNotNull(asyncResult[0].getStopPoints().get(0));
 }
     
 }

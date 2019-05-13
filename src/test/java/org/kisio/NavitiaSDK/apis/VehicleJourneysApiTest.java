@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 public class VehicleJourneysApiTest {
-    private final String testToken = "47e2c935-7635-42ec-934c-cc582eaa04b6";
+    private final String testToken = "fc4b8d9e-ca2e-487f-9c04-c81fc9d2a781";
 
     // VehicleJourneysApi constructor
     @Test
@@ -89,7 +89,7 @@ public void CoverageLonLatUriVehicleJourneysRequestBuilder_get_Test() throws Exc
     }
 
     assertTrue(asyncResult[0].getVehicleJourneys().size() > 0);
-    assertTrue(asyncResult[0].getVehicleJourneys().get(0) != null);
+    assertNotNull(asyncResult[0].getVehicleJourneys().get(0));
 }
     
         @Test
@@ -131,7 +131,7 @@ public void CoverageLonLatUriVehicleJourneysIdRequestBuilder_get_Test() throws E
     }
 
     assertTrue(asyncResult[0].getVehicleJourneys().size() > 0);
-    assertTrue(asyncResult[0].getVehicleJourneys().get(0) != null);
+    assertNotNull(asyncResult[0].getVehicleJourneys().get(0));
 }
     
         @Test
@@ -171,7 +171,7 @@ public void CoverageLonLatVehicleJourneysRequestBuilder_get_Test() throws Except
     }
 
     assertTrue(asyncResult[0].getVehicleJourneys().size() > 0);
-    assertTrue(asyncResult[0].getVehicleJourneys().get(0) != null);
+    assertNotNull(asyncResult[0].getVehicleJourneys().get(0));
 }
     
         @Test
@@ -212,7 +212,7 @@ public void CoverageLonLatVehicleJourneysIdRequestBuilder_get_Test() throws Exce
     }
 
     assertTrue(asyncResult[0].getVehicleJourneys().size() > 0);
-    assertTrue(asyncResult[0].getVehicleJourneys().get(0) != null);
+    assertNotNull(asyncResult[0].getVehicleJourneys().get(0));
 }
     
         @Test
@@ -252,7 +252,7 @@ public void CoverageRegionUriVehicleJourneysRequestBuilder_get_Test() throws Exc
     }
 
     assertTrue(asyncResult[0].getVehicleJourneys().size() > 0);
-    assertTrue(asyncResult[0].getVehicleJourneys().get(0) != null);
+    assertNotNull(asyncResult[0].getVehicleJourneys().get(0));
 }
     
         @Test
@@ -293,7 +293,7 @@ public void CoverageRegionUriVehicleJourneysIdRequestBuilder_get_Test() throws E
     }
 
     assertTrue(asyncResult[0].getVehicleJourneys().size() > 0);
-    assertTrue(asyncResult[0].getVehicleJourneys().get(0) != null);
+    assertNotNull(asyncResult[0].getVehicleJourneys().get(0));
 }
     
         @Test
@@ -332,7 +332,7 @@ public void CoverageRegionVehicleJourneysRequestBuilder_get_Test() throws Except
     }
 
     assertTrue(asyncResult[0].getVehicleJourneys().size() > 0);
-    assertTrue(asyncResult[0].getVehicleJourneys().get(0) != null);
+    assertNotNull(asyncResult[0].getVehicleJourneys().get(0));
 }
     
         @Test
@@ -372,7 +372,7 @@ public void CoverageRegionVehicleJourneysIdRequestBuilder_get_Test() throws Exce
     }
 
     assertTrue(asyncResult[0].getVehicleJourneys().size() > 0);
-    assertTrue(asyncResult[0].getVehicleJourneys().get(0) != null);
+    assertNotNull(asyncResult[0].getVehicleJourneys().get(0));
 }
     
         @Test
@@ -411,7 +411,7 @@ public void VehicleJourneysRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getVehicleJourneys().size() > 0);
-    assertTrue(asyncResult[0].getVehicleJourneys().get(0) != null);
+    assertNotNull(asyncResult[0].getVehicleJourneys().get(0));
 }
     
 }

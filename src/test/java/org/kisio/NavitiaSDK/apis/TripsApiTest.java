@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 public class TripsApiTest {
-    private final String testToken = "47e2c935-7635-42ec-934c-cc582eaa04b6";
+    private final String testToken = "fc4b8d9e-ca2e-487f-9c04-c81fc9d2a781";
 
     // TripsApi constructor
     @Test
@@ -88,7 +88,7 @@ public void CoverageLonLatTripsRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getTrips().size() > 0);
-    assertTrue(asyncResult[0].getTrips().get(0) != null);
+    assertNotNull(asyncResult[0].getTrips().get(0));
 }
     
         @Test
@@ -129,7 +129,7 @@ public void CoverageLonLatTripsIdRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getTrips().size() > 0);
-    assertTrue(asyncResult[0].getTrips().get(0) != null);
+    assertNotNull(asyncResult[0].getTrips().get(0));
 }
     
         @Test
@@ -170,7 +170,7 @@ public void CoverageLonLatUriTripsRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getTrips().size() > 0);
-    assertTrue(asyncResult[0].getTrips().get(0) != null);
+    assertNotNull(asyncResult[0].getTrips().get(0));
 }
     
         @Test
@@ -212,7 +212,7 @@ public void CoverageLonLatUriTripsIdRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getTrips().size() > 0);
-    assertTrue(asyncResult[0].getTrips().get(0) != null);
+    assertNotNull(asyncResult[0].getTrips().get(0));
 }
     
         @Test
@@ -251,7 +251,7 @@ public void CoverageRegionTripsRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getTrips().size() > 0);
-    assertTrue(asyncResult[0].getTrips().get(0) != null);
+    assertNotNull(asyncResult[0].getTrips().get(0));
 }
     
         @Test
@@ -291,7 +291,7 @@ public void CoverageRegionTripsIdRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getTrips().size() > 0);
-    assertTrue(asyncResult[0].getTrips().get(0) != null);
+    assertNotNull(asyncResult[0].getTrips().get(0));
 }
     
         @Test
@@ -331,7 +331,7 @@ public void CoverageRegionUriTripsRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getTrips().size() > 0);
-    assertTrue(asyncResult[0].getTrips().get(0) != null);
+    assertNotNull(asyncResult[0].getTrips().get(0));
 }
     
         @Test
@@ -372,7 +372,7 @@ public void CoverageRegionUriTripsIdRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getTrips().size() > 0);
-    assertTrue(asyncResult[0].getTrips().get(0) != null);
+    assertNotNull(asyncResult[0].getTrips().get(0));
 }
     
 }

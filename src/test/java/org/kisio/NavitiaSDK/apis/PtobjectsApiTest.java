@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 public class PtobjectsApiTest {
-    private final String testToken = "47e2c935-7635-42ec-934c-cc582eaa04b6";
+    private final String testToken = "fc4b8d9e-ca2e-487f-9c04-c81fc9d2a781";
 
     // PtobjectsApi constructor
     @Test

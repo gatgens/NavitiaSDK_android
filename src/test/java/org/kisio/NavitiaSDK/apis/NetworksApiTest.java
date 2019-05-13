@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 public class NetworksApiTest {
-    private final String testToken = "47e2c935-7635-42ec-934c-cc582eaa04b6";
+    private final String testToken = "fc4b8d9e-ca2e-487f-9c04-c81fc9d2a781";
 
     // NetworksApi constructor
     @Test
@@ -88,7 +88,7 @@ public void CoverageLonLatNetworksRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getNetworks().size() > 0);
-    assertTrue(asyncResult[0].getNetworks().get(0) != null);
+    assertNotNull(asyncResult[0].getNetworks().get(0));
 }
     
         @Test
@@ -129,7 +129,7 @@ public void CoverageLonLatNetworksIdRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getNetworks().size() > 0);
-    assertTrue(asyncResult[0].getNetworks().get(0) != null);
+    assertNotNull(asyncResult[0].getNetworks().get(0));
 }
     
         @Test
@@ -170,7 +170,7 @@ public void CoverageLonLatUriNetworksRequestBuilder_get_Test() throws Exception 
     }
 
     assertTrue(asyncResult[0].getNetworks().size() > 0);
-    assertTrue(asyncResult[0].getNetworks().get(0) != null);
+    assertNotNull(asyncResult[0].getNetworks().get(0));
 }
     
         @Test
@@ -212,7 +212,7 @@ public void CoverageLonLatUriNetworksIdRequestBuilder_get_Test() throws Exceptio
     }
 
     assertTrue(asyncResult[0].getNetworks().size() > 0);
-    assertTrue(asyncResult[0].getNetworks().get(0) != null);
+    assertNotNull(asyncResult[0].getNetworks().get(0));
 }
     
         @Test
@@ -251,7 +251,7 @@ public void CoverageRegionNetworksRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getNetworks().size() > 0);
-    assertTrue(asyncResult[0].getNetworks().get(0) != null);
+    assertNotNull(asyncResult[0].getNetworks().get(0));
 }
     
         @Test
@@ -291,7 +291,7 @@ public void CoverageRegionNetworksIdRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getNetworks().size() > 0);
-    assertTrue(asyncResult[0].getNetworks().get(0) != null);
+    assertNotNull(asyncResult[0].getNetworks().get(0));
 }
     
         @Test
@@ -331,7 +331,7 @@ public void CoverageRegionUriNetworksRequestBuilder_get_Test() throws Exception 
     }
 
     assertTrue(asyncResult[0].getNetworks().size() > 0);
-    assertTrue(asyncResult[0].getNetworks().get(0) != null);
+    assertNotNull(asyncResult[0].getNetworks().get(0));
 }
     
         @Test
@@ -372,7 +372,7 @@ public void CoverageRegionUriNetworksIdRequestBuilder_get_Test() throws Exceptio
     }
 
     assertTrue(asyncResult[0].getNetworks().size() > 0);
-    assertTrue(asyncResult[0].getNetworks().get(0) != null);
+    assertNotNull(asyncResult[0].getNetworks().get(0));
 }
     
         @Test
@@ -411,7 +411,7 @@ public void NetworksRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getNetworks().size() > 0);
-    assertTrue(asyncResult[0].getNetworks().get(0) != null);
+    assertNotNull(asyncResult[0].getNetworks().get(0));
 }
     
 }

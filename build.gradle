@@ -1,5 +1,4 @@
-apply plugin: "idea"
-apply plugin: "eclipse"
+apply plugin: "com.android.library"
 apply plugin: "com.jfrog.bintray"
 apply plugin: "maven-publish"
 
@@ -15,181 +14,60 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:3.3.2"
-        classpath "com.github.dcendents:android-maven-gradle-plugin:1.5"
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3"
     }
 }
 
-repositories {
-    google()
-    jcenter()
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
 }
+android {
+    compileSdkVersion = 28
+    buildToolsVersion = "28.0.3"
 
-if (hasProperty("target") && target == "android") {
+    defaultConfig {
+        minSdkVersion(14)
+        targetSdkVersion(28)
+        versionCode = 1
+        versionName = publishVersion
+        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+    }
 
-    apply plugin: "com.android.library"
-    apply plugin: "com.github.dcendents.android-maven"
-
-    android {
-        compileSdkVersion 28
-        buildToolsVersion "28.0.3"
-        defaultConfig {
-            minSdkVersion 14
-            targetSdkVersion 28
+    buildTypes {
+        debug {
+            testCoverageEnabled = true
         }
-        compileOptions {
-            sourceCompatibility JavaVersion.VERSION_1_7
-            targetCompatibility JavaVersion.VERSION_1_7
-        }
-
-        // Rename the aar correctly
-        libraryVariants.all { variant ->
-            variant.outputs.each { output ->
-                def outputFile = output.outputFile
-                if (outputFile != null && outputFile.name.endsWith(".aar")) {
-                    def fileName = "${project.name}-${variant.baseName}-${version}.aar"
-                    output.outputFile = new File(outputFile.parent, fileName)
-                }
-            }
-        }
-
-        dependencies {
-            provided "javax.annotation:jsr250-api:1.0"
+        release {
+            minifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
 
-    afterEvaluate {
-        android.libraryVariants.all { variant ->
-            def task = project.tasks.create "jar${variant.name.capitalize()}", Jar
-            task.description = "Create jar artifact for ${variant.name}"
-            task.dependsOn variant.javaCompile
-            task.from variant.javaCompile.destinationDir
-            task.destinationDir = project.file("${project.buildDir}/outputs/jar")
-            task.archiveName = "${project.name}-${variant.baseName}-${version}.jar"
-            artifacts.add("archives", task);
-        }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    task sourcesJar(type: Jar) {
-        from android.sourceSets.main.java.srcDirs
-        classifier = "sources"
+    lintOptions {
+        abortOnError = false
     }
 
-    artifacts {
-        archives sourcesJar
-    }
-
-} else {
-
-    apply plugin: "java"
-    apply plugin: "maven"
-
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
-
-    install {
-        repositories.mavenInstaller {
-            pom.artifactId = "navitia-sdk"
-        }
-    }
-
-    task execute(type:JavaExec) {
-       main = System.getProperty("mainClass")
-       classpath = sourceSets.main.runtimeClasspath
-    }
-
-    task sourcesJar(type: Jar, dependsOn: classes) {
-        classifier = "sources"
-        from sourceSets.main.allSource
-    }
-
-    task javadocJar(type: Jar, dependsOn: javadoc) {
-        classifier = "javadoc"
-        from javadoc.destinationDir
-    }
-
-    def pomConfig = {
-        licenses {
-            license {
-                name "GNU General Public License, Version 3"
-                url "https://www.navitia.io/api-term-of-use"
-                distribution "repo"
-            }
-        }
-
-        developers {
-            developer {
-                name "Kisio Digital SDK"
-                email "team.sdk@kisio.org"
-                organization "Kisio Digital"
-                organizationUrl "http://www.kisiodigital.com/"
-            }
-        }
-
-        scm {
-            connection "scm:git:git://github.com/CanalTP/NavitiaSDK_android.git"
-            developerConnection "scm:git:ssh://github.com:CanalTP/NavitiaSDK_android.git"
-            url "https://github.com/CanalTP/NavitiaSDK_android/tree/master"
-        }
-    }
-
-    publishing {
-        publications {
-            mavenJava(MavenPublication) {
-                from components.java
-
-                artifact sourcesJar
-                artifact javadocJar
-
-                groupId "org.kisio.sdk"
-                artifactId "navitia-sdk"
-                version publishVersion
-                pom.withXml {
-                    def root = asNode()
-                    root.appendNode("description", "Navitia client for Android")
-                    root.appendNode("name", "navitia-sdk")
-                    root.appendNode("url", "https://github.com/swagger-api/swagger-codegen")
-                    root.children().last() + pomConfig
-                }
-            }
-        }
-    }
-
-    // "gradle -Puser=someuser -Pkey=ASDFASDFASDF bintrayUpload" to build and send to jcenter
-    bintray {
-        user = property("user")
-        key = property("key")
-        configurations = ["archives"]
-        publications = ["mavenJava"]
-        dryRun = false //[Default: false] Whether to run this as dry-run, without deploying
-        publish = true //[Default: false] Whether version should be auto published after an upload
-        pkg {
-            repo = "NavitiaSDK"
-            name = "navitia-sdk"
-            licenses = ["GPL-3.0"]
-            vcsUrl = "https://github.com/CanalTP/NavitiaSDK_android.git"
-            version {
-                name = publishVersion
-                desc = "NavitiaSDK android $publishVersion"
-                released  = new Date()
-                vcsTag = publishVersion
-                gpg {
-                    sign = true
-                }
-            }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
         }
     }
 
     dependencies {
-        compileOnly "com.google.android:android:4.1.1.4"
+        compileOnly "javax.annotation:jsr250-api:1.0"
+        implementation "io.swagger:swagger-annotations:1.5.8"
+        implementation "com.squareup.okhttp3:okhttp:3.14.1"
+        implementation "com.squareup.okhttp3:logging-interceptor:3.14.1"
+        implementation "com.google.code.gson:gson:2.8.5"
+        implementation "joda-time:joda-time:2.10.2"
+        testImplementation "junit:junit:4.12"
     }
-}
-
-dependencies {
-    implementation "io.swagger:swagger-annotations:1.5.8"
-    implementation "com.squareup.okhttp3:okhttp:3.14.1"
-    implementation "com.squareup.okhttp3:logging-interceptor:3.14.1"
-    implementation "com.google.code.gson:gson:2.8.5"
-    implementation "joda-time:joda-time:2.10.2"
-    testImplementation "junit:junit:4.12"
 }

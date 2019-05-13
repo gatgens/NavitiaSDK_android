@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 public class JourneyPatternPointsApiTest {
-    private final String testToken = "47e2c935-7635-42ec-934c-cc582eaa04b6";
+    private final String testToken = "fc4b8d9e-ca2e-487f-9c04-c81fc9d2a781";
 
     // JourneyPatternPointsApi constructor
     @Test
@@ -88,7 +88,7 @@ public void CoverageLonLatJourneyPatternPointsRequestBuilder_get_Test() throws E
     }
 
     assertTrue(asyncResult[0].getJourneyPatternPoints().size() > 0);
-    assertTrue(asyncResult[0].getJourneyPatternPoints().get(0) != null);
+    assertNotNull(asyncResult[0].getJourneyPatternPoints().get(0));
 }
     
         @Test
@@ -129,7 +129,7 @@ public void CoverageLonLatJourneyPatternPointsIdRequestBuilder_get_Test() throws
     }
 
     assertTrue(asyncResult[0].getJourneyPatternPoints().size() > 0);
-    assertTrue(asyncResult[0].getJourneyPatternPoints().get(0) != null);
+    assertNotNull(asyncResult[0].getJourneyPatternPoints().get(0));
 }
     
         @Test
@@ -170,7 +170,7 @@ public void CoverageLonLatUriJourneyPatternPointsRequestBuilder_get_Test() throw
     }
 
     assertTrue(asyncResult[0].getJourneyPatternPoints().size() > 0);
-    assertTrue(asyncResult[0].getJourneyPatternPoints().get(0) != null);
+    assertNotNull(asyncResult[0].getJourneyPatternPoints().get(0));
 }
     
         @Test
@@ -214,7 +214,7 @@ public void CoverageRegionJourneyPatternPointsRequestBuilder_get_Test() throws E
     }
 
     assertTrue(asyncResult[0].getJourneyPatternPoints().size() > 0);
-    assertTrue(asyncResult[0].getJourneyPatternPoints().get(0) != null);
+    assertNotNull(asyncResult[0].getJourneyPatternPoints().get(0));
 }
     
         @Test
@@ -254,7 +254,7 @@ public void CoverageRegionJourneyPatternPointsIdRequestBuilder_get_Test() throws
     }
 
     assertTrue(asyncResult[0].getJourneyPatternPoints().size() > 0);
-    assertTrue(asyncResult[0].getJourneyPatternPoints().get(0) != null);
+    assertNotNull(asyncResult[0].getJourneyPatternPoints().get(0));
 }
     
         @Test
@@ -294,7 +294,7 @@ public void CoverageRegionUriJourneyPatternPointsRequestBuilder_get_Test() throw
     }
 
     assertTrue(asyncResult[0].getJourneyPatternPoints().size() > 0);
-    assertTrue(asyncResult[0].getJourneyPatternPoints().get(0) != null);
+    assertNotNull(asyncResult[0].getJourneyPatternPoints().get(0));
 }
     
         @Test

@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CommercialModesApiTest {
-    private final String testToken = "47e2c935-7635-42ec-934c-cc582eaa04b6";
+    private final String testToken = "fc4b8d9e-ca2e-487f-9c04-c81fc9d2a781";
 
     // CommercialModesApi constructor
     @Test
@@ -88,7 +88,7 @@ public void CoverageLonLatCommercialModesRequestBuilder_get_Test() throws Except
     }
 
     assertTrue(asyncResult[0].getCommercialModes().size() > 0);
-    assertTrue(asyncResult[0].getCommercialModes().get(0) != null);
+    assertNotNull(asyncResult[0].getCommercialModes().get(0));
 }
     
         @Test
@@ -129,7 +129,7 @@ public void CoverageLonLatCommercialModesIdRequestBuilder_get_Test() throws Exce
     }
 
     assertTrue(asyncResult[0].getCommercialModes().size() > 0);
-    assertTrue(asyncResult[0].getCommercialModes().get(0) != null);
+    assertNotNull(asyncResult[0].getCommercialModes().get(0));
 }
     
         @Test
@@ -170,7 +170,7 @@ public void CoverageLonLatUriCommercialModesRequestBuilder_get_Test() throws Exc
     }
 
     assertTrue(asyncResult[0].getCommercialModes().size() > 0);
-    assertTrue(asyncResult[0].getCommercialModes().get(0) != null);
+    assertNotNull(asyncResult[0].getCommercialModes().get(0));
 }
     
         @Test
@@ -212,7 +212,7 @@ public void CoverageLonLatUriCommercialModesIdRequestBuilder_get_Test() throws E
     }
 
     assertTrue(asyncResult[0].getCommercialModes().size() > 0);
-    assertTrue(asyncResult[0].getCommercialModes().get(0) != null);
+    assertNotNull(asyncResult[0].getCommercialModes().get(0));
 }
     
         @Test
@@ -251,7 +251,7 @@ public void CoverageRegionCommercialModesRequestBuilder_get_Test() throws Except
     }
 
     assertTrue(asyncResult[0].getCommercialModes().size() > 0);
-    assertTrue(asyncResult[0].getCommercialModes().get(0) != null);
+    assertNotNull(asyncResult[0].getCommercialModes().get(0));
 }
     
         @Test
@@ -291,7 +291,7 @@ public void CoverageRegionCommercialModesIdRequestBuilder_get_Test() throws Exce
     }
 
     assertTrue(asyncResult[0].getCommercialModes().size() > 0);
-    assertTrue(asyncResult[0].getCommercialModes().get(0) != null);
+    assertNotNull(asyncResult[0].getCommercialModes().get(0));
 }
     
         @Test
@@ -331,7 +331,7 @@ public void CoverageRegionUriCommercialModesRequestBuilder_get_Test() throws Exc
     }
 
     assertTrue(asyncResult[0].getCommercialModes().size() > 0);
-    assertTrue(asyncResult[0].getCommercialModes().get(0) != null);
+    assertNotNull(asyncResult[0].getCommercialModes().get(0));
 }
     
         @Test
@@ -372,7 +372,7 @@ public void CoverageRegionUriCommercialModesIdRequestBuilder_get_Test() throws E
     }
 
     assertTrue(asyncResult[0].getCommercialModes().size() > 0);
-    assertTrue(asyncResult[0].getCommercialModes().get(0) != null);
+    assertNotNull(asyncResult[0].getCommercialModes().get(0));
 }
     
 }

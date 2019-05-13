@@ -23,7 +23,7 @@ import android.os.Parcel;
 /**
  * Path
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2019-05-13T11:47:49.806+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2019-05-13T18:38:06.279+02:00")
 public class Path implements Parcelable {
   @SerializedName("duration")
   private Integer duration = null;

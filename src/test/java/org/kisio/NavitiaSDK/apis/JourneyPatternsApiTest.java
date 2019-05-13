@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 public class JourneyPatternsApiTest {
-    private final String testToken = "47e2c935-7635-42ec-934c-cc582eaa04b6";
+    private final String testToken = "fc4b8d9e-ca2e-487f-9c04-c81fc9d2a781";
 
     // JourneyPatternsApi constructor
     @Test
@@ -88,7 +88,7 @@ public void CoverageLonLatJourneyPatternsRequestBuilder_get_Test() throws Except
     }
 
     assertTrue(asyncResult[0].getJourneyPatterns().size() > 0);
-    assertTrue(asyncResult[0].getJourneyPatterns().get(0) != null);
+    assertNotNull(asyncResult[0].getJourneyPatterns().get(0));
 }
     
         @Test
@@ -129,7 +129,7 @@ public void CoverageLonLatJourneyPatternsIdRequestBuilder_get_Test() throws Exce
     }
 
     assertTrue(asyncResult[0].getJourneyPatterns().size() > 0);
-    assertTrue(asyncResult[0].getJourneyPatterns().get(0) != null);
+    assertNotNull(asyncResult[0].getJourneyPatterns().get(0));
 }
     
         @Test
@@ -170,7 +170,7 @@ public void CoverageLonLatUriJourneyPatternsRequestBuilder_get_Test() throws Exc
     }
 
     assertTrue(asyncResult[0].getJourneyPatterns().size() > 0);
-    assertTrue(asyncResult[0].getJourneyPatterns().get(0) != null);
+    assertNotNull(asyncResult[0].getJourneyPatterns().get(0));
 }
     
         @Test
@@ -214,7 +214,7 @@ public void CoverageRegionJourneyPatternsRequestBuilder_get_Test() throws Except
     }
 
     assertTrue(asyncResult[0].getJourneyPatterns().size() > 0);
-    assertTrue(asyncResult[0].getJourneyPatterns().get(0) != null);
+    assertNotNull(asyncResult[0].getJourneyPatterns().get(0));
 }
     
         @Test
@@ -254,7 +254,7 @@ public void CoverageRegionJourneyPatternsIdRequestBuilder_get_Test() throws Exce
     }
 
     assertTrue(asyncResult[0].getJourneyPatterns().size() > 0);
-    assertTrue(asyncResult[0].getJourneyPatterns().get(0) != null);
+    assertNotNull(asyncResult[0].getJourneyPatterns().get(0));
 }
     
         @Test
@@ -294,7 +294,7 @@ public void CoverageRegionUriJourneyPatternsRequestBuilder_get_Test() throws Exc
     }
 
     assertTrue(asyncResult[0].getJourneyPatterns().size() > 0);
-    assertTrue(asyncResult[0].getJourneyPatterns().get(0) != null);
+    assertNotNull(asyncResult[0].getJourneyPatterns().get(0));
 }
     
         @Test

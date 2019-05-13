@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 public class PoiTypesApiTest {
-    private final String testToken = "47e2c935-7635-42ec-934c-cc582eaa04b6";
+    private final String testToken = "fc4b8d9e-ca2e-487f-9c04-c81fc9d2a781";
 
     // PoiTypesApi constructor
     @Test
@@ -88,7 +88,7 @@ public void CoverageLonLatPoiTypesRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getPoiTypes().size() > 0);
-    assertTrue(asyncResult[0].getPoiTypes().get(0) != null);
+    assertNotNull(asyncResult[0].getPoiTypes().get(0));
 }
     
         @Test
@@ -129,7 +129,7 @@ public void CoverageLonLatPoiTypesIdRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getPoiTypes().size() > 0);
-    assertTrue(asyncResult[0].getPoiTypes().get(0) != null);
+    assertNotNull(asyncResult[0].getPoiTypes().get(0));
 }
     
         @Test
@@ -178,7 +178,7 @@ public void CoverageRegionPoiTypesRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getPoiTypes().size() > 0);
-    assertTrue(asyncResult[0].getPoiTypes().get(0) != null);
+    assertNotNull(asyncResult[0].getPoiTypes().get(0));
 }
     
         @Test
@@ -218,7 +218,7 @@ public void CoverageRegionPoiTypesIdRequestBuilder_get_Test() throws Exception {
     }
 
     assertTrue(asyncResult[0].getPoiTypes().size() > 0);
-    assertTrue(asyncResult[0].getPoiTypes().get(0) != null);
+    assertNotNull(asyncResult[0].getPoiTypes().get(0));
 }
     
         @Test

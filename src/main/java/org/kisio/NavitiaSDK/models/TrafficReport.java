@@ -29,7 +29,7 @@ import android.os.Parcel;
 /**
  * TrafficReport
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2019-05-13T11:47:49.806+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2019-05-13T18:38:06.279+02:00")
 public class TrafficReport implements Parcelable {
   @SerializedName("vehicle_journeys")
   private List<VehicleJourney> vehicleJourneys = null;
