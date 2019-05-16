@@ -27,7 +27,7 @@ import android.os.Parcel;
 /**
  * StopAreaEquipments
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2019-05-16T13:54:09.329+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2019-05-16T14:17:49.415+02:00")
 public class StopAreaEquipments implements Parcelable {
   @SerializedName("stop_area")
   private StopArea stopArea = null;

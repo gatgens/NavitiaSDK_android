@@ -25,7 +25,7 @@ import android.os.Parcel;
 /**
  * GeoStatus1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2019-05-16T13:54:09.329+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2019-05-16T14:17:49.415+02:00")
 public class GeoStatus1 implements Parcelable {
   @SerializedName("geo_status")
   private GeoStatus geoStatus = null;

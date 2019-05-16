@@ -23,7 +23,7 @@ import android.os.Parcel;
 /**
  * CarPark
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2019-05-16T13:54:09.329+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2019-05-16T14:17:49.415+02:00")
 public class CarPark implements Parcelable {
   @SerializedName("available")
   private Integer available = null;

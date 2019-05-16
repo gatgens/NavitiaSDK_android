@@ -27,7 +27,7 @@ import android.os.Parcel;
 /**
  * StopDateTime
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2019-05-16T13:54:09.329+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.NavitiaSDKJavaClientCodegen", date = "2019-05-16T14:17:49.415+02:00")
 public class StopDateTime implements Parcelable {
   @SerializedName("stop_point")
   private StopPoint stopPoint = null;
