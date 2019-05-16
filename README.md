@@ -1,4 +1,4 @@
-# navitia-sdk
+# expert
 
 ## Requirements
 
@@ -26,9 +26,9 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-    <groupId>org.kisio.sdk</groupId>
-    <artifactId>navitia-sdk</artifactId>
-    <version>1.3.3</version>
+    <groupId>com.kisio.navitia.sdk</groupId>
+    <artifactId>expert</artifactId>
+    <version>2.0.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "org.kisio.sdk:navitia-sdk:1.3.3"
+compile "com.kisio.navitia.sdk:expert:2.0.0"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/navitia-sdk-1.3.3.jar
+* target/expert-2.0.0.jar
 * target/lib/*.jar
 
 ## Getting Started

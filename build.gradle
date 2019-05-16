@@ -1,22 +1,24 @@
-apply plugin: "com.android.library"
-apply plugin: "com.jfrog.bintray"
-apply plugin: "maven-publish"
-
-def publishVersion = "1.3.3"
-
-group = "org.kisio.sdk"
-version = publishVersion
-
 buildscript {
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:3.3.2"
-        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3"
+        classpath("com.android.tools.build:gradle:3.4.0")
+        classpath("org.jfrog.buildinfo:build-info-extractor-gradle:4.8.1")
     }
 }
+
+apply plugin: "com.android.library"
+apply plugin: "com.jfrog.artifactory"
+apply plugin: "maven-publish"
+
+def publishVersion = "2.0.0"
+def artifactName = "expert"
+def description = "Navitia Expert SDK $publishVersion"
+def runTasks = gradle.startParameter.taskNames
+
+group = "com.kisio.navitia.sdk"
 
 allprojects {
     repositories {
@@ -24,6 +26,7 @@ allprojects {
         jcenter()
     }
 }
+
 android {
     compileSdkVersion = 28
     buildToolsVersion = "28.0.3"
@@ -62,12 +65,140 @@ android {
     }
 
     dependencies {
-        compileOnly "javax.annotation:jsr250-api:1.0"
-        implementation "io.swagger:swagger-annotations:1.5.8"
-        implementation "com.squareup.okhttp3:okhttp:3.14.1"
-        implementation "com.squareup.okhttp3:logging-interceptor:3.14.1"
-        implementation "com.google.code.gson:gson:2.8.5"
-        implementation "joda-time:joda-time:2.10.2"
-        testImplementation "junit:junit:4.12"
+        compileOnly("javax.annotation:jsr250-api:1.0")
+
+        api("joda-time:joda-time:2.10.2")
+        api("com.google.code.gson:gson:2.8.5")
+
+        implementation("io.swagger:swagger-annotations:1.5.22")
+        implementation("com.squareup.okhttp3:okhttp:3.14.1")
+        implementation("com.squareup.okhttp3:logging-interceptor:3.14.1")
+
+        testImplementation("junit:junit:4.12")
+    }
+}
+
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    configurations.implementation.setCanBeResolved(true)
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator)) + configurations.implementation
+}
+
+task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+    classifier = "javadoc"
+    from androidJavadocs.destinationDir
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = "sources"
+    from android.sourceSets.main.java.srcDirs
+}
+
+def pomConfig = {
+    developers {
+        developer {
+            name("Kisio Digital SDK")
+            email("team.sdk@kisio.org")
+            organization("Kisio Digital")
+            organizationUrl("http://www.kisiodigital.com/")
+        }
+    }
+    scm {
+        connection("scm:git:git@github.com:CanalTP/NavitiaSDK_android.git")
+        developerConnection("scm:git:ssh://github.com:CanalTP/NavitiaSDK_android.git")
+        url("https://github.com/CanalTP/NavitiaSDK_android/tree/master")
+    }
+}
+
+publishing {
+    publications {
+
+        //Iterate all build types to make specific
+        //artifact for every build type
+        android.buildTypes.all { variant ->
+
+            //it will create different
+            //publications ("debugAar" and "releaseAar")
+            "${variant.name}Aar"(MavenPublication) {
+
+                groupId = group
+                artifactId = artifactName
+
+                def finalVersion = publishVersion
+                if ("assembleDebug" in runTasks) {
+                    finalVersion += "-SNAPSHOT"
+                }
+                version = finalVersion
+
+                if ("assembleRelease" in runTasks) {
+                    artifact(androidJavadocsJar)
+                    artifact(androidSourcesJar)
+                }
+                artifact("$buildDir/outputs/aar/${project.getName()}-${variant.name}.aar")
+
+                pom.withXml {
+                    final root = asNode()
+                    root.appendNode("description", description)
+                    root.appendNode("name", artifactId)
+                    root.appendNode("url", "https://github.com/CanalTP/NavitiaSDK_android")
+
+                    final dependenciesNode = root.appendNode("dependencies")
+
+                    ext.addDependency = { Dependency dep, String scope ->
+                        if (dep.group == null || dep.version == null || dep.name == null || dep.name == "unspecified")
+                            return // ignore invalid dependencies
+
+                        final dependencyNode = dependenciesNode.appendNode("dependency")
+                        dependencyNode.appendNode("groupId", dep.group)
+                        dependencyNode.appendNode("artifactId", dep.name)
+                        dependencyNode.appendNode("version", dep.version)
+                        dependencyNode.appendNode("scope", scope)
+
+                        if (!dep.transitive) {
+                            // If this dependency is transitive, we should force exclude all its dependencies them from the POM
+                            final exclusionNode = dependencyNode.appendNode("exclusions").appendNode("exclusion")
+                            exclusionNode.appendNode("groupId", "*")
+                            exclusionNode.appendNode("artifactId", "*")
+                        } else if (!dep.properties.excludeRules.empty) {
+                            // Otherwise add specified exclude rules
+                            final exclusionNode = dependencyNode.appendNode("exclusions").appendNode("exclusion")
+                            dep.properties.excludeRules.each { ExcludeRule rule ->
+                                exclusionNode.appendNode("groupId", rule.group ?: "*")
+                                exclusionNode.appendNode("artifactId", rule.module ?: "*")
+                            }
+                        }
+                    }
+
+                    // List all "api" dependencies as "compile" dependencies
+                    configurations.api.getDependencies().each { dep -> addDependency(dep, "compile") }
+
+                    // List all "implementation" dependencies as "runtime" dependencies
+                    configurations.implementation.getDependencies().each { dep -> addDependency(dep, "runtime") }
+                }
+            }
+        }
+    }
+}
+
+artifactory {
+    contextUrl = kisio_artifactory_url
+    publish {
+        repository {
+            if ("assembleRelease" in runTasks) {
+                repoKey = kisio_artifactory_android_repo_release
+            } else if ("assembleDebug" in runTasks) {
+                repoKey = kisio_artifactory_android_repo_snapshot
+            }
+
+            username = kisio_artifactory_username
+            password = kisio_artifactory_password
+        }
+        defaults {
+            if ("assembleRelease" in runTasks) {
+                publications("releaseAar")
+            } else if ("assembleDebug" in runTasks) {
+                publications("debugAar")
+            }
+        }
     }
 }

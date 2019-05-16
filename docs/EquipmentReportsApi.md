@@ -21,11 +21,11 @@ Method | HTTP request | Description
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.EquipmentReportsApi;
+//import com.kisio.navitia.sdk.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.expert.apis.EquipmentReportsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -85,11 +85,11 @@ Name | Type | Description  | Notes
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.EquipmentReportsApi;
+//import com.kisio.navitia.sdk.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.expert.apis.EquipmentReportsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -149,11 +149,11 @@ Name | Type | Description  | Notes
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.EquipmentReportsApi;
+//import com.kisio.navitia.sdk.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.expert.apis.EquipmentReportsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -213,11 +213,11 @@ Name | Type | Description  | Notes
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.EquipmentReportsApi;
+//import com.kisio.navitia.sdk.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.expert.apis.EquipmentReportsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -279,11 +279,11 @@ Name | Type | Description  | Notes
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.EquipmentReportsApi;
+//import com.kisio.navitia.sdk.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.expert.apis.EquipmentReportsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -341,11 +341,11 @@ Name | Type | Description  | Notes
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.EquipmentReportsApi;
+//import com.kisio.navitia.sdk.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.expert.apis.EquipmentReportsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
