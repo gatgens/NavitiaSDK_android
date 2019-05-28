@@ -170,7 +170,7 @@ if(hasProperty("target") && target == "android") {
             vcsUrl = "https://github.com/CanalTP/NavitiaSDK_android.git"
             version {
                 name = publishVersion
-                desc = "NavitiaSDK android 1.3.3"
+                desc = "NavitiaSDK android $publishversion"
                 released  = new Date()
                 vcsTag = publishVersion
                 gpg {
