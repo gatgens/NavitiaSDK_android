@@ -13,6 +13,10 @@ apply plugin: "com.android.library"
 apply plugin: "com.jfrog.artifactory"
 apply plugin: "maven-publish"
 
+apply {
+    from("logging.gradle")
+}
+
 def publishVersion = "2.0.0"
 def artifactName = "expert"
 def description = "Navitia Expert SDK $publishVersion"
@@ -37,6 +41,8 @@ android {
         versionCode = 1
         versionName = publishVersion
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+        
+        buildConfigField("String", "API_TOKEN", "\"$sdk_journey_api_token\"")
     }
 
     buildTypes {
@@ -71,6 +77,7 @@ android {
         api("com.google.code.gson:gson:2.8.5")
 
         implementation("io.swagger:swagger-annotations:1.5.22")
+
         implementation("com.squareup.okhttp3:okhttp:3.14.1")
         implementation("com.squareup.okhttp3:logging-interceptor:3.14.1")
 
@@ -174,6 +181,8 @@ publishing {
 
                     // List all "implementation" dependencies as "runtime" dependencies
                     configurations.implementation.getDependencies().each { dep -> addDependency(dep, "runtime") }
+
+                    root.children().last() + pomConfig
                 }
             }
         }
@@ -201,4 +210,20 @@ artifactory {
             }
         }
     }
+}
+
+task publishReleaseLocal(type: GradleBuild) {
+    tasks = ["assembleRelease", "publishReleaseAarPublicationToMavenLocal"]
+}
+
+task publishDebugLocal(type: GradleBuild) {
+    tasks = ["assembleDebug", "publishDebugAarPublicationToMavenLocal"]
+}
+
+task publishRelease(type: GradleBuild) {
+    tasks = ["assembleRelease", "artifactoryPublish"]
+}
+
+task publishDebug(type: GradleBuild) {
+    tasks = ["assembleDebug", "artifactoryPublish"]
 }
