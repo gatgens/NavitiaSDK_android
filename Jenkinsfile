@@ -10,13 +10,12 @@ pipeline {
                 sh './gradlew clean assemble'
             }
         }
-        //TODO: To reactivate once the unit tests have been fixed.
-        /*stage('Testing') {
+        stage('Testing') {
             steps {
                 echo 'Testing...'
                 sh './gradlew clean test'
             }
-        }*/
+        }
     }
     post {
         always {
