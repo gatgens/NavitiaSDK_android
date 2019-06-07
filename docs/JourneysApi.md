@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="getCoverageLonLatJourneys"></a>
 # **getCoverageLonLatJourneys**
-> Journeys getCoverageLonLatJourneys(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos, timeframeDuration, equipmentDetails, maxTaxiDirectPathDuration, maxWalkingDirectPathDuration, maxCarDirectPathDuration, maxRidesharingDirectPathDuration, maxBssDirectPathDuration, maxBikeDirectPathDuration)
+> Journeys getCoverageLonLatJourneys(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos, timeframeDuration, equipmentDetails, maxTaxiDirectPathDuration, maxWalkingDirectPathDuration, maxCarDirectPathDuration, maxRidesharingDirectPathDuration, maxBssDirectPathDuration, maxBikeDirectPathDuration, depth)
 
 
 
@@ -78,8 +78,9 @@ Integer maxCarDirectPathDuration = 56; // Integer | limit duration of direct pat
 Integer maxRidesharingDirectPathDuration = 56; // Integer | limit duration of direct path in ridesharing, used ONLY in distributed scenario
 Integer maxBssDirectPathDuration = 56; // Integer | limit duration of direct path in bss, used ONLY in distributed scenario
 Integer maxBikeDirectPathDuration = 56; // Integer | limit duration of direct path in bike, used ONLY in distributed scenario
+Integer depth = 1; // Integer | The depth of your object
 try {
-    Journeys result = apiInstance.getCoverageLonLatJourneys(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos, timeframeDuration, equipmentDetails, maxTaxiDirectPathDuration, maxWalkingDirectPathDuration, maxCarDirectPathDuration, maxRidesharingDirectPathDuration, maxBssDirectPathDuration, maxBikeDirectPathDuration);
+    Journeys result = apiInstance.getCoverageLonLatJourneys(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos, timeframeDuration, equipmentDetails, maxTaxiDirectPathDuration, maxWalkingDirectPathDuration, maxCarDirectPathDuration, maxRidesharingDirectPathDuration, maxBssDirectPathDuration, maxBikeDirectPathDuration, depth);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneysApi#getCoverageLonLatJourneys");
@@ -137,6 +138,7 @@ Name | Type | Description  | Notes
  **maxRidesharingDirectPathDuration** | **Integer**| limit duration of direct path in ridesharing, used ONLY in distributed scenario | [optional]
  **maxBssDirectPathDuration** | **Integer**| limit duration of direct path in bss, used ONLY in distributed scenario | [optional]
  **maxBikeDirectPathDuration** | **Integer**| limit duration of direct path in bike, used ONLY in distributed scenario | [optional]
+ **depth** | **Integer**| The depth of your object | [optional] [default to 1]
 
 ### Return type
 
@@ -153,7 +155,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionJourneys"></a>
 # **getCoverageRegionJourneys**
-> Journeys getCoverageRegionJourneys(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos, timeframeDuration, equipmentDetails, maxTaxiDirectPathDuration, maxWalkingDirectPathDuration, maxCarDirectPathDuration, maxRidesharingDirectPathDuration, maxBssDirectPathDuration, maxBikeDirectPathDuration)
+> Journeys getCoverageRegionJourneys(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos, timeframeDuration, equipmentDetails, maxTaxiDirectPathDuration, maxWalkingDirectPathDuration, maxCarDirectPathDuration, maxRidesharingDirectPathDuration, maxBssDirectPathDuration, maxBikeDirectPathDuration, depth)
 
 
 
@@ -219,8 +221,9 @@ Integer maxCarDirectPathDuration = 56; // Integer | limit duration of direct pat
 Integer maxRidesharingDirectPathDuration = 56; // Integer | limit duration of direct path in ridesharing, used ONLY in distributed scenario
 Integer maxBssDirectPathDuration = 56; // Integer | limit duration of direct path in bss, used ONLY in distributed scenario
 Integer maxBikeDirectPathDuration = 56; // Integer | limit duration of direct path in bike, used ONLY in distributed scenario
+Integer depth = 1; // Integer | The depth of your object
 try {
-    Journeys result = apiInstance.getCoverageRegionJourneys(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos, timeframeDuration, equipmentDetails, maxTaxiDirectPathDuration, maxWalkingDirectPathDuration, maxCarDirectPathDuration, maxRidesharingDirectPathDuration, maxBssDirectPathDuration, maxBikeDirectPathDuration);
+    Journeys result = apiInstance.getCoverageRegionJourneys(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos, timeframeDuration, equipmentDetails, maxTaxiDirectPathDuration, maxWalkingDirectPathDuration, maxCarDirectPathDuration, maxRidesharingDirectPathDuration, maxBssDirectPathDuration, maxBikeDirectPathDuration, depth);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneysApi#getCoverageRegionJourneys");
@@ -277,6 +280,7 @@ Name | Type | Description  | Notes
  **maxRidesharingDirectPathDuration** | **Integer**| limit duration of direct path in ridesharing, used ONLY in distributed scenario | [optional]
  **maxBssDirectPathDuration** | **Integer**| limit duration of direct path in bss, used ONLY in distributed scenario | [optional]
  **maxBikeDirectPathDuration** | **Integer**| limit duration of direct path in bike, used ONLY in distributed scenario | [optional]
+ **depth** | **Integer**| The depth of your object | [optional] [default to 1]
 
 ### Return type
 
@@ -293,7 +297,7 @@ Name | Type | Description  | Notes
 
 <a name="getJourneys"></a>
 # **getJourneys**
-> Journeys getJourneys(from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos, timeframeDuration, equipmentDetails, maxTaxiDirectPathDuration, maxWalkingDirectPathDuration, maxCarDirectPathDuration, maxRidesharingDirectPathDuration, maxBssDirectPathDuration, maxBikeDirectPathDuration)
+> Journeys getJourneys(from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos, timeframeDuration, equipmentDetails, maxTaxiDirectPathDuration, maxWalkingDirectPathDuration, maxCarDirectPathDuration, maxRidesharingDirectPathDuration, maxBssDirectPathDuration, maxBikeDirectPathDuration, depth)
 
 
 
@@ -358,8 +362,9 @@ Integer maxCarDirectPathDuration = 56; // Integer | limit duration of direct pat
 Integer maxRidesharingDirectPathDuration = 56; // Integer | limit duration of direct path in ridesharing, used ONLY in distributed scenario
 Integer maxBssDirectPathDuration = 56; // Integer | limit duration of direct path in bss, used ONLY in distributed scenario
 Integer maxBikeDirectPathDuration = 56; // Integer | limit duration of direct path in bike, used ONLY in distributed scenario
+Integer depth = 1; // Integer | The depth of your object
 try {
-    Journeys result = apiInstance.getJourneys(from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos, timeframeDuration, equipmentDetails, maxTaxiDirectPathDuration, maxWalkingDirectPathDuration, maxCarDirectPathDuration, maxRidesharingDirectPathDuration, maxBssDirectPathDuration, maxBikeDirectPathDuration);
+    Journeys result = apiInstance.getJourneys(from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, count, isJourneySchedules, minNbJourneys, maxNbJourneys, bssStands, addPoiInfos, timeframeDuration, equipmentDetails, maxTaxiDirectPathDuration, maxWalkingDirectPathDuration, maxCarDirectPathDuration, maxRidesharingDirectPathDuration, maxBssDirectPathDuration, maxBikeDirectPathDuration, depth);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneysApi#getJourneys");
@@ -415,6 +420,7 @@ Name | Type | Description  | Notes
  **maxRidesharingDirectPathDuration** | **Integer**| limit duration of direct path in ridesharing, used ONLY in distributed scenario | [optional]
  **maxBssDirectPathDuration** | **Integer**| limit duration of direct path in bss, used ONLY in distributed scenario | [optional]
  **maxBikeDirectPathDuration** | **Integer**| limit duration of direct path in bike, used ONLY in distributed scenario | [optional]
+ **depth** | **Integer**| The depth of your object | [optional] [default to 1]
 
 ### Return type
 
