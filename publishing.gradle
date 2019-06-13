@@ -43,6 +43,7 @@ tasks.register("androidJavadocs", Javadoc) {
     configurations.implementation.setCanBeResolved(true)
     configurations.api.setCanBeResolved(true)
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator)) + configurations.implementation + configurations.api
+    options.encoding = "UTF-8"
 }
 
 
