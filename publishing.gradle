@@ -156,7 +156,7 @@ artifactory {
             } else if ("assembleDebug" in runTasks) {
                 publications("debugAar")
             }
-            publishBuildInfo = true
+            publishBuildInfo = false
         }
     }
 }
