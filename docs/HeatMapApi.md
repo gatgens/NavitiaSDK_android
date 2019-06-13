@@ -10,18 +10,18 @@ Method | HTTP request | Description
 
 <a name="getCoverageLonLatHeatMaps"></a>
 # **getCoverageLonLatHeatMaps**
-> HeatMap1 getCoverageLonLatHeatMaps(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, resolution)
+> HeatMap1 getCoverageLonLatHeatMaps(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, resolution)
 
 
 
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.HeatMapApi;
+//import com.kisio.navitia.sdk.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.expert.apis.HeatMapApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -52,6 +52,7 @@ Float bikeSpeed = 3.4F; // Float | Biking speed for the fallback sections. Speed
 Float bssSpeed = 3.4F; // Float | Speed while using a bike from a bike sharing system for the fallback sections. Speed unit must be in meter/second
 Float carSpeed = 3.4F; // Float | Driving speed for the fallback sections. Speed unit must be in meter/second
 Float ridesharingSpeed = 3.4F; // Float | ridesharing speed for the fallback sections. Speed unit must be in meter/second
+Float taxiSpeed = 3.4F; // Float | taxi speed speed for the fallback sections. Speed unit must be in meter/second
 List<String> forbiddenUris = Arrays.asList("forbiddenUris_example"); // List<String> | If you want to avoid lines, modes, networks, etc. Note: the forbidden_uris[] concern only the public transport objects. You can’t for example forbid the use of the bike with them, you have to set the fallback modes for this (first_section_mode[] and last_section_mode[])
 List<String> allowedId = Arrays.asList("allowedId_example"); // List<String> | If you want to use only a small subset of the public transport objects in your solution. Note: The constraint intersects with forbidden_uris[]. For example, if you ask for `allowed_id[]=line:A&forbidden_uris[]=physical_mode:Bus`, only vehicles of the line A that are not buses will be used.
 Boolean disruptionActive = true; // Boolean | DEPRECATED, replaced by `data_freshness`. If true the algorithm takes the disruptions into account, and thus avoid disrupted public transport. Nota: `disruption_active=true` <=> `data_freshness=realtime`
@@ -64,7 +65,7 @@ Integer freeRadiusFrom = 56; // Integer | Radius length (in meters) around the c
 Integer freeRadiusTo = 56; // Integer | Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly=0)
 Integer resolution = 500; // Integer | Sampling resolution
 try {
-    HeatMap1 result = apiInstance.getCoverageLonLatHeatMaps(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, resolution);
+    HeatMap1 result = apiInstance.getCoverageLonLatHeatMaps(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, resolution);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling HeatMapApi#getCoverageLonLatHeatMaps");
@@ -84,8 +85,8 @@ Name | Type | Description  | Notes
  **datetimeRepresents** | **String**| Determine how datetime is handled.  Possible values:  * &#39;departure&#39; - Compute journeys starting after datetime  * &#39;arrival&#39; - Compute journeys arriving before datetime | [optional] [default to departure] [enum: arrival, departure]
  **maxNbTransfers** | **Integer**| Maximum number of transfers in each journey | [optional]
  **minNbTransfers** | **Integer**| Minimum number of transfers in each journey | [optional]
- **firstSectionMode** | [**List&lt;String&gt;**](String.md)| Force the first section mode if the first section is not a public transport one. &#x60;bss&#x60; stands for bike sharing system. Note 1: It’s an array, you can give multiple modes. Note 2: Choosing &#x60;bss&#x60; implicitly allows the walking mode since you might have to walk to the bss station. Note 3: The parameter is inclusive, not exclusive, so if you want to forbid a mode, you need to add all the other modes. Eg: If you never want to use a car, you need: &#x60;first_section_mode[]&#x3D;walking&amp;first_section_mode[]&#x3D;bss&amp;first_section_mode[]&#x3D;bike&amp;last_section_mode[]&#x3D;walking&amp;last_section_mode[]&#x3D;bss&amp;last_section_mode[]&#x3D;bike&#x60; | [optional] [enum: walking, car, bike, bss, ridesharing]
- **lastSectionMode** | [**List&lt;String&gt;**](String.md)| Same as first_section_mode but for the last section. | [optional] [enum: walking, car, bike, bss, ridesharing]
+ **firstSectionMode** | [**List&lt;String&gt;**](String.md)| Force the first section mode if the first section is not a public transport one. &#x60;bss&#x60; stands for bike sharing system. Note 1: It’s an array, you can give multiple modes. Note 2: Choosing &#x60;bss&#x60; implicitly allows the walking mode since you might have to walk to the bss station. Note 3: The parameter is inclusive, not exclusive, so if you want to forbid a mode, you need to add all the other modes. Eg: If you never want to use a car, you need: &#x60;first_section_mode[]&#x3D;walking&amp;first_section_mode[]&#x3D;bss&amp;first_section_mode[]&#x3D;bike&amp;last_section_mode[]&#x3D;walking&amp;last_section_mode[]&#x3D;bss&amp;last_section_mode[]&#x3D;bike&#x60; | [optional] [enum: taxi, walking, car, ridesharing, bss, bike]
+ **lastSectionMode** | [**List&lt;String&gt;**](String.md)| Same as first_section_mode but for the last section. | [optional] [enum: taxi, walking, car, ridesharing, bss, bike]
  **maxDurationToPt** | **Integer**| Maximum allowed duration to reach the public transport (same limit used before and after public transport). Use this to limit the walking/biking part. Unit is seconds | [optional]
  **maxWalkingDurationToPt** | **Integer**| Maximal duration of walking on public transport in second | [optional]
  **maxBikeDurationToPt** | **Integer**| Maximal duration of bike on public transport in second | [optional]
@@ -97,6 +98,7 @@ Name | Type | Description  | Notes
  **bssSpeed** | **Float**| Speed while using a bike from a bike sharing system for the fallback sections. Speed unit must be in meter/second | [optional]
  **carSpeed** | **Float**| Driving speed for the fallback sections. Speed unit must be in meter/second | [optional]
  **ridesharingSpeed** | **Float**| ridesharing speed for the fallback sections. Speed unit must be in meter/second | [optional]
+ **taxiSpeed** | **Float**| taxi speed speed for the fallback sections. Speed unit must be in meter/second | [optional]
  **forbiddenUris** | [**List&lt;String&gt;**](String.md)| If you want to avoid lines, modes, networks, etc. Note: the forbidden_uris[] concern only the public transport objects. You can’t for example forbid the use of the bike with them, you have to set the fallback modes for this (first_section_mode[] and last_section_mode[]) | [optional]
  **allowedId** | [**List&lt;String&gt;**](String.md)| If you want to use only a small subset of the public transport objects in your solution. Note: The constraint intersects with forbidden_uris[]. For example, if you ask for &#x60;allowed_id[]&#x3D;line:A&amp;forbidden_uris[]&#x3D;physical_mode:Bus&#x60;, only vehicles of the line A that are not buses will be used. | [optional]
  **disruptionActive** | **Boolean**| DEPRECATED, replaced by &#x60;data_freshness&#x60;. If true the algorithm takes the disruptions into account, and thus avoid disrupted public transport. Nota: &#x60;disruption_active&#x3D;true&#x60; &lt;&#x3D;&gt; &#x60;data_freshness&#x3D;realtime&#x60; | [optional]
@@ -124,18 +126,18 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionHeatMaps"></a>
 # **getCoverageRegionHeatMaps**
-> HeatMap1 getCoverageRegionHeatMaps(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, resolution)
+> HeatMap1 getCoverageRegionHeatMaps(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, resolution)
 
 
 
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.HeatMapApi;
+//import com.kisio.navitia.sdk.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.expert.apis.HeatMapApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -165,6 +167,7 @@ Float bikeSpeed = 3.4F; // Float | Biking speed for the fallback sections. Speed
 Float bssSpeed = 3.4F; // Float | Speed while using a bike from a bike sharing system for the fallback sections. Speed unit must be in meter/second
 Float carSpeed = 3.4F; // Float | Driving speed for the fallback sections. Speed unit must be in meter/second
 Float ridesharingSpeed = 3.4F; // Float | ridesharing speed for the fallback sections. Speed unit must be in meter/second
+Float taxiSpeed = 3.4F; // Float | taxi speed speed for the fallback sections. Speed unit must be in meter/second
 List<String> forbiddenUris = Arrays.asList("forbiddenUris_example"); // List<String> | If you want to avoid lines, modes, networks, etc. Note: the forbidden_uris[] concern only the public transport objects. You can’t for example forbid the use of the bike with them, you have to set the fallback modes for this (first_section_mode[] and last_section_mode[])
 List<String> allowedId = Arrays.asList("allowedId_example"); // List<String> | If you want to use only a small subset of the public transport objects in your solution. Note: The constraint intersects with forbidden_uris[]. For example, if you ask for `allowed_id[]=line:A&forbidden_uris[]=physical_mode:Bus`, only vehicles of the line A that are not buses will be used.
 Boolean disruptionActive = true; // Boolean | DEPRECATED, replaced by `data_freshness`. If true the algorithm takes the disruptions into account, and thus avoid disrupted public transport. Nota: `disruption_active=true` <=> `data_freshness=realtime`
@@ -177,7 +180,7 @@ Integer freeRadiusFrom = 56; // Integer | Radius length (in meters) around the c
 Integer freeRadiusTo = 56; // Integer | Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly=0)
 Integer resolution = 500; // Integer | Sampling resolution
 try {
-    HeatMap1 result = apiInstance.getCoverageRegionHeatMaps(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, resolution);
+    HeatMap1 result = apiInstance.getCoverageRegionHeatMaps(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, resolution);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling HeatMapApi#getCoverageRegionHeatMaps");
@@ -196,8 +199,8 @@ Name | Type | Description  | Notes
  **datetimeRepresents** | **String**| Determine how datetime is handled.  Possible values:  * &#39;departure&#39; - Compute journeys starting after datetime  * &#39;arrival&#39; - Compute journeys arriving before datetime | [optional] [default to departure] [enum: arrival, departure]
  **maxNbTransfers** | **Integer**| Maximum number of transfers in each journey | [optional]
  **minNbTransfers** | **Integer**| Minimum number of transfers in each journey | [optional]
- **firstSectionMode** | [**List&lt;String&gt;**](String.md)| Force the first section mode if the first section is not a public transport one. &#x60;bss&#x60; stands for bike sharing system. Note 1: It’s an array, you can give multiple modes. Note 2: Choosing &#x60;bss&#x60; implicitly allows the walking mode since you might have to walk to the bss station. Note 3: The parameter is inclusive, not exclusive, so if you want to forbid a mode, you need to add all the other modes. Eg: If you never want to use a car, you need: &#x60;first_section_mode[]&#x3D;walking&amp;first_section_mode[]&#x3D;bss&amp;first_section_mode[]&#x3D;bike&amp;last_section_mode[]&#x3D;walking&amp;last_section_mode[]&#x3D;bss&amp;last_section_mode[]&#x3D;bike&#x60; | [optional] [enum: walking, car, bike, bss, ridesharing]
- **lastSectionMode** | [**List&lt;String&gt;**](String.md)| Same as first_section_mode but for the last section. | [optional] [enum: walking, car, bike, bss, ridesharing]
+ **firstSectionMode** | [**List&lt;String&gt;**](String.md)| Force the first section mode if the first section is not a public transport one. &#x60;bss&#x60; stands for bike sharing system. Note 1: It’s an array, you can give multiple modes. Note 2: Choosing &#x60;bss&#x60; implicitly allows the walking mode since you might have to walk to the bss station. Note 3: The parameter is inclusive, not exclusive, so if you want to forbid a mode, you need to add all the other modes. Eg: If you never want to use a car, you need: &#x60;first_section_mode[]&#x3D;walking&amp;first_section_mode[]&#x3D;bss&amp;first_section_mode[]&#x3D;bike&amp;last_section_mode[]&#x3D;walking&amp;last_section_mode[]&#x3D;bss&amp;last_section_mode[]&#x3D;bike&#x60; | [optional] [enum: taxi, walking, car, ridesharing, bss, bike]
+ **lastSectionMode** | [**List&lt;String&gt;**](String.md)| Same as first_section_mode but for the last section. | [optional] [enum: taxi, walking, car, ridesharing, bss, bike]
  **maxDurationToPt** | **Integer**| Maximum allowed duration to reach the public transport (same limit used before and after public transport). Use this to limit the walking/biking part. Unit is seconds | [optional]
  **maxWalkingDurationToPt** | **Integer**| Maximal duration of walking on public transport in second | [optional]
  **maxBikeDurationToPt** | **Integer**| Maximal duration of bike on public transport in second | [optional]
@@ -209,6 +212,7 @@ Name | Type | Description  | Notes
  **bssSpeed** | **Float**| Speed while using a bike from a bike sharing system for the fallback sections. Speed unit must be in meter/second | [optional]
  **carSpeed** | **Float**| Driving speed for the fallback sections. Speed unit must be in meter/second | [optional]
  **ridesharingSpeed** | **Float**| ridesharing speed for the fallback sections. Speed unit must be in meter/second | [optional]
+ **taxiSpeed** | **Float**| taxi speed speed for the fallback sections. Speed unit must be in meter/second | [optional]
  **forbiddenUris** | [**List&lt;String&gt;**](String.md)| If you want to avoid lines, modes, networks, etc. Note: the forbidden_uris[] concern only the public transport objects. You can’t for example forbid the use of the bike with them, you have to set the fallback modes for this (first_section_mode[] and last_section_mode[]) | [optional]
  **allowedId** | [**List&lt;String&gt;**](String.md)| If you want to use only a small subset of the public transport objects in your solution. Note: The constraint intersects with forbidden_uris[]. For example, if you ask for &#x60;allowed_id[]&#x3D;line:A&amp;forbidden_uris[]&#x3D;physical_mode:Bus&#x60;, only vehicles of the line A that are not buses will be used. | [optional]
  **disruptionActive** | **Boolean**| DEPRECATED, replaced by &#x60;data_freshness&#x60;. If true the algorithm takes the disruptions into account, and thus avoid disrupted public transport. Nota: &#x60;disruption_active&#x3D;true&#x60; &lt;&#x3D;&gt; &#x60;data_freshness&#x3D;realtime&#x60; | [optional]

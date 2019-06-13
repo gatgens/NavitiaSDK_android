@@ -7,19 +7,18 @@ pipeline {
         stage('Building...') {
             steps {
                 echo 'Building...'
-                sh './gradlew clean assemble'
+                sh './gradlew assemble'
             }
         }
-        //TODO: To reactivate once the unit tests have been fixed.
-        /*stage('Testing') {
+        stage('Testing') {
             steps {
                 echo 'Testing...'
-                sh './gradlew clean test'
+                sh './gradlew testApi'
             }
-        }*/
+        }
     }
     post {
-        always {
+        success {
             /* clean up our workspace */
             deleteDir()
             /* clean up tmp directory */

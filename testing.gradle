@@ -1,0 +1,42 @@
+def apiPath = "src/main/java/com/kisio/navitia/sdk/expert/invokers/ApiClient.java"
+
+tasks.register("setupApiBeforeTest", Exec) {
+    group = "Api"
+    description = "Change ApiClient base url"
+    executable("sed")
+    args("-i", "-e", "s/https:\\/\\/api.navitia.io/http:\\/\\/navitia2-ws.ctp.customer.canaltp.fr/g", apiPath)
+}
+
+tasks.register("revertApiAfterTest", Exec) {
+    group = "Api"
+    description = "Revert ApiClient base url"
+    executable("sed")
+    args("-i", "-e", "s/http:\\/\\/navitia2-ws.ctp.customer.canaltp.fr/https:\\/\\/api.navitia.io/g", apiPath)
+}
+
+tasks.register("cleanApiAfterTest", Delete) {
+    group = "Api"
+    description = "Clean ApiClient after reverting base url"
+    dependsOn(revertApiAfterTest)
+    doLast {
+        def fileToDelete = file("$apiPath-e")
+        if (fileToDelete.exists()) {
+            def deleted = file("$apiPath-e").delete()
+            println("Delete \"${fileToDelete.name}\": $deleted")
+        }
+    }
+}
+
+tasks.register("testApi", GradleBuild) {
+    group = "Api"
+    description = "Execute API Tests"
+    tasks = ["setupApiBeforeTest", "test", "cleanApiAfterTest"]
+}
+
+tasks.register("checkApi", GradleBuild) {
+    group = "Api"
+    description = "Execute API Tests"
+    tasks = ["setupApiBeforeTest", "check", "cleanApiAfterTest"]
+}
+
+clean.finalizedBy(cleanApiAfterTest)
