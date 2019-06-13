@@ -86,6 +86,7 @@ CAR | &quot;car&quot;
 BSS | &quot;bss&quot;
 RIDESHARING | &quot;ridesharing&quot;
 CARNOPARK | &quot;carnopark&quot;
+TAXI | &quot;taxi&quot;
 
 
 
