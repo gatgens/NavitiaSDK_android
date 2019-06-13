@@ -7,18 +7,18 @@ pipeline {
         stage('Building...') {
             steps {
                 echo 'Building...'
-                sh './gradlew clean assemble'
+                sh './gradlew assemble'
             }
         }
         stage('Testing') {
             steps {
                 echo 'Testing...'
-                sh './gradlew clean test'
+                sh './gradlew testApi'
             }
         }
     }
     post {
-        always {
+        success {
             /* clean up our workspace */
             deleteDir()
             /* clean up tmp directory */
