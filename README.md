@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.kisio.navitia.sdk:expert:2.0.0"
+implementation("com.kisio.navitia.sdk:expert:2.0.0")
 ```
 
 ### Others
@@ -57,12 +57,12 @@ Then manually install the following JARs:
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
 ```java
-import org.kisio.NavitiaSDK.NavitiaConfiguration;
-import org.kisio.NavitiaSDK.NavitiaSDK;
-import org.kisio.NavitiaSDK.invokers.ApiCallback;
-import org.kisio.NavitiaSDK.invokers.ApiException;
-import org.kisio.NavitiaSDK.models.Journey;
-import org.kisio.NavitiaSDK.models.Journeys;
+import com.kisio.navitia.sdk.expert.NavitiaConfiguration;
+import com.kisio.navitia.sdk.expert.NavitiaSDK;
+import com.kisio.navitia.sdk.expert.invokers.ApiCallback;
+import com.kisio.navitia.sdk.expert.invokers.ApiException;
+import com.kisio.navitia.sdk.expert.models.Journey;
+import com.kisio.navitia.sdk.expert.models.Journeys;
 
 import java.util.List;
 import java.util.Map;
