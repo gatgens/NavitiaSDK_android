@@ -86,5 +86,4 @@ dependencies {
 apply {
     from("logging.gradle")
     from("publishing.gradle")
-    from("testing.gradle")
 }
