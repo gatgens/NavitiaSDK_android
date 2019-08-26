@@ -3,10 +3,9 @@ buildscript {
         google()
         jcenter()
     }
-
     dependencies {
         classpath("com.android.tools.build:gradle:3.5.0")
-        classpath("org.jfrog.buildinfo:build-info-extractor-gradle:4.9.6")
+        classpath("org.jfrog.buildinfo:build-info-extractor-gradle:4.9.8")
     }
 }
 
@@ -31,16 +30,14 @@ allprojects {
 }
 
 android {
-    compileSdkVersion = 29
-    buildToolsVersion = "29.0.1"
+    compileSdkVersion = 28
+    buildToolsVersion = "28.0.3"
 
     defaultConfig {
         minSdkVersion(14)
-        targetSdkVersion(29)
-
+        targetSdkVersion(28)
         versionCode = 1
         versionName = artifactVersion
-
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
         
         buildConfigField("String", "API_TOKEN", "\"$sdk_expert_api_token\"")

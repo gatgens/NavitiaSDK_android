@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **headsign** | **String** |  |  [optional]
 **arrivalTime** | **String** |  |  [optional]
 **journeyPatternPoint** | [**JourneyPatternPoint**](JourneyPatternPoint.md) |  |  [optional]
+**dropOffAllowed** | **Boolean** |  |  [optional]
+**pickupAllowed** | **Boolean** |  |  [optional]
 **departureTime** | **String** |  |  [optional]
 
 
