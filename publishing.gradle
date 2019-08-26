@@ -55,12 +55,17 @@ tasks.register("androidJavadocsJar", Jar) {
     dependsOn(androidJavadocs)
 }
 
-
 tasks.register("androidSourcesJar", Jar) {
     group = "Publishing"
     description = "Sources"
     classifier = "sources"
     from(android.sourceSets.main.java.srcDirs)
+}
+
+tasks.withType(Javadoc) {
+    options.addStringOption("Xdoclint:none", "-quiet")
+    options.addStringOption("encoding", "UTF-8")
+    options.addStringOption("charSet", "UTF-8")
 }
 
 publishing {

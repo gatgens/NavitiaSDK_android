@@ -26,7 +26,7 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-    <groupId>com.kisio.navitia.sdk</groupId>
+    <groupId>com.kisio.navitia.sdk.data</groupId>
     <artifactId>expert</artifactId>
     <version>2.0.0</version>
     <scope>compile</scope>
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.kisio.navitia.sdk:expert:2.0.0"
+compile "com.kisio.navitia.sdk.data:expert:2.0.0"
 ```
 
 ### Others

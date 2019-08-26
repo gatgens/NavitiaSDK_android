@@ -1,4 +1,4 @@
-package com.kisio.navitia.sdk.expert;
+package com.kisio.navitia.sdk.data.expert;
 
 public class NavitiaConfiguration {
     private final String token;

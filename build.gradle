@@ -4,8 +4,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:3.4.0")
-        classpath("org.jfrog.buildinfo:build-info-extractor-gradle:4.9.6")
+        classpath("com.android.tools.build:gradle:3.5.0")
+        classpath("org.jfrog.buildinfo:build-info-extractor-gradle:4.9.8")
     }
 }
 
@@ -19,7 +19,7 @@ ext {
     gitRepository = "CanalTP/NavitiaSDK_android"
 }
 
-group = "com.kisio.navitia.sdk"
+group = "com.kisio.navitia.sdk.data"
 description = "Navitia Expert SDK $artifactVersion"
 
 allprojects {
@@ -77,8 +77,8 @@ dependencies {
 
     implementation("io.swagger:swagger-annotations:1.5.22")
 
-    implementation("com.squareup.okhttp3:okhttp:3.14.1")
-    implementation("com.squareup.okhttp3:logging-interceptor:3.14.1")
+    api("com.squareup.okhttp3:okhttp:3.14.1")
+    api("com.squareup.okhttp3:logging-interceptor:3.14.1")
 
     testImplementation("junit:junit:4.12")
 }
