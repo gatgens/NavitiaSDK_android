@@ -381,7 +381,7 @@ public class StopPointsApiTest {
         StopPointsApi.StopPointsRequestBuilder requestBuilder = new StopPointsApi(testToken).newStopPointsRequestBuilder();
 
         // Test case parameters
-        requestBuilder.withExternalCode(String.valueOf("OIF53:2465"));
+        requestBuilder.withExternalCode("93:1317");
 
         final StopPoints[] asyncResult = new StopPoints[1];
         requestBuilder.get(new ApiCallback<StopPoints>() {

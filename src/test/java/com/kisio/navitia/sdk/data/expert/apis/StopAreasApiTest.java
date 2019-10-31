@@ -381,7 +381,7 @@ public class StopAreasApiTest {
         StopAreasApi.StopAreasRequestBuilder requestBuilder = new StopAreasApi(testToken).newStopAreasRequestBuilder();
 
         // Test case parameters
-        requestBuilder.withExternalCode(String.valueOf("OIF8768600"));
+        requestBuilder.withExternalCode("8768600");
 
         final StopAreas[] asyncResult = new StopAreas[1];
         requestBuilder.get(new ApiCallback<StopAreas>() {
