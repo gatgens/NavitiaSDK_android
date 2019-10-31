@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="getCoverageLonLatIsochrones"></a>
 # **getCoverageLonLatIsochrones**
-> GraphicalIsrochone1 getCoverageLonLatIsochrones(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration)
+> GraphicalIsrochone1 getCoverageLonLatIsochrones(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, directPathMode, minDuration, boundaryDuration)
 
 
 
@@ -63,10 +63,11 @@ String travelerType = "travelerType_example"; // String | Define speeds and acce
 String directPath = "indifferent"; // String | Specify if direct path should be suggested
 Integer freeRadiusFrom = 56; // Integer | Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly=0)
 Integer freeRadiusTo = 56; // Integer | Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly=0)
+List<String> directPathMode = Arrays.asList("directPathMode_example"); // List<String> | Force the direct-path modes.If this list is not empty, we only compute direct_path for modes in this listAnd filter all the direct_paths of modes in first_section_mode[]
 Integer minDuration = 56; // Integer | Minimum travel duration
 List<Integer> boundaryDuration = Arrays.asList(56); // List<Integer> | To provide multiple duration parameters
 try {
-    GraphicalIsrochone1 result = apiInstance.getCoverageLonLatIsochrones(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration);
+    GraphicalIsrochone1 result = apiInstance.getCoverageLonLatIsochrones(lat, lon, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, directPathMode, minDuration, boundaryDuration);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GraphicalIsochroneApi#getCoverageLonLatIsochrones");
@@ -110,6 +111,7 @@ Name | Type | Description  | Notes
  **directPath** | **String**| Specify if direct path should be suggested | [optional] [default to indifferent] [enum: indifferent, only, none]
  **freeRadiusFrom** | **Integer**| Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
  **freeRadiusTo** | **Integer**| Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
+ **directPathMode** | [**List&lt;String&gt;**](String.md)| Force the direct-path modes.If this list is not empty, we only compute direct_path for modes in this listAnd filter all the direct_paths of modes in first_section_mode[] | [optional] [enum: taxi, walking, car, ridesharing, bss, bike]
  **minDuration** | **Integer**| Minimum travel duration | [optional]
  **boundaryDuration** | [**List&lt;Integer&gt;**](Integer.md)| To provide multiple duration parameters | [optional]
 
@@ -128,7 +130,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionIsochrones"></a>
 # **getCoverageRegionIsochrones**
-> GraphicalIsrochone1 getCoverageRegionIsochrones(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration)
+> GraphicalIsrochone1 getCoverageRegionIsochrones(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, directPathMode, minDuration, boundaryDuration)
 
 
 
@@ -180,10 +182,11 @@ String travelerType = "travelerType_example"; // String | Define speeds and acce
 String directPath = "indifferent"; // String | Specify if direct path should be suggested
 Integer freeRadiusFrom = 56; // Integer | Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly=0)
 Integer freeRadiusTo = 56; // Integer | Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly=0)
+List<String> directPathMode = Arrays.asList("directPathMode_example"); // List<String> | Force the direct-path modes.If this list is not empty, we only compute direct_path for modes in this listAnd filter all the direct_paths of modes in first_section_mode[]
 Integer minDuration = 56; // Integer | Minimum travel duration
 List<Integer> boundaryDuration = Arrays.asList(56); // List<Integer> | To provide multiple duration parameters
 try {
-    GraphicalIsrochone1 result = apiInstance.getCoverageRegionIsochrones(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, minDuration, boundaryDuration);
+    GraphicalIsrochone1 result = apiInstance.getCoverageRegionIsochrones(region, from, to, datetime, datetimeRepresents, maxNbTransfers, minNbTransfers, firstSectionMode, lastSectionMode, maxDurationToPt, maxWalkingDurationToPt, maxBikeDurationToPt, maxBssDurationToPt, maxCarDurationToPt, maxRidesharingDurationToPt, walkingSpeed, bikeSpeed, bssSpeed, carSpeed, ridesharingSpeed, taxiSpeed, forbiddenUris, allowedId, disruptionActive, dataFreshness, maxDuration, wheelchair, travelerType, directPath, freeRadiusFrom, freeRadiusTo, directPathMode, minDuration, boundaryDuration);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling GraphicalIsochroneApi#getCoverageRegionIsochrones");
@@ -226,6 +229,7 @@ Name | Type | Description  | Notes
  **directPath** | **String**| Specify if direct path should be suggested | [optional] [default to indifferent] [enum: indifferent, only, none]
  **freeRadiusFrom** | **Integer**| Radius length (in meters) around the coordinates of departure in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
  **freeRadiusTo** | **Integer**| Radius length (in meters) around the coordinates of arrival in which the stop points are considered free to go (crowfly&#x3D;0) | [optional]
+ **directPathMode** | [**List&lt;String&gt;**](String.md)| Force the direct-path modes.If this list is not empty, we only compute direct_path for modes in this listAnd filter all the direct_paths of modes in first_section_mode[] | [optional] [enum: taxi, walking, car, ridesharing, bss, bike]
  **minDuration** | **Integer**| Minimum travel duration | [optional]
  **boundaryDuration** | [**List&lt;Integer&gt;**](Integer.md)| To provide multiple duration parameters | [optional]
 

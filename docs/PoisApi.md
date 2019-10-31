@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="getCoverageLonLatPois"></a>
 # **getCoverageLonLatPois**
-> Pois getCoverageLonLatPois(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, bssStands, addPoiInfos)
+> Pois getCoverageLonLatPois(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, bssStands, addPoiInfos)
 
 
 
@@ -48,6 +48,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -59,7 +60,7 @@ String originalId = "originalId_example"; // String | original uri of the object
 Boolean bssStands = true; // Boolean | Deprecated - Use add_poi_infos[]=bss_stands
 List<String> addPoiInfos = Arrays.asList("[u'bss_stands', u'car_park']"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of the response
 try {
-    Pois result = apiInstance.getCoverageLonLatPois(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, bssStands, addPoiInfos);
+    Pois result = apiInstance.getCoverageLonLatPois(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, bssStands, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PoisApi#getCoverageLonLatPois");
@@ -82,6 +83,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -108,7 +110,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageLonLatPoisId"></a>
 # **getCoverageLonLatPoisId**
-> Pois getCoverageLonLatPoisId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, bssStands, addPoiInfos)
+> Pois getCoverageLonLatPoisId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags, originalId, bssStands, addPoiInfos)
 
 
 
@@ -141,6 +143,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -151,7 +154,7 @@ String originalId = "originalId_example"; // String | original uri of the object
 Boolean bssStands = true; // Boolean | Deprecated - Use add_poi_infos[]=bss_stands
 List<String> addPoiInfos = Arrays.asList("[u'bss_stands', u'car_park']"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of the response
 try {
-    Pois result = apiInstance.getCoverageLonLatPoisId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, bssStands, addPoiInfos);
+    Pois result = apiInstance.getCoverageLonLatPoisId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags, originalId, bssStands, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PoisApi#getCoverageLonLatPoisId");
@@ -175,6 +178,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -200,7 +204,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageLonLatUriPois"></a>
 # **getCoverageLonLatUriPois**
-> Pois getCoverageLonLatUriPois(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, bssStands, addPoiInfos)
+> Pois getCoverageLonLatUriPois(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, bssStands, addPoiInfos)
 
 
 
@@ -233,6 +237,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -244,7 +249,7 @@ String originalId = "originalId_example"; // String | original uri of the object
 Boolean bssStands = true; // Boolean | Deprecated - Use add_poi_infos[]=bss_stands
 List<String> addPoiInfos = Arrays.asList("[u'bss_stands', u'car_park']"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of the response
 try {
-    Pois result = apiInstance.getCoverageLonLatUriPois(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, bssStands, addPoiInfos);
+    Pois result = apiInstance.getCoverageLonLatUriPois(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, bssStands, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PoisApi#getCoverageLonLatUriPois");
@@ -268,6 +273,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -294,7 +300,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageLonLatUriPoisId"></a>
 # **getCoverageLonLatUriPoisId**
-> Pois getCoverageLonLatUriPoisId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, bssStands, addPoiInfos)
+> Pois getCoverageLonLatUriPoisId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags, originalId, bssStands, addPoiInfos)
 
 
 
@@ -328,6 +334,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -338,7 +345,7 @@ String originalId = "originalId_example"; // String | original uri of the object
 Boolean bssStands = true; // Boolean | Deprecated - Use add_poi_infos[]=bss_stands
 List<String> addPoiInfos = Arrays.asList("[u'bss_stands', u'car_park']"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of the response
 try {
-    Pois result = apiInstance.getCoverageLonLatUriPoisId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, bssStands, addPoiInfos);
+    Pois result = apiInstance.getCoverageLonLatUriPoisId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags, originalId, bssStands, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PoisApi#getCoverageLonLatUriPoisId");
@@ -363,6 +370,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -388,7 +396,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionPois"></a>
 # **getCoverageRegionPois**
-> Pois getCoverageRegionPois(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, bssStands, addPoiInfos)
+> Pois getCoverageRegionPois(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, bssStands, addPoiInfos)
 
 
 
@@ -419,6 +427,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -430,7 +439,7 @@ String originalId = "originalId_example"; // String | original uri of the object
 Boolean bssStands = true; // Boolean | Deprecated - Use add_poi_infos[]=bss_stands
 List<String> addPoiInfos = Arrays.asList("[u'bss_stands', u'car_park']"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of the response
 try {
-    Pois result = apiInstance.getCoverageRegionPois(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, bssStands, addPoiInfos);
+    Pois result = apiInstance.getCoverageRegionPois(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, bssStands, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PoisApi#getCoverageRegionPois");
@@ -452,6 +461,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -478,7 +488,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionPoisId"></a>
 # **getCoverageRegionPoisId**
-> Pois getCoverageRegionPoisId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, bssStands, addPoiInfos)
+> Pois getCoverageRegionPoisId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags, originalId, bssStands, addPoiInfos)
 
 
 
@@ -510,6 +520,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -520,7 +531,7 @@ String originalId = "originalId_example"; // String | original uri of the object
 Boolean bssStands = true; // Boolean | Deprecated - Use add_poi_infos[]=bss_stands
 List<String> addPoiInfos = Arrays.asList("[u'bss_stands', u'car_park']"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of the response
 try {
-    Pois result = apiInstance.getCoverageRegionPoisId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, bssStands, addPoiInfos);
+    Pois result = apiInstance.getCoverageRegionPoisId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags, originalId, bssStands, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PoisApi#getCoverageRegionPoisId");
@@ -543,6 +554,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -568,7 +580,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionUriPois"></a>
 # **getCoverageRegionUriPois**
-> Pois getCoverageRegionUriPois(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, bssStands, addPoiInfos)
+> Pois getCoverageRegionUriPois(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, bssStands, addPoiInfos)
 
 
 
@@ -600,6 +612,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -611,7 +624,7 @@ String originalId = "originalId_example"; // String | original uri of the object
 Boolean bssStands = true; // Boolean | Deprecated - Use add_poi_infos[]=bss_stands
 List<String> addPoiInfos = Arrays.asList("[u'bss_stands', u'car_park']"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of the response
 try {
-    Pois result = apiInstance.getCoverageRegionUriPois(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, bssStands, addPoiInfos);
+    Pois result = apiInstance.getCoverageRegionUriPois(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId, bssStands, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PoisApi#getCoverageRegionUriPois");
@@ -634,6 +647,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -660,7 +674,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionUriPoisId"></a>
 # **getCoverageRegionUriPoisId**
-> Pois getCoverageRegionUriPoisId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, bssStands, addPoiInfos)
+> Pois getCoverageRegionUriPoisId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags, originalId, bssStands, addPoiInfos)
 
 
 
@@ -693,6 +707,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -703,7 +718,7 @@ String originalId = "originalId_example"; // String | original uri of the object
 Boolean bssStands = true; // Boolean | Deprecated - Use add_poi_infos[]=bss_stands
 List<String> addPoiInfos = Arrays.asList("[u'bss_stands', u'car_park']"); // List<String> | Show more information about the poi if it's available, for instance, show BSS/car park availability in the pois(BSS/car park) of the response
 try {
-    Pois result = apiInstance.getCoverageRegionUriPoisId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId, bssStands, addPoiInfos);
+    Pois result = apiInstance.getCoverageRegionUriPoisId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags, originalId, bssStands, addPoiInfos);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PoisApi#getCoverageRegionUriPoisId");
@@ -727,6 +742,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]

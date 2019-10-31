@@ -6,8 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **category** | [**CategoryEnum**](#CategoryEnum) |  |  [optional]
 **type** | **String** |  |  [optional]
-**id** | **String** |  | 
 **value** | **String** |  |  [optional]
+**commentType** | **String** |  |  [optional]
+**id** | **String** |  | 
 
 
 <a name="CategoryEnum"></a>

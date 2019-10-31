@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="getCoverageLonLatLineReports"></a>
 # **getCoverageLonLatLineReports**
-> LineReports getCoverageLonLatLineReports(lat, lon, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags)
+> LineReports getCoverageLonLatLineReports(lat, lon, depth, count, startPage, forbiddenUris, disableGeojson, since, until)
 
 
 
@@ -42,9 +42,8 @@ List<String> forbiddenUris = Arrays.asList("forbiddenUris_example"); // List<Str
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 DateTime since = new DateTime(); // DateTime | use disruptions valid after this date
 DateTime until = new DateTime(); // DateTime | use disruptions valid before this date
-List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    LineReports result = apiInstance.getCoverageLonLatLineReports(lat, lon, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags);
+    LineReports result = apiInstance.getCoverageLonLatLineReports(lat, lon, depth, count, startPage, forbiddenUris, disableGeojson, since, until);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LineReportsApi#getCoverageLonLatLineReports");
@@ -65,7 +64,6 @@ Name | Type | Description  | Notes
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
  **since** | **DateTime**| use disruptions valid after this date | [optional]
  **until** | **DateTime**| use disruptions valid before this date | [optional]
- **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -82,7 +80,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageLonLatUriLineReports"></a>
 # **getCoverageLonLatUriLineReports**
-> LineReports getCoverageLonLatUriLineReports(lat, lon, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags)
+> LineReports getCoverageLonLatUriLineReports(lat, lon, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until)
 
 
 
@@ -113,9 +111,8 @@ List<String> forbiddenUris = Arrays.asList("forbiddenUris_example"); // List<Str
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 DateTime since = new DateTime(); // DateTime | use disruptions valid after this date
 DateTime until = new DateTime(); // DateTime | use disruptions valid before this date
-List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    LineReports result = apiInstance.getCoverageLonLatUriLineReports(lat, lon, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags);
+    LineReports result = apiInstance.getCoverageLonLatUriLineReports(lat, lon, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LineReportsApi#getCoverageLonLatUriLineReports");
@@ -137,7 +134,6 @@ Name | Type | Description  | Notes
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
  **since** | **DateTime**| use disruptions valid after this date | [optional]
  **until** | **DateTime**| use disruptions valid before this date | [optional]
- **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -154,7 +150,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionLineReports"></a>
 # **getCoverageRegionLineReports**
-> LineReports getCoverageRegionLineReports(region, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags)
+> LineReports getCoverageRegionLineReports(region, depth, count, startPage, forbiddenUris, disableGeojson, since, until)
 
 
 
@@ -183,9 +179,8 @@ List<String> forbiddenUris = Arrays.asList("forbiddenUris_example"); // List<Str
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 DateTime since = new DateTime(); // DateTime | use disruptions valid after this date
 DateTime until = new DateTime(); // DateTime | use disruptions valid before this date
-List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    LineReports result = apiInstance.getCoverageRegionLineReports(region, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags);
+    LineReports result = apiInstance.getCoverageRegionLineReports(region, depth, count, startPage, forbiddenUris, disableGeojson, since, until);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LineReportsApi#getCoverageRegionLineReports");
@@ -205,7 +200,6 @@ Name | Type | Description  | Notes
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
  **since** | **DateTime**| use disruptions valid after this date | [optional]
  **until** | **DateTime**| use disruptions valid before this date | [optional]
- **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
@@ -222,7 +216,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionUriLineReports"></a>
 # **getCoverageRegionUriLineReports**
-> LineReports getCoverageRegionUriLineReports(region, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags)
+> LineReports getCoverageRegionUriLineReports(region, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until)
 
 
 
@@ -252,9 +246,8 @@ List<String> forbiddenUris = Arrays.asList("forbiddenUris_example"); // List<Str
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
 DateTime since = new DateTime(); // DateTime | use disruptions valid after this date
 DateTime until = new DateTime(); // DateTime | use disruptions valid before this date
-List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    LineReports result = apiInstance.getCoverageRegionUriLineReports(region, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until, tags);
+    LineReports result = apiInstance.getCoverageRegionUriLineReports(region, uri, depth, count, startPage, forbiddenUris, disableGeojson, since, until);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LineReportsApi#getCoverageRegionUriLineReports");
@@ -275,7 +268,6 @@ Name | Type | Description  | Notes
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
  **since** | **DateTime**| use disruptions valid after this date | [optional]
  **until** | **DateTime**| use disruptions valid before this date | [optional]
- **tags** | [**List&lt;String&gt;**](String.md)| If filled, will restrain the search within the given disruption tags | [optional]
 
 ### Return type
 
