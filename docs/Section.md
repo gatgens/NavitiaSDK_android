@@ -4,35 +4,28 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**displayInformations** | [**VJDisplayInformation**](VJDisplayInformation.md) |  |  [optional]
-**from** | [**Place**](Place.md) |  |  [optional]
 **links** | [**List&lt;LinkSchema&gt;**](LinkSchema.md) |  | 
-**transferType** | [**TransferTypeEnum**](#TransferTypeEnum) |  |  [optional]
+**departureDateTime** | **String** | Departure date and time of the section |  [optional]
+**baseDepartureDateTime** | **String** | Base-schedule departure date and time of the section |  [optional]
+**duration** | **Integer** | Duration of the section (seconds) | 
+**id** | **String** |  | 
+**from** | [**Place**](Place.md) |  |  [optional]
 **arrivalDateTime** | **String** | Arrival date and time of the section |  [optional]
 **additionalInformations** | [**List&lt;AdditionalInformationsEnum&gt;**](#List&lt;AdditionalInformationsEnum&gt;) |  |  [optional]
-**departureDateTime** | **String** | Departure date and time of the section |  [optional]
+**geojson** | [**SectionGeoJsonSchema**](SectionGeoJsonSchema.md) | GeoJSON of the shape of the section |  [optional]
 **ridesharingInformations** | [**RidesharingInformation**](RidesharingInformation.md) |  |  [optional]
 **to** | [**Place**](Place.md) |  |  [optional]
 **baseArrivalDateTime** | **String** | Base-schedule arrival date and time of the section |  [optional]
-**baseDepartureDateTime** | **String** | Base-schedule departure date and time of the section |  [optional]
-**co2Emission** | [**Amount**](Amount.md) |  | 
-**ridesharingJourneys** | [**List&lt;Journey&gt;**](Journey.md) |  |  [optional]
-**geojson** | [**SectionGeoJsonSchema**](SectionGeoJsonSchema.md) | GeoJSON of the shape of the section |  [optional]
-**duration** | **Integer** | Duration of the section (seconds) | 
-**path** | [**List&lt;Path&gt;**](Path.md) |  |  [optional]
-**stopDateTimes** | [**List&lt;StopDateTime&gt;**](StopDateTime.md) |  |  [optional]
+**transferType** | [**TransferTypeEnum**](#TransferTypeEnum) |  |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) |  |  [optional]
-**id** | **String** |  | 
 **dataFreshness** | [**DataFreshnessEnum**](#DataFreshnessEnum) |  |  [optional]
+**co2Emission** | [**Amount**](Amount.md) |  | 
+**path** | [**List&lt;Path&gt;**](Path.md) |  |  [optional]
+**cycleLaneLength** | **Integer** |  |  [optional]
+**displayInformations** | [**VJDisplayInformation**](VJDisplayInformation.md) |  |  [optional]
 **mode** | [**ModeEnum**](#ModeEnum) |  |  [optional]
-
-
-<a name="TransferTypeEnum"></a>
-## Enum: TransferTypeEnum
-Name | Value
----- | -----
-WALKING | &quot;walking&quot;
-STAY_IN | &quot;stay_in&quot;
+**ridesharingJourneys** | [**List&lt;Journey&gt;**](Journey.md) |  |  [optional]
+**stopDateTimes** | [**List&lt;StopDateTime&gt;**](StopDateTime.md) |  |  [optional]
 
 
 <a name="List<AdditionalInformationsEnum>"></a>
@@ -44,6 +37,14 @@ ODT_WITH_STOP_POINT | &quot;odt_with_stop_point&quot;
 ODT_WITH_STOP_TIME | &quot;odt_with_stop_time&quot;
 HAS_DATETIME_ESTIMATED | &quot;has_datetime_estimated&quot;
 REGULAR | &quot;regular&quot;
+STAY_IN | &quot;stay_in&quot;
+
+
+<a name="TransferTypeEnum"></a>
+## Enum: TransferTypeEnum
+Name | Value
+---- | -----
+WALKING | &quot;walking&quot;
 STAY_IN | &quot;stay_in&quot;
 
 
@@ -86,6 +87,7 @@ CAR | &quot;car&quot;
 BSS | &quot;bss&quot;
 RIDESHARING | &quot;ridesharing&quot;
 CARNOPARK | &quot;carnopark&quot;
+TAXI | &quot;taxi&quot;
 
 
 

@@ -54,3 +54,6 @@ captures/
 
 # exclude jar for gradle wrapper
 !gradle/wrapper/*.jar
+
+# Other
+¨.DS_Store

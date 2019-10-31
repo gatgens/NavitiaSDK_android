@@ -17,11 +17,11 @@ Method | HTTP request | Description
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.GeoStatusApi;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.data.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.data.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.data.expert.apis.GeoStatusApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -71,11 +71,11 @@ Name | Type | Description  | Notes
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.GeoStatusApi;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.data.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.data.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.data.expert.apis.GeoStatusApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 

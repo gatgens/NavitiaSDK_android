@@ -1,0 +1,196 @@
+def runTasks = gradle.startParameter.taskNames
+
+def getGitCommitHash = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine "git", "rev-parse", "--short", "HEAD"
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
+
+def pomConfig = {
+    licenses {
+        license {
+            name("GNU General Public License, Version 3")
+            url("https://www.navitia.io/api-term-of-use")
+            distribution("repo")
+        }
+    }
+    developers {
+        developer {
+            name("Kisio Digital SDK")
+            email("team.sdk@kisio.org")
+            organization("Kisio Digital")
+            organizationUrl("http://www.kisiodigital.com/")
+        }
+    }
+    scm {
+        connection("scm:git:git://github.com/${project.ext.gitRepository}.git")
+        developerConnection("scm:git:ssh://github.com/${project.ext.gitRepository}.git")
+        url("https://github.com/${project.ext.gitRepository}/tree/master")
+    }
+}
+
+/*
+ * Java docs
+ */
+
+tasks.register("androidJavadocs", Javadoc) {
+    group = "Publishing"
+    description = "Javadocs"
+    source = android.sourceSets.main.java.srcDirs
+    configurations.implementation.setCanBeResolved(true)
+    configurations.api.setCanBeResolved(true)
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator)) + configurations.implementation + configurations.api
+    options.encoding = "UTF-8"
+}
+
+
+tasks.register("androidJavadocsJar", Jar) {
+    group = "Publishing"
+    description = "Javadocs Jar"
+    classifier = "javadoc"
+    from(androidJavadocs.destinationDir)
+    dependsOn(androidJavadocs)
+}
+
+tasks.register("androidSourcesJar", Jar) {
+    group = "Publishing"
+    description = "Sources"
+    classifier = "sources"
+    from(android.sourceSets.main.java.srcDirs)
+}
+
+tasks.withType(Javadoc) {
+    options.addStringOption("Xdoclint:none", "-quiet")
+    options.addStringOption("encoding", "UTF-8")
+    options.addStringOption("charSet", "UTF-8")
+}
+
+publishing {
+    publications {
+
+        //Iterate all build types to make specific
+        //artifact for every build type
+        android.buildTypes.all { variant ->
+
+            //it will create different
+            //publications ("debugAar" and "releaseAar")
+            "${variant.name}Aar"(MavenPublication) {
+
+                groupId = group
+                artifactId = project.ext.artifactName
+
+                def finalVersion = project.ext.artifactVersion
+                if ("assembleDebug" in runTasks) {
+                    finalVersion += "-${getGitCommitHash()}-SNAPSHOT"
+                }
+                version = finalVersion
+
+                if ("assembleRelease" in runTasks) {
+                    artifact(androidJavadocsJar)
+                    artifact(androidSourcesJar)
+                }
+                artifact("$buildDir/outputs/aar/${project.getName()}-${variant.name}.aar")
+
+                pom.withXml {
+                    final root = asNode()
+                    root.appendNode("description", description)
+                    root.appendNode("name", artifactId)
+                    root.appendNode("url", "https://github.com/${project.ext.gitRepository}")
+
+                    final dependenciesNode = root.appendNode("dependencies")
+
+                    ext.addDependency = { Dependency dep, String scope ->
+                        if (dep.group == null || dep.version == null || dep.name == null || dep.name == "unspecified")
+                            return // ignore invalid dependencies
+
+                        final dependencyNode = dependenciesNode.appendNode("dependency")
+                        dependencyNode.appendNode("groupId", dep.group)
+                        dependencyNode.appendNode("artifactId", dep.name)
+                        dependencyNode.appendNode("version", dep.version)
+                        dependencyNode.appendNode("scope", scope)
+
+                        if (!dep.transitive) {
+                            // If this dependency is transitive, we should force exclude all its dependencies them from the POM
+                            final exclusionNode = dependencyNode.appendNode("exclusions").appendNode("exclusion")
+                            exclusionNode.appendNode("groupId", "*")
+                            exclusionNode.appendNode("artifactId", "*")
+                        } else if (!dep.properties.excludeRules.empty) {
+                            // Otherwise add specified exclude rules
+                            final exclusionNode = dependencyNode.appendNode("exclusions").appendNode("exclusion")
+                            dep.properties.excludeRules.each { ExcludeRule rule ->
+                                exclusionNode.appendNode("groupId", rule.group ?: "*")
+                                exclusionNode.appendNode("artifactId", rule.module ?: "*")
+                            }
+                        }
+                    }
+
+                    // List all "api" dependencies as "compile" dependencies
+                    configurations.api.getDependencies().each { dep -> addDependency(dep, "compile") }
+
+                    // List all "implementation" dependencies as "runtime" dependencies
+                    configurations.implementation.getDependencies().each { dep -> addDependency(dep, "runtime") }
+
+                    // List all "compileOnly" dependencies as "runtime" dependencies
+                    configurations.compileOnly.getDependencies().each { dep -> addDependency(dep, "runtime") }
+
+                    root.children().last() + pomConfig
+                }
+            }
+        }
+    }
+}
+
+artifactory {
+    contextUrl = kisio_artifactory_url
+    publish {
+        repository {
+            if ("assembleRelease" in runTasks) {
+                repoKey = kisio_artifactory_android_repo_release
+            } else if ("assembleDebug" in runTasks) {
+                repoKey = kisio_artifactory_android_repo_snapshot
+            }
+
+            username = kisio_artifactory_username
+            password = kisio_artifactory_password
+        }
+        defaults {
+            if ("assembleRelease" in runTasks) {
+                publications("releaseAar")
+            } else if ("assembleDebug" in runTasks) {
+                publications("debugAar")
+            }
+            publishBuildInfo = false
+        }
+    }
+}
+
+/*
+ * Shortcuts
+ */
+
+tasks.register("publishReleaseLocal", GradleBuild) {
+    group = "Publishing"
+    description = "Publish Release to Local"
+    tasks = ["assembleRelease", "publishReleaseAarPublicationToMavenLocal"]
+}
+
+tasks.register("publishDebugLocal", GradleBuild) {
+    group = "Publishing"
+    description = "Publish Debug to Local"
+    tasks = ["assembleDebug", "publishDebugAarPublicationToMavenLocal"]
+}
+
+tasks.register("publishRelease", GradleBuild) {
+    group = "Publishing"
+    description = "Publish Release to Artifactory"
+    tasks = ["assembleRelease", "artifactoryPublish"]
+}
+
+tasks.register("publishDebug", GradleBuild) {
+    group = "Publishing"
+    description = "Publish Debug to Artifactory"
+    tasks = ["assembleDebug", "artifactoryPublish"]
+}

@@ -16,18 +16,18 @@ Method | HTTP request | Description
 
 <a name="getCoverageLonLatJourneyPatternPoints"></a>
 # **getCoverageLonLatJourneyPatternPoints**
-> JourneyPatternPoints getCoverageLonLatJourneyPatternPoints(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags)
+> JourneyPatternPoints getCoverageLonLatJourneyPatternPoints(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags)
 
 
 
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.JourneyPatternPointsApi;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.data.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.data.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.data.expert.apis.JourneyPatternPointsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -48,6 +48,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -56,7 +57,7 @@ Boolean disableDisruption = true; // Boolean | remove disruptions from the respo
 String filter = "filter_example"; // String | The filter parameter
 List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    JourneyPatternPoints result = apiInstance.getCoverageLonLatJourneyPatternPoints(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
+    JourneyPatternPoints result = apiInstance.getCoverageLonLatJourneyPatternPoints(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneyPatternPointsApi#getCoverageLonLatJourneyPatternPoints");
@@ -79,6 +80,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -102,18 +104,18 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageLonLatJourneyPatternPointsId"></a>
 # **getCoverageLonLatJourneyPatternPointsId**
-> JourneyPatternPoints getCoverageLonLatJourneyPatternPointsId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags)
+> JourneyPatternPoints getCoverageLonLatJourneyPatternPointsId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags)
 
 
 
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.JourneyPatternPointsApi;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.data.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.data.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.data.expert.apis.JourneyPatternPointsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -135,6 +137,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -142,7 +145,7 @@ Boolean disableGeojson = true; // Boolean | remove geojson from the response
 Boolean disableDisruption = true; // Boolean | remove disruptions from the response
 List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    JourneyPatternPoints result = apiInstance.getCoverageLonLatJourneyPatternPointsId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
+    JourneyPatternPoints result = apiInstance.getCoverageLonLatJourneyPatternPointsId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneyPatternPointsApi#getCoverageLonLatJourneyPatternPointsId");
@@ -166,6 +169,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -188,18 +192,18 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageLonLatUriJourneyPatternPoints"></a>
 # **getCoverageLonLatUriJourneyPatternPoints**
-> JourneyPatternPoints getCoverageLonLatUriJourneyPatternPoints(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags)
+> JourneyPatternPoints getCoverageLonLatUriJourneyPatternPoints(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags)
 
 
 
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.JourneyPatternPointsApi;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.data.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.data.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.data.expert.apis.JourneyPatternPointsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -221,6 +225,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -229,7 +234,7 @@ Boolean disableDisruption = true; // Boolean | remove disruptions from the respo
 String filter = "filter_example"; // String | The filter parameter
 List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    JourneyPatternPoints result = apiInstance.getCoverageLonLatUriJourneyPatternPoints(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
+    JourneyPatternPoints result = apiInstance.getCoverageLonLatUriJourneyPatternPoints(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneyPatternPointsApi#getCoverageLonLatUriJourneyPatternPoints");
@@ -253,6 +258,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -276,18 +282,18 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageLonLatUriJourneyPatternPointsId"></a>
 # **getCoverageLonLatUriJourneyPatternPointsId**
-> JourneyPatternPoints getCoverageLonLatUriJourneyPatternPointsId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags)
+> JourneyPatternPoints getCoverageLonLatUriJourneyPatternPointsId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags)
 
 
 
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.JourneyPatternPointsApi;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.data.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.data.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.data.expert.apis.JourneyPatternPointsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -310,6 +316,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -317,7 +324,7 @@ Boolean disableGeojson = true; // Boolean | remove geojson from the response
 Boolean disableDisruption = true; // Boolean | remove disruptions from the response
 List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    JourneyPatternPoints result = apiInstance.getCoverageLonLatUriJourneyPatternPointsId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
+    JourneyPatternPoints result = apiInstance.getCoverageLonLatUriJourneyPatternPointsId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneyPatternPointsApi#getCoverageLonLatUriJourneyPatternPointsId");
@@ -342,6 +349,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -364,18 +372,18 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionJourneyPatternPoints"></a>
 # **getCoverageRegionJourneyPatternPoints**
-> JourneyPatternPoints getCoverageRegionJourneyPatternPoints(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags)
+> JourneyPatternPoints getCoverageRegionJourneyPatternPoints(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags)
 
 
 
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.JourneyPatternPointsApi;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.data.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.data.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.data.expert.apis.JourneyPatternPointsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -395,6 +403,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -403,7 +412,7 @@ Boolean disableDisruption = true; // Boolean | remove disruptions from the respo
 String filter = "filter_example"; // String | The filter parameter
 List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    JourneyPatternPoints result = apiInstance.getCoverageRegionJourneyPatternPoints(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
+    JourneyPatternPoints result = apiInstance.getCoverageRegionJourneyPatternPoints(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneyPatternPointsApi#getCoverageRegionJourneyPatternPoints");
@@ -425,6 +434,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -448,18 +458,18 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionJourneyPatternPointsId"></a>
 # **getCoverageRegionJourneyPatternPointsId**
-> JourneyPatternPoints getCoverageRegionJourneyPatternPointsId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags)
+> JourneyPatternPoints getCoverageRegionJourneyPatternPointsId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags)
 
 
 
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.JourneyPatternPointsApi;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.data.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.data.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.data.expert.apis.JourneyPatternPointsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -480,6 +490,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -487,7 +498,7 @@ Boolean disableGeojson = true; // Boolean | remove geojson from the response
 Boolean disableDisruption = true; // Boolean | remove disruptions from the response
 List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    JourneyPatternPoints result = apiInstance.getCoverageRegionJourneyPatternPointsId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
+    JourneyPatternPoints result = apiInstance.getCoverageRegionJourneyPatternPointsId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneyPatternPointsApi#getCoverageRegionJourneyPatternPointsId");
@@ -510,6 +521,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -532,18 +544,18 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionUriJourneyPatternPoints"></a>
 # **getCoverageRegionUriJourneyPatternPoints**
-> JourneyPatternPoints getCoverageRegionUriJourneyPatternPoints(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags)
+> JourneyPatternPoints getCoverageRegionUriJourneyPatternPoints(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags)
 
 
 
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.JourneyPatternPointsApi;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.data.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.data.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.data.expert.apis.JourneyPatternPointsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -564,6 +576,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -572,7 +585,7 @@ Boolean disableDisruption = true; // Boolean | remove disruptions from the respo
 String filter = "filter_example"; // String | The filter parameter
 List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    JourneyPatternPoints result = apiInstance.getCoverageRegionUriJourneyPatternPoints(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags);
+    JourneyPatternPoints result = apiInstance.getCoverageRegionUriJourneyPatternPoints(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneyPatternPointsApi#getCoverageRegionUriJourneyPatternPoints");
@@ -595,6 +608,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -618,18 +632,18 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionUriJourneyPatternPointsId"></a>
 # **getCoverageRegionUriJourneyPatternPointsId**
-> JourneyPatternPoints getCoverageRegionUriJourneyPatternPointsId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags)
+> JourneyPatternPoints getCoverageRegionUriJourneyPatternPointsId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags)
 
 
 
 ### Example
 ```java
 // Import classes:
-//import org.kisio.NavitiaSDK.invokers.ApiClient;
-//import org.kisio.NavitiaSDK.invokers.ApiException;
-//import org.kisio.NavitiaSDK.invokers.Configuration;
-//import org.kisio.NavitiaSDK.invokers.auth.*;
-//import org.kisio.NavitiaSDK.apis.JourneyPatternPointsApi;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiClient;
+//import com.kisio.navitia.sdk.data.expert.invokers.ApiException;
+//import com.kisio.navitia.sdk.data.expert.invokers.Configuration;
+//import com.kisio.navitia.sdk.data.expert.invokers.auth.*;
+//import com.kisio.navitia.sdk.data.expert.apis.JourneyPatternPointsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -651,6 +665,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -658,7 +673,7 @@ Boolean disableGeojson = true; // Boolean | remove geojson from the response
 Boolean disableDisruption = true; // Boolean | remove disruptions from the response
 List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 try {
-    JourneyPatternPoints result = apiInstance.getCoverageRegionUriJourneyPatternPointsId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags);
+    JourneyPatternPoints result = apiInstance.getCoverageRegionUriJourneyPatternPointsId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JourneyPatternPointsApi#getCoverageRegionUriJourneyPatternPointsId");
@@ -682,6 +697,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
