@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="getCoverageLonLatDisruptions"></a>
 # **getCoverageLonLatDisruptions**
-> Disruptions getCoverageLonLatDisruptions(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId)
+> Disruptions getCoverageLonLatDisruptions(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId)
 
 
 
@@ -48,6 +48,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -57,7 +58,7 @@ String filter = "filter_example"; // String | The filter parameter
 List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 String originalId = "originalId_example"; // String | original uri of the object you want to query
 try {
-    Disruptions result = apiInstance.getCoverageLonLatDisruptions(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
+    Disruptions result = apiInstance.getCoverageLonLatDisruptions(lat, lon, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DisruptionsApi#getCoverageLonLatDisruptions");
@@ -80,6 +81,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -104,7 +106,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageLonLatDisruptionsId"></a>
 # **getCoverageLonLatDisruptionsId**
-> Disruptions getCoverageLonLatDisruptionsId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId)
+> Disruptions getCoverageLonLatDisruptionsId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags, originalId)
 
 
 
@@ -137,6 +139,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -145,7 +148,7 @@ Boolean disableDisruption = true; // Boolean | remove disruptions from the respo
 List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 String originalId = "originalId_example"; // String | original uri of the object you want to query
 try {
-    Disruptions result = apiInstance.getCoverageLonLatDisruptionsId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId);
+    Disruptions result = apiInstance.getCoverageLonLatDisruptionsId(lat, lon, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags, originalId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DisruptionsApi#getCoverageLonLatDisruptionsId");
@@ -169,6 +172,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -192,7 +196,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageLonLatUriDisruptions"></a>
 # **getCoverageLonLatUriDisruptions**
-> Disruptions getCoverageLonLatUriDisruptions(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId)
+> Disruptions getCoverageLonLatUriDisruptions(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId)
 
 
 
@@ -225,6 +229,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -234,7 +239,7 @@ String filter = "filter_example"; // String | The filter parameter
 List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 String originalId = "originalId_example"; // String | original uri of the object you want to query
 try {
-    Disruptions result = apiInstance.getCoverageLonLatUriDisruptions(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
+    Disruptions result = apiInstance.getCoverageLonLatUriDisruptions(lat, lon, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DisruptionsApi#getCoverageLonLatUriDisruptions");
@@ -258,6 +263,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -282,7 +288,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageLonLatUriDisruptionsId"></a>
 # **getCoverageLonLatUriDisruptionsId**
-> Disruptions getCoverageLonLatUriDisruptionsId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId)
+> Disruptions getCoverageLonLatUriDisruptionsId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags, originalId)
 
 
 
@@ -316,6 +322,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -324,7 +331,7 @@ Boolean disableDisruption = true; // Boolean | remove disruptions from the respo
 List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 String originalId = "originalId_example"; // String | original uri of the object you want to query
 try {
-    Disruptions result = apiInstance.getCoverageLonLatUriDisruptionsId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId);
+    Disruptions result = apiInstance.getCoverageLonLatUriDisruptionsId(lat, lon, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags, originalId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DisruptionsApi#getCoverageLonLatUriDisruptionsId");
@@ -349,6 +356,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -372,7 +380,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionDisruptions"></a>
 # **getCoverageRegionDisruptions**
-> Disruptions getCoverageRegionDisruptions(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId)
+> Disruptions getCoverageRegionDisruptions(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId)
 
 
 
@@ -403,6 +411,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -412,7 +421,7 @@ String filter = "filter_example"; // String | The filter parameter
 List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 String originalId = "originalId_example"; // String | original uri of the object you want to query
 try {
-    Disruptions result = apiInstance.getCoverageRegionDisruptions(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
+    Disruptions result = apiInstance.getCoverageRegionDisruptions(region, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DisruptionsApi#getCoverageRegionDisruptions");
@@ -434,6 +443,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -458,7 +468,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionDisruptionsId"></a>
 # **getCoverageRegionDisruptionsId**
-> Disruptions getCoverageRegionDisruptionsId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId)
+> Disruptions getCoverageRegionDisruptionsId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags, originalId)
 
 
 
@@ -490,6 +500,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -498,7 +509,7 @@ Boolean disableDisruption = true; // Boolean | remove disruptions from the respo
 List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 String originalId = "originalId_example"; // String | original uri of the object you want to query
 try {
-    Disruptions result = apiInstance.getCoverageRegionDisruptionsId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId);
+    Disruptions result = apiInstance.getCoverageRegionDisruptionsId(region, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags, originalId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DisruptionsApi#getCoverageRegionDisruptionsId");
@@ -521,6 +532,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -544,7 +556,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionUriDisruptions"></a>
 # **getCoverageRegionUriDisruptions**
-> Disruptions getCoverageRegionUriDisruptions(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId)
+> Disruptions getCoverageRegionUriDisruptions(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId)
 
 
 
@@ -576,6 +588,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -585,7 +598,7 @@ String filter = "filter_example"; // String | The filter parameter
 List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 String originalId = "originalId_example"; // String | original uri of the object you want to query
 try {
-    Disruptions result = apiInstance.getCoverageRegionUriDisruptions(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
+    Disruptions result = apiInstance.getCoverageRegionUriDisruptions(region, uri, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, filter, tags, originalId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DisruptionsApi#getCoverageRegionUriDisruptions");
@@ -608,6 +621,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]
@@ -632,7 +646,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionUriDisruptionsId"></a>
 # **getCoverageRegionUriDisruptionsId**
-> Disruptions getCoverageRegionUriDisruptionsId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId)
+> Disruptions getCoverageRegionUriDisruptionsId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags, originalId)
 
 
 
@@ -665,6 +679,7 @@ String externalCode = "externalCode_example"; // String | An external code to qu
 String headsign = "headsign_example"; // String | filter vehicle journeys on headsign
 Boolean showCodes = true; // Boolean | show more identification codes
 String odtLevel = "all"; // String | odt level
+String dataFreshness = "base_schedule"; // String | Define the freshness of data to use to filter vehicle_journeys along with parameters &since and/or &until . Provides only the vehicle_journeys valid for the data freshness level requested. Using `&data_freshness=base_schedule` will return all original vehicle_journeys onlywhereas using `&data_freshness=realtime` will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys).
 Integer distance = 200; // Integer | Distance range of the query. Used only if a coord is in the query
 DateTime since = new DateTime(); // DateTime | filters objects not valid before this date
 DateTime until = new DateTime(); // DateTime | filters objects not valid after this date
@@ -673,7 +688,7 @@ Boolean disableDisruption = true; // Boolean | remove disruptions from the respo
 List<String> tags = Arrays.asList("tags_example"); // List<String> | If filled, will restrain the search within the given disruption tags
 String originalId = "originalId_example"; // String | original uri of the object you want to query
 try {
-    Disruptions result = apiInstance.getCoverageRegionUriDisruptionsId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, distance, since, until, disableGeojson, disableDisruption, tags, originalId);
+    Disruptions result = apiInstance.getCoverageRegionUriDisruptionsId(region, uri, id, startPage, count, depth, forbiddenId, forbiddenUris, externalCode, headsign, showCodes, odtLevel, dataFreshness, distance, since, until, disableGeojson, disableDisruption, tags, originalId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DisruptionsApi#getCoverageRegionUriDisruptionsId");
@@ -697,6 +712,7 @@ Name | Type | Description  | Notes
  **headsign** | **String**| filter vehicle journeys on headsign | [optional]
  **showCodes** | **Boolean**| show more identification codes | [optional]
  **odtLevel** | **String**| odt level | [optional] [default to all] [enum: scheduled, all, zonal, with_stops]
+ **dataFreshness** | **String**| Define the freshness of data to use to filter vehicle_journeys along with parameters &amp;since and/or &amp;until . Provides only the vehicle_journeys valid for the data freshness level requested. Using &#x60;&amp;data_freshness&#x3D;base_schedule&#x60; will return all original vehicle_journeys onlywhereas using &#x60;&amp;data_freshness&#x3D;realtime&#x60; will return vehicle_journeys after applyingmodifications by realtime (amended vehicle_journeys, and non-impacted original vehicle_journeys). | [optional] [default to base_schedule] [enum: base_schedule, adapted_schedule, realtime]
  **distance** | **Integer**| Distance range of the query. Used only if a coord is in the query | [optional] [default to 200]
  **since** | **DateTime**| filters objects not valid before this date | [optional]
  **until** | **DateTime**| filters objects not valid after this date | [optional]

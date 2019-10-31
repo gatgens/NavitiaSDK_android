@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **category** | **String** |  |  [optional]
+**commentType** | **String** |  |  [optional]
 **title** | **String** |  |  [optional]
 **internal** | **Boolean** |  |  [optional]
 **value** | **String** |  |  [optional]

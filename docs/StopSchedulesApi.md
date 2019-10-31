@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="getCoverageLonLatUriStopSchedules"></a>
 # **getCoverageLonLatUriStopSchedules**
-> StopSchedules getCoverageLonLatUriStopSchedules(lat, lon, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson)
+> StopSchedules getCoverageLonLatUriStopSchedules(lat, lon, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, directionType)
 
 
 
@@ -51,8 +51,9 @@ Boolean showCodes = true; // Boolean | show more identification codes
 String dataFreshness = "dataFreshness_example"; // String | freshness of the data. base_schedule is the long term planned schedule. adapted_schedule is for planned ahead disruptions (strikes, maintenances, ...). realtime is to have the freshest possible data
 Integer itemsPerSchedule = 10000; // Integer | maximum number of date_times per schedule
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+String directionType = "directionType_example"; // String | Provide a route direction type to filter results. Note: forward is equivalent to clockwise and inbound. When you select forward, you filter with: [forward, clockwise, inbound]. On the other hand, backward is equivalent to anticlockwise and outbound. When you select backward, you filter with: [backward, anticlockwise, outbound].
 try {
-    StopSchedules result = apiInstance.getCoverageLonLatUriStopSchedules(lat, lon, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson);
+    StopSchedules result = apiInstance.getCoverageLonLatUriStopSchedules(lat, lon, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, directionType);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StopSchedulesApi#getCoverageLonLatUriStopSchedules");
@@ -83,6 +84,7 @@ Name | Type | Description  | Notes
  **dataFreshness** | **String**| freshness of the data. base_schedule is the long term planned schedule. adapted_schedule is for planned ahead disruptions (strikes, maintenances, ...). realtime is to have the freshest possible data | [optional] [enum: base_schedule, adapted_schedule, realtime]
  **itemsPerSchedule** | **Integer**| maximum number of date_times per schedule | [optional] [default to 10000]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **directionType** | **String**| Provide a route direction type to filter results. Note: forward is equivalent to clockwise and inbound. When you select forward, you filter with: [forward, clockwise, inbound]. On the other hand, backward is equivalent to anticlockwise and outbound. When you select backward, you filter with: [backward, anticlockwise, outbound]. | [optional] [enum: all, forward, backward]
 
 ### Return type
 
@@ -99,7 +101,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoverageRegionUriStopSchedules"></a>
 # **getCoverageRegionUriStopSchedules**
-> StopSchedules getCoverageRegionUriStopSchedules(region, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson)
+> StopSchedules getCoverageRegionUriStopSchedules(region, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, directionType)
 
 
 
@@ -138,8 +140,9 @@ Boolean showCodes = true; // Boolean | show more identification codes
 String dataFreshness = "dataFreshness_example"; // String | freshness of the data. base_schedule is the long term planned schedule. adapted_schedule is for planned ahead disruptions (strikes, maintenances, ...). realtime is to have the freshest possible data
 Integer itemsPerSchedule = 10000; // Integer | maximum number of date_times per schedule
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+String directionType = "directionType_example"; // String | Provide a route direction type to filter results. Note: forward is equivalent to clockwise and inbound. When you select forward, you filter with: [forward, clockwise, inbound]. On the other hand, backward is equivalent to anticlockwise and outbound. When you select backward, you filter with: [backward, anticlockwise, outbound].
 try {
-    StopSchedules result = apiInstance.getCoverageRegionUriStopSchedules(region, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson);
+    StopSchedules result = apiInstance.getCoverageRegionUriStopSchedules(region, uri, filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, directionType);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StopSchedulesApi#getCoverageRegionUriStopSchedules");
@@ -169,6 +172,7 @@ Name | Type | Description  | Notes
  **dataFreshness** | **String**| freshness of the data. base_schedule is the long term planned schedule. adapted_schedule is for planned ahead disruptions (strikes, maintenances, ...). realtime is to have the freshest possible data | [optional] [enum: base_schedule, adapted_schedule, realtime]
  **itemsPerSchedule** | **Integer**| maximum number of date_times per schedule | [optional] [default to 10000]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **directionType** | **String**| Provide a route direction type to filter results. Note: forward is equivalent to clockwise and inbound. When you select forward, you filter with: [forward, clockwise, inbound]. On the other hand, backward is equivalent to anticlockwise and outbound. When you select backward, you filter with: [backward, anticlockwise, outbound]. | [optional] [enum: all, forward, backward]
 
 ### Return type
 
@@ -185,7 +189,7 @@ Name | Type | Description  | Notes
 
 <a name="getStopSchedules"></a>
 # **getStopSchedules**
-> StopSchedules getStopSchedules(filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson)
+> StopSchedules getStopSchedules(filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, directionType)
 
 
 
@@ -222,8 +226,9 @@ Boolean showCodes = true; // Boolean | show more identification codes
 String dataFreshness = "dataFreshness_example"; // String | freshness of the data. base_schedule is the long term planned schedule. adapted_schedule is for planned ahead disruptions (strikes, maintenances, ...). realtime is to have the freshest possible data
 Integer itemsPerSchedule = 10000; // Integer | maximum number of date_times per schedule
 Boolean disableGeojson = true; // Boolean | remove geojson from the response
+String directionType = "directionType_example"; // String | Provide a route direction type to filter results. Note: forward is equivalent to clockwise and inbound. When you select forward, you filter with: [forward, clockwise, inbound]. On the other hand, backward is equivalent to anticlockwise and outbound. When you select backward, you filter with: [backward, anticlockwise, outbound].
 try {
-    StopSchedules result = apiInstance.getStopSchedules(filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson);
+    StopSchedules result = apiInstance.getStopSchedules(filter, fromDatetime, untilDatetime, duration, depth, count, startPage, maxDateTimes, forbiddenId, forbiddenUris, calendar, distance, showCodes, dataFreshness, itemsPerSchedule, disableGeojson, directionType);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StopSchedulesApi#getStopSchedules");
@@ -251,6 +256,7 @@ Name | Type | Description  | Notes
  **dataFreshness** | **String**| freshness of the data. base_schedule is the long term planned schedule. adapted_schedule is for planned ahead disruptions (strikes, maintenances, ...). realtime is to have the freshest possible data | [optional] [enum: base_schedule, adapted_schedule, realtime]
  **itemsPerSchedule** | **Integer**| maximum number of date_times per schedule | [optional] [default to 10000]
  **disableGeojson** | **Boolean**| remove geojson from the response | [optional]
+ **directionType** | **String**| Provide a route direction type to filter results. Note: forward is equivalent to clockwise and inbound. When you select forward, you filter with: [forward, clockwise, inbound]. On the other hand, backward is equivalent to anticlockwise and outbound. When you select backward, you filter with: [backward, anticlockwise, outbound]. | [optional] [enum: all, forward, backward]
 
 ### Return type
 
